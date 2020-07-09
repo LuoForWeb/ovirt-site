@@ -82,6 +82,9 @@ The [National University of Sciences & Technology (NUST)](http://nust.edu.pk/Pag
 ## Backup Providers
 
 <div class="case-studies">
+<div class="case-study">
+[![Vinchin](/images/logos/vinchin.png)](https://www.vinchin.com/en)
+[Vinchin](https://www.vinchin.com/en) is a professional provider of data protection solutions for enterprises. It provides a series of data backup, instant recovery, and offsite DR solutions for private cloud, public cloud and hybrid cloud, including oVirt virtual environment. 
 </div>
 
 ## Supporters
