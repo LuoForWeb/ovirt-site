@@ -1,0 +1,119 @@
+#objectList li{
+    list-style: none;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #E6E6E6;
+    padding:12px;
+    margin-bottom:16px;
+}
+#objectList,.verifyStep{
+    padding: 0;
+}
+#objectList .verifyStep li{
+    list-style: none;
+    width:64px;
+    height: 8px;
+    background-color: #EBEEF0;
+    overflow: hidden;
+    position: relative;
+    margin-right: 4px;
+    float: left;
+    padding: 0;
+    border: 0
+}
+.oblique-left, .oblique-right{
+    margin:0 !important;
+}
+
+.oblique-left:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-right: 32px solid transparent;
+    border-top: 32px solid #fff;
+    width: 0;
+    height: 0;
+}
+
+.oblique-right:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 32px solid  transparent; /* 左边设置透明，实现斜角 */
+    border-bottom: 32px solid #fff; /* 底部设置颜色，形成斜角的高度 */
+    width: 0;
+    height: 0;
+}
+
+.oblique-all{
+    transform: skew(-45deg); /* 这里的角度值可以根据需要调整 */
+}
+
+.objectImg{
+    width: 60px;
+    margin-right: 24px;
+    position: relative;
+    top:-5px;
+}
+.objectname{
+    color:#00A3FF;
+}
+.heartbeat_flag{
+    z-index: 1;
+    margin-right: 0 !important;
+}
+
+.verify-success{
+    background-color:#0FBF98 !important;
+}
+
+.verify-danger{
+    background-color:#F1416C !important;
+}
+
+.verify-default{
+    background-color:#EBEEF0 !important;
+}
+
+.verify-info{
+    background-color:#00A3FF !important;
+}
+
+.verify-warning{
+    background-color:#F19F00 !important;
+}
+
+#verificationContent .iradio_square-blue{
+    background-position: -13px -10px !important;
+}
+#verificationContent .iradio_square-blue.checked{
+    background-position: -57px -10px !important;
+}
+#select_point_drawer .bootstrap-table .fixed-table-container .fixed-table-body{
+    height: auto;
+    max-height: 300px;
+}
+
+/*数据验证-虚拟演练室详情里的表格默认高度调整*/
+.tableDiv .fixed-table-body{
+    height: revert !important;
+}
+.basicDiv{
+    background: #FAFAFA;
+    padding: 20px 16px;
+    border-radius: 4px;
+}
+.radio-group .radio-group__item strong{
+    color: #333;
+}
+.radio-group .radio-group__item.active strong{
+    color: #0FBF98;
+}
+.filter-dropdown-menu__content{
+    height: 200px;
+    overflow: auto;
+}
+
+

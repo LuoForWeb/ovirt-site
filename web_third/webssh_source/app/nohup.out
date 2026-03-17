@@ -1,0 +1,30 @@
+
+> webssh2@0.3.1-pre-release-0.0 start /usr/share/nginx/vinchin/webssh/app
+> node index.js
+
+WebSSH2 service reading config from: /usr/share/nginx/vinchin/webssh/app/config.json
+ephemeral_auth service reading config from: /usr/share/nginx/vinchin/webssh/app/config.json
+WebSSH2 service listening on 0.0.0.0:2222
+WebSSH2 Login: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=O_2Hrj0DzG0k4V07lSZsnqpZuwPysqX6/N1oRV9PhFot0ZBl7AAAA mrhsession=none allowreplay=true term=xterm-color
+1 client is still connected
+Starting a 300 seconds countdown
+Press Ctrl+C again to force quit
+Stopping: All clients disconnected
+WebSSH2 Logout: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=O_2Hrj0DzG0k4V07lSZsnqpZuwPysqX6/N1oRV9PhFot0ZBl7AAAA allowreplay=true term=xterm-color
+WebSSH2 error: transport error
+
+> webssh2@0.3.1-pre-release-0.0 start /usr/share/nginx/vinchin/webssh/app
+> node index.js
+
+WebSSH2 service reading config from: /usr/share/nginx/vinchin/webssh/app/config.json
+ephemeral_auth service reading config from: /usr/share/nginx/vinchin/webssh/app/config.json
+WebSSH2 service listening on 0.0.0.0:2222
+WebSSH2 Login: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=zEBjb6RAXPqxdhX9kVtP9T0zeZiqgmq9/kVgKm54ohNN2rVsxAAAA mrhsession=none allowreplay=true term=xterm-color
+WebSSH2 Logout: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=zEBjb6RAXPqxdhX9kVtP9T0zeZiqgmq9/kVgKm54ohNN2rVsxAAAA allowreplay=true term=xterm-color
+WebSSH2 error: transport error
+WebSSH2 Login: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=mKz5BP78zlGiTOGs8l2rLnR_K17-3ZZo/A-sBr51su1zZIG0TAAAB mrhsession=none allowreplay=true term=xterm-color
+WebSSH2 Logout: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=mKz5BP78zlGiTOGs8l2rLnR_K17-3ZZo/A-sBr51su1zZIG0TAAAB allowreplay=true term=xterm-color
+WebSSH2 error: transport error
+WebSSH2 Login: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=bo30DvLAyzKTOruxCjg791-2PvbVPYcB/LiXvvIvTrh-YCLbzAAAC mrhsession=none allowreplay=true term=xterm-color
+WebSSH2 Logout: user=root from=192.168.1.108 host=127.0.0.1 port=22 sessionID=bo30DvLAyzKTOruxCjg791-2PvbVPYcB/LiXvvIvTrh-YCLbzAAAC allowreplay=true term=xterm-color
+WebSSH2 error: transport error

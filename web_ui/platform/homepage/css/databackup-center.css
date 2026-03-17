@@ -1,0 +1,2205 @@
+.mb16 {
+    margin-bottom: 16px;
+}
+.padding0 {
+    padding: 0;
+}
+.pr0 {
+    padding-right: 0;
+}
+.datacenter-content {
+    background-color: #F4F5F8;
+}
+/* .page-content-wrapper .page-content {
+    padding: 24px 20px;
+} */
+.page-bar .page-breadcrumb {
+    padding: 8px 0;
+}
+.page-bar .page-breadcrumb > li > a,
+.page-bar .page-breadcrumb > li > span {
+    color: #000000;
+    font-size: 14px;
+    vertical-align: top;
+}
+.page-bar .page-breadcrumb > li > i {
+    color: #52C0B2;
+}
+.systemTimeLabel {
+    padding: 8px 0;
+    float: right;
+}
+.taskStatus {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 52px);
+    padding: 0 3px 0 15px;
+}
+.allInfo .cardbox {
+    height: 194px;
+    padding-right: 12px;
+    overflow: hidden;
+}
+.allInfo .card {
+    position: relative;
+    border-radius: 5px !important;
+    padding: 24px 16px;
+    color: white;
+    height: 194px;
+}
+.allInfo .card .viconfont {
+    font-size: 28px;
+    line-height: unset;
+}
+.allInfo .card .data {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    font-family: Roboto, Roboto;
+}
+.allInfo .card .datades {
+    font-size: 18px;
+}
+.page-bar .page-breadcrumb > li .data-center-icon,
+.allInfo .card .img,
+.allVMProtect .img,
+.systemMonitor .cpu-memery .img,
+#vmProtect .oneVmProtect .card .img,
+#vmProtect .oneVmProtect .vmbox .statuscard .img,
+#hostProtect .card .img,
+#nasProtect .nasBox .img,
+#hostProtect .oneHostBox .img,
+#realTimeSync .oneHostBox .img,
+#hostProtect .two-host .eachTwoHost .img,
+#hostProtect .three-host .eachThreeHost .img {
+    background: url("/img/platform/datacenter-img.png")  no-repeat; 
+}
+.page-bar .page-breadcrumb > li .data-center-icon {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-position: -10px -10px;
+}
+.allInfo .cardbox .card .bgimg{
+    position: absolute;
+    width: 91px;
+    height: 91px;
+    right: 0;
+    bottom: 0;
+}
+/* .allInfo .cardbox .card.active .bgimg {
+    transition:all 0.5s;
+    transform: rotate(-30deg);
+} */
+.allInfo .cardbox:first-child .card .bgimg{
+    background: url("/img/platform/bg-allinfo01.png") no-repeat;
+}
+.allInfo .cardbox:nth-child(2) .card .bgimg{
+    background: url("/img/platform/bg-allinfo02.png") no-repeat;
+}
+.allInfo .cardbox:nth-child(3) .card .bgimg{
+    background: url("/img/platform/bg-allinfo03.png") no-repeat;
+}
+.allInfo .cardbox:nth-child(4) .card .bgimg{
+    background: url("/img/platform/bg-allinfo04.png") no-repeat;
+}
+.allInfo .cardbox:last-child .card .bgimg{
+    background: url("/img/platform/bg-allinfo04.png") no-repeat;
+}
+.allInfo .cardbox .card .arrow {
+    width: 15px;
+    height: 11px;
+    position: absolute;
+    right: 13px;
+    bottom: 13px;
+}
+.allInfo .cardbox:nth-child(3) .card .arrow{
+    background: url("/img/platform/datacenter-img.png") -10px -47px no-repeat; 
+}
+.allInfo .cardbox:nth-child(4) .card .arrow{
+    background:  url("/img/platform/datacenter-img.png") -10px -47px no-repeat;
+}
+.allInfo .cardbox:last-child .card .arrow{
+    background:  url("/img/platform/datacenter-img.png") -10px -47px no-repeat; 
+}
+.allInfo .cardbox .card .arrow:hover {
+    transition:all 0.5s;
+    transform: translateX(3px);
+}
+.allInfo .cardbox:first-child .card {
+    background: linear-gradient( 180deg, #519AF2 0%, #519AF2 100%);
+    box-shadow: 0px 1px 4px 0px rgba(21,34,50,0.06);
+}
+.allInfo .cardbox:nth-child(2) .card{
+    background: linear-gradient( 180deg, #3ED497 0%, #36BA86 100%);
+    box-shadow: 0px 1px 4px 0px rgba(21,34,50,0.06);
+}
+.allInfo .cardbox:nth-child(3) .card {
+    background: linear-gradient( 180deg, #42C5F2 0%, #3BB0D9 100%);
+    box-shadow: 0px 1px 4px 0px rgba(21,34,50,0.06);
+    cursor: pointer;
+}
+.allInfo .cardbox:nth-child(4) .card {
+    background: linear-gradient( 180deg, #6D7FF2 0%, #6172D9 100%);
+    box-shadow: 0px 1px 4px 0px rgba(21,34,50,0.06);
+    margin-right: 0;
+    cursor: pointer;
+}
+.allInfo .cardbox:last-child .card {
+    background: linear-gradient( 180deg, #6D7FF2 0%, #6172D9 100%);
+    box-shadow: 0px 1px 4px 0px rgba(21,34,50,0.06);
+    margin-right: 0;
+    cursor: pointer;
+}
+.allInfo .cardbox:nth-child(2) .img {
+    width: 23px;
+    height: 26px;
+    background-position: -931px -73px;
+}
+.allInfo .cardbox:nth-child(3) .img {
+    width: 23px;
+    height: 22px;
+    background-position: -888px -73px;
+}
+.allInfo .cardbox:nth-child(4) .img {
+    width: 23px;
+    height: 22px;
+    background-position: -845px -73px;
+}
+.allInfo .cardbox:last-child .img {
+    width: 23px;
+    height: 22px;
+    background-position: -845px -73px;
+}
+.taskbox {
+    background: #FFFFFF;
+    box-shadow: 0 1px 4px 1px rgba(21,34,50,0.0600);
+    border-radius: 5px !important;
+    position: relative;
+    height: 194px;
+}
+
+.taskbox .taskStatus .eachStatus {
+    flex: 1;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    margin: 12px 12px 12px 0;
+    background: linear-gradient(180deg, #EDFAF6 0%, rgba(237,250,246,0.2) 100%);
+    border-radius: 4px !important;
+    position: relative; 
+}
+.taskbox .taskStatus .eachStatus .each-status-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding-left: 12px; 
+}
+.taskbox .taskStatus .eachStatus:nth-child(2) {
+    background: linear-gradient( 180deg, #EBF8FF 0%, rgba(235,248,255,0.2) 100%);
+}
+.taskbox .taskStatus .eachStatus:nth-child(3) {
+    background: linear-gradient( 180deg, #F5F5F5 0%, rgba(245,245,245,0.2) 100%);
+}
+.taskbox .taskStatus .eachStatus:nth-child(4) {
+    background: linear-gradient( 180deg, #FEF8F1 0%, rgba(254,248,241,0.2) 100%);
+}
+.taskbox .taskStatus .eachStatus:last-child {
+    background: linear-gradient( 180deg, #FFF3F3 0%, rgba(255,243,243,0.2) 100%);
+}
+.taskbox .taskStatus .eachStatus .img{
+   width: 40px;
+   height: 40px;
+   margin: 0 auto;
+}
+.taskbox .taskStatus .eachStatus span {
+    display: inline-block; /* 确保伪元素与文本在同一行 */
+    color: #999999;
+    font-size: 16px;
+    position: relative; /* 使伪元素相对于 span 定位 */
+    padding-left: 12px;
+}
+
+.taskbox .taskStatus .eachStatus span::before {
+    content: ''; 
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: #20C99A;
+    border-radius: 4px;
+    margin-right: 8px; 
+    position: absolute; 
+    left: 0px; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+.taskbox .taskStatus .eachStatus:nth-child(2) span::before {
+    background-color: #10AEFF;
+}
+.taskbox .taskStatus .eachStatus:nth-child(3) span::before {
+    background-color: #B3B3B3;
+}
+.taskbox .taskStatus .eachStatus:nth-child(4) span::before {
+    background-color: #F1A106;
+}
+.taskbox .taskStatus .eachStatus:last-child span::before {
+    background-color: #F1416C;
+}
+.taskbox .taskStatus .eachStatus .data{
+    color: #3D3D46;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: Roboto, Roboto;
+    text-align: left;
+ }
+.dataprotect,
+.storagecenter,
+.systemMonitor {
+    background-color: #fff;
+    border-radius: 5px !important;
+    box-shadow: 0 1px 4px 1px rgb(21 34 50 / 6%);
+}
+.dataprotect,.storagecenter,.dataprotectdiv {
+    height: 340px;
+}
+.systemMonitor {
+    height: 260px;
+}
+.systemMonitor {
+    padding-right: 0;
+    position: relative;
+}
+.dataprotect .nav-tabs {
+    border-bottom: none;
+    border-radius: 30px !important;
+    padding-right: 15px;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+    height: 30px;
+}
+.dataprotect .nav-tabs>li {
+    float: right;
+    background: #F0F2F6;
+    height: 30px;
+}
+.dataprotect .nav-tabs>li.backup{
+    border-radius: 30px 0 0 30px !important;
+}
+.dataprotect .nav-tabs>li.copy {
+    border-radius: 0 30px 30px 0 !important;
+}
+.dataprotect .nav-tabs > li > a,
+.dataprotect .nav-pills > li > a {
+    color: #3D3D46;
+    line-height: 28px;
+    text-align: center;
+    padding: 0 18px;
+    height: 30px;
+}
+.dataprotect .nav-tabs>li.active>a,
+.dataprotect .nav-tabs>li.active>a:focus, 
+.dataprotect .nav-tabs>li.active>a:hover,
+.dataprotect .nav>li>a:focus, 
+.dataprotect .nav>li>a:hover {
+    background-color: #F0F2F6;
+    border-radius: 30px !important;
+    color: #3D3D46 !important;
+    border-color: #f0f2f6;
+}
+/* tab滑块动画 */
+.dataprotectdiv .nav-tabs .dataSlider,
+.storagecenterdiv .nav-tabs .dataSlider { 
+    display:inline-block; 
+    position:absolute; 
+    border-radius:30px !important; 
+    height:30px; 
+    background:#9AAAC1; 
+    z-index:1; 
+    transition:0.15s ease-out;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+#vmProtect .allVMProtect,
+#vmProtect .oneVmProtect {
+    padding: 15px 0;
+}
+.allVMProtect .top {
+    /* display: flex; */
+    height: 105px;
+    padding-right: 15px;
+}
+.allVMProtect .box1 {
+    display: flex;
+}
+.allVMProtect .box1 p {
+    margin-top: 12px;
+}
+.allVMProtect .dataCard {
+    display: inline-block;
+    text-align: center;
+    background: #E7FBF2;
+    border-radius: 5px !important;
+    height: 105px;
+    padding-top: 20px;
+    margin-left: 15px;
+}
+.allVMProtect .box1 .dataCard:first-child {
+    flex: 2;
+}
+.allVMProtect .box1 .dataCard:nth-child(2) {
+    flex: 2;
+}
+.allVMProtect .box1 .dataCard:last-child {
+    flex: 3;
+    background-color: #20C99A;
+}
+.allVMProtect .dataCard span,
+#vmProtect .allVMProtect .one-vm-top .one-vm-card span {
+    color: #3D3D46;
+    font-size: 14px;
+}
+.allVMProtect .dataCard p,
+#vmProtect .allVMProtect .one-vm-top .one-vm-card p,
+#vmProtect .oneVmProtect .card span {
+    font-weight: 700;
+    font-size: 24px;
+    color: #20C99A;
+}
+.allVMProtect .box1 .dataCard:last-child p,
+.allVMProtect .box1 .dataCard:last-child span {
+    color: white;
+}
+/* .allVMProtect .box2 p,
+.allVMProtect .box2 span {
+    text-align: left;
+} */
+.allVMProtect .box2,
+.allVMProtect .box3,
+.allVMProtect .bottom {
+    /* width: 30%; */
+    border: 1px solid #F1F1F5;
+    padding: 12px 0 24px 17px;
+    box-sizing: border-box;
+    text-align: left;
+    height: 105px;
+}
+.littleLabel {
+    color: #3D3D46;
+    font-size: 14px;
+    text-align: left;
+}
+.allVMProtect .img {
+    width: 43px;
+    height: 43px;
+    margin: 0 auto;
+}
+.allVMProtect p,
+#hostProtect .card p,
+#hostProtect .three-host .eachThreeHost p {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3D3D46;
+    margin: 0;
+}
+.allVMProtect span,
+#hostProtect .three-host .eachThreeHost span {
+    font-size: 12px;
+    color: #76767B;
+    white-space: nowrap;
+}
+.allVMProtect .box2 .img1,
+#vmProtect .oneVmProtect .vmbox .statuscard .img1,
+#vmProtect .allVMProtect .one-vm-top .img1 {
+    background-position: -536px -10px;
+}
+.allVMProtect .box2 .img2,
+#vmProtect .oneVmProtect .vmbox .statuscard .img2,
+#vmProtect .allVMProtect .one-vm-top .img2 {
+    background-position: -599px -10px;
+}
+.allVMProtect .box3 .img1 {
+    background-position: -851px -10px;
+}
+.allVMProtect .box3 .img2 {
+    background-position: -47px -10px;
+}
+.allVMProtect .bottom .img1 {
+    background-position: -662px -10px;
+}
+.allVMProtect .bottom .img2 {
+    background-position: -788px -10px;
+}
+.allVMProtect .bottom .img3 {
+    background-position: -914px -10px;
+}
+.allVMProtect .bottom .img4 {
+    background-position: -173px -10px;
+}
+.allVMProtect .bottom .img5 {
+    background-position: -110px -10px;
+}
+.allVMProtect .box2 .col-md-6,
+.allVMProtect .box3 .col-md-6,
+.allVMProtect .bottom .col-md-6 {
+    padding: 0;
+}
+.allVMProtect .bottom {
+    margin-top: 13px;
+    width: 100%;
+}
+.allVMProtect .bottom .allcdm {
+    display: flex;
+}
+.allVMProtect .bottom .each-cdm {
+    flex: 2;
+    justify-content: space-between;
+    text-align: left;
+}
+.allVMProtect .box-line,
+#hostProtect .card .box-line,
+#realTimeSync .box-line,
+#dbrealTime .box-line,
+.two-card-pane .box-line {
+    border-right: 1px dashed #D2D2D2;
+}
+#bakStorage {
+    position: relative;
+}
+#bakStorage #capacityCircle {
+    width: 185px;
+    height: 185px;
+    margin: 0 auto;
+    margin-right: 4px;
+    margin-top: 55px;
+}
+#bakStorage .top {
+    padding: 70px 0 13px 0;
+    border-bottom: 1px dashed #E1E1E1;
+    white-space: nowrap;
+}
+.storagecenter {
+    padding-left: 0;
+}
+#bakStorage .top .left,
+.storagecenter .top .right {
+    display: inline;
+}
+.storagecenter .top .right {
+    float: right;
+}
+#bakStorage .bottom {
+    padding-top: 20px;
+    font-size: 14px;
+    display: flex;
+}
+#bakStorage .bottom .squre {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #20C99A ; 
+    margin-right: 8px;
+}
+#bakStorage .bottom .squre.grey {
+    background: #CDCDCD;
+}
+
+#hostProtect .card span {
+    color: #76767B;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.systemMonitor .networkTraffic,
+.systemMonitor .bps,
+.systemMonitor .iops {
+    height: 188px;
+    border-radius: 5px !important;
+    border: 1px solid #F1F1F5;
+    padding: 15px;
+}
+.systemMonitor .cpu-memery .cpu,
+.systemMonitor .cpu-memery .memery {
+    height: 87px;
+    border-radius: 5px !important;
+    border: 1px solid #F1F1F5;
+    padding: 13px;
+    position: relative;
+}
+.systemMonitor .cpu-memery .memery {
+    margin-top: 12px;
+}
+.systemMonitor #networkTrafficChart {
+    width: 100%;
+    height: 160px;
+    color: #00d887;
+}
+.systemMonitor .networkTraffic .littleLabel {
+    position: absolute;
+}
+.systemMonitor .cpu-memery .img {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    position: absolute;
+}
+.systemMonitor .cpu-memery span {
+    padding-left: 33px;
+}
+.systemMonitor .cpu-memery p {
+    position: absolute;
+    font-size: 16px;
+    color: #3D3D46;
+    font-weight: 700;
+    top: 30px;
+    right: 25px;
+}
+.systemMonitor .cpu-memery .img1 {
+    background-position: -974px -96px;
+}
+.systemMonitor .cpu-memery .img2 {
+    background-position: -977px -58px;
+}
+.systemMonitor .cpu-memery .littleLabel {
+    margin-bottom: 14px;
+}
+.systemMonitor .bps .greenLine,
+.systemMonitor .iops .greenLine {
+    width: 18px;
+    height: 5px;
+    background: #20C99A;
+    display: inline-block;
+    margin: 0 0 3px 40px;
+}
+.systemMonitor .bps .blueLine,
+.systemMonitor .iops .blueLine {
+    width: 18px;
+    height: 5px;
+    background: #10AEFF;
+    display: inline-block;
+    margin: 0 0 3px 40px;
+}
+.systemMonitor .bps p,
+.systemMonitor .iops p {
+    font-size: 14px;
+    color: #3D3D46;
+    margin: 33px 7px 0 17px;
+}
+.systemMonitor .bps .bottom p,
+.systemMonitor .iops .bottom p {
+    margin: 20px 7px 0 17px;
+}
+.systemMonitor .bps span,
+.systemMonitor .iops span {
+    font-size: 16px;
+    color: #3D3D46;
+    font-weight: 700;
+}
+.systemMonitor .bps p,
+.systemMonitor .bps span,
+.systemMonitor .iops p,
+.systemMonitor .iops span {
+    display: inline-block;
+}
+.systemMonitor #cpuCircle,
+.systemMonitor #memeryCircle {
+    width: 100%;
+    height: 60px;
+}
+#vmProtect .oneVmProtect {
+    height: 221px;
+}
+#vmProtect .oneVmProtect .card {
+    height: 221px;
+    background: #E7FBF2;
+    border-radius: 5px !important;
+    text-align: center;
+    padding: 40px 0 37px;
+}
+#vmProtect .oneVmProtect .card .img {
+    width: 57px;
+    height: 57px;
+    margin: 0 auto;
+}
+#vmProtect .oneVmProtect .card .img1 {
+    background-position: -299px -70px;
+}
+#vmProtect .oneVmProtect .card .img2 {
+    background-position: -376px -70px;
+}
+#vmProtect .oneVmProtect .card .img3 {
+    background-position: -453px -70px;
+}
+#vmProtect .oneVmProtect .card p {
+    margin: 0;
+    color: #3D3D46;
+    font-size: 14px;
+    margin: 23px 0 15px;
+}
+#vmProtect .oneVmProtect .vmbox {
+    border: 1px solid #F1F1F5;
+    height: 221px;
+    padding: 20px 15px 40px;
+    text-align: center;
+}
+#vmProtect .oneVmProtect .vmbox .statuscard {
+    margin: 20px 0 40px;
+}
+.datacentert-line {
+    border-right: 1px solid #F1F1F5;
+}
+#vmProtect .oneVmProtect .vmbox .statuscard .img {
+    width: 43px;
+    height: 43px;
+    margin: 0 auto;
+}
+#vmProtect .oneVmProtect .vmbox .statuscard p {
+    color: #76767B;
+    font-size: 14px;
+    margin:  8px 0 15px;
+}
+#vmProtect .oneVmProtect .vmbox .statuscard span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3D3D46;
+}
+#vmProtect .allVMProtect .one-vm-top {
+    height: 105px;
+}
+#vmProtect .allVMProtect .one-vm-top .one-vm-card {
+    text-align: center;
+    background: #E7FBF2;
+    border-radius: 5px !important;
+    height: 105px;
+    padding-top: 21px;
+}
+#vmProtect .allVMProtect .one-vm-top .one-vm-card p {
+    padding-top: 12px;
+}
+#vmProtect .allVMProtect .one-vm-top .onevmbox {
+    border: 1px solid #F1F1F5;
+    border-radius: 5px !important;
+    height: 105px;
+    padding: 10px 15px 15px;
+}
+#vmProtect .allVMProtect .one-vm-top .onevmbox .statuscard {
+    height: 43px;
+}
+#vmProtect .allVMProtect .one-vm-top .img {
+    margin: 0 auto;
+}
+/* 主机 */
+#hostProtect,
+#nasProtect,
+#m365,
+#hadoop,
+#obs,
+.one-card-pane {
+    height: 250px;
+    padding: 15px 0;
+}
+#hostProtect #hostcard,
+#realTimeSync #cdphostcard {
+    width: 100% !important;
+    height: 221px !important;
+    background: #E7FBF2;
+    border-radius: 5px !important;
+}
+#hostProtect .card,
+#hostProtect .three-host .eachThreeHost {
+    height: 105px;
+    margin-bottom: 10px;
+    border-radius: 5px !important;
+    border: 1px solid #F1F1F5;
+    padding: 10px 15px 15px;
+}
+#hostProtect .card .img{
+    width: 43px;
+    height: 43px;
+}
+#hostProtect .card .img1 {
+    background-position: -782px -73px;
+}
+#hostProtect .card .img2 {
+    background-position: -725px -10px;
+}
+#hostProtect .card .img3 {
+    background-position: -656px -73px;
+}
+#hostProtect .card .img4 {
+    background-position: -530px -73px;
+}
+#hostProtect .card .img5 {
+    background-position: -719px -73px;
+}
+#copyStorage,
+#archiveStorage {
+    padding: 25px 40px 40px;
+    height: 250px;
+}
+#copyStorage #copyChart,
+#archiveStorage #archiveChart {
+    width: 100%;
+    height: 185px;
+}
+#copyStorage .top,
+#archiveStorage .top {
+    margin: 50px 35px 0 0;
+    padding-bottom: 20px;
+    font-size: 16px;
+    color: #3D3D46;
+    border-bottom: 1px solid #E1E1E1;
+}
+#copyStorage .bottom,
+#archiveStorage .bottom {
+    font-size: 16px;
+    color: #3D3D46;
+    padding-top: 20px;
+}
+#copyStorage .top span:last-child,
+#copyStorage .bottom span:last-child,
+#archiveStorage .top span:last-child,
+#archiveStorage .bottom span:last-child {
+    font-size: 20px;
+    color: #3D3D46;
+    font-weight: 700;
+    padding-left: 5px;
+}
+#nasProtect #nascard {
+    width: 100% !important;
+    height: 221px !important;
+    background: #E7F7FF;
+    border-radius: 5px !important;
+}
+#m365 .m365Box,
+#hadoop .hadoopBox,
+#obs .obsBox,
+#nasProtect .nasBox,
+#hostProtect .oneHostBox,
+#realTimeSync .oneHostBox,
+.one-card-pane .one-box-pl {
+    border-radius: 5px !important;
+    border: 1px solid #F1F1F5;
+    height: 220px;
+    text-align: center;
+}
+#m365 .m365Box,
+#hadoop .hadoopBox,
+#obs .obsBox,
+#nasProtect .nasBox,
+#realTimeSync .oneHostBox,
+.one-card-pane .one-box-pl {
+    padding-top: 67px;
+}
+#hostProtect .oneHostBox .littleLabel{
+    padding: 13px 0 32px 17px;
+    margin: 0;
+}
+#m365 .m365Box .img,
+#hadoop .hadoopBox .img,
+#obs .obsBox .img,
+#nasProtect .nasBox .img,
+#hostProtect .oneHostBox .img,
+#realTimeSync .oneHostBox .img,
+#hostProtect .two-host .eachTwoHost .img,
+#hostProtect .three-host .eachThreeHost .img,
+.one-card-pane .one-box-pl .img {
+    width: 43px;
+    height: 43px;
+    margin: 0 auto;
+}
+#m365 .m365Box p,
+#hadoop .hadoopBox p,
+#obs .obsBox p,
+#nasProtect .nasBox p,
+#hostProtect .oneHostBox p,
+#realTimeSync .oneHostBox p,
+.two-host .eachTwoHost p,
+.one-card-pane .one-box-pl p {
+    margin: 13px 0 17px;
+    color: #76767B;
+    font-size: 14px;
+}
+#m365 .m365Box span,
+#hadoop .hadoopBox span,
+#obs .obsBox span,
+#nasProtect .nasBox span,
+#hostProtect .oneHostBox span,
+#realTimeSync .oneHostBox span,
+.two-host .eachTwoHost span,
+.one-card-pane .one-box-pl span {
+    color: #3D3D46;
+    font-size: 20px;
+    font-weight: 700;
+}
+#nasProtect .nasBox .img1 {
+    background-position: -172px -73px;
+}
+#nasProtect .nasBox .img2 {
+    background-position: -46px -73px;
+}
+#nasProtect .nasBox .img3 {
+    background-position: -236px -70px;
+}
+#nasProtect .nasBox .img4 {
+    background-position: -725px -10px;
+}
+#realTimeSync .oneHostBox .img1 {
+    background-position: -719px -73px;
+}
+#realTimeSync .oneHostBox .img2 {
+    background: url(/img/platform/rtsync.png) no-repeat;
+    background-position: -227px -10px;
+}
+#hostProtect .oneHostBox .img3,
+#realTimeSync .oneHostBox .img3 {
+    background-position: -236px -70px;
+}
+#hostProtect .oneHostBox .img4,
+#realTimeSync .oneHostBox .img4 {
+    background-position: -725px -10px;
+}
+.systemMonitor #node_uuid {
+    width: 270px;
+    height: 32px;
+    background: #F0F2F6;
+    border-radius: 30px !important;
+    margin-right: 15px;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+}
+.greyline {
+    width: 100%;
+    height: 1px;
+    background-color: #F1F1F5;
+    margin-top: 6px;
+}
+.taskStatusTitle {
+    color: #3D3D46;
+    font-size: 20px;
+    padding-left: 16px;
+}
+.data-top {
+    padding-top: 12px;
+    position: relative;
+    height: calc(100% - 293px);
+}
+.systemMonitor .data-top {
+    height: calc(100% - 213px);
+}
+.taskbox .data-top {
+    height: calc(100% - 147px);
+}
+.data-bottom {
+    padding: 0 15px;
+}
+.sysmoni-bottom {
+    padding: 15px;
+    height: calc(100% - 43px);
+}
+.speeddiv {
+    height: 100%;
+}
+select#node_uuid {
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    position: relative;
+}
+.systemMonitor i.fa-angle-down{
+    position: absolute;
+    color: #3D3D46;
+    right: 30px;
+    top: 17px;
+
+}
+.two-host .eachTwoHost {
+    height: 221px;
+    border: 1px solid #F1F1F5;
+    border-radius: 5px !important;
+    text-align: center;
+    padding: 15px;
+}
+#hostProtect .two-host .littleLabel {
+    margin-bottom: 30px;
+}
+#hostProtect .two-host .fileInfo .eachTwoHost .img1,
+#hostProtect .three-host .fileInfo .eachThreeHost .img1 {
+    background-position: -782px -73px;
+}
+#hostProtect .two-host .eachTwoHost .img2,
+#hostProtect .three-host .eachThreeHost .img2 {
+    background-position: -725px -10px;
+}
+#hostProtect .two-host .dbInfo .eachTwoHost .img1,
+#hostProtect .three-host .dbInfo .eachThreeHost .img1 {
+    background-position: -530px -73px;
+}
+#hostProtect .two-host .osInfo .eachTwoHost .img1,
+#hostProtect .three-host .osInfo .eachThreeHost .img1 {
+    background-position: -656px -73px;
+}
+#hostProtect .two-host .cdpInfo .eachTwoHost .img1,
+#hostProtect .three-host .cdpInfo .eachThreeHost .img1 {
+    background-position: -719px -73px;
+}
+#hostProtect .three-host .eachThreeHost.module3 .img {
+    margin-right: 0;
+}
+#hostProtect .three-host .top {
+    height: 105px;
+    margin-bottom: 10px;
+}
+#storageTips {
+    /* height: 15px;  */
+    margin-top: 15px;
+    color: #E5706E;
+    background-color: #FDF0F0;
+    font-size: 12px;
+    border-radius: 50px !important;
+    text-align: center;
+    padding: 6px 0;
+}
+.allVMProtect .one-clound-bottom {
+    border: 1px solid #F1F1F5;
+    border-radius: 5px !important;
+    height: 105px;
+    margin: 12px 15px 0 15px;
+}
+.allVMProtect .one-clound-bottom .littleLabel {
+    padding: 15px 0 0 15px;
+    margin-bottom: 0;
+}
+.allVMProtect .one-clound-bottom .img1 {
+    background-position: -851px -10px;
+}
+.allVMProtect .one-clound-bottom .img2 {
+    background-position: -47px -10px;
+}
+/* 实时容灾 */
+#realTimeSync {
+    padding-top: 15px;
+}
+/* 数据库实时同步 */
+#dbrealTime .img,
+.two-card-pane .img {
+    background: url("/img/platform/rtsync.png")  no-repeat; 
+    margin: 0 auto;
+}
+#dbrealTime .hostbox .img,
+.two-card-pane .hostbox .img {
+    width: 57px;
+    height: 57px;
+}
+#dbrealTime .hostbox .img1 {
+    background-position: -10px -10px;
+}
+#dbrealTime .hostbox .img2 {
+    background-position: -87px -10px;
+}
+#dbrealTime .hostbox .line,
+.two-card-pane .hostbox .line {
+    width: 80%;
+    border-bottom: 1px dashed #E1E1E1;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+#dbrealTime .db-cdp .img,
+.two-card-pane .two-card-pane-right .img {
+    width: 43px;
+    height: 43px;
+}
+#dbrealTime .db-cdp .img1 {
+    background-position: -164px -10px;
+}
+#dbrealTime .db-cdp .img2 {
+    background-position: -227px -10px;
+}
+#dbrealTime .db-cdp .img3 {
+    background-position: -290px -10px;
+}
+#dbrealTime .hostbox,
+.two-card-pane .hostbox {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    background-color: #E7FBF2;
+    height: 221px;
+    margin-top: 15px;
+    border-radius: 5px !important;
+}
+#dbrealTime .hostbox .squre,
+.two-card-pane .hostbox .squre {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px !important;
+    background-color: #20C899;
+    display: inline-block;
+}
+#dbrealTime .hostbox .squre.offline,
+.two-card-pane .hostbox .squre.offline {
+    background-color: #9AAAC1;
+}
+#dbrealTime .hostbox.blue,
+.two-card-pane .hostbox.blue {
+    background-color: #E6F7FF;
+}
+#dbrealTime .hostbox p,
+.two-card-pane .hostbox p {
+    font-size: 14px;
+    color: #3D3D46;
+    margin: 20px 0;
+}
+#dbrealTime .hostbox span,
+.two-card-pane .hostbox span {
+    font-size: 12px;
+    color: #76767B;
+}
+#dbrealTime .hostbox span.fonttext,
+.two-card-pane .hostbox span.fonttext,
+.one-card-pane .hostbox span.fonttext {
+    font-size: 24px;
+    color: #3D3D46;
+    font-weight: 700;
+}
+#dbrealTime .db-cdp,
+.two-card-pane .two-card-pane-right {
+    padding: 67px 0 0 15px;
+    border: 1px solid #F1F1F5;
+    border-radius: 5px !important;
+    height: 221px;
+    margin-top: 15px;
+    text-align: center;
+}
+#dbrealTime .db-cdp span,
+.two-card-pane .two-card-pane-right span {
+    font-size: 20px;
+    color: #3D3D46;
+    font-weight: 700;
+    margin: 0;
+}
+#dbrealTime .db-cdp p,
+.two-card-pane .two-card-pane-right p {
+    font-size: 14px;
+    color: #76767B;
+    margin: 13px 0 17px 0;
+}
+/*公有云*/
+#aws .img {
+    margin: 0 auto;
+}
+#aws .hostbox .img {
+    width: 57px;
+    height: 57px;
+}
+#aws .hostbox .img1 {
+    background: url("/img/platform/aws02.png")  no-repeat;
+}
+#aws .hostbox .img2 {
+    background: url("/img/platform/aws01.png")  no-repeat;
+}
+#aws .hostbox .line {
+    width: 80%;
+    border-bottom: 1px dashed #E1E1E1;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+#aws .aws-data .img {
+    width: 43px;
+    height: 43px;
+}
+#aws .aws-data .img1 {
+    background: url("/img/platform/aws03.png")  no-repeat;
+}
+#aws .aws-data .img2 {
+    background: url("/img/platform/aws04.png")  no-repeat;
+}
+#aws .aws-data .img3 {
+    background: url("/img/platform/aws05.png")  no-repeat;
+}
+#aws .hostbox {
+    text-align: center;
+    padding: 40px 5px 20px 5px;
+    background-color: #E7FBF2;
+    height: 221px;
+    margin-top: 15px;
+    border-radius: 5px !important;
+}
+#aws .hostbox .squre {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px !important;
+    background-color: #20C899;
+    display: inline-block;
+}
+#aws .hostbox .squre.blue {
+    background-color: #10AEFF;
+}
+#aws .hostbox.blue {
+    background-color: #E6F7FF;
+}
+#aws .hostbox p {
+    font-size: 14px;
+    color: #3D3D46;
+    margin: 20px 0;
+}
+#aws .hostbox span {
+    font-size: 12px;
+    color: #76767B;
+}
+#aws .hostbox span.fonttext {
+    font-size: 20px;
+    color: #3D3D46;
+    font-weight: 700;
+}
+#aws .aws-data {
+    padding: 67px 0 0 15px;
+    border: 1px solid #F1F1F5;
+    border-radius: 5px !important;
+    height: 221px;
+    margin-top: 15px;
+    text-align: center;
+}
+#aws .aws-data span {
+    font-size: 20px;
+    color: #3D3D46;
+    font-weight: 700;
+    margin: 0;
+}
+#aws .aws-data p {
+    font-size: 14px;
+    color: #76767B;
+    margin: 13px 0 17px 0;
+}
+/*m365*/
+#m365 .img,
+#hadoop .img,
+#obs .img,
+#k8s .img,
+#filecopy .img,
+.one-card-pane .img {
+    width: 57px;
+    height: 57px;
+    background: url("/img/platform/m36501.png")  no-repeat;
+    margin: 0 auto;
+}
+#m365 .m365Box .img1 {
+    background: url("/img/platform/m36502.png")  no-repeat;
+}
+#m365 .m365Box .img2 {
+    background: url("/img/platform/m36503.png")  no-repeat;
+}
+#m365 .m365Box .img3,
+#hadoop .hadoopBox .img3,
+#obs .obsBox .img3{
+    background: url("/img/platform/aws04.png")  no-repeat;
+}
+#m365 .m365Box .img4,
+#hadoop .hadoopBox .img4,
+#obs .obsBox .img4{
+    background: url("/img/platform/aws05.png")  no-repeat;
+}
+#m365 .hostbox .line,
+#hadoop .hostbox .line,
+#obs .hostbox .line,
+.one-card-pane .hostbox .line{
+    width: 80%;
+    border-bottom: 1px dashed #E1E1E1;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+#m365 .hostbox,
+#hadoop .hostbox,
+#obs .hostbox,
+.one-card-pane .hostbox {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    background-color: #E7FBF2;
+    height: 221px;
+    border-radius: 5px !important;
+}
+#m365 .hostbox .squre,
+#hadoop .hostbox .squre,
+#obs .hostbox .squre,
+.one-card-pane .hostbox .squre{
+    width: 10px;
+    height: 10px;
+    border-radius: 2px !important;
+    background-color: #20C899;
+    display: inline-block;
+}
+#m365 .hostbox .squre.offline,
+#hadoop .hostbox .squre.offline,
+#obs .hostbox .squre.offline,
+.one-card-pane .hostbox .squre.offline{
+    background-color: #9AAAC1;
+}
+#m365 .hostbox.blue,
+#hadoop .hostbox.blue,
+#obs .hostbox.blue,
+.one-card-pane .hostbox.blue{
+    background-color: #E6F7FF;
+}
+#m365 .hostbox p,
+#hadoop .hostbox p,
+#obs .hostbox p,
+.one-card-pane .hostbox p{
+    font-size: 14px;
+    color: #3D3D46;
+    margin: 20px 0;
+}
+#m365 .hostbox span,
+#hadoop .hostbox span,
+#obs .hostbox span,
+.one-card-pane .hostbox span{
+    font-size: 12px;
+    color: #76767B;
+}
+#m365 .hostbox span.fonttext,
+#hadoop .hostbox span.fonttext,
+#obs .hostbox span.fonttext,
+.one-card-pane .hostbox span.fonttext{
+    font-size: 24px;
+    color: #3D3D46;
+    font-weight: 700;
+}
+/*hadoop*/
+#hadoop .img {
+    background: url("/img/platform/homepage/hadoop01.svg")  no-repeat;
+}
+#hadoop .hadoopBox .img1 {
+    background: url("/img/platform/homepage/hadoop02.svg")  no-repeat;
+}
+#hadoop .hadoopBox .img2 {
+    background: url("/img/platform/homepage/hadoop03.svg")  no-repeat;
+}
+/*obs*/
+#obs .img {
+    background: url("/img/platform/homepage/obs01.svg")  no-repeat;
+}
+#obs .obsBox .img1 {
+    background: url("/img/platform/homepage/obs02.svg")  no-repeat;
+}
+#obs .obsBox .img2 {
+    background: url("/img/platform/homepage/obs03.svg")  no-repeat;
+}
+.select-more {
+    border: none;
+    border-radius: 14px !important;
+    background-color: rgba(255, 255, 255, 0);
+}
+.select-more {
+    position: absolute;
+    right: 0;
+    border: 1px solid #f0f2f6;
+    width: 120px;
+    z-index: 1;
+    overflow: auto;
+    border-radius: unset !important;
+    background-color: white;
+    padding: 0;
+    box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.08);
+}
+.select-more li {
+    height: 30px;
+}
+.select-more li:hover {
+    background: rgba(15,191,152,0.05);
+}
+.select-more li.active {
+    background: rgba(15,191,152,0.1);
+}
+.more-a {
+    height: 30px;
+}
+.select-more li a {
+    color: #0A2D27;
+    text-decoration: none;
+    padding: 0 10px;
+    width: 100%;
+    display: inline-block;
+    line-height: 28px;
+    cursor: pointer;
+}
+.select-more li.active>a:hover {
+    background: none;
+    border-color: none;
+    cursor: pointer;
+}
+div.littleline {
+    display: inline-block;
+    background-color: #DDDDDE;
+    width: 1px;
+    height: 13px;
+    margin: -1px 5px;
+}
+span.littleline {
+    font-size: 12px;
+    vertical-align: top;
+}
+.viconfont.vicon-carbon {
+    font-size: 28px;
+} 
+#carbonMonitor .bgimg {
+    background: url("/img/platform/carbon-monitor.svg") no-repeat;
+}
+#carbonMonitor .co2 {
+    margin: 0 3px;
+    font-size: 16px;
+    display: inline-block;
+}
+.task-num-img {
+    background: url("/img/platform/task-num.png") no-repeat !important;
+}
+.point-num-img {
+    background:  url("/img/platform/datacenter-img.png") -236px -70px no-repeat !important; 
+}
+.backup-data-img {
+    background:  url("/img/platform/datacenter-img.png") -725px -10px no-repeat !important;
+}
+.running-num-img {
+    background: url("/img/platform/rtsync.png") -290px -10px no-repeat !important;
+}
+.protected-num-img {
+    background: url("/img/platform/m36502.png")  no-repeat !important;
+}
+/* k8s */
+#k8s .hostbox .img.img1 {
+    background: url(/img/platform/k8s01.png) no-repeat;
+}
+/* 文件复制 */
+#filecopy .hostbox .img.img1 {
+    background: url(/img/platform/filecopy01.png) no-repeat;
+}
+#filecopy .hostbox.blue .img.img2 {
+    background: url(/img/platform/filecopy02.png) no-repeat;
+}
+/* 数据库复制 */
+#dbcopy .hostbox .img.img1 {
+    background: url(/img/platform/dbcopy01.png) no-repeat;
+}
+#dbcopy .hostbox.blue .img.img2 {
+    background: url(/img/platform/dbcopy02.png) no-repeat;
+}
+/* 新首页样式开始 */
+.each-protect-pane {
+    height: 100%;
+}
+.backup-letf_pane {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    height: 100%;
+    width: 55.32%;
+}
+#vol_cdp_protect_pane .backup-letf_pane,
+#copy_pane .backup-letf_pane {
+    width: 40.94%;
+}
+#vol_cdp_protect_pane .backup-right_pane,
+#copy_pane .backup-right_pane {
+    width: 59.06%;
+}
+#taskPie,
+#volCdpPie,
+#copyPie {
+    width: 150px;
+    height: 150px;
+    margin-top: 50px;
+}
+.content-form {
+    flex: 4;
+    padding-right: 30px;
+    border-right: 1px dashed #E1E1E1;
+}
+.content-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* 或者使用 flex-start 根据需要调整 */
+    margin-top: 14px;
+}
+ 
+.each-module {
+    width: calc(50% - 28px); /* 减去间距 */
+    margin-bottom: 20px;
+    box-sizing: border-box; 
+}
+ 
+/* 可选：为最后一个模块清除右边距（如果需要） */
+.each-module:nth-child(odd) {
+    margin-right: 20px; /* 左右模块之间的间距 */
+}
+
+.hidden {
+    display: none !important;
+}
+.backup-right_pane {
+    padding: 40px 5px;
+    height: 100%;
+    width: 44.68%;
+}
+.each-module dt {
+    margin-bottom: 1px;
+}
+.each-module dd,
+.each-module dt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+.each-module dd {
+    padding-left: 8px;
+    margin-bottom: 2px;
+}
+.each-module dt span {
+    font-size: 14px;
+    color: #4D4D4D;
+}
+.each-module dd span {
+    font-size: 12px;
+    color: #999999;
+    cursor: pointer;
+}
+.square {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.each-module dd .circle {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50% !important;
+    background-color: #999999;
+    margin-right: 8px;
+    margin-bottom: 2px;
+}
+.each-module dt .number {
+    font-size: 20px;
+    color: #333333;
+    font-family: Roboto, Roboto;
+}
+.each-module dd .number {
+    font-size: 14px;
+    color: #666666;
+    font-family: Roboto, Roboto;
+    font-weight: 500;
+}
+.each-module.cloud dt {
+    border-bottom: 1px dashed #5CDEB8;
+}
+.each-module.cloud dt .square,
+.square-green {
+    background-color: #5CDEB8;
+}
+.each-module.file dt {
+    border-bottom: 1px dashed #62CBF8;
+}
+.each-module.file dt .square,
+.square-blue {
+    background-color: #62CBF8;
+}
+.each-module.machine dt {
+    border-bottom: 1px dashed #519AF2;
+}
+.each-module.machine dt .square,
+.square-file {
+    background-color: #519AF2;
+}
+.each-module.application dt {
+    border-bottom: 1px dashed #6D7FF2;
+}
+.each-module.application dt .square,
+.square-db {
+    background-color: #6D7FF2;
+}
+.each-module.cloud dt span.cloud {
+    display: inline-block;
+}
+#taskBarChart {
+    width: 471px;
+    height: 210px;
+}
+#volCdpPie,
+#copyPie {
+    flex: 3;
+}
+.each-module.vol_cdp,
+.each-module.copy-class {
+    width: 100%;
+}
+.each-module.vol_cdp dd,
+.each-module.copy-class dd {
+    margin-bottom: 12px;
+    
+}
+.each-module.vol_cdp dd span,
+.each-module.copy-class dd span {
+    color: #666666;
+}
+.each-module.vol_cdp dd span.number,
+.each-module.copy-class dd span.number {
+    color: #333333;
+}
+.content-form.vol_cdp {
+    padding-top: 85px;
+}
+.content-form.copy-class {
+    padding-top: 55px;
+}
+#volCdpChart,
+#copyChart {
+    width: 631px;
+    height: 210px;
+}
+#bakStorage .top {
+    display: flex;
+    justify-content: space-between;
+}
+#bakStorage .bottom .bottom-each:last-child {
+    text-align: right;
+}
+#bakStorage .top .top-each {
+    flex: 1;
+}
+#bakStorage .top .top-each:last-child {
+    text-align: right;
+}
+#bakStorage .top .top-each:first-child {
+    margin-right: 12px;
+}
+#bakStorage .top .top-each span:first-child {
+    font-size: 16px;
+    color: #666666;
+    padding-right: 6px;
+}
+#bakStorage .top .top-each span:nth-child(2) {
+    font-family: Roboto, Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333333;
+    }
+#bakStorage .top .top-each span:last-child {
+    font-size: 14px;
+    color: #999999;
+}
+#bakStorage .bottom .bottom-each {
+    flex: 1;
+}
+#bakStorage .bottom .bottom-each div:first-child {
+    margin-bottom: 18px;
+}
+#bakStorage .bottom .bottom-each:first-child {
+    font-size: 14px;
+    color: #999999;
+    font-family: Roboto, Roboto;
+}
+#bakStorage .bottom .bottom-each:nth-child(2) {
+    font-size: 16px;
+    color: #666666;
+    font-family: Roboto, Roboto;
+    margin-left: 25px;
+}
+#bakStorage .bottom .bottom-each:nth-child(2) div:first-child {
+    margin-bottom: 15px;
+}
+#bakStorage .bottom .bottom-each:last-child {
+    font-size: 20px;
+    color: #4D4D4D;
+    font-family: Roboto, Roboto;
+    font-weight: 600;
+}
+#bakStorage .bottom .bottom-each:last-child div:first-child {
+    margin-bottom: 8px;
+    margin-top: -2px;
+}
+#bakStorage .bottom .bottom-each:last-child div span:last-child {
+    font-size: 12px;
+    color: #999999;
+    font-weight: 400;
+}
+.data-bar-tooltip {
+    padding: 12px !important;
+    border-radius: 4px !important;
+}
+.data-bar-tooltip .top-title {
+    color: #333333;
+    margin-bottom: 6px;
+}
+.data-bar-tooltip .modules-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 350px;
+}
+#volCdpChart .data-bar-tooltip .modules-container,
+#copyChart .data-bar-tooltip .modules-container {
+    display: unset;
+}
+
+.data-bar-tooltip .large-title-content {
+    width: 155px;
+    margin-bottom: 20px; /* 设置每排模块之间的垂直间距 */
+}
+.data-bar-tooltip .large-title-content:nth-last-child(1),
+.data-bar-tooltip .large-title-content:nth-last-child(2) {
+    margin-bottom: 0;
+}
+#copyChart .data-bar-tooltip .large-title-content {
+    margin-bottom: 8px;
+}
+.data-bar-tooltip .large-title-content .group-content {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 3px;
+}
+.data-bar-tooltip .large-title-content .group-content span {
+    font-weight: bold; 
+    color: #4C4C4C; 
+}
+#copyChart .data-bar-tooltip .large-title-content .group-content span,
+#volCdpChart .data-bar-tooltip .large-title-content .group-content span {
+    font-weight: normal; 
+    color: #666666; 
+}
+.data-bar-tooltip .large-title-content .group-content span:first-child {
+    margin-right: 4px;
+}
+.data-bar-tooltip .sub-title-content {
+    display: flex; 
+    align-items: center; 
+    color:#999999;
+    justify-content: space-between; 
+    padding-left: 5px;
+    margin-bottom: 1px;
+}
+.data-bar-tooltip .sub-title-content span:first-child {
+    font-size: 7px;
+    flex: 12%;
+}
+.data-bar-tooltip .sub-title-content span:nth-child(2) {
+    text-align: left;
+    flex: 43%;
+}
+.data-bar-tooltip .sub-title-content span:nth-child(3) {
+    flex: 45%;
+    text-align: right;
+}
+.storage-des-content {
+    margin-left: 5%;
+}
+.height24 {
+    height: 10px;
+    margin-top: 24px;
+}
+.no-data-img {
+    width: 36px;
+    height: 36px;
+}
+.no-auth-system {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+.no-auth-system span {
+    color: #999999;
+    font-size: 14px;
+}
+.no-auth-system span span {
+    color: #0FBF98;
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 新首页样式结束 */
+@media (max-width: 1750px){
+    #bakStorage .top .top-each span:first-child,
+    #bakStorage .bottom .bottom-each:nth-child(2) {
+        font-size: 14px;
+    }
+    #bakStorage .top .top-each span:nth-child(2) {
+        font-size: 22px;
+    }
+    #bakStorage .bottom .bottom-each:last-child {
+        font-size: 18px;
+    }
+    #bakStorage .bottom .bottom-each:first-child {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1599px){
+    .taskbox .taskStatus .eachStatus .data {
+        font-size: 26px;
+    }
+    .each-module dt span {
+        font-size: 12px;
+    }
+    .each-module dt .number {
+        font-size: 18px;
+    }
+    .page-bar .page-breadcrumb > li .data-center-icon {
+        background-position: -6px -5px;
+    }
+    .allInfo .card,.allInfo .cardbox,.taskbox {
+        height: 150px;
+    }
+    .taskStatusTitle {
+        font-size: 18px;
+    }
+    .page-bar .page-breadcrumb > li .data-center-icon,
+    .allInfo .card .img,
+    .allVMProtect .img,
+    .systemMonitor .cpu-memery .img,
+    #vmProtect .oneVmProtect .card .img,
+    #vmProtect .oneVmProtect .vmbox .statuscard .img,
+    #hostProtect .card .img,
+    #nasProtect .nasBox .img,
+    #hostProtect .oneHostBox .img,
+    #realTimeSync .oneHostBox .img,
+    #hostProtect .two-host .eachTwoHost .img,
+    #hostProtect .three-host .eachThreeHost .img {
+        background-size: 820px;
+    }
+    #hostProtect .three-host .eachThreeHost .img {
+        margin: 0 auto;
+    }
+    #realTimeSync .oneHostBox .img2 {
+        background-size: 390px;
+        background-position: -173px -6px;
+    }
+    #vmProtect .oneVmProtect .card .img {
+        width: 48px;
+        height: 48px;
+    }
+    .allVMProtect .one-clound-bottom .img1 {
+        background-position: -682px -8px;
+    }
+    .allVMProtect .one-clound-bottom .img2 {
+        background-position: -37px -8px;
+    }
+    #vmProtect .oneVmProtect .card .img1 {
+        background-position: -239px -55px;
+    }
+    #vmProtect .oneVmProtect .card .img2 {
+        background-position: -299px -54px;
+    }
+    #vmProtect .oneVmProtect .card .img3 {
+        background-position: -363px -56px;
+    }
+    .allVMProtect .dataCard span, #vmProtect .allVMProtect .one-vm-top .one-vm-card span,
+    #bakStorage .bottom {
+        font-size: 12px;
+    }
+    .allVMProtect .dataCard p, #vmProtect .allVMProtect .one-vm-top .one-vm-card p, #vmProtect .oneVmProtect .card span {
+        font-size: 18px;
+    }
+    /* .allVMProtect .dataCard,
+    .allVMProtect .box2, .allVMProtect .box3, .allVMProtect .bottom,
+    .allVMProtect .top,
+    .systemMonitor .cpu-memery .cpu, .systemMonitor .cpu-memery .memery {
+        height: 90px;
+    } */
+    .allVMProtect .box2, .allVMProtect .box3, .allVMProtect .bottom {
+        padding: 10px 0 10px 10px;
+    }
+    .allVMProtect .dataCard {
+       padding-top: 15px;
+    }
+    #dbrealTime .hostbox span.fonttext,
+    #aws .hostbox span.fonttext,
+    #m365 .hostbox span.fonttext,
+    .two-card-pane .hostbox span.fonttext,
+    .one-card-pane .hostbox span.fonttext {
+        font-size: 18px;
+    }
+    #dbrealTime .hostbox,
+    #aws .hostbox,
+    #m365 .hostbox,
+    .two-card-pane .hostbox {
+        padding: 40px 10px 20px 10px;
+    }
+    .allVMProtect .box1 p {
+        margin-top: 8px;
+    }
+    .littleLabel,
+    #copyStorage .top, #archiveStorage .top,
+    #copyStorage .bottom, #archiveStorage .bottom {
+        font-size: 14px;
+    }
+    .allVMProtect p, #hostProtect .card p,
+    #copyStorage .top span:last-child, #copyStorage .bottom span:last-child, #archiveStorage .top span:last-child, #archiveStorage .bottom span:last-child,
+    .allVMProtect p, #hostProtect .card p, #hostProtect .three-host .eachThreeHost p {
+        font-size: 15px;
+    }
+    .allVMProtect .img,
+    #hostProtect .card .img,
+    #nasProtect .nasBox .img, #hostProtect .oneHostBox .img,
+    #realTimeSync .oneHostBox .img,
+    #hostProtect .two-host .eachTwoHost .img,
+    #hostProtect .three-host .eachThreeHost .img {
+        width: 35px;
+        height: 35px;
+    }
+    #hostProtect .two-host .fileInfo .eachTwoHost .img1,
+    #hostProtect .three-host .fileInfo .eachThreeHost .img1 {
+        background-position: -627px -58px;
+    }
+    #hostProtect .two-host .eachTwoHost .img2,
+    #hostProtect .three-host .eachThreeHost .img2 {
+        background-position: -581px -8px;
+    }
+    #hostProtect .two-host .dbInfo .eachTwoHost .img1,
+    #hostProtect .three-host .dbInfo .eachThreeHost .img1 {
+        background-position: -425px -58px;
+    }
+    #hostProtect .two-host .osInfo .eachTwoHost .img1,
+    #hostProtect .three-host .osInfo .eachThreeHost .img1,
+    #realTimeSync .oneHostBox .img1 {
+        background-position: -526px -58px;
+    }
+    #hostProtect .two-host .cdpInfo .eachTwoHost .img1,
+    #hostProtect .three-host .cdpInfo .eachThreeHost .img1 {
+        background-position: -576px -58px;
+    }
+    .allVMProtect .box2 .img1, #vmProtect .oneVmProtect .vmbox .statuscard .img1, #vmProtect .allVMProtect .one-vm-top .img1 {
+        background-position: -430px -8px;
+    }
+    .allVMProtect .box2 .img2, #vmProtect .oneVmProtect .vmbox .statuscard .img2, #vmProtect .allVMProtect .one-vm-top .img2 {
+        background-position: -480px -8px;
+    }
+    .allVMProtect .box3 .img1 {
+        background-position: -682px -8px;
+    }
+    .allVMProtect .box3 .img2 {
+        background-position: -37px -8px;
+    }
+    .allVMProtect .bottom .img1 {
+        background-position: -530px -8px;
+    }
+    .allVMProtect .bottom .each-cdm {
+        padding: 0;
+    }
+    .allVMProtect .bottom .img2 {
+        background-position: -631px -8px;
+    }
+    .allVMProtect .bottom .img3 {
+        background-position: -732px -8px;
+    }
+    .allVMProtect .bottom .img4 {
+        background-position: -138px -8px;
+    }
+    .allVMProtect .bottom .img5 {
+        background-position: -88px -8px;
+    }
+    #hostProtect .card .img1 {
+        background-position: -627px -58px;
+    }
+    #nasProtect .nasBox .img3,
+    #realTimeSync .oneHostBox .img3 {
+        background-position: -189px -56px;
+    }
+    #nasProtect .nasBox .img4,
+    #realTimeSync .oneHostBox .img4 {
+        background-position: -581px -8px;
+    }
+    #hostProtect .card .img2 {
+        background-position: -581px -8px;
+    }
+    #hostProtect .card .img4 {
+        background-position: -425px -58px;
+    }
+    #hostProtect .card .img3 {
+        background-position: -526px -58px;
+    }
+    #hostProtect .card .img5 {
+        background-position: -576px -58px;
+    }
+    #nasProtect .nasBox .img1 {
+        background-position: -137px -58px;
+    }
+    #nasProtect .nasBox .img2 {
+        background-position: -37px -58px;
+    }
+    #hostProtect .card {
+        padding: 10px 0 15px
+    }
+    .allHost .littleLabel {
+        padding-left: 15px;
+    }
+    .systemMonitor .cpu-memery .img1 {
+        width: 16px;
+        height: 16px;
+        background-position: -781px -77px;
+    }
+    .systemMonitor .cpu-memery .img2 {
+        width: 15px;
+        height: 16px;
+        background-position: -783px -45px;
+    }
+    .systemMonitor span {
+        font-size: 12px;
+    }
+    .systemMonitor .cpu-memery span {
+        padding-left: 20px;
+    }
+    .systemMonitor .bps .greenLine, .systemMonitor .iops .greenLine,
+    .systemMonitor .bps .blueLine, .systemMonitor .iops .blueLine {
+        margin: 0 0 0 5px;
+    }
+    .systemMonitor .bps p, .systemMonitor .iops p {
+        margin: 15px 7px 0 17px;
+    }
+    #copyStorage .top, #archiveStorage .top {
+        margin: 50px 17px 0 0;
+    }
+    #copyStorage, #archiveStorage {
+        padding: 30px 15px 40px;
+    }
+    .cpu-memery-sapce {
+        width: 10%;
+    }
+    .cpu-memery-w {
+        width: 30%;
+    }
+    .systemMonitor .cpu-memery span {
+        white-space: nowrap;
+    }
+    .allInfo .cardbox:nth-child(2) .img {
+        width: 21px;
+        height: 22px;
+        background-position: -745px -57px;
+    }
+    .allInfo .cardbox:nth-child(3) .img {
+        background-position: -710px -54px;
+    }
+    .allInfo .cardbox:nth-child(4) .img {
+        background-position: -675px -54px;
+    }
+    .allInfo .cardbox:last-child .img {
+        background-position: -675px -54px;
+    }
+   
+    #dbrealTime .hostbox .squre,
+    #aws .hostbox .squre,
+    .two-card-pane .hostbox .squre {
+        display: none;
+    }
+    .systemMonitor .bps span, .systemMonitor .iops span {
+        font-size: 14px;
+    }
+    .taskStatusTitle {
+        font-size: 16px;
+    }
+    .allVMProtect .dataCard {
+       padding-top: 25px;
+    }
+    .taskbox .data-top, .data-top {
+        height: auto;
+    }
+    .backup-letf_pane {
+        gap: 15px;
+    }
+    .content-form {
+        padding-right: 20px;
+    }
+    .allInfo .card .datades {
+        font-size: 16px;
+    }
+    .allInfo .card .data {
+        font-size: 28px;
+    }
+}
+/* 1600-1366之间 */
+@media (max-width: 1599px) and (min-width: 1365px) {
+    .allInfo .card .data,
+    .taskbox .taskStatus .eachStatus .data {
+        font-size: 20px;
+    }
+    .allInfo .card .datades,
+    .taskbox .taskStatus .eachStatus span {
+        font-size: 15px;
+    }
+    /* 小分辨率左右距离 */
+    .littleScreen-pl {
+        padding-left: 10px;
+    }
+    .littleScreen-pr {
+        padding-right: 10px;
+    }
+    .allVMProtect .box1 .dataCard:nth-child(2),
+    .allVMProtect .box1 .dataCard:nth-child(3) {
+        margin-left: 10px;
+    }
+    .littleLabel {
+        margin-bottom: 14px;
+    }
+    .systemMonitor .speeddiv .littleLabel {
+        margin-bottom: 22px;
+    }
+    #bakStorage .top {
+        padding-top: 40px;
+    }
+    .each-module {
+        width: calc(50% - 20px);
+    }
+    .backup-right_pane {
+        padding: 20px 15px 20px 0;
+    }
+    #bakStorage .bottom .bottom-each:nth-child(2) {
+        font-size: 14px;
+    }
+    #bakStorage .top .top-each span:last-child,
+    #bakStorage .bottom .bottom-each:first-child {
+        font-size: 12px;
+    }
+    #bakStorage .bottom .bottom-each:last-child {
+        font-size: 18px;
+    }
+    #bakStorage .top {
+        padding-top: 80px;
+    }
+    .backup-letf_pane {
+        width: 65.35%;
+        gap: 20px;
+    }
+    .backup-right_pane {
+        width: 34.65%;
+        margin-top: 22px;
+    }
+    .content-form {
+        padding-right: 20px;
+        margin-top: 22px;
+    }
+    .systemMonitor .data-top {
+        height: calc(100% - 221px);
+    }
+    #vol_cdp_protect_pane .backup-letf_pane, #copy_pane .backup-letf_pane {
+        width: 41.528%;
+    }
+    #vol_cdp_protect_pane .backup-right_pane, #copy_pane .backup-right_pane {
+        width: 58.472%;
+    }
+    .storage-des-content {
+        margin-left: 10%;
+        padding: 0 57px;
+    }
+    .storage-des-content {
+        width: 95%;
+    }
+}
+
+@media (max-width: 1365px) {
+    .allInfo,
+    .taskboxdiv,
+    .dataprotectdiv,
+    .storagecenterdiv,
+    .networkTrafficdiv,
+    .cpu-memerydiv {
+        width: 100% !important;
+    }
+    .cpu-memerydiv,
+    .iopsdiv,
+    .bpsdiv,
+    .cpu-memery-half {
+        width: 50%;
+    }
+    .taskboxdiv,
+    .storagecenterdiv {
+        padding: 0 15px !important;
+        margin-top: 15px;
+    }
+    .systemMonitor .cpu-memery .memery {
+        margin-top: 0;
+    }
+    .cpu-memery-half {
+        padding-left: 15px;
+    }
+    .networkTrafficdiv {
+        padding-left: 15px !important;
+        margin-top: 15px;
+    }
+    .speeddiv {
+        padding-right: 15px;
+    }
+    .bpsdiv,
+    .iopsdiv {
+        padding-right: 0;
+        padding-left: 15px !important;
+        margin-top: 15px;
+    }
+    .systemMonitor .networkTraffic {
+        height: 221px;
+    }
+    .systemMonitor .bps, .systemMonitor .iops {
+        height: 163px;
+    }
+    .systemMonitor {
+        height: 570px;
+    }
+    .systemMonitor span {
+        font-size: 14px;
+    }
+    #copyStorage, #archiveStorage {
+        padding-left: 40px;
+    }
+    #copyStorage .top, #archiveStorage .top {
+        margin: 50px 45px 0 0;
+    }
+    #dbrealTime .hostbox .squre,
+    .two-card-pane .hostbox .squre {
+        display: inline-block;
+    }
+    #bakStorage .bottom .bottom-each {
+        flex: 5;
+    }
+    #bakStorage .bottom .bottom-each:first-child {
+        flex: 2;
+    }
+    #bakStorage .bottom .bottom-each:nth-child(2) {
+        flex: 3.3;
+        margin-left: 25%;
+    }
+    .allInfo .card, .allInfo .cardbox, .taskbox {
+        height: 190px;
+    }
+    .systemMonitor .data-top {
+        height: calc(100% - 530px);
+    }
+    .sysmoni-bottom {
+        padding: 15px 0;
+    }
+}
+@media (max-width: 991px) {
+}

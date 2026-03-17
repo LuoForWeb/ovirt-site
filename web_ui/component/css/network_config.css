@@ -1,0 +1,326 @@
+.network-config-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.network-config-component label.radio-item {
+    min-height: 18px !important;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.networkConfigContent label.radio-item {
+    min-height: 18px !important;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.network-config-component label.radio-item .iradio_square-blue {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.networkConfigContent label.radio-item .iradio_square-blue {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.networkConfigLabel {
+    /*padding-right: 20px;*/
+}
+
+.networkConfigContent,
+.networkConfigIpSetUlWrapper {
+    padding-left: 10px;
+}
+
+/* 开始-ipv4v6的tab配置 */
+.networkConfigWrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px 5px 0 0!important;
+}
+
+.networkConfigWrapper ul.nav {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 8px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.networkConfigWrapper ul.nav li {
+    height: 34px;
+    padding: 7px 12px;
+}
+
+.networkConfigWrapper ul.nav li.active {
+    background-color: #E7F7F3;
+}
+
+.networkConfigWrapper ul.nav li a {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+    font-size: 16px;
+    border: none;
+    line-height: 20px;
+    color: #333!important;
+}
+
+.networkConfigWrapper ul.nav li a:focus,
+.networkConfigWrapper ul.nav li a:hover {
+    background-color: inherit;
+    border: none;
+    color: #333!important;
+}
+
+.networkConfigWrapper div.tab-content {
+    height: auto;
+    overflow: hidden;
+}
+
+.networkConfigWrapper div.tab-content.detail-table {
+    height: auto;
+    overflow: hidden;
+}
+
+/* 开始-多IP配置 */
+.addIpSetBtn {
+    font-size: 0;
+}
+
+.addIpSetBtn span {
+    font-size: 14px;
+    padding-left: 4px;
+}
+
+.networkConfigIpSetUl {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+.networkConfigIpSetUl li::before {
+    content: "";
+}
+
+.networkConfigIpSetUl li {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+}
+
+.networkConfigIpSetUl li.ip-set-head {
+    height: 40px;
+    background-color: #F7F9FA;
+    padding: 12px 8px;
+    color: #393C4D;
+    font-size: 14px;
+    font-weight: 400;
+    border-top: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.networkConfigIpSetUl li.ip-set-head div {
+    height: 16px;
+    line-height: 16px;
+    text-align: left;
+}
+
+.networkConfigIpSetUl li.ip-set-head div.ip-set-head__ip,
+.networkConfigIpSetUl li.ip-set-item div.ip-set-item__ip {
+    width: 45%;
+}
+
+.networkConfigIpSetUl li.ip-set-head div.ip-set-head__netmask,
+.networkConfigIpSetUl li.ip-set-item div.ip-set-item__netmask {
+    width: 45%;
+}
+
+.networkConfigIpSetUl li.ip-set-head div.ip-set-head__operate,
+.networkConfigIpSetUl li.ip-set-item div.ip-set-item__operate {
+    width: 10%;
+}
+
+.networkConfigIpSetUl li.ip-set-item {
+    height: 44px;
+    background-color: #FFF;
+    padding: 8px;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.networkConfigIpSetUl li.ip-set-item.focus,
+.networkConfigIpSetUl li.ip-set-item:hover {
+    background-color: #E7F7F3;
+}
+
+.networkConfigIpSetUl li.ip-set-item .form-group {
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+}
+
+.networkConfigIpSetUl li.ip-set-item .input-icon i.fa {
+    top: -4px;
+}
+.networkConfigIpSetUl li.ip-set-item .form-group.has-success i.fa {
+    display: none!important;
+}
+
+.networkConfigIpSetUl li.ip-set-item input.ipSetItemInput {
+    width: calc(100% - 2px);
+    height: 28px;
+    padding-left: 8px;
+    font-size: 14px;
+    line-height: 28px;
+    color: #333;
+    outline: none;
+    border: 1px solid #E6E6E6;
+}
+
+.networkConfigIpSetUl li.ip-set-item .form-group.has-error input.ipSetItemInput {
+    color: #F1416C;
+}
+
+.networkConfigIpSetUl li.ip-set-item input.ipSetItemInput:focus-visible {
+    background-color: #fff;
+    border: 1px solid #E6E6E6;
+}
+
+.networkConfigIpSetUl li.ip-set-item input.ipSetItemInput:not(:focus-visible),
+.networkConfigIpSetUl li.ip-set-item input:-internal-autofill-selected  {
+    background-color: inherit;
+    border: 1px solid #E6E6E6;
+}
+
+.networkConfigIpSetUl li.ip-set-item  .form-group.has-error input.ipSetItemInput {
+    border: 1px solid #F1416C;
+}
+
+.networkConfigIpSetUl li.ip-set-item a.ipSetDelete {
+    color: #666666;
+    text-decoration: none;
+}
+
+.networkConfigIpSetUl li.ip-set-item a.ipSetDelete:hover,
+.networkConfigIpSetUl li.ip-set-item a.ipSetDelete:focus {
+    color: #F1416C;
+    text-decoration: none;
+}
+
+/* 结束-多IP配置 */
+
+/* 表格详情 */
+.network-config-table__wrapper .bootstrap-table .fixed-table-container .table tbody .detail-view>td {
+    padding-left: 0;
+}
+
+.network-config-table tr.detail-view .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+}
+
+.network-config-table tr.detail-view .form-wrapper .form-group {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.network-config-table tr.detail-view .form-wrapper .form-group.with-help-block {
+    align-items: flex-start;
+}
+
+.network-config-table tr.detail-view .form-wrapper label.control-label {
+    width: 120px;
+    height: 22px;
+    line-height: 22px;
+    text-align: right;
+    padding: 0 10px;
+    padding-top: 2px;
+}
+
+.network-config-table tr.detail-view .form-wrapper label.text-label {
+    height: 28px;
+    padding-top: 4px;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.control-item {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 10px;
+    box-sizing: content-box;
+}
+
+.network-config-table tr.detail-view .form-wrapper .form-group.with-help-block div.control-item  {
+    display: block;
+    height: 44px;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.text-item {
+    height: 28px;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.text-item .input-icon i.fa {
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+}
+
+.network-config-table tr.detail-view .form-wrapper input[type="text"] {
+    width: 220px;
+    height: 28px;
+}
+
+.network-config-table tr.detail-view .form-wrapper select {
+    width: 220px;
+    height: 28px;
+    padding: 3px 12px;
+}
+
+.network-config-table tr.detail-view .form-wrapper .net-mac-config {
+    width: 460px;
+}
+
+.network-config-table tr.detail-view .form-wrapper .net-mac-config select {
+    width: 220px;
+    height: 28px;
+}
+
+.network-config-table tr.detail-view .form-wrapper .net-mac-config input[type="text"] {
+    width: 220px;
+    height: 28px;
+    margin-left: 16px;
+    background-image: none;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.control-item .radio-item {
+    margin: 0;
+    padding-right: 20px;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.control-item .iradio_square-blue {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.network-config-table tr.detail-view .form-wrapper div.control-item.networkConfigWrapper__parent {
+    width: calc(100% - 120px);
+    height: auto;
+}
+
+

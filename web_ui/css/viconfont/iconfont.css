@@ -1,0 +1,2787 @@
+@font-face {
+  font-family: "viconfont"; /* Project id 3413226 */
+  src: url('iconfont.woff2?t=1772441076075') format('woff2'),
+       url('iconfont.woff?t=1772441076075') format('woff'),
+       url('iconfont.ttf?t=1772441076075') format('truetype');
+}
+
+.viconfont {
+  font-family: "viconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.vicon-copy-and-new:before {
+  content: "\e8b7";
+}
+
+.vicon-arrow-left:before {
+  content: "\e8b4";
+}
+
+.vicon-arrow-down:before {
+  content: "\e8b5";
+}
+
+.vicon-arrow-right:before {
+  content: "\e8b6";
+}
+
+.vicon-Frame17:before {
+  content: "\e8b3";
+}
+
+.vicon-a-Group1321315332:before {
+  content: "\e8b2";
+}
+
+.vicon-bendiyonghu:before {
+  content: "\e8b0";
+}
+
+.vicon-waibuyonghu:before {
+  content: "\e8b1";
+}
+
+.vicon-Frame-18:before {
+  content: "\e8ad";
+}
+
+.vicon-Frame16:before {
+  content: "\e8ac";
+}
+
+.vicon-shujubiao:before {
+  content: "\e8aa";
+}
+
+.vicon-shujubiaojihe:before {
+  content: "\e8ab";
+}
+
+.vicon-tuite:before {
+  content: "\e604";
+}
+
+.vicon-gongnengyanzheng:before {
+  content: "\e8a8";
+}
+
+.vicon-shujuyanzheng:before {
+  content: "\e8a9";
+}
+
+.vicon-a-View-grid-listliebiaochakanmoshi:before {
+  content: "\e8a6";
+}
+
+.vicon-a-File-editingbianjiwenjian:before {
+  content: "\e8a7";
+}
+
+.vicon-Frame15:before {
+  content: "\e8a4";
+}
+
+.vicon-huaweiOBS:before {
+  content: "\e8a5";
+}
+
+.vicon-Frame14:before {
+  content: "\e8a3";
+}
+
+.vicon-Frame-17:before {
+  content: "\e8a1";
+}
+
+.vicon-Frame13:before {
+  content: "\e8a2";
+}
+
+.vicon-bianji:before {
+  content: "\e81f";
+}
+
+.vicon-a-Group1000003052:before {
+  content: "\e8a0";
+}
+
+.vicon-gou:before {
+  content: "\e89f";
+}
+
+.vicon-daxie:before {
+  content: "\e89e";
+}
+
+.vicon-a-Copyfuzhi:before {
+  content: "\e89d";
+}
+
+.vicon-social-media:before {
+  content: "\e89c";
+}
+
+.vicon-guanyu:before {
+  content: "\e89b";
+}
+
+.vicon-Frame12:before {
+  content: "\e89a";
+}
+
+.vicon-gongnengshouquan1:before {
+  content: "\e899";
+}
+
+.vicon-gaojimokuai:before {
+  content: "\e898";
+}
+
+.vicon-cipanzhenlie:before {
+  content: "\e897";
+}
+
+.vicon-yidongyingpan:before {
+  content: "\e895";
+}
+
+.vicon-xitong:before {
+  content: "\e896";
+}
+
+.vicon-boot:before {
+  content: "\e894";
+}
+
+.vicon-Frame11:before {
+  content: "\e893";
+}
+
+.vicon-yunhang:before {
+  content: "\e891";
+}
+
+.vicon-tingzhi1:before {
+  content: "\e892";
+}
+
+.vicon-a-Group1000003195:before {
+  content: "\e890";
+}
+
+.vicon-a-Group1000003199:before {
+  content: "\e88f";
+}
+
+.vicon-kuozhanfenqu:before {
+  content: "\e88d";
+}
+
+.vicon-luojifenqu:before {
+  content: "\e88e";
+}
+
+.vicon-a-Group1000003036:before {
+  content: "\e88c";
+}
+
+.vicon-a-Check-onexiaoyan1:before {
+  content: "\e88a";
+}
+
+.vicon-a-Check-onexiaoyan-1:before {
+  content: "\e88b";
+}
+
+.vicon-a-Logouttuichu:before {
+  content: "\e889";
+}
+
+.vicon-complete-machine-takeover:before {
+  content: "\e887";
+}
+
+.vicon-volume-takeover:before {
+  content: "\e888";
+}
+
+.vicon-a-View-listxiangqingliebiao1:before {
+  content: "\e885";
+}
+
+.vicon-a-Peoplerenyuan:before {
+  content: "\e886";
+}
+
+.vicon-a-Remindtixing:before {
+  content: "\e883";
+}
+
+.vicon-a-Computerdiannao:before {
+  content: "\e884";
+}
+
+.vicon-menu-fold:before {
+  content: "\e881";
+}
+
+.vicon-menu-unfold:before {
+  content: "\e882";
+}
+
+.vicon-Frame10:before {
+  content: "\e87e";
+}
+
+.vicon-a-To-topqudingbu:before {
+  content: "\e87f";
+}
+
+.vicon-asc:before {
+  content: "\e87c";
+}
+
+.vicon-desc:before {
+  content: "\e87d";
+}
+
+.vicon-a-Protectbaohu2:before {
+  content: "\e877";
+}
+
+.vicon-a-OrderIcon:before {
+  content: "\e878";
+}
+
+.vicon-Icon:before {
+  content: "\e879";
+}
+
+.vicon-a-Stopwatchmiaobiao:before {
+  content: "\e87a";
+}
+
+.vicon-kongzhitaitubiao:before {
+  content: "\e875";
+}
+
+.vicon-a-Workbenchgongzuotai:before {
+  content: "\e876";
+}
+
+.vicon-saomiao:before {
+  content: "\e874";
+}
+
+.vicon-Frame9:before {
+  content: "\e873";
+}
+
+.vicon-a-Codedaima:before {
+  content: "\e872";
+}
+
+.vicon-tupian:before {
+  content: "\e871";
+}
+
+.vicon-kehuduanchuanshu:before {
+  content: "\e870";
+}
+
+.vicon-Frame8:before {
+  content: "\e86f";
+}
+
+.vicon-a-Group1000002950:before {
+  content: "\e86e";
+}
+
+.vicon-gengduo:before {
+  content: "\e86d";
+}
+
+.vicon-kaijiyanzheng:before {
+  content: "\e867";
+}
+
+.vicon-baocun:before {
+  content: "\e868";
+}
+
+.vicon-xiangqing:before {
+  content: "\e869";
+}
+
+.vicon-qidong:before {
+  content: "\e86a";
+}
+
+.vicon-tingzhi:before {
+  content: "\e86b";
+}
+
+.vicon-baogao:before {
+  content: "\e86c";
+}
+
+.vicon-jiepingyanzheng:before {
+  content: "\e862";
+}
+
+.vicon-wenjianyanzheng:before {
+  content: "\e863";
+}
+
+.vicon-huanjinggoujian:before {
+  content: "\e864";
+}
+
+.vicon-yanzhengwancheng:before {
+  content: "\e865";
+}
+
+.vicon-fanhui:before {
+  content: "\e866";
+}
+
+.vicon-suoyoucunchu2:before {
+  content: "\e861";
+}
+
+.vicon-bendicunchu1:before {
+  content: "\e85f";
+}
+
+.vicon-yuncunchu1:before {
+  content: "\e860";
+}
+
+.vicon-nenghaojiankongpingtai:before {
+  content: "\e853";
+}
+
+.vicon-xitongshengji:before {
+  content: "\e854";
+}
+
+.vicon-xitonggongju:before {
+  content: "\e855";
+}
+
+.vicon-disanfangrongzaiyanlianpingtai:before {
+  content: "\e856";
+}
+
+.vicon-xiaoxituisong1:before {
+  content: "\e857";
+}
+
+.vicon-shijianpeizhi:before {
+  content: "\e858";
+}
+
+.vicon-keshihuapeizhi:before {
+  content: "\e859";
+}
+
+.vicon-xitongbeifenhuifu:before {
+  content: "\e85a";
+}
+
+.vicon-Apikeyguanli:before {
+  content: "\e85b";
+}
+
+.vicon-anquanpeizhi:before {
+  content: "\e85c";
+}
+
+.vicon-guanjizhongqi:before {
+  content: "\e85d";
+}
+
+.vicon-wangluopeizhi1:before {
+  content: "\e85e";
+}
+
+.vicon-xitongtongzhi:before {
+  content: "\e851";
+}
+
+.vicon-fangwenkongzhi:before {
+  content: "\e852";
+}
+
+.vicon-fuzijiguanxi:before {
+  content: "\e850";
+}
+
+.vicon-zhengjishishi:before {
+  content: "\e84e";
+}
+
+.vicon-zhengjidingshi:before {
+  content: "\e84f";
+}
+
+.vicon-qianyichenggong:before {
+  content: "\e84d";
+}
+
+.vicon-Frame-16:before {
+  content: "\e849";
+}
+
+.vicon-Frame-23:before {
+  content: "\e84a";
+}
+
+.vicon-Frame-32:before {
+  content: "\e84b";
+}
+
+.vicon-Frame7:before {
+  content: "\e84c";
+}
+
+.vicon-buzhichi:before {
+  content: "\e847";
+}
+
+.vicon-zhichi:before {
+  content: "\e848";
+}
+
+.vicon-a-Arrow-rightjiantouyou:before {
+  content: "\e844";
+}
+
+.vicon-gongnengshouquan:before {
+  content: "\e845";
+}
+
+.vicon-yanzhengshuliang:before {
+  content: "\e846";
+}
+
+.vicon-rongqi:before {
+  content: "\e843";
+}
+
+.vicon-NAS:before {
+  content: "\e836";
+}
+
+.vicon-cdpshishijieguan:before {
+  content: "\e837";
+}
+
+.vicon-Exchange:before {
+  content: "\e838";
+}
+
+.vicon-zhukongfuwuqi:before {
+  content: "\e839";
+}
+
+.vicon-gongyouyun:before {
+  content: "\e83a";
+}
+
+.vicon-wenjian:before {
+  content: "\e83b";
+}
+
+.vicon-siyouyun:before {
+  content: "\e83c";
+}
+
+.vicon-zhengji:before {
+  content: "\e83d";
+}
+
+.vicon-duixiangcunchu:before {
+  content: "\e83e";
+}
+
+.vicon-neiqianjieguan:before {
+  content: "\e83f";
+}
+
+.vicon-Hadoop:before {
+  content: "\e840";
+}
+
+.vicon-shujuku1:before {
+  content: "\e841";
+}
+
+.vicon-xuniji1:before {
+  content: "\e842";
+}
+
+.vicon-keshihua:before {
+  content: "\e835";
+}
+
+.vicon-twitter-fill:before {
+  content: "\e82e";
+}
+
+.vicon-bilibili-fill:before {
+  content: "\e82f";
+}
+
+.vicon-facebook-box-fill:before {
+  content: "\e830";
+}
+
+.vicon-google-fill:before {
+  content: "\e831";
+}
+
+.vicon-linkedin-box-fill:before {
+  content: "\e832";
+}
+
+.vicon-weibo-fill:before {
+  content: "\e833";
+}
+
+.vicon-wechat-fill:before {
+  content: "\e834";
+}
+
+.vicon-gongju:before {
+  content: "\e82b";
+}
+
+.vicon-gongjuyincang:before {
+  content: "\e82c";
+}
+
+.vicon-daiban:before {
+  content: "\e82a";
+}
+
+.vicon-bingdukuguanli:before {
+  content: "\e829";
+}
+
+.vicon-beifencunchu1:before {
+  content: "\e824";
+}
+
+.vicon-xiansucelve2:before {
+  content: "\e825";
+}
+
+.vicon-beifenjiedian:before {
+  content: "\e826";
+}
+
+.vicon-shengchancunchu1:before {
+  content: "\e827";
+}
+
+.vicon-beifencelve:before {
+  content: "\e828";
+}
+
+.vicon-cidai:before {
+  content: "\e822";
+}
+
+.vicon-hadoopmokuai:before {
+  content: "\e823";
+}
+
+.vicon-a-Frame1000003310:before {
+  content: "\e820";
+}
+
+.vicon-a-Screenshot-onejietu:before {
+  content: "\e821";
+}
+
+.vicon-yuncunchu:before {
+  content: "\e81d";
+}
+
+.vicon-bendicunchu:before {
+  content: "\e81e";
+}
+
+.vicon-guanlianrenwu:before {
+  content: "\e817";
+}
+
+.vicon-a-Homeshouye:before {
+  content: "\e812";
+}
+
+.vicon-a-Analysisfenxi:before {
+  content: "\e813";
+}
+
+.vicon-a-Protectbaohu1:before {
+  content: "\e814";
+}
+
+.vicon-a-Check-correctduigou1:before {
+  content: "\e815";
+}
+
+.vicon-a-File-editing-onebianjiwenjian1:before {
+  content: "\e816";
+}
+
+.vicon-a-Table-reportbaobiao:before {
+  content: "\e818";
+}
+
+.vicon-a-All-applicationquanbu:before {
+  content: "\e819";
+}
+
+.vicon-a-Setting-twoshezhi:before {
+  content: "\e81a";
+}
+
+.vicon-a-Serverfuwuqi:before {
+  content: "\e81b";
+}
+
+.vicon-a-Data-fourshuju:before {
+  content: "\e81c";
+}
+
+.vicon-a-Zoom-infangda:before {
+  content: "\e811";
+}
+
+.vicon-a-Arrow-leftjiantouzuo:before {
+  content: "\e810";
+}
+
+.vicon-youxiang:before {
+  content: "\e80f";
+}
+
+.vicon-tuichuquanping:before {
+  content: "\e80d";
+}
+
+.vicon-zujianshanchu:before {
+  content: "\e80e";
+}
+
+.vicon-IPdizhi:before {
+  content: "\e804";
+}
+
+.vicon-shujuwanzhengxing:before {
+  content: "\e805";
+}
+
+.vicon-shijiankongjian:before {
+  content: "\e806";
+}
+
+.vicon-zhujiming:before {
+  content: "\e807";
+}
+
+.vicon-kaijijieguo:before {
+  content: "\e808";
+}
+
+.vicon-baogaoxiazaishijian:before {
+  content: "\e809";
+}
+
+.vicon-zhankai:before {
+  content: "\e80a";
+}
+
+.vicon-shouqi:before {
+  content: "\e80b";
+}
+
+.vicon-a-Useryonghu:before {
+  content: "\e80c";
+}
+
+.vicon-mima:before {
+  content: "\e803";
+}
+
+.vicon-error-warning-fill:before {
+  content: "\e7fe";
+}
+
+.vicon-yanzhengma:before {
+  content: "\e7ff";
+}
+
+.vicon-xianshimima:before {
+  content: "\e800";
+}
+
+.vicon-yonghuming:before {
+  content: "\e801";
+}
+
+.vicon-yincangmima:before {
+  content: "\e802";
+}
+
+.vicon-weibiaoti-2-02:before {
+  content: "\e7fd";
+}
+
+.vicon-fenxiang:before {
+  content: "\e7fc";
+}
+
+.vicon-zhongshi:before {
+  content: "\e7fb";
+}
+
+.vicon-Frame6:before {
+  content: "\e7f9";
+}
+
+.vicon-Frame-15:before {
+  content: "\e7fa";
+}
+
+.vicon-beifencunchu:before {
+  content: "\e7f7";
+}
+
+.vicon-shengchancunchu:before {
+  content: "\e7f8";
+}
+
+.vicon-shenpiliujiantou:before {
+  content: "\e7f6";
+}
+
+.vicon-moban:before {
+  content: "\e7f5";
+}
+
+.vicon-web-console:before {
+  content: "\e7f4";
+}
+
+.vicon-gaokeyongrizhi:before {
+  content: "\e7f3";
+}
+
+.vicon-fuzhiliebiao:before {
+  content: "\e7f2";
+}
+
+.vicon-qingkonghuishouzhan:before {
+  content: "\e7f1";
+}
+
+.vicon-mubiao:before {
+  content: "\e7f0";
+}
+
+.vicon-duibi:before {
+  content: "\e7ee";
+}
+
+.vicon-huishouzhan:before {
+  content: "\e7ef";
+}
+
+.vicon-Frame5:before {
+  content: "\e7ec";
+}
+
+.vicon-Frame-14:before {
+  content: "\e7ed";
+}
+
+.vicon-kongzhitai:before {
+  content: "\e7eb";
+}
+
+.vicon-a-Group1000002961:before {
+  content: "\e7ea";
+}
+
+.vicon-a-Group1000002959:before {
+  content: "\e7e7";
+}
+
+.vicon-a-Group1000002958:before {
+  content: "\e7e8";
+}
+
+.vicon-a-Group1000002960:before {
+  content: "\e7e9";
+}
+
+.vicon-a-Frame1000002986:before {
+  content: "\e7e6";
+}
+
+.vicon-kuapingtaihuifu:before {
+  content: "\e7e5";
+}
+
+.vicon-a-zancunbaocun:before {
+  content: "\e7e4";
+}
+
+.vicon-tongguo-copy:before {
+  content: "\e82d";
+}
+
+.vicon-a-dengdaidaishenpi:before {
+  content: "\e7df";
+}
+
+.vicon-tongguo:before {
+  content: "\e7e2";
+}
+
+.vicon-bohui:before {
+  content: "\e7e3";
+}
+
+.vicon-jiantou1:before {
+  content: "\e7de";
+}
+
+.vicon-carbon:before {
+  content: "\e7e1";
+}
+
+.vicon-carbon-platform:before {
+  content: "\e7e0";
+}
+
+.vicon-zidingyiziduan:before {
+  content: "\e7da";
+}
+
+.vicon-fangan:before {
+  content: "\e7db";
+}
+
+.vicon-wenbenkuang:before {
+  content: "\e7dc";
+}
+
+.vicon-caozuorenyuan:before {
+  content: "\e7dd";
+}
+
+.vicon-shengchengshijian:before {
+  content: "\e7d8";
+}
+
+.vicon-erweima:before {
+  content: "\e7d9";
+}
+
+.vicon-tuozhuai:before {
+  content: "\e7d7";
+}
+
+.vicon-a-Group1000003106:before {
+  content: "\e7d4";
+}
+
+.vicon-a-Group1000003105:before {
+  content: "\e7d5";
+}
+
+.vicon-jieguo:before {
+  content: "\e7d6";
+}
+
+.vicon-shenpiguidang:before {
+  content: "\e7c9";
+}
+
+.vicon-fenlei:before {
+  content: "\e7c3";
+}
+
+.vicon-baogaoliebiao:before {
+  content: "\e7c4";
+}
+
+.vicon-genggaishenpiliu:before {
+  content: "\e7c5";
+}
+
+.vicon-chexiao:before {
+  content: "\e7c6";
+}
+
+.vicon-jieping:before {
+  content: "\e7c7";
+}
+
+.vicon-zhediekuanganniu1:before {
+  content: "\e7c8";
+}
+
+.vicon-shenpiliu:before {
+  content: "\e7ca";
+}
+
+.vicon-yanzhengrenwu:before {
+  content: "\e7cb";
+}
+
+.vicon-yanzhengjieguo:before {
+  content: "\e7cc";
+}
+
+.vicon-a-shenheyuanqianzi:before {
+  content: "\e7cd";
+}
+
+.vicon-wangluoyanzheng:before {
+  content: "\e7ce";
+}
+
+.vicon-xintiaoyanzheng:before {
+  content: "\e7cf";
+}
+
+.vicon-shenpi:before {
+  content: "\e7d0";
+}
+
+.vicon-hangyeheguijiancha:before {
+  content: "\e7d1";
+}
+
+.vicon-a-Group1000003103:before {
+  content: "\e7d2";
+}
+
+.vicon-logo:before {
+  content: "\e7d3";
+}
+
+.vicon-Frame-13:before {
+  content: "\e7bf";
+}
+
+.vicon-Frame4:before {
+  content: "\e7c0";
+}
+
+.vicon-Frame-31:before {
+  content: "\e7c1";
+}
+
+.vicon-Frame-22:before {
+  content: "\e7c2";
+}
+
+.vicon-Frame3:before {
+  content: "\e7bd";
+}
+
+.vicon-Frame-12:before {
+  content: "\e7be";
+}
+
+.vicon-a-Upshang:before {
+  content: "\e7bc";
+}
+
+.vicon-shili1:before {
+  content: "\e7bb";
+}
+
+.vicon-Frame-21:before {
+  content: "\e7b8";
+}
+
+.vicon-Frame-11:before {
+  content: "\e7b9";
+}
+
+.vicon-Frame2:before {
+  content: "\e7ba";
+}
+
+.vicon-quanping:before {
+  content: "\e7b7";
+}
+
+.vicon-cipan1:before {
+  content: "\e7b5";
+}
+
+.vicon-fenqu:before {
+  content: "\e7b6";
+}
+
+.vicon-renwudatubiao:before {
+  content: "\e7b3";
+}
+
+.vicon-a-beifenduixiangdatubiao:before {
+  content: "\e7b4";
+}
+
+.vicon-danxuan989:before {
+  content: "\e7b1";
+}
+
+.vicon-danxuan989-copy:before {
+  content: "\e87b";
+}
+
+.vicon-danxuan:before {
+  content: "\e7b2";
+}
+
+.vicon-suoyou:before {
+  content: "\e6ef";
+}
+
+.vicon-a-Checkxiaoyan:before {
+  content: "\e7af";
+}
+
+.vicon-a-Cautionbaocuo:before {
+  content: "\e7a6";
+}
+
+.vicon-a-Check-correctduigou:before {
+  content: "\e7a7";
+}
+
+.vicon-a-Frame1000002954:before {
+  content: "\e7a8";
+}
+
+.vicon-a-Frame1000002980:before {
+  content: "\e7a9";
+}
+
+.vicon-a-Scanning-twosaomiao1:before {
+  content: "\e7aa";
+}
+
+.vicon-yindaojingxiang:before {
+  content: "\e7ab";
+}
+
+.vicon-Frame1:before {
+  content: "\e7ac";
+}
+
+.vicon-xiaoyancelve:before {
+  content: "\e7ad";
+}
+
+.vicon-qingli:before {
+  content: "\e7ae";
+}
+
+.vicon-suoyoucunchu:before {
+  content: "\e68f";
+}
+
+.vicon-beifenshuju--yuncunchu:before {
+  content: "\e68d";
+}
+
+.vicon-beifenshuju--bendicunchu:before {
+  content: "\e68e";
+}
+
+.vicon-yanzhengpeizhi:before {
+  content: "\e68c";
+}
+
+.vicon-yanzhenghuanjingpeizhi:before {
+  content: "\e65d";
+}
+
+.vicon-zhediekuanganniu:before {
+  content: "\e7a5";
+}
+
+.vicon-spinner-plus:before {
+  content: "\e8af";
+}
+
+.vicon-zhediekuanganniu-1:before {
+  content: "\e7a4";
+}
+
+.vicon-spinner-minus:before {
+  content: "\e8ae";
+}
+
+.vicon-a-Folder-openwenjianjia-kai:before {
+  content: "\e7a0";
+}
+
+.vicon-a-Folder-closewenjianjia-guan:before {
+  content: "\e7a1";
+}
+
+.vicon-a-Cameraxiangji:before {
+  content: "\e7a2";
+}
+
+.vicon-a-Notesbiji:before {
+  content: "\e7a3";
+}
+
+.vicon-cipanpeizhi:before {
+  content: "\e79e";
+}
+
+.vicon-tongyongpeizhi:before {
+  content: "\e79f";
+}
+
+.vicon-gongxiang:before {
+  content: "\e79d";
+}
+
+.vicon-chuanshu:before {
+  content: "\e79a";
+}
+
+.vicon-a-Pause-onezanting:before {
+  content: "\e79b";
+}
+
+.vicon-anquancelve:before {
+  content: "\e79c";
+}
+
+.vicon-a-Reduce-onejianshao:before {
+  content: "\e799";
+}
+
+.vicon-timing-protect:before {
+  content: "\e798";
+}
+
+.vicon-overview-volume:before {
+  content: "\e797";
+}
+
+.vicon-overview-private-cloud:before {
+  content: "\e78a";
+}
+
+.vicon-overview-hadoop:before {
+  content: "\e78b";
+}
+
+.vicon-overview-vm:before {
+  content: "\e78c";
+}
+
+.vicon-overview-obs:before {
+  content: "\e78d";
+}
+
+.vicon-overview-plubic-cloud:before {
+  content: "\e78e";
+}
+
+.vicon-overview-file:before {
+  content: "\e78f";
+}
+
+.vicon-overview-complete-machine:before {
+  content: "\e790";
+}
+
+.vicon-overview-nas:before {
+  content: "\e791";
+}
+
+.vicon-overview-database:before {
+  content: "\e792";
+}
+
+.vicon-overview-m365:before {
+  content: "\e793";
+}
+
+.vicon-overciew-k8s:before {
+  content: "\e796";
+}
+
+.vicon-cunchu1:before {
+  content: "\e68b";
+}
+
+.vicon-cipan:before {
+  content: "\e681";
+}
+
+.vicon-cunchushebei:before {
+  content: "\e682";
+}
+
+.vicon-zhuji2:before {
+  content: "\e683";
+}
+
+.vicon-tuodong:before {
+  content: "\e684";
+}
+
+.vicon-wangluojiedian:before {
+  content: "\e685";
+}
+
+.vicon-jiedian:before {
+  content: "\e686";
+}
+
+.vicon-ziyuanxianzhi:before {
+  content: "\e687";
+}
+
+.vicon-cunchuziyuanchi:before {
+  content: "\e688";
+}
+
+.vicon-jisuanziyuanchi:before {
+  content: "\e689";
+}
+
+.vicon-ziyuanchi:before {
+  content: "\e68a";
+}
+
+.vicon-hadoop:before {
+  content: "\e67f";
+}
+
+.vicon-obs:before {
+  content: "\e680";
+}
+
+.vicon-card_bridge:before {
+  content: "\e67e";
+}
+
+.vicon-a-List-checkboxduoxuanliebiao:before {
+  content: "\e789";
+}
+
+.vicon-remark-info:before {
+  content: "\e788";
+}
+
+.vicon-remark-year:before {
+  content: "\e786";
+}
+
+.vicon-remark-week:before {
+  content: "\e787";
+}
+
+.vicon-remark-month:before {
+  content: "\e785";
+}
+
+.vicon-Vmware:before {
+  content: "\e67d";
+}
+
+.vicon-remark-forever:before {
+  content: "\e784";
+}
+
+.vicon-a-Leftzuo:before {
+  content: "\e67c";
+}
+
+.vicon-plan:before {
+  content: "\e67b";
+}
+
+.vicon-a-jiedianbeifenjiedian:before {
+  content: "\e67a";
+}
+
+.vicon-shangchuan:before {
+  content: "\e675";
+}
+
+.vicon-xiazai:before {
+  content: "\e676";
+}
+
+.vicon-biaojiweixiangying:before {
+  content: "\e677";
+}
+
+.vicon-a-apikeydaima:before {
+  content: "\e678";
+}
+
+.vicon-shengji:before {
+  content: "\e679";
+}
+
+.vicon-a-chuanshuchuanshudaili:before {
+  content: "\e65e";
+}
+
+.vicon-chuanshudailiziyuanchi:before {
+  content: "\e668";
+}
+
+.vicon-chuanshuwangluo:before {
+  content: "\e66e";
+}
+
+.vicon-wangluoziyuanchi:before {
+  content: "\e674";
+}
+
+.vicon-kaiji:before {
+  content: "\e65b";
+}
+
+.vicon-zhongqi:before {
+  content: "\e658";
+}
+
+.vicon-guanji:before {
+  content: "\e65a";
+}
+
+.vicon-a-Direction-adjustment-threefangxiangxiaozhun:before {
+  content: "\e780";
+}
+
+.vicon-disanfangxiaoxituisong:before {
+  content: "\e781";
+}
+
+.vicon-xiaoxituisong:before {
+  content: "\e782";
+}
+
+.vicon-a-Electrocardiogramxindiantu:before {
+  content: "\e783";
+}
+
+.vicon-a-shilikaijizhuangtai:before {
+  content: "\e657";
+}
+
+.vicon-a-Afferentchuanru:before {
+  content: "\e77f";
+}
+
+.vicon-edit-new:before {
+  content: "\e600";
+}
+
+.vicon-heibaimingdan:before {
+  content: "\e77e";
+}
+
+.vicon-a-Nested-arrowsqiantaojiantou:before {
+  content: "\e77d";
+}
+
+.vicon-a-Cube-fourmofang:before {
+  content: "\e777";
+}
+
+.vicon-a-Eyesyanjing:before {
+  content: "\e778";
+}
+
+.vicon-a-Equalizerjunhengqi:before {
+  content: "\e779";
+}
+
+.vicon-a-People-bottom-cardrenxiangkapianxia:before {
+  content: "\e77a";
+}
+
+.vicon-a-Benzbenchi:before {
+  content: "\e77b";
+}
+
+.vicon-a-Pie-twojindu2:before {
+  content: "\e77c";
+}
+
+.vicon-a-Share-threefenxiang3:before {
+  content: "\e776";
+}
+
+.vicon-cache-card:before {
+  content: "\e794";
+}
+
+.vicon-a-Unlockjiesuo-0111:before {
+  content: "\e775";
+}
+
+.vicon-a-Wrong-usercuowuyonghu:before {
+  content: "\e772";
+}
+
+.vicon-a-Unlockjiesuo-011:before {
+  content: "\e773";
+}
+
+.vicon-a-Right-userzhengqueyonghu:before {
+  content: "\e774";
+}
+
+.vicon-shujuguanli:before {
+  content: "\e76f";
+}
+
+.vicon-yingyong:before {
+  content: "\e770";
+}
+
+.vicon-yunpingtai:before {
+  content: "\e771";
+}
+
+.vicon-shishibeifen:before {
+  content: "\e76e";
+}
+
+.vicon-ziyuangeli:before {
+  content: "\e655";
+}
+
+.vicon-wangluo:before {
+  content: "\e656";
+}
+
+.vicon-wangluopeizhi:before {
+  content: "\e64f";
+}
+
+.vicon-xuniji:before {
+  content: "\e654";
+}
+
+.vicon-apikey:before {
+  content: "\e76d";
+}
+
+.vicon-settings-5-fill:before {
+  content: "\e602";
+}
+
+.vicon-account-box-fill:before {
+  content: "\e603";
+}
+
+.vicon-xiansucelve:before {
+  content: "\e648";
+}
+
+.vicon-Frame-1:before {
+  content: "\e765";
+}
+
+.vicon-Frame:before {
+  content: "\e766";
+}
+
+.vicon-Frame-5:before {
+  content: "\e767";
+}
+
+.vicon-Frame-3:before {
+  content: "\e768";
+}
+
+.vicon-Frame-2:before {
+  content: "\e769";
+}
+
+.vicon-Frame-7:before {
+  content: "\e76a";
+}
+
+.vicon-Frame-4:before {
+  content: "\e76b";
+}
+
+.vicon-Frame-6:before {
+  content: "\e76c";
+}
+
+.vicon-a-Memory-onechucunqi:before {
+  content: "\e762";
+}
+
+.vicon-a-File-pdfwenjian-pdf:before {
+  content: "\e763";
+}
+
+.vicon-a-Elephantdaxiang-01:before {
+  content: "\e764";
+}
+
+.vicon-a-Instructionzhiling-01:before {
+  content: "\e75f";
+}
+
+.vicon-tenant-detail:before {
+  content: "\e760";
+}
+
+.vicon-a-Group167-01:before {
+  content: "\e761";
+}
+
+.vicon-shijian2:before {
+  content: "\e649";
+}
+
+.vicon-fenfa:before {
+  content: "\e64a";
+}
+
+.vicon-rili2:before {
+  content: "\e64d";
+}
+
+.vicon-celveliebiao:before {
+  content: "\e64e";
+}
+
+.vicon-a-Chart-graphguanxitu:before {
+  content: "\e751";
+}
+
+.vicon-a-Redozhongxin1:before {
+  content: "\e752";
+}
+
+.vicon-a-Arrow-circle-upshang-jiantou:before {
+  content: "\e753";
+}
+
+.vicon-a-Editbianji1:before {
+  content: "\e754";
+}
+
+.vicon-a-Deleteshanchu2:before {
+  content: "\e755";
+}
+
+.vicon-a-Mail-packageyoujianbao:before {
+  content: "\e756";
+}
+
+.vicon-a-Afferent-threechuanru3:before {
+  content: "\e757";
+}
+
+.vicon-a-Hunting-gearcongdongzhuangzhi:before {
+  content: "\e758";
+}
+
+.vicon-a-Checklistjianchaliebiao:before {
+  content: "\e759";
+}
+
+.vicon-a-Find-onesoucha:before {
+  content: "\e75a";
+}
+
+.vicon-a-Scanning-twosaomiao:before {
+  content: "\e75b";
+}
+
+.vicon-a-Type-drivecidai:before {
+  content: "\e75c";
+}
+
+.vicon-a-View-listxiangqingliebiao:before {
+  content: "\e75d";
+}
+
+.vicon-a-Tapecidai:before {
+  content: "\e75e";
+}
+
+.vicon-pt_setting_wechat_notice:before {
+  content: "\e74f";
+}
+
+.vicon-pt_setting_wechat2_notice:before {
+  content: "\e750";
+}
+
+.vicon-Subtract1:before {
+  content: "\e74e";
+}
+
+.vicon-a-Component1:before {
+  content: "\e601";
+}
+
+.vicon-mingmingkongjian:before {
+  content: "\e74d";
+}
+
+.vicon-ziyuanxiangqing:before {
+  content: "\e74c";
+}
+
+.vicon-a-Efferent-threechuanchu3:before {
+  content: "\e74a";
+}
+
+.vicon-a-Editorbianji:before {
+  content: "\e74b";
+}
+
+.vicon-tongbulidu:before {
+  content: "\e647";
+}
+
+.vicon-a-Close-oneguanbi-copy:before {
+  content: "\e795";
+}
+
+.vicon-a-Close-oneguanbi:before {
+  content: "\e749";
+}
+
+.vicon-a-Group261:before {
+  content: "\e645";
+}
+
+.vicon-yunbeifen:before {
+  content: "\e640";
+}
+
+.vicon-huaweilogo:before {
+  content: "\e63f";
+}
+
+.vicon-a-xiangmu2:before {
+  content: "\e63d";
+}
+
+.vicon-cunchuku:before {
+  content: "\e63e";
+}
+
+.vicon-histroytask:before {
+  content: "\e63c";
+}
+
+.vicon-tasklog:before {
+  content: "\e63a";
+}
+
+.vicon-zhuji1:before {
+  content: "\e63b";
+}
+
+.vicon-qianyixinxi:before {
+  content: "\e638";
+}
+
+.vicon-lianjie:before {
+  content: "\e639";
+}
+
+.vicon-a-Windows1:before {
+  content: "\e633";
+}
+
+.vicon-a-Group268:before {
+  content: "\e636";
+}
+
+.vicon-a-Windows1-copy:before {
+  content: "\e7b0";
+}
+
+.vicon-yichang:before {
+  content: "\e630";
+}
+
+.vicon-wancheng1:before {
+  content: "\e632";
+}
+
+.vicon-cuowu:before {
+  content: "\e62b";
+}
+
+.vicon-juan1:before {
+  content: "\e628";
+}
+
+.vicon-quyu:before {
+  content: "\e629";
+}
+
+.vicon-a-xiliduhuifu1:before {
+  content: "\e62e";
+}
+
+.vicon-gfs:before {
+  content: "\e62f";
+}
+
+.vicon-a-Group255:before {
+  content: "\e748";
+}
+
+.vicon-fuzhi:before {
+  content: "\e747";
+}
+
+.vicon-module-exchange:before {
+  content: "\e60e";
+}
+
+.vicon-a-chuanshu:before {
+  content: "\e72a";
+}
+
+.vicon-huifu1:before {
+  content: "\e72e";
+}
+
+.vicon-gaojipeizhi:before {
+  content: "\e72f";
+}
+
+.vicon-beifenzhuji:before {
+  content: "\e730";
+}
+
+.vicon-huiqiepeizhi:before {
+  content: "\e731";
+}
+
+.vicon-jiqun1:before {
+  content: "\e732";
+}
+
+.vicon-jieguan:before {
+  content: "\e733";
+}
+
+.vicon-shijian:before {
+  content: "\e734";
+}
+
+.vicon-beiji:before {
+  content: "\e735";
+}
+
+.vicon-jieguanfuwuqi:before {
+  content: "\e736";
+}
+
+.vicon-shuju:before {
+  content: "\e737";
+}
+
+.vicon-shijian1:before {
+  content: "\e738";
+}
+
+.vicon-rili:before {
+  content: "\e739";
+}
+
+.vicon-renyishijiandian:before {
+  content: "\e73a";
+}
+
+.vicon-renwushujuliuxiang:before {
+  content: "\e73b";
+}
+
+.vicon-yonghu:before {
+  content: "\e73c";
+}
+
+.vicon-zhuji:before {
+  content: "\e73d";
+}
+
+.vicon-renwuliuliang:before {
+  content: "\e73e";
+}
+
+.vicon-wuxiaoshijian:before {
+  content: "\e73f";
+}
+
+.vicon-jiankongshuju:before {
+  content: "\e740";
+}
+
+.vicon-rongzaiguanlizhongxin:before {
+  content: "\e741";
+}
+
+.vicon-youxiaoshijian:before {
+  content: "\e742";
+}
+
+.vicon-shili:before {
+  content: "\e743";
+}
+
+.vicon-shujukushishi:before {
+  content: "\e744";
+}
+
+.vicon-shujuku:before {
+  content: "\e745";
+}
+
+.vicon-tongbu:before {
+  content: "\e746";
+}
+
+.vicon-a-Editbianji:before {
+  content: "\e727";
+}
+
+.vicon-jiantou:before {
+  content: "\e721";
+}
+
+.vicon-danchuangshouquan:before {
+  content: "\e722";
+}
+
+.vicon-danchuangtianjia1:before {
+  content: "\e723";
+}
+
+.vicon-a-Deleteshanchu1:before {
+  content: "\e724";
+}
+
+.vicon-jiqun:before {
+  content: "\e725";
+}
+
+.vicon-biaogeshouquan:before {
+  content: "\e726";
+}
+
+.vicon-tishi:before {
+  content: "\e728";
+}
+
+.vicon-jiaobenguanli:before {
+  content: "\e729";
+}
+
+.vicon-k8s:before {
+  content: "\e72b";
+}
+
+.vicon-bangzhuzhongxin:before {
+  content: "\e72c";
+}
+
+.vicon-biaogeshuaxin:before {
+  content: "\e72d";
+}
+
+.vicon-a-Protectbaohu:before {
+  content: "\e71a";
+}
+
+.vicon-a-Group2:before {
+  content: "\e71b";
+}
+
+.vicon-input-prefix:before {
+  content: "\e71c";
+}
+
+.vicon-a-input-prefix1:before {
+  content: "\e71d";
+}
+
+.vicon-yanjing:before {
+  content: "\e71e";
+}
+
+.vicon-a-yanjing1:before {
+  content: "\e71f";
+}
+
+.vicon-Subtract:before {
+  content: "\e720";
+}
+
+.vicon-windows-view:before {
+  content: "\e60d";
+}
+
+.vicon-a-Check-onexiaoyan:before {
+  content: "\e659";
+}
+
+.vicon-caogao1:before {
+  content: "\e65c";
+}
+
+.vicon-celve1:before {
+  content: "\e65f";
+}
+
+.vicon-cunchu:before {
+  content: "\e660";
+}
+
+.vicon-fasongyoujian1:before {
+  content: "\e661";
+}
+
+.vicon-gaojisousuo1:before {
+  content: "\e662";
+}
+
+.vicon-gaiyao1:before {
+  content: "\e663";
+}
+
+.vicon-lianxiren1:before {
+  content: "\e664";
+}
+
+.vicon-gaoji1:before {
+  content: "\e665";
+}
+
+.vicon-paichu1:before {
+  content: "\e666";
+}
+
+.vicon-rili1:before {
+  content: "\e667";
+}
+
+.vicon-zimulu1:before {
+  content: "\e669";
+}
+
+.vicon-wanquanbeifen1:before {
+  content: "\e66a";
+}
+
+.vicon-xinjianbeifen1:before {
+  content: "\e66b";
+}
+
+.vicon-shoujianxiang1:before {
+  content: "\e66c";
+}
+
+.vicon-youjian1:before {
+  content: "\e66d";
+}
+
+.vicon-zengliangbeifen1:before {
+  content: "\e66f";
+}
+
+.vicon-yonghuzu1:before {
+  content: "\e670";
+}
+
+.vicon-xiansucelve1:before {
+  content: "\e671";
+}
+
+.vicon-a-yonghuzubiaogeneiyong1:before {
+  content: "\e672";
+}
+
+.vicon-zuzhi:before {
+  content: "\e673";
+}
+
+.vicon-beifenshijiandian:before {
+  content: "\e607";
+}
+
+.vicon-baoliucelve:before {
+  content: "\e609";
+}
+
+.vicon-beifen:before {
+  content: "\e60a";
+}
+
+.vicon-a-Redozhongxin:before {
+  content: "\e60b";
+}
+
+.vicon-danchuangsousuo:before {
+  content: "\e60c";
+}
+
+.vicon-chayibeifen:before {
+  content: "\e60f";
+}
+
+.vicon-beifendian:before {
+  content: "\e610";
+}
+
+.vicon-danchuangtianjia:before {
+  content: "\e611";
+}
+
+.vicon-biaogefasong:before {
+  content: "\e612";
+}
+
+.vicon-a-Loading-onejiazai:before {
+  content: "\e613";
+}
+
+.vicon-cundang:before {
+  content: "\e615";
+}
+
+.vicon-biaogetianjia:before {
+  content: "\e619";
+}
+
+.vicon-duihualishijilu:before {
+  content: "\e627";
+}
+
+.vicon-shanchu:before {
+  content: "\e62a";
+}
+
+.vicon-huifu:before {
+  content: "\e62c";
+}
+
+.vicon-a-biaogezhankaiguanbi1:before {
+  content: "\e62d";
+}
+
+.vicon-shalou:before {
+  content: "\e631";
+}
+
+.vicon-wancheng:before {
+  content: "\e634";
+}
+
+.vicon-renwu:before {
+  content: "\e635";
+}
+
+.vicon-gouwuche:before {
+  content: "\e637";
+}
+
+.vicon-a-Deleteshanchu:before {
+  content: "\e641";
+}
+
+.vicon-fasongyoujian:before {
+  content: "\e642";
+}
+
+.vicon-xiayibu:before {
+  content: "\e643";
+}
+
+.vicon-youjian:before {
+  content: "\e644";
+}
+
+.vicon-shaixuan:before {
+  content: "\e646";
+}
+
+.vicon-xiugai:before {
+  content: "\e64b";
+}
+
+.vicon-biaogezhankaiguanbi:before {
+  content: "\e64c";
+}
+
+.vicon-a-yonghubiaogeyong:before {
+  content: "\e650";
+}
+
+.vicon-exchange:before {
+  content: "\e651";
+}
+
+.vicon-shangyibu:before {
+  content: "\e652";
+}
+
+.vicon-guanbi:before {
+  content: "\e653";
+}
+
+.vicon-task-copy:before {
+  content: "\e880";
+}
+
+.vicon-email:before {
+  content: "\e625";
+}
+
+.vicon-refresh_code:before {
+  content: "\e624";
+}
+
+.vicon-arrow:before {
+  content: "\e623";
+}
+
+.vicon-downloadPlugin:before {
+  content: "\e622";
+}
+
+.vicon-a-account_circle-material11-01:before {
+  content: "\e719";
+}
+
+.vicon-a-lujing1:before {
+  content: "\e718";
+}
+
+.vicon-sangfor_pwd:before {
+  content: "\e626";
+}
+
+.vicon-ge_sort:before {
+  content: "\e717";
+}
+
+.vicon-ge_transfer:before {
+  content: "\e715";
+}
+
+.vicon-ge_advanced:before {
+  content: "\e716";
+}
+
+.vicon-ge_permission:before {
+  content: "\e714";
+}
+
+.vicon-ge_disaster_recovery:before {
+  content: "\e712";
+}
+
+.vicon-disaster_recovery2:before {
+  content: "\e713";
+}
+
+.vicon-ge_authorization2:before {
+  content: "\e70f";
+}
+
+.vicon-ge_authorization:before {
+  content: "\e710";
+}
+
+.vicon-a-lujing8232:before {
+  content: "\e620";
+}
+
+.vicon-a-lianhe1:before {
+  content: "\e621";
+}
+
+.vicon-ge_unlock:before {
+  content: "\e70d";
+}
+
+.vicon-ge_lock:before {
+  content: "\e70e";
+}
+
+.vicon-ge_cutback:before {
+  content: "\e70c";
+}
+
+.vicon-ge_stop_over:before {
+  content: "\e70b";
+}
+
+.vicon-ge_migration:before {
+  content: "\e70a";
+}
+
+.vicon-ge_shutdown:before {
+  content: "\e709";
+}
+
+.vicon-ge_website:before {
+  content: "\e707";
+}
+
+.vicon-ge_copyrighted:before {
+  content: "\e708";
+}
+
+.vicon-ge_mailbox:before {
+  content: "\e703";
+}
+
+.vicon-ge_product:before {
+  content: "\e704";
+}
+
+.vicon-ge_phone:before {
+  content: "\e705";
+}
+
+.vicon-ge_copyright:before {
+  content: "\e706";
+}
+
+.vicon-ge_volume_information:before {
+  content: "\e702";
+}
+
+.vicon-ge_data_flow:before {
+  content: "\e700";
+}
+
+.vicon-ge_task_flow:before {
+  content: "\e701";
+}
+
+.vicon-ge_calendar:before {
+  content: "\e6ff";
+}
+
+.vicon-ge_tag_point:before {
+  content: "\e6fe";
+}
+
+.vicon-ge_basic_information:before {
+  content: "\e6fd";
+}
+
+.vicon-ge_folder:before {
+  content: "\e6fc";
+}
+
+.vicon-module_copy:before {
+  content: "\e61a";
+}
+
+.vicon-module_db:before {
+  content: "\e61b";
+}
+
+.vicon-module_vol-cdp:before {
+  content: "\e61c";
+}
+
+.vicon-module_vm:before {
+  content: "\e61d";
+}
+
+.vicon-module_file:before {
+  content: "\e61e";
+}
+
+.vicon-module_nas:before {
+  content: "\e61f";
+}
+
+.vicon-module_os-copy:before {
+  content: "\e6f9";
+}
+
+.vicon-download:before {
+  content: "\e618";
+}
+
+.vicon-ge_refresh:before {
+  content: "\e6f5";
+}
+
+.vicon-ge_differentia_backup:before {
+  content: "\e6f6";
+}
+
+.vicon-ge_sign:before {
+  content: "\e6f7";
+}
+
+.vicon-ge_configuration:before {
+  content: "\e6f8";
+}
+
+.vicon-ge_suspend-copy:before {
+  content: "\e711";
+}
+
+.vicon-ge_add_task:before {
+  content: "\e6fa";
+}
+
+.vicon-ge_play:before {
+  content: "\e6f0";
+}
+
+.vicon-ge_modify:before {
+  content: "\e6f1";
+}
+
+.vicon-ge_suspend:before {
+  content: "\e6f2";
+}
+
+.vicon-ge_log:before {
+  content: "\e6f3";
+}
+
+.vicon-ge_increment:before {
+  content: "\e6f4";
+}
+
+.vicon-ge_running_log:before {
+  content: "\e6ee";
+}
+
+.vicon-pt_setting_user:before {
+  content: "\e6ed";
+}
+
+.vicon-ge_filter:before {
+  content: "\e6ec";
+}
+
+.vicon-a-lock:before {
+  content: "\e614";
+}
+
+.vicon-a-email:before {
+  content: "\e616";
+}
+
+.vicon-a-user:before {
+  content: "\e617";
+}
+
+.vicon-ge_delete:before {
+  content: "\e6ea";
+}
+
+.vicon-ge_download:before {
+  content: "\e6eb";
+}
+
+.vicon-vm_time_point:before {
+  content: "\e6e9";
+}
+
+.vicon-vm_vmtemplate:before {
+  content: "\e6e8";
+}
+
+.vicon-vm_vmpostback:before {
+  content: "\e6e6";
+}
+
+.vicon-vm_hostvm:before {
+  content: "\e6e7";
+}
+
+.vicon-pt_setting_ip_address:before {
+  content: "\e6e3";
+}
+
+.vicon-pt_setting_teamviewer:before {
+  content: "\e6e4";
+}
+
+.vicon-pt_setting_netcard:before {
+  content: "\e6e5";
+}
+
+.vicon-ge_monitoring_application:before {
+  content: "\e6da";
+}
+
+.vicon-ge_time_point:before {
+  content: "\e6db";
+}
+
+.vicon-ge_roll:before {
+  content: "\e6dc";
+}
+
+.vicon-ge_backup_client:before {
+  content: "\e6dd";
+}
+
+.vicon-ge_backup_database:before {
+  content: "\e6de";
+}
+
+.vicon-ge_backup_host:before {
+  content: "\e6df";
+}
+
+.vicon-ge_datacopy_tasks:before {
+  content: "\e6e0";
+}
+
+.vicon-ge_backup_file:before {
+  content: "\e6e1";
+}
+
+.vicon-ge_database_tasks:before {
+  content: "\e6e2";
+}
+
+.vicon-pt_system_alarm_rule:before {
+  content: "\e6d8";
+}
+
+.vicon-pt_system_information:before {
+  content: "\e6d9";
+}
+
+.vicon-pt_setting_email_notification:before {
+  content: "\e6d0";
+}
+
+.vicon-pt_setting_short_note:before {
+  content: "\e6d1";
+}
+
+.vicon-pt_setting_package:before {
+  content: "\e6d2";
+}
+
+.vicon-pt_setting_dns:before {
+  content: "\e6d3";
+}
+
+.vicon-pt_setting_update:before {
+  content: "\e6d4";
+}
+
+.vicon-pt_setting_service_network:before {
+  content: "\e6d5";
+}
+
+.vicon-pt_setting_service_management:before {
+  content: "\e6d6";
+}
+
+.vicon-pt_setting_history:before {
+  content: "\e6d7";
+}
+
+.vicon-client_groups:before {
+  content: "\e6cf";
+}
+
+.vicon-pt_log_system_operation_logs:before {
+  content: "\e6cc";
+}
+
+.vicon-pt_report_vm_report:before {
+  content: "\e6cd";
+}
+
+.vicon-pt_report_shortage_report:before {
+  content: "\e6ce";
+}
+
+.vicon-pt_alarm_system_alarm:before {
+  content: "\e6c8";
+}
+
+.vicon-pt_log_task_operation_logs:before {
+  content: "\e6cb";
+}
+
+.vicon-pt_alarm_task_alarms:before {
+  content: "\e6c7";
+}
+
+.vicon-pt_job_current_task:before {
+  content: "\e6c5";
+}
+
+.vicon-pt_job_historical_task:before {
+  content: "\e6c6";
+}
+
+.vicon-system:before {
+  content: "\e696";
+}
+
+.vicon-archive_add:before {
+  content: "\e69e";
+}
+
+.vicon-vol_cdp_takeover:before {
+  content: "\e6a6";
+}
+
+.vicon-add_verification_job:before {
+  content: "\e6b6";
+}
+
+.vicon-vmdata:before {
+  content: "\e6c9";
+}
+
+.vicon-archive_back:before {
+  content: "\e6ca";
+}
+
+.vicon-os_protect:before {
+  content: "\e6c4";
+}
+
+.vicon-homepage:before {
+  content: "\e690";
+}
+
+.vicon-alarm:before {
+  content: "\e691";
+}
+
+.vicon-report:before {
+  content: "\e692";
+}
+
+.vicon-task:before {
+  content: "\e693";
+}
+
+.vicon-vmprotect:before {
+  content: "\e694";
+}
+
+.vicon-monitor:before {
+  content: "\e695";
+}
+
+.vicon-backup:before {
+  content: "\e697";
+}
+
+.vicon-recover:before {
+  content: "\e698";
+}
+
+.vicon-vm_overview:before {
+  content: "\e699";
+}
+
+.vicon-vminstantrecover:before {
+  content: "\e69a";
+}
+
+.vicon-data_archive:before {
+  content: "\e69b";
+}
+
+.vicon-appliance_manager:before {
+  content: "\e69c";
+}
+
+.vicon-storage_lanfree:before {
+  content: "\e69d";
+}
+
+.vicon-vmcopy:before {
+  content: "\e69f";
+}
+
+.vicon-cloud_platform:before {
+  content: "\e6a0";
+}
+
+.vicon-vmdatacopy:before {
+  content: "\e6a1";
+}
+
+.vicon-vmprotect_infrastructure:before {
+  content: "\e6a2";
+}
+
+.vicon-log:before {
+  content: "\e6a3";
+}
+
+.vicon-vcenter_manager:before {
+  content: "\e6a4";
+}
+
+.vicon-host_protect:before {
+  content: "\e6a5";
+}
+
+.vicon-vmcopyback:before {
+  content: "\e6a7";
+}
+
+.vicon-vmrecovera:before {
+  content: "\e6a8";
+}
+
+.vicon-db_protect:before {
+  content: "\e6a9";
+}
+
+.vicon-dbprotect:before {
+  content: "\e6aa";
+}
+
+.vicon-resmanagement:before {
+  content: "\e6ab";
+}
+
+.vicon-nas_protect:before {
+  content: "\e6ac";
+}
+
+.vicon-dbhost:before {
+  content: "\e6ad";
+}
+
+.vicon-filecdpbackup:before {
+  content: "\e6ae";
+}
+
+.vicon-dbcdpbackup:before {
+  content: "\e6af";
+}
+
+.vicon-billing_manager:before {
+  content: "\e6b0";
+}
+
+.vicon-filecdpdata:before {
+  content: "\e6b1";
+}
+
+.vicon-data_verification:before {
+  content: "\e6b2";
+}
+
+.vicon-virtual_lab_manager:before {
+  content: "\e6b3";
+}
+
+.vicon-client:before {
+  content: "\e6b4";
+}
+
+.vicon-storage_manager:before {
+  content: "\e6b5";
+}
+
+.vicon-nasmanager:before {
+  content: "\e6b7";
+}
+
+.vicon-tenant:before {
+  content: "\e6b8";
+}
+
+.vicon-node_manager:before {
+  content: "\e6b9";
+}
+
+.vicon-fileprotect:before {
+  content: "\e6ba";
+}
+
+.vicon-resource_group:before {
+  content: "\e6bb";
+}
+
+.vicon-sysmanagement:before {
+  content: "\e6bc";
+}
+
+.vicon-safety:before {
+  content: "\e6bd";
+}
+
+.vicon-organization_manager:before {
+  content: "\e6be";
+}
+
+.vicon-dbdataRecovery:before {
+  content: "\e6bf";
+}
+
+.vicon-setting_manager:before {
+  content: "\e6c0";
+}
+
+.vicon-authorization_module:before {
+  content: "\e6c1";
+}
+
+.vicon-global_strategy:before {
+  content: "\e6c2";
+}
+
+.vicon-vol_cdp_protect:before {
+  content: "\e6c3";
+}
+
+.vicon-ge_vm:before {
+  content: "\e6fb";
+}
+

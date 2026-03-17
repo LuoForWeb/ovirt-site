@@ -1,0 +1,21 @@
+.storage-tree,
+.node-tree,
+.central-pool-node-tree,
+.network-tree,
+.agent-tree {
+    border: 1px solid #f0f0f0;
+    overflow: auto;
+    border-radius: 2px !important;
+}
+
+.network-tree {
+    margin-top: 16px;
+}
+
+.storage-tree span.button[treenode_ico],
+.node-tree span.button[treenode_ico],
+.central-pool-node-tree span.button[treenode_ico],
+.network-tree span.button[treenode_ico],
+.agent-tree span.button[treenode_ico] {
+    vertical-align: bottom !important;
+}

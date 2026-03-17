@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+body {
+  font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+.page-title {
+  font-family: "微软雅黑","Open Sans", sans-serif !important;
+  font-size: 20px !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "微软雅黑","Open Sans", sans-serif !important;
+}
+
+.page-header.navbar .hor-menu .navbar-nav > li.mega-menu-dropdown > .dropdown-menu .mega-menu-content .mega-menu-submenu li > a {
+    font-family: "微软雅黑","Open Sans", sans-serif !important;
+	font-size: 12px !important;
+}
+
+.page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a {
+    font-family: "微软雅黑","Open Sans", sans-serif !important;
+}
+/* 2022-11-2 start */
+.width120_cn{width:120px !important;}
+
+.mt5_cn{
+  margin-top:5px;
+}
+/* 2022-11-2 end */
+
+/* 2022-11-16 start*/
+.screen-taskline_cn{
+	width:7.06rem;
+}
+.screen-node-title_cn{
+  margin-right: 1rem;
+}
+.system-node-text_cn{
+  width: 14%;
+}
+.system-text_cn{
+  width: 14%;
+}
+
+/* 2022-11-16 end*/
+
+/* 2022-12-19 start*/
+.vmbackdata-padding_cn{
+	padding-right: 20px;
+}
+.vmcopy-margintop_cn{
+  margin-top: 93px;
+}
+/* 2022-12-19 end*/
+
+/* 2023-9-19 start*/
+.buttonAction .login-btn-font_cn{
+	font-size: 16px !important;
+}
+/* 2023-9-19 end*/

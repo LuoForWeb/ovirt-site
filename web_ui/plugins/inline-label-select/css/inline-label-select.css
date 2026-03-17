@@ -1,0 +1,127 @@
+/* Custom Select with Inline Label Component */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.inline-label-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #DBE0E5;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.inline-label-select.disabled {
+    color: #6C757D;
+    cursor: not-allowed;
+    background-color: #F6F7F9;
+    border: 1px solid #F1F3F5;
+}
+
+.inline-label-select:not(.disabled):hover {
+    border-color: #CCCCCC;
+}
+
+.inline-label-select .inline-label {
+    color: #575F6D;
+    margin-right: 8px;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.inline-label-select .selected-value {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 1em;
+    color: #2D3748;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+}
+
+.inline-label-select.disabled .selected-value {
+    color: #CFD1D5;
+    cursor: not-allowed;
+}
+
+.inline-label-select .vicon-a-Upshang {
+    transition: transform 0.2s ease;
+    font-style: normal;
+    user-select: none;
+    color: #CCCCCC;
+}
+
+/* State: Open */
+
+.custom-select-container.open .inline-label-select .vicon-a-Upshang {
+    transform: rotate(180deg);
+}
+
+.custom-select-container .options-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    z-index: 1001;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px 0 rgb(4 13 45 / 10%);
+}
+
+.custom-select-container.open .options-list {
+    display: block;
+}
+
+.options-list li {
+    padding: 6px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.options-list li:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.options-list li:not(.selected):hover {
+    color: #1EB986;
+    background-color: #E9F8F3;
+    
+}
+
+.options-list li.selected {
+    background-color: #1EB986;
+    color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 11'%3e%3cpath fill='%23FFFFFF' d='M4.89557 6.49823L2.79487 4.26513C2.26967 3.70683 1.38251 3.70683 0.857309 4.26513C0.375593 4.77721 0.375593 5.57574 0.857309 6.08781L4.74989 10.2257C5.14476 10.6455 5.81176 10.6455 6.20663 10.2257L13.1427 2.85252C13.6244 2.34044 13.6244 1.54191 13.1427 1.02984C12.6175 0.471537 11.7303 0.471536 11.2051 1.02984L6.06096 6.49823C5.74506 6.83403 5.21146 6.83403 4.89557 6.49823Z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center right 1.25rem;
+    background-size: 0.8rem;
+}
+
+.options-list li[disabled] {
+    color: #D7D9DB;
+    cursor: not-allowed;
+    background-color: #F4F4F5;
+}
+
+.options-list li[disabled]:hover {
+    background-color: #F4F4F5;
+    color: #D7D9DB;
+}
