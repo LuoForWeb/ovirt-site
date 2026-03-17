@@ -1,0 +1,23 @@
+.backup-set-time-range-change {
+    width: 364px;
+    height: 34px;
+    background: #FFFFFF;
+    border-radius: 2px 2px 2px 2px;
+    z-index: 9999;
+    position: relative;
+}
+.backup-set-time-range-lable {
+    margin: 5px 20px 0 0 ;
+}
+.customize-the-time-frame {
+    margin: 5px 0 0 95px;
+}
+.network-config-component div.radio {
+    min-height: 18px !important;
+    margin: 0;
+}
+
+.network-config-component span.radio-label {
+    position: relative;
+    top: 1px;
+}

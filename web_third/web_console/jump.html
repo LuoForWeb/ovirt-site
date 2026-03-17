@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jump Page</title>
+</head>
+<body>
+<h1>Loading...</h1>
+<script>
+    // 获取当前页面的完整URL
+    const currentUrl = new URL(window.location.href);
+
+    // 解析 'url' 参数
+    const targetUrl = currentUrl.searchParams.get('url');
+
+    if (targetUrl) {
+        // 如果 'url' 参数存在，则进行解码并跳转
+        const decodedUrl = decodeURIComponent(targetUrl);
+
+        // 安全检查：验证目标URL是否合法（例如，只允许特定域）
+        // 注意：这里需要根据实际情况调整安全检查逻辑
+        if (isValidUrl(decodedUrl)) {
+            window.location.href = decodedUrl;
+        } else {
+            console.error('Invalid or unsafe URL:', decodedUrl);
+            alert('Invalid or unsafe URL:' + decodedUrl);
+        }
+    } else {
+        console.error('Missing required "url" parameter');
+        alert('Missing required "url" parameter');
+    }
+
+    // 简单的安全检查函数示例
+    function isValidUrl(urlString) {
+        try {
+            const url = new URL(urlString);
+            // 这里可以根据业务需求添加更严格的验证规则
+            // 比如限制域名、协议等
+            return url.protocol === "https:"
+        } catch (_) {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

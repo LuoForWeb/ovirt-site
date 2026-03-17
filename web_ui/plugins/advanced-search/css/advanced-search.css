@@ -1,0 +1,105 @@
+/* BEGIN ADVANCED SEARCH DROPDOWN */
+
+.advanced-search-dropdown-menu {
+    position: absolute;
+    width: 274px;
+    inset: 32px auto auto 0 !important;
+    border-radius: 2px !important;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 30px 0 rgba(0,0,0,.08);
+    z-index: 10000;
+    animation: 0.3s ease 0s 1 normal none running advanced-search-dropdown-animation-fade-in, 0.3s ease 0s 1 normal none running advanced-search-dropdown-animation-move-up;
+}
+
+.advanced-search-dropdown-menu .menu-header {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #F1F3F5;
+}
+
+.advanced-search-dropdown-menu .menu-header .menu-header__title {
+    font-size: 14px;
+}
+
+.advanced-search-dropdown-menu .menu-header .menu-header__btn {
+    color: #666666;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.advanced-search-dropdown-menu .menu-header .menu-header__btn:hover {
+    color: #1EB986;
+}
+
+.advanced-search-dropdown-menu .menu-content {
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.advanced-search-dropdown-menu .menu-content .menu-content__item {
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: #F0F0F0;
+    border-radius: 2px !important;
+}
+
+.advanced-search-dropdown-menu .menu-content .menu-content__item:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.menu-content .menu-content__item .menu-content__item__left {
+    width: calc(100% - 20px);
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.menu-content .menu-content__item .menu-content__item__clear {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-content .menu-content__item .menu-content__item__clear i {
+    font-size: 16px;
+    color: #666666;
+    transition: color 0.2s ease;
+}
+
+.menu-content .menu-content__item .menu-content__item__clear i:hover {
+    color: #f1416c;
+}
+
+@keyframes advanced-search-dropdown-animation-fade-in {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes advanced-search-dropdown-animation-move-up {
+
+    0% {
+        margin-top: 12px;
+    }
+
+    100% {
+        margin-top: 0;
+    }
+}
+
+/* END ADVANCED SEARCH DROPDOWN */

@@ -1,0 +1,707 @@
+.page-header.navbar{
+    background-color: #28A7EF;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu, .page-sidebar .page-sidebar-menu{
+    background-color: #FFF;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a, .page-sidebar .page-sidebar-menu > li > a{
+    border-top:none;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar .page-sidebar-menu > li.active.open > a{
+    background-color: #28A7EF;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a, .page-sidebar .page-sidebar-menu > li:hover > a, .page-sidebar .page-sidebar-menu > li.open > a{
+    background-color: #D2EBFF;
+    color: #6591AA
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a, .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a, .page-sidebar .page-sidebar-menu .sub-menu > li.open > a, .page-sidebar .page-sidebar-menu .sub-menu > li.active > a{
+    background: #D2EBFF !important;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a, .page-sidebar .page-sidebar-menu .sub-menu > li > a{
+    color: #6591AA ;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a, .page-sidebar .page-sidebar-menu > li > a{
+    color: #6591AA ;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a > i, .page-sidebar .page-sidebar-menu > li:hover > a > i, .page-sidebar .page-sidebar-menu > li.open > a > i{
+    color: #6591AA
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle > i{
+    color: #E0EAF8;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover, .page-sidebar .page-sidebar-menu > li.active > a:hover, .page-sidebar .page-sidebar-menu > li.active.open > a:hover{
+    background-color: #28A7EF;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover, .page-sidebar{
+    background-color: #FFF;
+}
+.green-turquoise.btn:active, .green-turquoise.btn.active{
+    background-color: #28A7EF !important;
+}
+.green-turquoise.btn:active:hover, .green-turquoise.btn.active:hover{
+    background-color: #63AAF4 !important;
+}
+.green-turquoise.btn{
+    background-color: #28A7EF;
+}
+.green-turquoise.btn:hover, .green-turquoise.btn:focus, .green-turquoise.btn:active, .green-turquoise.btn.active{
+    background-color: #63AAF4;
+}
+.green-haze.btn{
+    background-color: #28A7EF;
+}
+.green-haze.btn:hover{
+    background-color: #63AAF4;
+}
+.green-haze.btn:focus{
+    background-color: #28A7EF;
+}
+.green-haze.btn:active,
+.green-haze.btn.active {
+    background-color: #28A7EF !important;
+}
+.btn-success{
+    background-color: #28A7EF;
+}
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover{
+    background-color: #63AAF4;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active{
+    background-color: #63AAF4;
+}
+.src-wrap .src-wrap__title span,.src-wrap .src-wrap__title i{
+    color: #28A7EF;
+}
+.addTitle span{
+    color: #28A7EF;
+}
+.alert-info{
+    background-color: #E4F3FF;
+    border-color: #AED6F6;
+}
+a{
+    color: #28A7EF;
+}
+a:hover{
+    color: #63AAF4;
+}
+.addTitle a, .addTitle a:hover{
+    color: #63AAF4 !important;
+}
+.portlet > .portlet-title > .nav-tabs > li.active > a{
+    color: #28A7EF;
+    border-color: #28A7EF !important;
+}
+.portlet > .portlet-title > .nav-tabs > li:hover > a{
+    border-color: #63AAF4;
+}
+.adv_btn{
+    background: #28A7EF;
+}
+.adv_btn:hover{
+    background: #63AAF4;
+}
+.btn-primary{
+    background-color: #28A7EF !important;
+}
+.btn-primary:hover{
+    background-color:#63AAF4 !important;
+}
+.btn-primary:active{
+    background-color: #28A7EF !important;
+}
+.font-green{
+    color: #28A7EF;
+}
+.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover{
+    background: #28A7EF !important;
+    border-color:#28A7EF !important;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover{
+    background-color: #28A7EF !important;
+}
+e.daterangepickr td.active, .daterangepicker td.active:hover{
+    background-color: #28A7EF !important;
+}
+.daterangepicker td.in-range{
+    background-color: #63AAF4 !important;
+}
+.icheckbox_square-blue, .iradio_square-blue{
+    background-image: url("/img/themeSkin/blueSkin/vinblue_blue.svg") !important;
+}
+i.vicon-tishi{
+    color: #28A7EF;
+}
+.tabbable-custom > .nav-tabs > li.active > a{
+    color: #28A7EF !important;
+}
+.tabbable-custom > .nav-tabs > li.active{
+    border-top-color:#28A7EF !important;
+}
+.tabbable-custom>.nav-tabs>li.active>a>i {
+    color: #28A7EF !important;
+}
+.tabbable-custom>.nav-tabs>li.active>a:hover {
+    color: #63AAF4 !important;
+}
+.font-green-seagreen{
+    color: #28A7EF !important;
+}
+.accordion .panel .panel-title .accordion-toggle.accordion-toggle-styled .font-green-seagreen:hover{
+    color: #63AAF4 !important;
+}
+a:hover .font-green-seagreen {
+    color: #28A7EF !important;
+}
+.bootstrap-switch-on{
+    background-color: #28A7EF !important;
+    border-color: #28A7EF !important;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary{
+    background: #28A7EF !important;
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label{
+    border-color: #28A7EF !important;
+}
+.tabs-left.nav-tabs > li.active > a{
+    background-color: #28A7EF;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color:#63AAF4;
+}
+.form-wizard .steps>li.active>a.step .number{
+    background-color: rgba(40, 167, 239, 0.10) !important;
+}
+.form-wizard .steps>li.done>a.step .number{
+    background-color: #28A7EF !important;
+}
+.form-wizard .steps > li.done > a.step .desc{
+    color: #28A7EF !important;
+}
+.form-wizard .steps > li.done > a.step .desc > i{
+    color: #28A7EF !important;
+}
+.has-success .form-control{
+    border-color: #63AAF4;
+}
+.alert-link{
+    color: #28A7EF !important;
+}
+.tag-title a:hover h3{
+    color: #28A7EF;
+}
+.tag-title a:hover i{
+    color: #28A7EF;
+}
+.tag-title a:hover{
+    border-bottom-color:#28A7EF;
+}
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li.active > a{
+    color: #28A7EF;
+    border-bottom-color: #28A7EF;
+}
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li> a:hover{
+    border-bottom-color: #63AAF4;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler, .page-sidebar .sidebar-toggler{
+    background: url(/img/themeSkin/sidebar_blue.jpg);
+}
+.filter-active{
+    background-color: rgba(15,191,152,5%) !important;
+}
+.filter-hover{
+
+    background-color: rgba(15,191,152,5%) !important;
+}
+.btn-title i{
+    color: #28A7EF;
+}
+.btn-table:hover{
+    background-color: #63AAF4 !important;
+}
+.btn-whitespace:hover{
+    background-color: rgba(15, 191, 152, 0.05)
+}
+.vin_toolbar .columns .keep-open>button{
+    background-color: #28A7EF;
+}
+.vin_toolbar .columns .keep-open>button:hover, .vin_toolbar .columns .keep-open>button:active{
+    background-color: #63AAF4;
+}
+.pagination .active>a{
+    background: #28A7EF !important;
+}
+.vin_toolbar .columns .export button:hover{
+    background: #63AAF4;
+}
+.vin_toolbar .columns .export button{
+    background: #28A7EF;
+}
+.icon-auto-height1{
+    content: url(/img/themeSkin/Auto-height-one-blue.svg);
+}
+.icon-columns{
+    content: url(/img/themeSkin/List-checkbox-blue.svg);
+}
+.checkbox-area input[type=checkbox]:checked, #filterDiv input[type=checkbox]:checked, .vin_toolbar input[type=checkbox]:checked, .bootstrap-table .fixed-table-container .table .bs-checkbox label input[type="checkbox"]:checked{
+    background-image: url(/img/themeSkin/blueSkin/Checked-blue.svg);
+}
+.icon-start{
+    content: url(/img/themeSkin/Play-blue.svg);
+}
+.icon-delete{
+    content: url(/img/themeSkin/Delete-blue.svg);
+}
+.bootstrap-table-half-checked{
+    background-image: url(/img/themeSkin/selectAll-blue.svg);
+}
+.addIt-list .reco-search-group .input-group-addon{
+    background-color: #28A7EF !important;
+}
+.open .btn-success.dropdown-toggle{
+    background-color: #28A7EF;
+    border-color: #28A7EF;
+
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a:hover{
+    color: #E0EAF8;
+    background: #51BCF9 !important;
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a:hover{
+    color: #E0EAF8;
+    background: #51BCF9 !important;
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a{
+    color: #E0EAF8;
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a > i{
+    color: #E0EAF8;
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a:hover > i{
+    color: #E0EAF8 !important;
+}
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li .dropdown-menu li:hover > a {
+    background: #D2EBFF;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > .username{
+    color: #E0EAF8;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle {
+    background-color: #51BCF9;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle > i {
+    color: #E0EAF8;
+}
+.page-header.navbar .hor-menu .navbar-nav > li .dropdown-submenu > a:after{
+    color: #000;
+}
+.page-header.navbar .hor-menu .navbar-nav > li.active > a > i, .page-header.navbar .hor-menu .navbar-nav > li.active > a > i, .page-header.navbar .hor-menu .navbar-nav > li.current > a > i, .page-header.navbar .hor-menu .navbar-nav > li.current > a > i{
+    color: #E0EAF8 !important;
+}
+
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li > a:hover{
+    color: #E0EAF8 !important;
+    background: #51BCF9 !important;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover {
+    background-color: #51BCF9;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover > i {
+    color: #E0EAF8;
+}
+
+/*以下为新增的css样式*/
+/*表格上方文字前图标颜色*/
+.btn.table-toolbar-btn i{
+    color: #28A7EF;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search{
+    background-color: #28A7EF;
+    color: #FFFFFF;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search:hover{
+    background-color: #51BCF9 !important;
+}
+.clearSearch{
+    color: #28A7EF;
+}
+.searchContent span:hover em{
+    background: #28A7EF;
+}
+/*表格上方高级搜索弹窗的提交按钮颜色*/
+.bs_btn_success, #filterSubmit{
+    background: #28A7EF;
+}
+.bs_btn_success:hover,
+#filterSubmit:hover {
+    background-color: #28A7EF;
+}
+.page-spinner-bar > div, .block-spinner-bar > div{
+    background: #28A7EF;
+}
+/*表格上方导出按钮图标*/
+.icon-export{
+    content: url(/img/themeSkin/blueSkin/Share-three-write.svg);
+}
+/*表格上方时间筛选图标*/
+.icon-time{
+    content: url(/img/themeSkin/blueSkin/Plan_blue.svg);
+}
+/*表格上方下载图标*/
+.log_download{
+    content: url(/img/themeSkin/blueSkin/Down-load-blue.svg);
+}
+/*表格升序降序按钮颜色*/
+table.dataTable thead .sorting_desc {
+    background: url(/img/themeSkin/blueSkin/Sort-desc-blue.svg) no-repeat center right !important;
+}
+.bootstrap-table .fixed-table-container .table thead th .desc{
+    background-image: url(/img/themeSkin/blueSkin/Sort-desc-blue.svg);
+}
+table.dataTable thead .sorting_asc {
+    background: url(/img/themeSkin/blueSkin/Sort-asc-blue.svg) no-repeat center right !important;
+}
+.bootstrap-table .fixed-table-container .table thead th .asc{
+    background-image: url(/img/themeSkin/blueSkin/Sort-asc-blue.svg);
+}
+/*按钮指上去颜色*/
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+    background: #51BCF9;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search:hover{
+    background: #51BCF9;
+}
+/*表格上方搜索图标*/
+.customSearch:focus~div .icon-search,
+.vin_toolbar .search div:hover .icon-search{
+    content: url(/img/themeSkin/blueSkin/Search-blue.svg);
+}
+/*表格勾选按钮图标*/
+.table .checker span.checked input{
+    background-image: url(/img/themeSkin/blueSkin/Checked-blue.svg);
+}
+
+.form-control-static{
+    color: #28A7EF;
+}
+.bootstrap-table .table tbody tr td a{
+    color: #28A7EF;
+}
+.src-wrap .src-wrap__title{
+    color: #28A7EF;
+}
+/*exchange*/
+#exchangebackupcontent .viconfont-color {
+    color: #28A7EF;
+}
+.searchable-select-item.selected{
+    background: #28A7EF !important;
+}
+.exch-green:hover, .exch-green:focus, .exch-green:visited, .exch-green:active{
+    background-color: #28A7EF;
+    color: #FFFFFF;
+}
+.exch-green{
+    background-color: #28A7EF;
+    color: #FFFFFF;
+}
+
+/*设置标题颜色*/
+.settings-title>a>i{
+    color: #28A7EF !important;
+}
+.settings-title a {
+    color: #28A7EF !important;
+}
+/*label 及图标颜色*/
+.has-success .help-block, .has-success .help-inline, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline{
+    color: #28A7EF;
+}
+/* 高级搜索后条件显示的X */
+.has-success .input-icon > i{
+    color: #28A7EF;
+}
+.searchContent em{
+    color: #28A7EF;
+}
+.searchContent span:hover{
+    border: 1px solid #28A7EF;
+}
+a:focus, a:hover{
+    color: #28A7EF;
+}
+.colorgreen{
+    color: #28A7EF;
+}
+.c0FBF98{
+    color: #28A7EF !important;
+}
+.addTitle{
+    color: #28A7EF;
+}
+#delete-strategy{
+    background-color:#28A7EF !important;
+}
+#add-strategy>i{
+    vertical-align:middle !important;
+}
+/*表格上方删除按钮颜色*/
+.icon-white-delete:hover{
+    background-color: #63AAF4 !important;
+}
+.icon-white-delete:focus{
+    background-color: #51BCF9 !important;
+}
+#userMangerDiv .dropdown-menu li a:hover{
+    color: #28A7EF;
+    background-color: #F6F8FF;
+}
+.page-sidebar .page-sidebar-menu > li.open > a  > i,
+.page-sidebar .page-sidebar-menu > li:hover > a  > i{
+    color: #28A7EF;
+}
+#addVerify .copy:hover{
+    background-color: #63AAF4;
+}
+#addVerify .copy{
+    background-color: #28A7EF;
+}
+/*设置树节点勾选时前的勾选框颜色*/
+.ztree li span.button{
+    background-image: url(/img/themeSkin/blueSkin/metro-blue.svg);
+}
+.ssh_control .caption_title, .caption_title i{
+    color: #28A7EF;
+}
+.wrap-item-num, .wrap-item-num-small{
+    color: #28A7EF;
+}
+.label-success{
+    color: #28A7EF;
+    background: #ECF1FF;
+}
+.settings-title span{
+    color: #28A7EF;
+}
+
+/*授权模块*/
+/* 下载指纹文件按钮颜色 */
+#licensediv #download{
+    background-color:#28A7EF;
+}
+/*模块图标颜色需要改变*/
+#masterserverimg{
+    content: url(/img/themeSkin/blueSkin/masterserver-blue.png);
+}
+#databaseimg{
+    content: url(/img/themeSkin/blueSkin/database-blue.png);
+}
+#fpprotectimg{
+    content: url(/img/themeSkin/blueSkin/fpprotect-blue.png);
+}
+#v2vimg{
+    content: url(/img/themeSkin/blueSkin/v2v-blue.png);
+}
+#hostimg{
+    content: url(/img/themeSkin/blueSkin/host-blue.png);
+}
+#databasecdpimg{
+    content: url(/img/themeSkin/blueSkin/dbcdp-blue.png);
+}
+#fscdpimg{
+    content: url(/img/themeSkin/blueSkin/filecdp-blue.png);
+}
+#osprotectimg{
+    content: url(/img/themeSkin/blueSkin/os-blue.png);
+}
+#nasprotectimg{
+    content: url(/img/themeSkin/blueSkin/nas-blue.png);
+}
+#volcdpprotectimg{
+    content: url(/img/themeSkin/blueSkin/volcdp-blue.png);
+}
+#exchangeprotectimg{
+    content: url(/img/themeSkin/blueSkin/exchange-blue.png);
+}
+#vmprotectimg{
+    content: url(/img/themeSkin/blueSkin/vm-blue.png);
+}
+#hadoopprotectimg{
+    content: url(/img/themeSkin/blueSkin/hadoop-blue.png);
+}
+#obsprotectimg{
+    content: url(/img/themeSkin/blueSkin/obs-blue.png);
+}
+/*客户端管理授权部分图标*/
+.modulefilecls {
+    content: url(/img/themeSkin/blueSkin/modulefile-blue.svg);
+}
+.moduledbcls {
+    content: url(/img/themeSkin/blueSkin/moduledb-blue.svg);
+}
+.moduleoscls{
+    content: url(/img/themeSkin/blueSkin/moduleos-blue.svg);
+}
+.addVMList .feeds > li:hover{
+    border-color: #51BCF9;
+}
+/*!*左边滚动条*!*/
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background: rgba(40, 167, 239, 0.30);
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(40, 167, 239, 0.40);
+}
+.page-sidebar-menu::-webkit-scrollbar-thumb{
+    background: rgba(40, 167, 239, 0.30);
+}
+.page-sidebar-menu::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(40, 167, 239, 0.40);
+}
+.page-sidebar-menu::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+.label-success a{
+    color: #28A7EF;
+    background: #ECF1FF;
+}
+/*右上角时间显示*/
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-time {
+    width: 230px;
+    height: 26px;
+    margin-top: 10px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 50px !important;
+    display: block !important;
+    background-color: rgb(255,255,255,0.1);
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-time .spantitle{
+    color: #E0EAF8;
+    font-weight: 400;
+}
+#systemTime{
+    margin-left: 10px;
+    color: #E0EAF8;
+}
+.systemTimeTop{
+    margin-left: 10px;
+    color: #E0EAF8; 
+}
+
+.export .btn-title i{
+    color: #fff;
+}
+.vin_toolbar .columns .export button:hover, .vin_toolbar .columns .keep-open>button:active, .vin_toolbar .columns .keep-open>button:hover{
+    background-color: #28A7EF  !important;
+}
+
+
+.help_header{
+    background: #28A7EF;
+}
+.btn_operation_vicon a>i{
+    color: #28A7EF;
+}
+.btn_operation_vicon a:hover i{
+    background-color: rgba(15,191,152,5%) !important;
+}
+.add_hadoop_form .btn_operation_vicon a:hover i{
+    background-color: rgba(15,191,152,5%) !important;
+}
+.add_hadoop_form .btn_operation_vicon a>i{
+    color: #28A7EF;
+}
+.tag.tag-normal {
+    background: #ECF1FF;
+    color: #28A7EF;
+}
+.tag.tag-success {
+    background: #ECF1FF;
+    color: #28A7EF;
+}
+.tabledata-wrapper .tabledata-wrapper__head .tabledata-wrapper__head__taskname{
+    color: #28A7EF;
+}
+.btn-dropdown-operate{
+    background-color: #28A7EF;
+}
+.btn-dropdown-operate:hover{
+    background-color: #28A7EF;
+}
+.btn-dropdown-operate[aria-expanded=true]{
+    background-color: #28A7EF;
+}
+.dropdown-wrapper .dropdown-menu li .dropdown-menu__item:not(:disabled):hover{
+    background-color: rgba(15,191,152,5%) !important;
+    color: #28A7EF;
+}
+#vm_node_list .topHead .topPoint, #vm_machine_list .topHead .topPoint, #vm_network_list .topHead .topPoint{
+    background: #28A7EF !important;
+}
+/* 选中删除按钮样式 */
+.select-delete-btn{
+	background-color: #28A7EF !important;
+}
+#delete-vm_network{
+    background-color: #28A7EF !important;
+}
+#add-vm_network:hover{
+    background: #ECF1FF !important;
+    color: #28A7EF !important;
+}
+.item-icon-div::before{
+    color: #28A7EF;
+}
+.topPoint{
+    background: #28A7EF !important;
+    border-radius: 1px !important;
+}
+.active{
+    color: #28A7EF !important;
+}
+.daterangepicker  .active{
+    color: #FFF !important;
+}
+.addNewTask{
+    content: url(/img/themeSkin/blueSkin/Add-one-blue.svg);
+}
+.cancleColor{
+    background-color: #28A7EF !important;
+}
+.hadoopnode{
+	color: #28A7EF;
+}
+#social li i:hover{
+	color: #28A7EF;
+}
+#orchestrationContent .section-card {
+    background: #E4F3FF;
+}
+#orchestrationContent .card-index{
+    background: linear-gradient(180deg,#28A7EF 0%, rgba(112,139,215,0) 100%) !important;
+    background-clip: text !important;
+}
+#orchestrationContent .next-vector{
+    background: url(/img/themeSkin/blueSkin/orchestration_next-blue.svg);
+    background-repeat: no-repeat;
+    background-position:center;
+}
+#orchestrationContent .section-add-wrapper:hover{
+	border: 1px solid #28A7EF;
+}
+#orchestrationContent .section-add-wrapper:hover .add_button-text{
+	color: #28A7EF;
+}
+#orchestrationContent .section-add-wrapper:hover .add_button-icon{
+	color: #28A7EF;
+}
+#orchestrationDetails .active .vicon-tishi{
+	color: #28A7EF !important;
+}

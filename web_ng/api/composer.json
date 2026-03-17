@@ -1,0 +1,21 @@
+{
+    "name": "xphp/xphp",
+    "type": "project",
+    "description": "The xphp Framework.",
+    "keywords": ["framework", "xphp"],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "phpmailer/phpmailer": "6.9.2",
+        "phpseclib/phpseclib": "^3.0",
+        "ezyang/htmlpurifier": "4.17",
+        "ext-sockets": "*",
+        "tecnickcom/tcpdf": "^6.8",
+        "phpoffice/phpspreadsheet": "1.29",
+        "league/oauth2-client": "^2.8",
+        "phpoffice/phpword": "1.3"
+    }
+}

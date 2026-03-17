@@ -1,0 +1,126 @@
+/* BEGIN DROPDOWN MENU */
+
+.btn-dropdown-menu {
+    position: relative;
+    border: 0;
+    color: #393c4d;
+    border-radius: 4px !important;
+    border: 0;
+    background-color: #FFFFFF;
+}
+
+.btn-dropdown-menu:hover {
+    background-color: rgba(15,191,152,.05);
+}
+
+.btn-dropdown-menu i {
+    color: #0FBF98;
+}
+
+.open .btn-dropdown-menu {
+    background-color: rgba(15,191,152,.1);
+}
+
+.menu-wrapper {
+    inset: 40px auto auto 0 !important;
+    width: 200px;
+    margin: 0 !important;
+    padding: 12px 0 !important;
+    font-family: "Microsoft YaHei ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.open .menu-sub-dropdown.level1 {
+    display: flex;
+    padding: 0 !important;
+}
+
+.menu-sub-dropdown {
+    display: none;
+    min-width: 200px !important;
+    width: 200px;
+    flex-direction: column;
+    border-radius: 4px !important;
+}
+
+.menu-item {
+    position: relative;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666666;
+    transition: color .2s ease,background-color .2s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(15,191,152,.05);
+}
+
+.menu-item.level1:hover .menu-item-text.level1 {
+    color: #1EB986;
+}
+
+.menu-item.level1:hover i.level1 {
+    color: #1EB986;
+}
+
+.menu-item.level2:hover i.level2 {
+    color: #1EB986;
+}
+
+.menu-item.level2:hover .menu-item-text.level2 {
+    color: #1EB986;
+}
+
+.menu-item.level3:hover .menu-item-text.level3 {
+    color: #1EB986;
+}
+
+.menu-link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 12px;
+}
+
+.menu-item-href {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    color: #666666;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+@keyframes menu-sub-dropdown-animation-fade-in {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+    
+}
+
+@keyframes menu-sub-dropdown-animation-move-up {
+
+    0% {
+        margin-top: 12px;
+    }
+
+    100% {
+        margin-top: 0;
+    }
+}
+
+/* END DROPDOWN MENU */
