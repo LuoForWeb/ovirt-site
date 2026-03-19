@@ -1,6 +1,9 @@
 <?php
-/**
- * 报表
+/*
+ * @Author: ChengJiaFu
+ * @Date: 2026-03-12 10:57:38
+ * @Description: 报表配置
+ * @version: 1.0
  */
 
 return [
@@ -73,5 +76,31 @@ return [
         'LAST_WEEK' => 3, //最近一周
         'LAST_MONTH' => 4, //最近一月
         'RECENT_FORTEEN_DAYS' => 5, // 最近十四天
+    ],
+
+    // 通知内容类型
+    'NOTIFY_CONTENT_TYPE' => [
+        'OVERVIEW' => 1,
+        'TENDENCY' => 2,
+        'DETAIL' => 3,
+    ],
+
+    // 导出明细类型
+    'EXPORT_DETAIL_TYPE' => [
+        'ALL' => 1,
+        'CUSTOM' => 2,
+    ],
+
+    // 单任务对象类型
+    'SINGLE_TASK_OBJECT_TYPE' => [
+        'STORAGE_USAGE_TENDENCY' => 1, // 存储使用率趋势
+        'HISTORY_RUN_RECORD' => 2, // 历史运行记录
+    ],
+
+    // 导出附件格式
+    'ATTACHMENT_FORMATS_TYPE' => [
+        'EXCEL' => 1,
+        'WORD' => 2,
+        'PDF' => 3,
     ],
 ];

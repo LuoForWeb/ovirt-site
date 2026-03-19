@@ -124,7 +124,9 @@
             <div class="table-container">
                 <div class="table-toolbar-wrapper">
                     <!-- BEGIN LEFT TOOLBAR -->
-                    <div class="table-toolbar-wrapper__left"></div>
+                    <div class="table-toolbar-wrapper__left">
+                        <div id="tape_report_table_filter_wrapper" class="position-relative me-10"></div>
+                    </div>
                     <!-- END LEFT TOOLBAR -->
 
                     <!-- BEGIN RIGHT TOOLBAR -->

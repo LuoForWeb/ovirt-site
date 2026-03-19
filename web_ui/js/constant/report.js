@@ -41,7 +41,8 @@ const RUNNING_TIME_TYPE = {
 // 报表详情页路由配置
 const REPORT_DETAIL_ROUTE = {
     '1-1': './platform/monitor-center/report/html/storage-report-detail.php',
-    '1-2': './platform/monitor-center/report/html/tape-report-detail.php'
+    '1-2': './platform/monitor-center/report/html/tape-report-detail.php',
+    '1-3': './platform/monitor-center/report/html/node-report-detail.php'
 }
 
 // 存储报表多选项数组
@@ -131,6 +132,42 @@ const TAPE_REPORT_MULTIPLE_OPTIONS = [
         text: '备份集'
     },
 ];
+
+// 节点报表多选项数组
+const NODE_REPORT_MULTIPLE_OPTIONS = [
+    {
+        id: 'host_name',
+        text: '节点名'
+    },
+    {
+        id: 'node_type',
+        text: '节点类型'
+    },
+    {
+        id: 'node_function',
+        text: '节电功能'
+    },
+    {
+        id: 'node_pool_list',
+        text: '节点资源池'
+    },
+    {
+        id: 'node_resource_limit_flag',
+        text: '资源限制'
+    },
+    {
+        id: 'version',
+        text: '版本'
+    },
+    {
+        id: 'deploy_flag',
+        text: '部署状态'
+    },
+    {
+        id: 'status',
+        text: '节点状态'
+    },
+]
 
 // 模块类型级联复选框组数组
 const MODULE_CASCADER_GROUPS = [
@@ -338,4 +375,231 @@ const TAPE_LIST_TABLE_OPTIONS = {
             }
         }
     ]
+}
+
+// 表单中节点表格options
+const NODE_LIST_TABLE_OPTIONS = {
+    url: 'report/node_details',
+    searchPlaceholder: '按节点名搜索',
+    columns: [
+        {
+            checkbox: true,
+            sortable: false,
+            width: 1,
+            widthUnit: '%'
+        },
+        {
+            field: 'host_name',
+            title: '节点名',
+            sortable: true,
+        },
+        {
+            field: 'ip',
+            title: 'IP地址',
+            sortable: true
+        },
+        {
+            field: 'status',
+            title: '状态',
+            sortable: true,
+            formatter: function (value, row) {
+                /**
+                 * 1、如果节点处于未部署状态(即bd_module_server里面没有该节点任何记录)，那么显示--
+                 * 2、如果bd_node的status值为0，再判断如果该节点在线(在线判定为该节点在bd_module_server里面的所有记录都在线)，显示在线；否则显示异常，鼠标移上去显示离线的服务
+                 * 3、如果bd_node的status值为1，那么显示删除中，此时选择该节点删除时显示“当前节点正在删除中，请稍后重试”
+                 * 4、如果bd_node的status值为2，那么显示修改中，此时选择该节点删除时显示“当前节点正在修改中，请稍后重试”
+                 * 5、如果bd_node的status值为其他，那么显示为--
+                 */
+                if (!!!row.deploy_flag) {
+                    return '--';
+                }
+
+                let text = '';
+                let badgeClass = 'badge-secondary';
+                let des = '';
+
+                switch (parseInt(value)) {
+                    case NODE_OPERATE_STATUS_ENUM.UNKNOWN:
+                        badgeClass = 'badge-warning';
+                        text = '异常';
+                        des = row.offline_module_des;
+                        if (!!row.online_flag) {
+                            badgeClass = 'badge-success';
+                            text = '正常';
+                        }
+                        break;
+                    case NODE_OPERATE_STATUS_ENUM.MODIFYING:
+                        text = '修改中';
+                        break;
+                    case NODE_OPERATE_STATUS_ENUM.DELETING:
+                        badgeClass = 'badge-danger';
+                        text = '删除中';
+                        break;
+                    case NODE_OPERATE_STATUS_ENUM.UPGRADING:
+                        text = '升级中';
+                        break;
+                    case NODE_OPERATE_STATUS_ENUM.OFFLINE:
+                        badgeClass = 'badge-warning';
+                        text = '异常';
+                        des = '节点离线';
+                        break;
+                    default:
+                        return '--';
+                }
+
+                return `<span class="badge ${badgeClass}" data-bs-toogle="tooltip" title="${des}">${text}</span>`
+            }
+        }
+    ]
+}
+
+const WEEKS = [
+    {
+        id: 'checkbox_mon',
+        label: '星期一',
+        value: 1
+    },
+    {
+        id: 'checkbox_tue',
+        label: '星期二',
+        value: 2
+    },
+    {
+        id: 'checkbox_wed',
+        label: '星期三',
+        value: 3
+    },
+    {
+        id: 'checkbox_thu',
+        label: '星期四',
+        value: 4
+    },
+    {
+        id: 'checkbox_fri',
+        label: '星期五',
+        value: 5
+    },
+    {
+        id: 'checkbox_stu',
+        label: '星期六',
+        value: 6
+    },
+    {
+        id: 'checkbox_sun',
+        label: '星期日',
+        value: 7
+    }
+];
+
+const MONTHS = Array.from({ length: 31 }, (_, i) => ({
+    id: `checkbox_permonth_${i + 1}`,
+    label: `${i + 1}`,
+    value: i + 1
+}));
+
+// 通知内容类型数组
+const NOTIFY_CONTENT_TYPES = [
+    {
+        id: 'checkbox_notify_content_overview',
+        label: '数据概览',
+        value: 1
+    },
+    {
+        id: 'checkbox_notify_content_tendency',
+        label: '备份趋势',
+        value: 2
+    },
+    {
+        id: 'checkbox_notify_content_detail',
+        label: '数据明细',
+        value: 3
+    },
+];
+
+// 通知内容类型
+const NOTIFY_CONTENT = {
+    OVERVIEW: 1,
+    TENDENCY: 2,
+    DETAIL: 3
+};
+
+// 导出数据明细类型数组
+const EXPORT_DETAIL_RADIO_TYPES = [
+    {
+        id: 'radio_export_detail_all',
+        label: '全部',
+        value: 1
+    },
+    {
+        id: 'radio_export_detail_custom',
+        label: '自定义条数',
+        value: 2
+    },
+];
+
+// 导出数据明细类型
+const EXPORT_DETAIL_TYPE = {
+    ALL: 1,
+    CUSTOM: 2
+}
+
+// 导出历史记录类型数组
+const EXPORT_HISTORY_RECOEDS_RADIO_TYPES = [
+    {
+        id: 'radio_export_history_records_all',
+        label: '全部',
+        value: 1
+    },
+    {
+        id: 'radio_export_history_records_custom',
+        label: '自定义条数',
+        value: 2
+    },
+];
+
+// 附件格式类型
+const ATTACHMENT_FORMATS = [
+    {
+        id: 'checkbox_attachment_format_excel',
+        label: 'Excel',
+        value: 1
+    },
+    {
+        id: 'checkbox_attachment_format_word',
+        label: 'Word',
+        value: 2
+    },
+    {
+        id: 'checkbox_attachment_format_pdf',
+        label: 'PDF',
+        value: 3
+    }
+];
+
+// 单任务对象详情类型
+const SINGLE_TASK_OBJECT_TYPES = [
+    {
+        id: 'checkbox_attachment_storage_usage_tendency',
+        label: '存储占用历史趋势',
+        value: 1
+    },
+    {
+        id: 'checkbox_attachment_history_run_record',
+        label: '历史运行记录',
+        value: 2
+    },
+];
+
+// 单任务对象详情类型
+const SINGLE_TASK_OBJECT_TYPE = {
+    STORAGE_USAGE_TENDENCY: 1,
+    HISTORY_RUN_RECORD: 2
+};
+
+// 通知时间策略类型
+const NOTIFY_TIMESTRATEGY_TYPE = {
+    DAILY: 1,
+    WEEKLY: 2,
+    MONTHLY: 3,
+    YEARLY: 4
 }

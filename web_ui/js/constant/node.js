@@ -1,0 +1,10 @@
+
+// 节点操作状态枚举
+const NODE_OPERATE_STATUS_ENUM = {
+    UNKNOWN: 0,
+    DELETING: 1,
+    MODIFYING: 2,
+    UPGRADING: 3,
+    OFFLINE: 4,
+    UNREACHABLE: 5,
+};
