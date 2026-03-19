@@ -1,11 +1,11 @@
 # 忽略web目录下的assets文件夹
-/web/assets/
+/web_ui/assets/
 
 # 忽略web目录下的web_ng文件夹
-/web/web_ng
+/web_ui/web_ng
 
 # 忽略web目录下的api文件夹
-/web/api/
+/web_ui/api/
 
 .vscode
 .idea
