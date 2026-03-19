@@ -14,114 +14,90 @@ var TapeReportDetail = function () {
     let $reportDetailTable = $('#report_detail_table');
     let CURRENT_TIME_RANGE_TYPE = 4; // 默认查看近一月的趋势
     let TABLE_CUSTOM_FIELDS = []; // 表格定制数据
-    const STORAGE_REPORT_TABLE_FILTER_OPTIONS = [
-        {
-            label: '存储类型',
-            field: 'type',
-            value: [
-                {
-                    id: 'storage_disk',
-                    value: CONF.BD_STORAGE_TYPE.DISK,
-                    text: '本地磁盘',
-                },
-                {
-                    id: 'storage_lvm',
-                    value: CONF.BD_STORAGE_TYPE.LVM,
-                    text: '逻辑卷LVM',
-                },
-                {
-                    id: 'storage_partition',
-                    value: CONF.BD_STORAGE_TYPE.PARTITION,
-                    text: '本地分区',
-                },
-                {
-                    id: 'storage_fc',
-                    value: CONF.BD_STORAGE_TYPE.FC,
-                    text: 'Fibre Channel',
-                },
-                {
-                    id: 'storage_iscsi',
-                    value: CONF.BD_STORAGE_TYPE.ISCSI,
-                    text: 'iSCSI',
-                },
-                {
-                    id: 'storage_nfs',
-                    value: CONF.BD_STORAGE_TYPE.NFS,
-                    text: 'NFS',
-                },
-                {
-                    id: 'storage_cifs',
-                    value: CONF.BD_STORAGE_TYPE.CIFS,
-                    text: 'CIFS',
-                },
-                {
-                    id: 'storage_remote',
-                    value: CONF.BD_STORAGE_TYPE.REMOTE,
-                    text: '异地存储',
-                },
-                {
-                    id: 'storage_cloud',
-                    value: CONF.BD_STORAGE_TYPE.CLOUD,
-                    text: '云存储',
-                },
-                {
-                    id: 'storage_tape',
-                    value: CONF.BD_STORAGE_TYPE.TAPE,
-                    text: '磁带',
-                },
-                {
-                    id: 'storage_localdir',
-                    value: CONF.BD_STORAGE_TYPE.LOCALDIR,
-                    text: '本地目录',
-                },
-                {
-                    id: 'storage_huawei_cbr',
-                    value: CONF.BD_STORAGE_TYPE.HUAWEI_CBR,
-                    text: '华为CBR',
-                }
-            ]
-        },
+    const TAPE_REPORT_TABLE_FILTER_OPTIONS = [
         {
             label: '状态',
-            field: 'storageStatus',
+            field: 'tapeStatus',
             value: [
                 {
-                    id: 'storage_status_online',
-                    value: CONF.STORAGE_STATUS.ONLINE,
-                    text: '正常',
+                    id: 'tape_status_online',
+                    value: TAPE_STATUS.ONLINE,
+                    text: '在线',
                     tag: true,
                     type: 'success'
                 },
                 {
-                    id: 'storage_status_creating',
-                    value: CONF.STORAGE_STATUS.CREATING,
-                    text: '创建中',
-                    tag: true,
-                    type: 'primary'
-                },
-                {
-                    id: 'storage_status_offline',
-                    value: CONF.STORAGE_STATUS.OFFLINE,
+                    id: 'tape_status_offline',
+                    value: TAPE_STATUS.OFFLINE,
                     text: '离线',
                     tag: true,
                     type: 'secondary'
                 },
                 {
-                    id: 'storage_status_unmount',
-                    value: CONF.STORAGE_STATUS.UNMOUNT,
-                    text: '挂载',
+                    id: 'tape_status_moving',
+                    value: TAPE_STATUS.MOVING,
+                    text: '移动中',
                     tag: true,
-                    type: 'secondary'
+                    type: 'primary'
                 },
                 {
-                    id: 'storage_status_warning',
-                    value: CONF.STORAGE_STATUS.WARNING,
-                    text: '警告',
+                    id: 'tape_Status_reading',
+                    value: TAPE_STATUS.READING,
+                    text: '读取中',
                     tag: true,
-                    type: 'warning'
+                    type: 'primary'
                 },
+                {
+                    id: 'tape_status_writing',
+                    value: TAPE_STATUS.WRITTING,
+                    text: '写入中',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_retrievaling',
+                    value: TAPE_STATUS.RETRIEVALING,
+                    text: '检索中',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_waiting',
+                    value: TAPE_STATUS.WAITING,
+                    text: '等待中',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_ready',
+                    value: TAPE_STATUS.READY,
+                    text: '就绪',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_scanning',
+                    value: TAPE_STATUS.SCANNING,
+                    text: '扫描中',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_exporting',
+                    value: TAPE_STATUS.EXPORTING,
+                    text: '导出中',
+                    tag: true,
+                    type: 'primary'
+                },
+                {
+                    id: 'tape_status_importing',
+                    value: TAPE_STATUS.IMPORTING,
+                    text: '导入中',
+                    tag: true,
+                    type: 'primary'
+                }
             ]
-        },
+        }
     ]; // 存储报表数据明细表格过滤器选项数组
 
     // <----------------------------- BEGIN REPORT OVERVIEW LOGIC ------------------------------->
@@ -539,206 +515,6 @@ var TapeReportDetail = function () {
     // <----------------------------- END REPORT OVERVIEW LOGIC ------------------------------->
 
 
-    
-    // <----------------------------- BEGIN REPORT FORECAST LOGIC ------------------------------->
-
-    /**
-     * 渲染存储未来可用天数预测Echart图
-     * @param {*} totalCapacity 总容量
-     * @param {*} warningThreshold 告警阈值
-     * @param {*} dateAxis 横坐标
-     * @param {*} remainingDays 剩余可用天数
-     * @param {*} fullDate 满载日期
-     * @param {*} historicalData 历史使用存储数据
-     * @param {*} predictedData 未来预测使用存储数据
-     * @param {*} unit 最终存储单位
-     */
-    const initAvailabilityForecastEchart = (totalCapacity, warningThreshold, dateAxis, remainingDays, fullDate, historicalData, predictedData, unit) => {
-        let echartId = 'storage_avaliable_forecast_chart';
-        if ($(`#${echartId}`).children().length > 0) {
-            // 销毁上一个echart
-            echarts.dispose(document.getElementById(echartId));
-        }
-
-        const option = {
-            title: {
-                text: '存储容量预测',
-                subtext: remainingDays !== null ? `预计剩余 ${remainingDays} 天达到容量阈值` : '容量充足，未触发预测阈值',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'axis',
-                formatter: function(params) {
-                    let result = params[0].name + '<br/>';
-                    params.forEach(function(item) {
-                        if (item.value) {
-                            result += `${item.marker} ${item.seriesName}: ${item.value} ${unit}<br/>`;
-                        }
-                    });
-                    return result;
-                },
-                axisPointer: {
-                    animation: false
-                }
-            },
-            legend: {
-                data: ['历史使用量', '预测使用量'],
-                right: '5%'
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: dateAxis,
-                axisLabel: {
-                    rotate: 30
-                }
-            },
-            yAxis: {
-                type: 'value',
-                name: `容量 (${unit})`,
-                max: totalCapacity, // Y轴最大值为总容量
-                axisLabel: {
-                    formatter: `{value} ${unit}`
-                }
-            },
-            series: [
-                {
-                    name: '历史使用量',
-                    type: 'line',
-                    smooth: true,
-                    showSymbol: false,
-                    data: historicalData.map((val, index) => ({
-                        value: val,
-                        // 为历史数据添加样式
-                        itemStyle: { color: '#3b82f6' },
-                    })),
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0,
-                            color: 'rgba(59, 130, 246, 0.5)'
-                        }, {
-                            offset: 1,
-                            color: 'rgba(59, 130, 246, 0)'
-                        }])
-                    }
-                }, 
-                {
-                    name: '预测使用量',
-                    type: 'line',
-                    smooth: true,
-                    showSymbol: false,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#3b82f6'
-                    },
-                    data: predictedData,
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                            offset: 0,
-                            color: 'rgba(59, 130, 246, 0.2)'
-                        }, {
-                            offset: 1,
-                            color: 'rgba(59, 130, 246, 0)'
-                        }])
-                    },
-                    markLine: {
-                        symbol: 'none',
-                        data: [{
-                            name: '容量阈值',
-                            yAxis: warningThreshold,
-                            lineStyle: {
-                                type: 'solid',
-                                color: '#ef4444'
-                            },
-                            label: {
-                                formatter: `{b}: {c} ${unit}`,
-                                position: 'start'
-                            }
-                        }]
-                    },
-                    markPoint: fullDate ? {
-                        symbol: 'pin',
-                        symbolSize: 50,
-                        data: [{
-                            name: '预计满载',
-                            coord: [fullDate, warningThreshold],
-                            itemStyle: {
-                                color: '#ef4444'
-                            },
-                            label: {
-                                formatter: '{b}'
-                            }
-                        }]
-                    } : null
-                }
-            ]
-        }
-
-        storageAvaliableForecastChart = echarts.init(document.getElementById(echartId));
-
-        storageAvaliableForecastChart.setOption(option);
-
-        $(window).resize(function() { // 监控屏幕大小变化，重新加载echart图
-            storageAvaliableForecastChart.resize();
-        });
-    }
-
-    /**
-     * 获取存储未来可用天数预测
-     */
-    const getAvailabilityForecastData = () => {
-        pAjaxRequest({}, 'api/v1/report/storage_avaliable_forecast', 'GET', (res) => {
-            $('.forecast-card').block();
-            try {
-                if (res.success) {
-                    let rtnData = res.data;
-                    const TOTAL_CAPACITY = Number(rtnData.totalCapacity);
-                    const WARNING_THRESHOLD = Number(rtnData.warningThreshold);
-                    let remainingDays = rtnData.remainingDays;
-                    let dateAxis = rtnData.dateAxis;
-                    let fullDate = rtnData.fullDate;
-                    let historicalData = rtnData.historicalData.map(Number);
-                    let predictedData = rtnData.predictedData.map(Number);
-
-                    // 1. 确定最佳单位
-                    const allData = [TOTAL_CAPACITY, WARNING_THRESHOLD, ...historicalData, ...predictedData];
-                    const maxValue = Math.max(...allData.filter(v => !isNaN(v) && v !== null));
-                    const { unit, divisor } = sizeConverter.getBestUnit(maxValue);
-
-                    // 2. 转换所有数据
-                    const convertedTotalCapacity = (TOTAL_CAPACITY / divisor).toFixed(2);
-                    const convertedWarningThreshold = (WARNING_THRESHOLD / divisor).toFixed(2);
-                    const convertedHistoricalData = historicalData.map(val => val !== null ? (val / divisor).toFixed(2) : null);
-                    const convertedPredictedData = predictedData.map(val => val !== null ? (val / divisor).toFixed(2) : null);
-                    // 预测线应该从历史数据的最后一个点开始，以实现平滑连接
-                    const lastHistoricalValue = convertedHistoricalData.length > 0 ? convertedHistoricalData[convertedHistoricalData.length - 1] : null;
-                    // 创建与历史数据长度匹配的填充数组 (空值)，除了最后一个点
-                    const predictionPadding = new Array(convertedHistoricalData.length - 1).fill(null);
-                    // 将填充、最后一个历史点和预测数据合并，生成对齐后的预测数据系列
-                    const alignedPredictedData = [...predictionPadding, lastHistoricalValue, ...convertedPredictedData];
-
-                    initAvailabilityForecastEchart(convertedTotalCapacity, convertedWarningThreshold, dateAxis, remainingDays, fullDate, convertedHistoricalData, alignedPredictedData, unit);
-                } else {
-                    UIToastr.showWarning('获取存储预测数据失败');
-                }
-            } catch (error) {
-                UIToastr.showWarning('获取存储预测数据失败');
-            } finally {
-                $('.forecast-card').unblock();
-            }
-        })
-    }
-
-    // <----------------------------- END REPORT FORECAST LOGIC ------------------------------------>
-
-
-
     // <----------------------------- BEGIN REPORT DETAIL TABLE LOGIC ------------------------------->
 
     /**
@@ -864,15 +640,6 @@ var TapeReportDetail = function () {
                     $('.tendency-card').addClass('display-none');
                 }
 
-                // 智能化预测
-                if (availabilityForecase) {
-                    $('.forecast-card').removeClass('display-none');
-
-                    getAvailabilityForecastData();
-                } else {
-                    $('.forecast-card').addClass('display-none');
-                }
-
                 // 数据明细
                 if (customFields.length !== 0) {
                     $('.table-data-card').removeClass('display-none');
@@ -883,7 +650,7 @@ var TapeReportDetail = function () {
                     if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
 
                     if (filterFields.length > 0) {
-                        let filterData = STORAGE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
+                        let filterData = TAPE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
                             return filterFields.includes(option.field);
                         });
 

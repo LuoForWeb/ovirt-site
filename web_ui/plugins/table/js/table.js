@@ -31,6 +31,7 @@
         const TABLE_IN_MODAL_WITHOUT_TOOLBAR_WITH_PAGINATION_HASDATA_HEIGHT = 448; // 在模态框中使用的不带toolbar且带pagination的有数据时表格高度，模态框 modal-body 最大高度500px，计算下来表格超过7行数据就会高度溢出，因而计算公式为：40(table header height) + 7 * 52(table row height) + 44(table pagination)
         const TABLE_IN_MODAL_WITH_TOOLBAR_WITHOUT_PAGINATION_HASDATA_HEIGHT = 400; // 在模态框中使用的带toolbar且不带pagination的有数据时表格高度，模态框 modal-body 最大高度500px，计算下来表格超过6行数据就会高度溢出，因而计算公式为：32(toolbar height) + 16(margin-bottom) + 40(table header height) + 6 * 52(table row height)
         const TABLE_IN_MODAL_WITH_TOOLBAR_WITH_PAGINATION_HASDATA_HEIGHT = 444; // 在模态框中使用的带toolbar且带pagination的有数据时表格高度，模态框 modal-body 最大高度500px，计算下来表格超过6行数据就会高度溢出，因而计算公式为：32(toolbar height) + 16(margin-bottom) + 40(table header height) + 6 * 52(table row height) + 44(table pagination)
+        const TABLE_NO_DATA_BODY_HEIGHT = 200; // 无数据时表格 fixed-table-body 高度，计算公式：180（.no-records-found td::before图片高度）+ 20 （提示文字高度）
         const TABLE_DEFAULT_TOOLBAR_DATERANGEPICKER_TEXT = readLang('PUBLIC_TABLE_TIME_BEGIN_TO_END'); // 使用表格toolbar-daterangepicker组件时默认文本值
         let currentListSize = 0; // 当前页总条数（不包含未选且被禁用项）
         let currentPageSize = 0; // 当前页总条数（包含未选且被禁用项）
@@ -48,6 +49,9 @@
          * @param pageSize 当前 page list 大小值
          */
         const initTableHeight = (pageSize) => {
+            // autoHeight 模式下，不处理表格高度自适应
+            if (settings.autoHeight) return;
+
             let $tableToolbar = $(`${settings.tableContentWrapper}`).prev();
 
             if ($tableToolbar.length === 0) {
@@ -297,10 +301,16 @@
 
                     if (rowsLength < paramSize) { // 返回的数据小于设置的pageSize
                         // 初始化表格高度
-                        initTableHeight(rowsLength);
+                        initTableHeight(rowsLength, response.data.total);
                     } else { // 返回的数据大于等于设置的pageSize
                         // 初始化表格高度
-                        initTableHeight(paramSize);
+                        initTableHeight(paramSize, response.data.total);
+                    }
+
+                    // 在 autoHeight 模式下，清除 fixed-table-body 的 min-height
+                    if (settings.autoHeight) {
+                        const $tableBody = $table.closest('.fixed-table-container').find('.fixed-table-body');
+                        $tableBody.css('min-height', '');
                     }
 
                     // 清空上一次的 btSelectAll checkbox 禁用样式
@@ -318,6 +328,17 @@
 
                     // 禁用 btSelectAll checkbox
                     $(`#${TABLE_ID} .bs-checkbox label input[name=\'btSelectAll\']`).prop('disabled', true);
+
+                    // 在 autoHeight 模式下，处理无数据时的场景
+                    if (settings.autoHeight) {
+                        const $tableBody = $table.closest('.fixed-table-container').find('.fixed-table-body');
+
+                        if (response.data.total === 0) {
+                            $tableBody.css('min-height', `${TABLE_NO_DATA_BODY_HEIGHT}px`);
+                        } else {
+                            $tableBody.css('min-height', '');
+                        }
+                    }
                 }
             } else {
                 toastr.warning(response.message, readLang('PUBLIC_TABLE_GET_DATA'));
@@ -490,6 +511,7 @@
             queryParamsType: 'limit', // 参数格式为limit可获取RESTFul类型参数‘limit, offset, search, sort, order’
             pageSize: 10, // 默认每页条数
             pageNumber: 1, //	默认起始页
+            autoHeight: false, // 是否自适应高度，适用于父容器没有固定高度的场景
             paginationPreText: '<i class="viconfont vicon-table-pagination-left"></i>',
             paginationNextText: '<i class="viconfont vicon-table-pagination-right"></i>',
             resizable: false, // 是否开启移动列宽

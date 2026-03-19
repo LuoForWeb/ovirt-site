@@ -1,0 +1,27 @@
+/* BEGIN CHECKBOX GROUP */
+
+.checkbox-group-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.checkbox-group-wrapper .check-group-wrapper__item:not(:last-child) {
+	margin-bottom: 12px;
+}
+
+.form-group .form-group__content.is-invalid .invalid-feedback {
+	display: block;
+}
+
+.checkbox-group-wrapper .form-check {
+	display: flex;
+	align-items: center;
+}
+
+.checkbox-group-wrapper .check-group-wrapper__item .form-check-label {
+	display: inline-block;
+	min-width: 18px;
+}
+
+/* END CHECKBOX GROUP */

@@ -233,15 +233,35 @@
             message = $(el).data('vMessage') ?? message;
 
             if (options.errorMessage) {
-                let group = $(el).parent();
-
-                if ($(group).length) {
-                    let invalidFeedBack = $(group).find('.' + options.invalidFeedBackClass);
-                    if ($(invalidFeedBack).length) {
-                        $(invalidFeedBack).html(message);
-                    } else {
-                        $(group).append('<div class="' + options.invalidFeedBackClass + '">' + message + '</div>');
+                let targetParent = $(el).parent();
+                
+                // 检查是否为复选框/单选框按钮组，如果是，则寻找合适的父容器
+                if (($(el).attr('type') === 'checkbox' || $(el).attr('type') === 'radio') 
+                    && $(el).hasClass('form-check-input')) {
+                    
+                    // 向上查找包含 form-check 类的父容器
+                    let formCheckParent = $(el).closest('.form-check');
+                    if (formCheckParent.length > 0) {
+                        targetParent = formCheckParent;
+                        // 给找到的父容器也添加 invalidClass
+                        targetParent.removeClass(options.validClass);
+                        targetParent.addClass(options.invalidClass);
                     }
+                    
+                    // 或者查找包含 checkbox-group 或 radio-group 的容器
+                    let groupContainer = $(el).closest('[data-checkradio-group], [data-checkbox-group]');
+                    if (groupContainer.length > 0) {
+                        targetParent = groupContainer;
+                        targetParent.removeClass(options.validClass);
+                        targetParent.addClass(options.invalidClass);
+                    }
+                }
+
+                let invalidFeedBack = $(targetParent).find('.' + options.invalidFeedBackClass);
+                if ($(invalidFeedBack).length) {
+                    $(invalidFeedBack).html(message);
+                } else {
+                    $(targetParent).append('<div class="' + options.invalidFeedBackClass + '">' + message + '</div>');
                 }
             }
         }
@@ -253,6 +273,28 @@
             }
 
             $(el).removeClass(options.invalidClass);
+
+            if (($(el).attr('type') === 'checkbox' || $(el).attr('type') === 'radio') 
+                && $(el).hasClass('form-check-input')) {
+                
+                // 查找 .form-check 父容器
+                let formCheckParent = $(el).closest('.form-check');
+                if (formCheckParent.length > 0) {
+                    formCheckParent.removeClass(options.invalidClass);
+                    if (options.successClass) {
+                        formCheckParent.addClass(options.validClass);
+                    }
+                }
+                
+                // 查找 [data-checkradio-group] 或 [data-checkbox-group] 容器
+                let groupContainer = $(el).closest('[data-checkradio-group], [data-checkbox-group]');
+                if (groupContainer.length > 0) {
+                    groupContainer.removeClass(options.invalidClass);
+                    if (options.successClass) {
+                        groupContainer.addClass(options.validClass);
+                    }
+                }
+            }
 
             if (options.successClass) {
                 $(el).addClass(options.validClass);

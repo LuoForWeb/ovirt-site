@@ -361,8 +361,8 @@ class Report extends Base
      */
     public function createReport($params): array
     {
-        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE');
-        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE');
+        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
+        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
 
         $groupUuid = $params['groupUuid'];
         $templateName = $params['templateName'];
@@ -468,8 +468,8 @@ class Report extends Base
             return ['success' => true, 'message' => '更新成功'];
         }
 
-        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE');
-        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE');
+        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
+        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
 
         $templateUuid = $params['templateUuid'];
         $templateType = $params['templateType'];
@@ -642,9 +642,33 @@ class Report extends Base
         $sql = "SELECT * FROM bd_report WHERE {$where} ORDER BY {$sort} {$order} LIMIT {$offset}, {$limit}";
         $reports = $this->dbSelect($sql, $queryParams);
 
-        $rows = [];
+        // 批量获取通知策略信息以避免N+1查询
+        $noticeIds = array_filter(array_column($reports, 'email_notice_id'));
+        $noticeConfigsMap = [];
+        if (!empty($noticeIds)) {
+            $uniqueNoticeIds = array_unique($noticeIds);
+            $placeholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+            $noticeSql = "SELECT id, email_notice_flag, report_config, receive_email FROM bd_email_notice WHERE id IN ($placeholders)";
+            $noticeData = $this->dbSelect($noticeSql, array_values($uniqueNoticeIds));
+
+            foreach ($noticeData as $notice) {
+                $noticeConfigsMap[$notice['id']] = [
+                    'emailNoticeFlag' => $notice['email_notice_flag'],
+                    'reportConfig' => json_decode($notice['report_config'], true),
+                    'receiveEmail' => json_decode($notice['receive_email'], true)
+                ];
+            }
+        }
+
+        $formattedReports = [];
         foreach ($reports as $report) {
-            $rows[] = [
+            $detail = json_decode($report['detail'], true);
+            $noticeConfig = new \stdClass(); // 默认为空对象 {}
+            if (!empty($report['email_notice_id']) && isset($noticeConfigsMap[$report['email_notice_id']])) {
+                $noticeConfig = $noticeConfigsMap[$report['email_notice_id']];
+            }
+
+            $formattedReports[] = [
                 'templateUuid' => $report['template_uuid'],
                 'groupUuid' => $report['group_uuid'],
                 'templateName' => $report['template_name'],
@@ -657,12 +681,13 @@ class Report extends Base
                 'emailNoticeId' => $report['email_notice_id'],
                 'create_time' => $report['create_time'],
                 'defaultTemplateFlag' => $report['default_template_flag'],
+                'noticeConfig' => $noticeConfig
             ];
         }
 
         return [
             'total' => $total,
-            'rows' => $rows
+            'rows' => $formattedReports
         ];
     }
 
@@ -796,27 +821,47 @@ class Report extends Base
         $groupUuid = $params['group_uuid'] ?? null;
 
         if (empty($groupUuid)) {
-            return ['success' => false, 'message' => '缺少group_uuid参数'];
+            return ['success' => false, 'message' => '未指定任何报表文件夹'];
         }
 
         $this->dbBeginTransaction();
-
         try {
+            // 1. 递归获取所有待删除的文件夹UUID（包括自身）
             $allFoldersToDelete = $this->getDescendantFolders($groupUuid);
             $allFoldersToDelete[] = $groupUuid;
 
             if (!empty($allFoldersToDelete)) {
                 $folderUuidsPlaceholder = implode(',', array_fill(0, count($allFoldersToDelete), '?'));
 
-                $deleteReportsSql = "DELETE FROM bd_report WHERE group_uuid IN ({$folderUuidsPlaceholder})";
-                $this->dbExec($deleteReportsSql, $allFoldersToDelete);
+                // 2. 根据文件夹UUID，查询出所有待删除报表关联的 email_notice_id
+                $selectReportsSql = "SELECT email_notice_id FROM bd_report WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $reportsInFolders = $this->dbSelect($selectReportsSql, $allFoldersToDelete);
 
-                $deleteGroupsSql = "DELETE FROM bd_report_group WHERE group_uuid IN ({$folderUuidsPlaceholder})";
-                $this->dbExec($deleteGroupsSql, $allFoldersToDelete);
+                $noticeIdsToDelete = [];
+                foreach ($reportsInFolders as $report) {
+                    if (!empty($report['email_notice_id'])) {
+                        $noticeIdsToDelete[] = $report['email_notice_id'];
+                    }
+                }
+
+                // 3. 如果有关联的通知配置，则从 bd_email_notice 表中删除它们
+                if (!empty($noticeIdsToDelete)) {
+                    $uniqueNoticeIds = array_unique($noticeIdsToDelete);
+                    $noticePlaceholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+                    $deleteNoticeSql = "DELETE FROM bd_email_notice WHERE id IN ($noticePlaceholders)";
+                    $this->dbExec($deleteNoticeSql, array_values($uniqueNoticeIds));
+                }
+
+                // 4. 从 bd_report 表中删除这些文件夹下的所有报表
+                $deleteReportSql = "DELETE FROM bd_report WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $this->dbExec($deleteReportSql, $allFoldersToDelete);
+
+                // 5. 从 bd_report_group 表中删除所有相关文件夹
+                $deleteGroupSql = "DELETE FROM bd_report_group WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $this->dbExec($deleteGroupSql, $allFoldersToDelete);
             }
 
-            $this->dbCommit();
-
+            $this->dbCommit(); // 提交事务
             return ['success' => true, 'message' => '删除成功'];
         } catch (\Exception $e) {
             $this->dbRollBack();
@@ -848,22 +893,43 @@ class Report extends Base
      * @param mixed $params
      * @return array{message: string, success: bool}
      */
-    public function deleteReport($params)
+    public function deleteReport($params): array
     {
         $templateUuids = explode(',', $params['templateUuids'] ?? null);
 
         if (empty($templateUuids)) {
-            return ['success' => false, 'message' => '缺少templateUuids参数'];
+            return ['success' => false, 'message' => '未指定任务报表'];
         }
 
         try {
+            // 1. 根据 templateUuids 查询出所有需要删除的 email_notice_id
             $placeholders = implode(',', array_fill(0, count($templateUuids), '?'));
-            $deleteSql = "DELETE FROM bd_report WHERE template_uuid IN ($placeholders)";
-            $this->dbExec($deleteSql, $templateUuids);
+            $selectSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid IN ($placeholders)";
+            $reportsToDelete = $this->dbSelect($selectSql, $templateUuids);
 
-            return ['success' => true, 'message' => '删除成功'];
+            $noticeIdsToDelete = [];
+            foreach ($reportsToDelete as $report) {
+                if (!empty($report['email_notice_id'])) {
+                    $noticeIdsToDelete[] = $report['email_notice_id'];
+                }
+            }
+
+            // 2. 如果有关联的通知配置，则从 bd_email_notice 表中删除它们
+            if (!empty($noticeIdsToDelete)) {
+                // 去重，以防多个报表共享同一个通知配置（虽然不太可能，但作为防御性措施）
+                $uniqueNoticeIds = array_unique($noticeIdsToDelete);
+                $noticePlaceholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+                $deleteNoticeSql = "DELETE FROM bd_email_notice WHERE id IN ($noticePlaceholders)";
+                $this->dbExec($deleteNoticeSql, array_values($uniqueNoticeIds));
+            }
+
+            // 3. 从 bd_report 表中删除报表本身
+            $deleteReportSql = "DELETE FROM bd_report WHERE template_uuid IN ($placeholders)";
+            $this->dbExec($deleteReportSql, $templateUuids);
+
+            return ['success' => true, 'message' => '报表删除成功'];
         } catch (\Exception $e) {
-            return ['success' => false, 'message' => '删除失败: ' . $e->getMessage()];
+            return ['success' => false, 'message' => '报表删除失败: ' . $e->getMessage()];
         }
     }
 
@@ -2250,6 +2316,127 @@ class Report extends Base
         }
 
         return $typeMap[$platform] ?? [];
+    }
+
+    /**
+     * 配置报表通知
+     * @param mixed $params
+     * @return string
+     */
+    public function configureReportNotice($params): array
+    {
+        $templateUuids = json_decode($params['templateUuids'], true) ?: [];
+        $noticeFlag = $params['emailNotifyFlag'];
+
+        if (empty($templateUuids)) {
+            return ['success' => false, 'message' => '未指定报表'];
+        }
+
+        // 开启事务，确保操作的原子性
+        $this->dbBeginTransaction();
+
+        try {
+            if ($noticeFlag) {
+                // 逻辑分支 A：开启或更新通知配置
+                $notifyContentTypeCfg = xphp_get_config('report', 'NOTIFY_CONTENT_TYPE', 'report');
+                $exportDetailTypeCfg = xphp_get_config('report', 'EXPORT_DETAIL_TYPE', 'report');
+                $singleTaskObjectTypeCfg = xphp_get_config('report', 'SINGLE_TASK_OBJECT_TYPE', 'report');
+
+                // 1. 准备通知配置的 JSON 数据
+                $reportConfigData = [];
+                $recEmails = $params['recEmails'];
+                $noticeContentTypes = json_decode($params['noticeContentTypes'], true);
+                $reportConfigData['timeStrategy'] = $params['timeStrategy'];
+                $reportConfigData['noticeContentTypes'] = $params['noticeContentTypes'];
+
+                // 获取通知明细内容
+                if (in_array($notifyContentTypeCfg['DETAIL'], $noticeContentTypes)) {
+                    $detailExportRange = $params['detailExportRange'];
+                    $reportConfigData['detailExportRange'] = $detailExportRange;
+                    if ($detailExportRange == $exportDetailTypeCfg['CUSTOM']) {
+                        $reportConfigData['exportNums'] = $params['exportNums'];
+                    }
+                }
+
+                // 获取单任务对象内容
+                $singleObjectDetailFlag = $params['singleObjectDetailFlag'];
+                $reportConfigData['singleObjectDetailFlag'] = $singleObjectDetailFlag;
+                if ($singleObjectDetailFlag) {
+                    $singleObjectTypes = json_decode($params['singleObjectTypes'], true);
+                    $reportConfigData['singleObjectTypes'] = $params['singleObjectTypes'];
+                    if (in_array($singleTaskObjectTypeCfg['HISTORY_RUN_RECORD'], $singleObjectTypes)) {
+                        $historyRunRecordExportRange = $params['historyRunRecordExportRange'];
+                        $reportConfigData['historyRunRecordExportRange'] = $historyRunRecordExportRange;
+                        if ($historyRunRecordExportRange == $exportDetailTypeCfg['CUSTOM']) {
+                            $reportConfigData['exportHistoryNums'] = $params['exportHistoryNums'];
+                        }
+                    }
+                }
+
+                // 附件格式
+                $reportConfigData['attachmentFormats'] = $params['attachmentFormats'];
+                $reportConfigJson = json_encode($reportConfigData);
+
+                // 2. 遍历所有报表 UUID
+                foreach ($templateUuids as $uuid) {
+                    // 2.1 查询报表现有的 email_notice_id
+                    $reportSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid = ?";
+                    $reportInfo = $this->dbSelect($reportSql, [$uuid]);
+                    $emailNoticeId = $reportInfo[0]['email_notice_id'] ?? null;
+
+                    if (empty($emailNoticeId)) {
+                        // 2.2 新增：如果 email_notice_id 为空，则插入新记录
+                        $emailNoticeFlag = 1;
+                        $emailNoticeType = 2; // 2代表来自报表的邮件配置
+                        $insertSql = "INSERT INTO bd_email_notice (email_notice_flag, report_config, receive_email, email_notice_type) VALUES (?, ?, ?, ?)";
+                        $this->dbExec($insertSql, [$emailNoticeFlag, $reportConfigJson, $recEmails, $emailNoticeType]);
+
+                        $newNoticeId = $this->dbLastInsertId();
+
+                        // 2.3 更新 bd_report 表，关联新的 email_notice_id
+                        $updateReportSql = "UPDATE bd_report SET email_notice_id = ?, notice_flag = 1 WHERE template_uuid = ?";
+                        $this->dbExec($updateReportSql, [$newNoticeId, $uuid]);
+                    } else {
+                        // 2.4 更新：如果 email_notice_id 已存在，则更新现有记录
+                        $updateNoticeSql = "UPDATE bd_email_notice SET report_config = ?, receive_email = ? WHERE id = ?";
+                        $this->dbExec($updateNoticeSql, [$reportConfigJson, $recEmails, $emailNoticeId]);
+
+                        // 确保报表的通知标记为开启
+                        $updateReportSql = "UPDATE bd_report SET notice_flag = 1 WHERE template_uuid = ?";
+                        $this->dbExec($updateReportSql, [$uuid]);
+                    }
+                }
+            } else {
+                // 逻辑分支 B：关闭通知配置
+                foreach ($templateUuids as $uuid) {
+                    // 1. 查询报表现有的 email_notice_id
+                    $reportSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid = ?";
+                    $reportInfo = $this->dbSelect($reportSql, [$uuid]);
+                    $emailNoticeId = $reportInfo[0]['email_notice_id'] ?? null;
+
+                    // 2. 如果存在通知配置，则删除
+                    if (!empty($emailNoticeId)) {
+                        $deleteSql = "DELETE FROM bd_email_notice WHERE id = ?";
+                        $this->dbExec($deleteSql, [$emailNoticeId]);
+                    }
+
+                    // 3. 更新报表状态为“关闭通知”，并清空关联 ID
+                    $updateReportSql = "UPDATE bd_report SET notice_flag = 2, email_notice_id = NULL WHERE template_uuid = ?";
+                    $this->dbExec($updateReportSql, [$uuid]);
+                }
+            }
+
+            // 提交事务
+            $this->dbCommit();
+
+            return ['success' => true, 'message' => '通知配置成功'];
+        } catch (\Exception $e) {
+            // 如果任何步骤出错，回滚事务
+            $this->dbRollBack();
+            // 可以选择性地记录错误日志
+            // xphp_log($e->getMessage(), 'error');
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     /**

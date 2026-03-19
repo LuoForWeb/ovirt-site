@@ -409,3 +409,95 @@
 }
 
 /* END REPORT DETAIL STYLE */
+
+/* BEGIN NOTIFY FORM STYLE */
+
+.time-strategy-wrapper {
+    border: 1px solid #DBE0E5;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.time-strategy-wrapper:hover {
+    border-color: #AAB3C0;
+}
+
+.time-strategy-wrapper .nav.nav-tabs-vertical .nav-item .nav-link i {
+    opacity: 0;
+}
+
+.time-strategy-wrapper .nav.nav-tabs-vertical .nav-item .nav-link.checked i {
+    opacity: 1;
+    color: #1EB986;
+}
+
+.time-strategy-wrapper .tab-content {
+    flex: 1;
+    height: 100%;
+    min-height: 172px;
+    padding: 20px 20px 20px 0;
+    border-left: 1px solid #EBEBEB;
+}
+
+.time-strategy-wrapper .tab-content .tab-pane {
+    height: 100%;
+}
+
+.week-checkbox-group .checkbox-group-wrapper .check-group-wrapper__item:last-child {
+    margin-bottom: 12px;
+}
+
+.week-checkbox-group .invalid-feedback {
+    top: 60px;
+}
+
+.month-checkbox-group .invalid-feedback {
+    top: 186px;
+}
+
+.notify-content-wrap .checkbox-group-wrapper .check-group-wrapper__item:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.notify-content-wrap .invalid-feedback {
+    top: 21px;
+}
+
+.details-label {
+    font-size: 12px;
+    color: #85898C;
+}
+
+.single-detail-content .checkbox-group-wrapper .check-group-wrapper__item:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.single-detail-content .invalid-feedback {
+    top: 21px;
+}
+
+.export-detail-content .spinner-group {
+    width: 200px;
+}
+
+.export-single-detail-content .spinner-group {
+    width: 200px;
+}
+
+.attachment-format-wrap .checkbox-group-wrapper .check-group-wrapper__item:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.attachment-format-wrap .invalid-feedback {
+    top: 21px;
+}
+
+.validate-notice-strategy-tip {
+    position: absolute;
+    margin: 0;
+    top: 174px;
+    left: 0;
+    color: #F56A6A;
+}
+
+/* END NOTIFY FORM STYLE */

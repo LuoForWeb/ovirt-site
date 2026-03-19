@@ -22,6 +22,7 @@
 <script src="/assets/global/plugins/bootstrap-jbvalidator/jbvalidator.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jstree/jstree.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/axios/axios.min.js" type="text/javascript"></script>
+<script src="./assets/global/plugins/bootstrap-input-spinner/bootstrap-input-spinner.min.js" type="text/javascript"></script>
 <!-- END GLOBAL PLUGINS SCRIPTS -->
 
 <!-- BEGIN BOOTSTRAP TABLE -->
