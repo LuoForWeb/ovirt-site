@@ -798,14 +798,23 @@ var StorageReportDetail = function () {
                     },
                     {
                         field: 'storageStatus',
-                        title: '状态',
+                        title: '存储状态',
                         sortable: true,
                         visible: TABLE_CUSTOM_FIELDS.includes('storageStatus'),
                         formatter: function (value) {
-                            if(value) {
-                                return `<span class="badge badge-success">正常</span>`;
-                             } else {
-                                return `<span class="badge badge-secondary">异常</span>`;
+                            switch (value) {
+                                case CONF.STORAGE_STATUS.ONLINE:
+                                    return `<span class="badge badge-success">在线</span>`;
+                                case CONF.STORAGE_STATUS.CREATING:
+                                    return `<span class="badge badge-primary">创建中</span>`;
+                                case CONF.STORAGE_STATUS.OFFLINE:
+                                    return `<span class="badge badge-secondary">离线</span>`;
+                                case CONF.STORAGE_STATUS.UNMOUNT:
+                                    return `<span class="badge badge-secondary">挂载</span>`;
+                                case CONF.STORAGE_STATUS.WARNING:
+                                    return `<span class="badge badge-warning">警告</span>`;
+                                default:
+                                    return;
                             }
                          }
                     },
@@ -817,7 +826,7 @@ var StorageReportDetail = function () {
                     },
                     {
                         field: 'nodeStatus',
-                        title: '状态',
+                        title: '节点状态',
                         sortable: true,
                         visible: TABLE_CUSTOM_FIELDS.includes('nodeStatus'),
                         formatter: function (value) {

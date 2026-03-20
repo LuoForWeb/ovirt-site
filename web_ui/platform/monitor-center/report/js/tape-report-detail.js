@@ -7,9 +7,7 @@
 var TapeReportDetail = function () {
     let REPORT_TEMPLATE_UUID = '';
     let overviewPieChart = null;
-    let rankBarChart = null;
     let usageTendencyChart = null;
-    let storageAvaliableForecastChart = null;
     let $timeRangeType = $('#time_range_type');
     let $reportDetailTable = $('#report_detail_table');
     let CURRENT_TIME_RANGE_TYPE = 4; // 默认查看近一月的趋势
@@ -108,7 +106,7 @@ var TapeReportDetail = function () {
      * @param {*} freeSpace 
      */
     const initStorageCapacityEchart = (usedSpace, freeSpace) => {
-        let echartId = 'storage_capacity_echart';
+        let echartId = 'tape_capacity_echart';
         if ($(`#${echartId}`).children().length > 0) {
             // 销毁上一个echart
             echarts.dispose(document.getElementById(echartId));
@@ -170,7 +168,7 @@ var TapeReportDetail = function () {
             ]
         };
 
-        overviewPieChart = echarts.init(document.getElementById('storage_capacity_echart'));
+        overviewPieChart = echarts.init(document.getElementById('tape_capacity_echart'));
 
         overviewPieChart.setOption(option);
 
@@ -180,140 +178,25 @@ var TapeReportDetail = function () {
     }
 
     /**
-     * 初始化存储容量排名echart
-     * @param {*} topStorageUsageList 存储容量排名列表
-     */
-    const initStorageRankEchart = (topStorageUsageList) => {
-        let echartId = 'capacity_rank_echart';
-        if ($(`#${echartId}`).children().length > 0) {
-            // 销毁上一个echart
-            echarts.dispose(document.getElementById(echartId));
-        }
-
-        const option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow' // 默认为 'line'，'shadow' 效果更佳
-                },
-                formatter: function(params) {
-                    const data = params[0];
-                    return `${data.name}<br/>容量使用率: <strong>${data.value}%</strong>`;
-                }
-            },
-            grid: {
-                left: '5%',
-                right: '10%',
-                bottom: '3%',
-                containLabel: true // 自动计算 grid 大小，防止标签溢出
-            },
-            xAxis: {
-                type: 'value',
-                min: 0,
-                max: 100, // 使用率最大为100%
-                axisLabel: {
-                    formatter: '{value}%' // X轴刻度添加百分号
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        type: 'dashed',
-                        color: '#eee'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'category',
-                data: topStorageUsageList.map(i => { return i.name}),
-                inverse: true, // 让第一名显示在最上面
-                axisTick: {
-                    show: false
-                },
-                axisLine: {
-                    show: false
-                }
-            },
-            series: [
-                {
-                    name: '使用率',
-                    type: 'bar',
-                    data: topStorageUsageList,
-                    label: {
-                        show: true,
-                        position: 'right', // 标签显示在条形图右侧
-                        formatter: '{c}%',
-                        color: '#333',
-                        fontWeight: 'bold'
-                    },
-                    barWidth: '60%', // 条形图宽度
-                    itemStyle: {
-                        borderRadius: [0, 5, 5, 0], // 条形图圆角
-                        // 使用渐变色来突出高使用率的风险
-                        color: {
-                            type: 'linear',
-                            x: 0,
-                            y: 0,
-                            x2: 1,
-                            y2: 0,
-                            colorStops: [
-                                {
-                                    offset: 0,
-                                    color: '#83bff6' // 蓝色 (安全)
-                                }, 
-                                {
-                                    offset: 0.7,
-                                    color: '#fac858' // 黄色 (警告)
-                                }, 
-                                {
-                                    offset: 1,
-                                    color: '#ee6666' // 红色 (危险)
-                                }
-                            ]
-                        }
-                    },
-                    // 高亮效果
-                    emphasis: {
-                        focus: 'series',
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }
-            ]
-        };
-
-        rankBarChart = echarts.init(document.getElementById('capacity_rank_echart'));
-
-        rankBarChart.setOption(option);
-
-        $(window).resize(function () { // 监控屏幕大小变化，重新加载echart图
-            rankBarChart.resize();
-        });
-    }
-
-    /**
      * 获取概览数据
      */
     const getOverviewData = () => {
-        pAjaxRequest({}, 'api/v1/report/storage_overview', 'GET', (res) => {
+        axiosGet('report/tape_overview', {}).then(res => {
             $('.overview-card').block();
             try {
-                
-                $('#overview_total_storage').text(res.data.storageTotal);
-                $('#overview_online_storage').text(res.data.onlineCount);
-                $('#overview_offline_storage').text(res.data.offlineCount);
-                $('#overview_storage_usage').text(res.data.utilizationRate);
-                $('#overview_storage_usage_unit').text('%');
+                $('#overview_total_tape_library').text(res.data.totalLibraries);
+                $('#overview_used_tape').text(res.data.usedTapes);
+                $('#overview_online_tape').text(res.data.onlineTapes);
+                $('#overview_offline_tape').text(res.data.offlineTapes);
+                $('#overview_total_drive').text(res.data.totalDrivers);
+                $('#overview_tape_usage').text(res.data.loadingRate);
+                $('#overview_tape_usage_unit').text('%');
 
                 let capacityOverview = {
                     totalSpace: !res.data.totalSpace ? 0 : Number(res.data.totalSpace),
                     freeSpace: !res.data.freeSpace ? 0 : Number(res.data.freeSpace),
                     usedSpace: !res.data.usedSpace ? 0 : Number(res.data.usedSpace),
                 };
-
-                let topStorageUsageList = res.data.topStorageUsageList;
 
                 $('#overview_total_capacity').text(!capacityOverview.totalSpace ? 0 : unitConver(Number(capacityOverview.totalSpace)).size);
                 $('#overview_total_capacity_unit').text(!res.data.totalSpace ? 'B' : unitConver(Number(capacityOverview.totalSpace)).unit);
@@ -323,8 +206,6 @@ var TapeReportDetail = function () {
                 $('#overview_free_capacity_unit').text(!capacityOverview.freeSpace ? 'B' : unitConver(Number(capacityOverview.freeSpace)).unit);
 
                 initStorageCapacityEchart(capacityOverview.usedSpace, capacityOverview.freeSpace);
-
-                initStorageRankEchart(topStorageUsageList);
             } catch (error) {
                 
             } finally {
@@ -610,68 +491,67 @@ var TapeReportDetail = function () {
 
 
     const getReportDetail = () => {
-        pAjaxRequest({ uuid: REPORT_TEMPLATE_UUID }, 'api/v1/report/detail', 'GET', (res) => {
-        try {
-            if (res.success) {
-                let reportName = res.data.templateName;
-                let description = res.data.description;
-                let viewOverview = res.data.detail.viewOverview;
-                let viewUsageTendency = res.data.detail.viewUsageTendency;
-                let availabilityForecase = res.data.detail.availabilityForecase;
-                let customFields = res.data.detail.customFields;
+        axiosGet('report/detail', { uuid: REPORT_TEMPLATE_UUID }).then(res => {
+            try {
+                if (res.success) {
+                    let reportName = res.data.templateName;
+                    let description = res.data.description;
+                    let viewOverview = res.data.detail.viewOverview;
+                    let viewUsageTendency = res.data.detail.viewUsageTendency;
+                    let customFields = res.data.detail.customFields;
 
-                $('#overview_title').empty().html(reportName);
-                $('#overview_description').empty().html(description);
+                    $('#overview_title').empty().html(reportName);
+                    $('#overview_description').empty().html(description);
 
-                // 概览数据
-                if (viewOverview) {
-                    $('.overview-wrapper').removeClass('display-none');
-                    getOverviewData();
-                } else {
-                    $('.overview-wrapper').addClass('display-none');
-                }
-
-                // 使用趋势
-                if (viewUsageTendency) {
-                    $('.tendency-card').removeClass('display-none');
-
-                    getUsageTendencyData();
-                } else {
-                    $('.tendency-card').addClass('display-none');
-                }
-
-                // 数据明细
-                if (customFields.length !== 0) {
-                    $('.table-data-card').removeClass('display-none');
-
-                    TABLE_CUSTOM_FIELDS = [...customFields];
-                    let filterFields = []; // 获取过滤器组件中的选项
-                    if (TABLE_CUSTOM_FIELDS.indexOf('type') > -1) filterFields.push('type');
-                    if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
-
-                    if (filterFields.length > 0) {
-                        let filterData = TAPE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
-                            return filterFields.includes(option.field);
-                        });
-
-                        // 渲染数据明细表格过滤器
-                        // initDataDetailTableFilter(filterData);
+                    // 概览数据
+                    if (viewOverview) {
+                        $('.overview-wrapper').removeClass('display-none');
+                        getOverviewData();
+                    } else {
+                        $('.overview-wrapper').addClass('display-none');
                     }
 
-                    // 渲染数据明细表格
-                    initDataDetailTable();
+                    // 使用趋势
+                    if (viewUsageTendency) {
+                        $('.tendency-card').removeClass('display-none');
 
+                        getUsageTendencyData();
+                    } else {
+                        $('.tendency-card').addClass('display-none');
+                    }
+
+                    // 数据明细
+                    if (customFields.length !== 0) {
+                        $('.table-data-card').removeClass('display-none');
+
+                        TABLE_CUSTOM_FIELDS = [...customFields];
+                        let filterFields = []; // 获取过滤器组件中的选项
+                        if (TABLE_CUSTOM_FIELDS.indexOf('type') > -1) filterFields.push('type');
+                        if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
+
+                        if (filterFields.length > 0) {
+                            let filterData = TAPE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
+                                return filterFields.includes(option.field);
+                            });
+
+                            // 渲染数据明细表格过滤器
+                            // initDataDetailTableFilter(filterData);
+                        }
+
+                        // 渲染数据明细表格
+                        initDataDetailTable();
+
+                    } else {
+                        $('.table-data-card').addClass('display-none');
+                    }
                 } else {
-                    $('.table-data-card').addClass('display-none');
+                    UIToastr.showWarning('获取报表详情数据失败');
                 }
-            } else {
-                UIToastr.showWarning('获取报表详情数据失败');
+            } catch (error) {
+                console.log(error, 'error');
+                UIToastr.showWarning('获取报表详情数据失败')
             }
-        } catch (error) {
-            console.log(error, 'error');
-            UIToastr.showWarning('获取报表详情数据失败')
-        }
-      });
+        });
     }
 
     const initRouteParams = () => {
@@ -697,7 +577,6 @@ var TapeReportDetail = function () {
     
     return{
         init: function () {
-            console.log('磁带报表来咯');
             initRouteParams();
             initListeners();
         }
