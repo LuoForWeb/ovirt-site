@@ -51,7 +51,7 @@ h6 {
 }
 
 .flex-1 {
-	flex: 1;
+	flex: 1 !important;
 }
 
 .flex-items-baseline {
@@ -449,6 +449,10 @@ h6 {
 
 .mb-25 {
 	margin-bottom: 25px !important;
+}
+
+.mb-40 {
+	margin-bottom: 40px !important;
 }
 
 .ms-0 {
