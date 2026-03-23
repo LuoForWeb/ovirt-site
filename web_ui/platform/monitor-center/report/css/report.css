@@ -83,12 +83,23 @@
     border-color: #DC3545;
 }
 
+.tree-list-no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-list-no-data .no-data-tip {
+    color: #D7D9DB;
+}
+
 /* END REPORT FORM STYLE */
 
 /* BEIGIN REPORT DETAIL STYLE */
 
 .report-detail {
     height: 100%;
+    background-color: #F7F7F7;
 }
 
 .report-detail .report-detail__header {
@@ -113,7 +124,6 @@
     padding: 24px 28px;
     border-radius: 8px;
     background-color: #FFFFFF;
-    box-shadow: 0px 5px 25px 0px rgba(4,13,45,0.1);
 }
 
 .overview-card .header-level1 {

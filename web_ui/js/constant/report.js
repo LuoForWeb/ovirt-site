@@ -310,8 +310,8 @@ const TAPE_STATUS = {
 
 // 表单中磁带设备表格options
 const TAPE_LIST_TABLE_OPTIONS = {
-    url: 'report/tape_details',
-    searchPlaceholder: '按磁带名搜索',
+    url: 'report/tape_group',
+    searchPlaceholder: '按磁带组名搜索',
     columns: [
         {
             checkbox: true,
@@ -320,57 +320,29 @@ const TAPE_LIST_TABLE_OPTIONS = {
             widthUnit: '%'
         },
         {
-            field: 'tapeName',
-            title: '磁带名',
+            field: 'name',
+            title: '磁带组名',
             sortable: true,
         },
         {
-            field: 'groupName',
-            title: '磁带组',
-            sortable: true
-        },
-        {
-            field: 'totalSize',
+            field: 'totalCapacity',
             title: '总容量',
             sortable: true
         },
         {
-            field: 'freeSize',
+            field: 'availableCapacity',
             title: '可用容量',
             sortable: true
         },
         {
-            field: 'tapeStatus',
+            field: 'status',
             title: '状态',
             sortable: true,
             formatter: function (status) {
-                switch (status) {
-                    case TAPE_STATUS.ONLINE:
-                        return '<span class="badge badge-success">' + '在线' + '</span>'
-                    case TAPE_STATUS.OFFLINE:
-                        return '<span class="badge badge-secondary">' + '离线' + '</span>'
-                    case TAPE_STATUS.MOVING:
-                        return '<span class="badge badge-danger">' + '移动中' + '</span>'
-                    case TAPE_STATUS.READING:
-                        return '<span class="badge badge-secondary">' + '读取中' + '</span>'
-                    case TAPE_STATUS.WRITTING:
-                        return '<span class="badge badge-secondary">' + '写入中' + '</span>'
-                    case TAPE_STATUS.RETRIEVALING:
-                        return '<span class="badge badge-secondary">' + '检索中' + '</span>'
-                    case TAPE_STATUS.WAITING:
-                        return '<span class="badge badge-secondary">' + '等待中' + '</span>'
-                    case TAPE_STATUS.REWINDING:
-                        return '<span class="badge badge-secondary">' + '倒带' + '</span>'
-                    case TAPE_STATUS.READY:
-                        return '<span class="badge badge-primary">' + '就绪' + '</span>'
-                    case TAPE_STATUS.SCANNING:
-                        return '<span class="badge badge-secondary">' + '扫描中' + '</span>'
-                    case TAPE_STATUS.EXPORTING:
-                        return '<span class="badge badge-secondary">' + '导出中' + '</span>'
-                    case TAPE_STATUS.IMPORTING:
-                        return '<span class="badge badge-secondary">' + '导入中' + '</span>'
-                    default:
-                        break;
+                if(status) {
+                    return `<span class="badge badge-success">正常</span>`;
+                } else {
+                    return `<span class="badge badge-secondary">异常</span>`;
                 }
             }
         }
@@ -602,4 +574,11 @@ const NOTIFY_TIMESTRATEGY_TYPE = {
     WEEKLY: 2,
     MONTHLY: 3,
     YEARLY: 4
+};
+
+// 虚拟机平台类型
+const VCENTER_PLATFORM_TYPE = {
+    VM: 'virtualization',
+    PRIVATE_CLOUD: 'private',
+    PUBLIC_CLOUD: 'public'
 }

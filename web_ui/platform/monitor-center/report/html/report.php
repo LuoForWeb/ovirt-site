@@ -149,6 +149,34 @@
             </div>
             <!-- END RESOURCE LIST -->
 
+            <!-- BEGIN TREE LIST -->
+            <div class="form-group tree-list-form-group align-items-baseline is-required display-none">
+                <div class="form-group__label col-md-2">
+                    <span id="tree_list_form_group_label"></span>
+                </div>
+                <div class="form-group__content col-md-10">
+                    <div class="accordion tree-list-form-group-accordion" id="tree_list_form_group_accordion">
+                        <div class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#tree_list_form_group_accordion_body" aria-expanded="false">
+                            <div class="accordion-button" id="tree_list_form_group_accordion_btn"></div>    
+                        </div>
+                        <div id="tree_list_form_group_accordion_body" class="collapse" data-bs-parent="#tree_list_form_group_accordion">
+                            <div class="accordion-panel">
+                                <div class="tree-list-container">
+                                    <div class="tree-list-container__toolbar"></div>
+                                    <div class="tree-list-container__tree" id="vmware_tree"></div>
+                                </div>
+                                
+                                <div class="tree-list-no-data display-none">
+                                  <img src="/platform/monitor-center/report/img/nodata.svg" />
+                                  <span class="no-data-tip">暂无数据</span>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TREE LIST -->
+
             <!-- BEGIN OVERVIEW SWITCH-->
             <div class="form-group overview-form-group mb-40 display-none">
                 <div class="form-group__label col-md-2">

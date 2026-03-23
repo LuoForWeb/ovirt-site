@@ -20,6 +20,7 @@
 <script src="/assets/global/plugins/flatpicker/js/zh.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/cryptojs/crypto-js.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-jbvalidator/jbvalidator.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/ztree/js/jquery.ztree.core.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jstree/jstree.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/axios/axios.min.js" type="text/javascript"></script>
 <script src="./assets/global/plugins/bootstrap-input-spinner/bootstrap-input-spinner.min.js" type="text/javascript"></script>

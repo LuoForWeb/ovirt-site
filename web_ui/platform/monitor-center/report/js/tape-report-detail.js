@@ -12,6 +12,7 @@ var TapeReportDetail = function () {
     let $reportDetailTable = $('#report_detail_table');
     let CURRENT_TIME_RANGE_TYPE = 4; // 默认查看近一月的趋势
     let TABLE_CUSTOM_FIELDS = []; // 表格定制数据
+    let filterParams = {}; // 过滤器组件选择的过滤选项参数
     const TAPE_REPORT_TABLE_FILTER_OPTIONS = [
         {
             label: '状态',
@@ -326,7 +327,7 @@ var TapeReportDetail = function () {
     };
 
     /**
-     * 获取存储使用趋势数据
+     * 获取磁带组使用趋势数据
      */
     const getUsageTendencyData = () => {
         let startTime = new Date(), endTime = new Date();
@@ -348,12 +349,9 @@ var TapeReportDetail = function () {
                 break;
         }
 
-        let params = {
-            startTime: '2025-12-01',
-            endTime: '2025-12-31'
-        }
+        let params = { startTime: formatDate(startTime), endTime: formatDate(endTime), tapeStorgeFlag: true }
 
-        pAjaxRequest(params, 'api/v1/report/storage_usage_tendency', 'GET', (res) => {
+        axiosGet('report/storage_usage_tendency', params).then(res => {
             $('.tendency-card').block();
             try {
                 if (res.success) {
@@ -383,10 +381,10 @@ var TapeReportDetail = function () {
 
                     initStorageUsageTendencyEchart(legend, convertedSeriesData, xAxisData, targetUnit);
                 } else {
-                    UIToastr.showWarning('获取存储使用趋势数据失败');
+                    UIToastr.showWarning('获取磁带使用趋势数据失败');
                 }
             } catch (error) {
-                UIToastr.showWarning('获取存储使用趋势数据失败');
+                UIToastr.showWarning('获取磁带使用趋势数据失败');
             } finally {
                 $('.tendency-card').unblock();
             }
@@ -398,85 +396,122 @@ var TapeReportDetail = function () {
 
     // <----------------------------- BEGIN REPORT DETAIL TABLE LOGIC ------------------------------->
 
+    const initDataDetailTableFilter = (filterData) => {
+        $('#tape_report_filter_wrapper').initFilter({
+            filterSlotId: 'tape_report_filter_wrapper',
+            filterBtnId: 'tape_report_filter_btn',
+            filters: filterData
+        });
+    }
+
     /**
      * 初始化数据明细表格
      */
     const initDataDetailTable = () => {
         if ($reportDetailTable.children().length === 0) {
             const options = {
-                url: 'report/storage_list',
-                filterBtnId: '',
+                url: 'report/tape_details',
+                filterBtnId: 'tape_report_filter_btn',
                 rightCustomToolbar: 'report-detail-right-toolbar-wrapper',
                 buttonsToolbar: '.toolbar-buttons-wrapper.report-detail-toolbar-buttons', // 自定义按钮工具栏class
                 search: true, // 是否启用搜索
-                searchPlaceholder: '按存储别名搜索', // search input placeholder
+                searchPlaceholder: '按磁带名搜索', // search input placeholder
                 showColumns: false, // 是否启用列筛选
                 showExport: false, // 是否启用导出功能
                 showRefresh: true, // 是否启用刷新功能
+                autoHeight: true, // 是否自适应高度，适用于父容器没有固定高度的场景
                 tableContentWrapper: '.table-content-wrapper.report-detail-table-content-wrapper',
                 pageList: [10, 25, 50, 100],
                 columns: [
                     {
-                        field: 'name',
-                        title: '存储别名',
+                        field: 'tapeName',
+                        title: '磁带名',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('name')
+                        visible: TABLE_CUSTOM_FIELDS.includes('tapeName')
                     },
                     {
-                        field: 'type',
+                        field: 'tapeType',
                         title: '类型',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('type')
+                        visible: TABLE_CUSTOM_FIELDS.includes('tapeType')
                     },
                     {
-                        field: 'totalCapacity',
+                        field: 'libName',
+                        title: '磁带库',
+                        sortable: true,
+                        visible: TABLE_CUSTOM_FIELDS.includes('libName')
+                    },
+                    {
+                        field: 'groupName',
+                        title: '磁带组',
+                        sortable: true,
+                        visible: TABLE_CUSTOM_FIELDS.includes('groupName')
+                    },
+                    {
+                        field: 'totalSize',
                         title: '总容量',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('totalCapacity')
+                        visible: TABLE_CUSTOM_FIELDS.includes('totalSize')
                     },
                     {
-                        field: 'freeCapacity',
+                        field: 'freeSize',
                         title: '可用容量',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('freeCapacity')
+                        visible: TABLE_CUSTOM_FIELDS.includes('freeSize')
                     },
                     {
-                        field: 'usedCapacity',
+                        field: 'usedSize',
                         title: '已用容量',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('usedCapacity')
+                        visible: TABLE_CUSTOM_FIELDS.includes('usedSize')
                     },
                     {
-                        field: 'storageStatus',
+                        field: 'tapeStatus',
                         title: '状态',
                         sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('storageStatus'),
-                        formatter: function (value) {
-                            if(value) {
-                                return `<span class="badge badge-success">正常</span>`;
-                             } else {
-                                return `<span class="badge badge-secondary">异常</span>`;
+                        visible: TABLE_CUSTOM_FIELDS.includes('tapeStatus'),
+                        formatter: function (status) {
+                            switch (status) {
+                                case TAPE_STATUS.ONLINE:
+                                    return '<span class="badge badge-success">' + '在线' + '</span>'
+                                case TAPE_STATUS.OFFLINE:
+                                    return '<span class="badge badge-secondary">' + '离线' + '</span>'
+                                case TAPE_STATUS.MOVING:
+                                    return '<span class="badge badge-danger">' + '移动中' + '</span>'
+                                case TAPE_STATUS.READING:
+                                    return '<span class="badge badge-secondary">' + '读取中' + '</span>'
+                                case TAPE_STATUS.WRITTING:
+                                    return '<span class="badge badge-secondary">' + '写入中' + '</span>'
+                                case TAPE_STATUS.RETRIEVALING:
+                                    return '<span class="badge badge-secondary">' + '检索中' + '</span>'
+                                case TAPE_STATUS.WAITING:
+                                    return '<span class="badge badge-secondary">' + '等待中' + '</span>'
+                                case TAPE_STATUS.REWINDING:
+                                    return '<span class="badge badge-secondary">' + '倒带' + '</span>'
+                                case TAPE_STATUS.READY:
+                                    return '<span class="badge badge-primary">' + '就绪' + '</span>'
+                                case TAPE_STATUS.SCANNING:
+                                    return '<span class="badge badge-secondary">' + '扫描中' + '</span>'
+                                case TAPE_STATUS.EXPORTING:
+                                    return '<span class="badge badge-secondary">' + '导出中' + '</span>'
+                                case TAPE_STATUS.IMPORTING:
+                                    return '<span class="badge badge-secondary">' + '导入中' + '</span>'
+                                default:
+                                    break;
                             }
-                         }
-                    },
-                    {
-                        field: 'node',
-                        title: '节点',
-                        sortable: false,
-                        visible: TABLE_CUSTOM_FIELDS.includes('node'),
-                    },
-                    {
-                        field: 'nodeStatus',
-                        title: '状态',
-                        sortable: true,
-                        visible: TABLE_CUSTOM_FIELDS.includes('nodeStatus'),
-                        formatter: function (value) {
-                           if(value === 1) {
-                               return `<span class="badge badge-success">正常</span>`;
-                            } else {
-                               return `<span class="badge badge-secondary">异常</span>`;
-                           }
                         }
+                    },
+                    {
+                        field: 'driverPath',
+                        title: '驱动器',
+                        sortable: false,
+                        visible: TABLE_CUSTOM_FIELDS.includes('driverPath'),
+                    },
+                    {
+                        field: 'backupSetName',
+                        title: '备份集',
+                        sortable: true,
+                        visible: TABLE_CUSTOM_FIELDS.includes('backupSetName')
                     }
                 ]
             }
@@ -526,8 +561,7 @@ var TapeReportDetail = function () {
 
                         TABLE_CUSTOM_FIELDS = [...customFields];
                         let filterFields = []; // 获取过滤器组件中的选项
-                        if (TABLE_CUSTOM_FIELDS.indexOf('type') > -1) filterFields.push('type');
-                        if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
+                        if (TABLE_CUSTOM_FIELDS.indexOf('tapeStatus') > -1) filterFields.push('tapeStatus');
 
                         if (filterFields.length > 0) {
                             let filterData = TAPE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
@@ -535,7 +569,7 @@ var TapeReportDetail = function () {
                             });
 
                             // 渲染数据明细表格过滤器
-                            // initDataDetailTableFilter(filterData);
+                            initDataDetailTableFilter(filterData);
                         }
 
                         // 渲染数据明细表格
@@ -572,6 +606,26 @@ var TapeReportDetail = function () {
 
         $timeRangeType.on('change', function () {
             CURRENT_TIME_RANGE_TYPE = parseInt($(this).val());
+
+            getUsageTendencyData();
+        });
+
+        window.$off('tape_report_filter_btn-updateFilterEvent');
+
+        window.$on('tape_report_filter_btn-updateFilterEvent', (filterData) => {
+            if (filterData.length > 0) {
+                let tapeStatusList = getTableFilterParams('tapeStatus', filterData);
+
+                if (tapeStatusList.value.length > 0) {
+                    filterParams.status = tapeStatusList.value;
+                } else {
+                    filterParams.status = '';
+                }
+            } else {
+                filterParams.status = '';
+            }
+
+            $reportDetailTable.bootstrapTable('refresh', { query: { ...filterParams } });
         });
     }
     
