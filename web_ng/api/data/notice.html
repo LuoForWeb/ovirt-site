@@ -1,0 +1,355 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<style type="text/css">
+    .vinbox style,
+    .vinbox script,
+    .vinbox head,
+    .vinbox link,
+    .vinbox meta {
+        display: none !important;
+    }
+
+    .font-bold {
+        font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+        font-weight: bold
+    }
+
+    .font-regular {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        font-weight: 400
+    }
+
+    .font-success {
+        color: #24CCA7 !important;
+    }
+
+    .font-warning {
+        color: #FFC700 !important;
+    }
+
+    .font-error {
+        color: #F1416C !important;
+    }
+
+    .font-normal {
+        color: #313344 !important;
+    }
+
+    .bg-success {
+        background: #24CCA7;
+    }
+
+    .bg-warning {
+        background: #FFC700;
+    }
+
+    .bg-error {
+        background: #F1416C;
+    }
+
+    .content-list,
+    .content-list div {
+        overflow: auto
+    }
+
+    .content-list p {
+        margin: 8px 0;
+        float: left;
+    }
+
+    .content-list div>p:nth-child(2) {
+        text-align: center
+    }
+
+    .content-list div>p:nth-child(2)>span {
+        text-align: left
+    }
+
+    .content-list div>p:nth-child(3) {
+        text-align: right
+    }
+
+    .content-list div>p:nth-child(3)>span {
+        text-align: left
+    }
+
+    .content-list p>span {
+        vertical-align: top;
+    }
+
+    .content-list p>span:nth-child(1) {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        display: inline-block;
+        height: 18px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #4D4D4D;
+        line-height: 24px;
+        word-break: break-all;
+
+    }
+
+    .content-list p>span:nth-child(2) {
+        font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+        display: inline-table;
+        height: 18px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #1A1A1A;
+        line-height: 24px;
+
+    }
+
+    .bottom-info span {
+        display: inline-block;
+        height: 23px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #666666;
+        line-height: 23px;
+    }
+
+    .display-hide {
+        display: none
+    }
+
+    .display-show {
+        display: table
+    }
+
+    .content-table {
+        word-break: break-all
+    }
+
+    .content-table th {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        height: 50px;
+        background: #F5F8FA;
+        font-size: 14px;
+        font-weight: 400;
+        color: #313344;
+        line-height: 16px;
+        padding-left: 18px;
+        border-top: 1px solid #EFF2F5;
+        border-bottom: 1px solid #EFF2F5;
+    }
+
+    .content-table th:nth-child(1),
+    .content-table th:nth-child(2),
+    .content-table th:nth-child(3),
+    .content-table th:nth-child(4),
+    .content-table th:nth-child(5),
+    .content-table th:nth-child(6) {
+        width: 20%;
+    }
+
+    .content-table td {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        height: 50px;
+        background: #FFFFFF;
+        font-size: 12px;
+        font-weight: 400;
+        color: #6B6F85;
+        line-height: 14px;
+        padding-left: 18px;
+        border-bottom: 1px solid #F3F6F9;
+    }
+
+    .content-table td>span {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        width: 47px;
+        height: 27px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+    #template-param4{
+        width: 920px;
+    }
+    #template-param4 a{
+        word-break: break-all;
+        overflow-wrap: break-word;
+        text-decoration: underline;
+        color: #00C0D3;
+        line-height: 22px;
+    }
+    #template-param4 span{
+        font-size: 14px;
+        font-weight: 400;
+        color: #4D4D4D;
+        padding-top: 20px;
+        line-height: 24px;
+    }
+
+    .vm-status-success {
+        background: #E8FFF3;
+        color: #24CCA7;
+    }
+
+    .vm-status-error {
+        background: #FFF5F8;
+        color: #F1416C;
+    }
+
+    .vm-status-waiting {
+        background: #F1FAFF;
+        color: #00A3FF;
+    }
+
+    .content-list > div {
+        display: table;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .content-list > div > p {
+        display: table-row;
+        vertical-align: top; /* 顶部对齐 */
+    }
+
+    /* 第一个 span：标签列，固定宽度 */
+    .content-list > div > p > span:nth-child(1) {
+        display: table-cell;
+        width: 130px; /* 固定宽度，确保对齐 */
+        text-align: left;
+        vertical-align: top;
+        padding-right: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* 第二个 span：值列，自动扩展 */
+    .content-list > div > p > span:nth-child(2) {
+        display: table-cell;
+        text-align: left;
+        vertical-align: top;
+        word-break: break-all; /* 长文本换行 */
+        width: 780px;
+    }
+
+</style>
+
+<div id="vinchin_body">
+    <div id="mailContentContainer" class="vinbox qm_con_body_content qqmail_webmail_only">
+        <div style="font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;">
+            <center>
+                <table class="email-body"
+                       style="align-self: center;vertical-align: top;border: 0;border-collapse: collapse;margin-left: auto;margin-right: auto;width: 100%;height: 100%;background-color: #EAECED;">
+                    <tbody>
+                    <tr height="40"
+                        style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;"></tr>
+                    <tr style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                        <td style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                            <table class="email-content"
+                                   style="align-self: center;vertical-align: top;border: 0;border-collapse: collapse;margin-left: auto;margin-right: auto;width: 1000px;background-color: #FFFFFF;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1),0 2px 4px rgba(0, 0, 0, 0.05);border-radius: 10px;">
+                                <tbody>
+                                <tr
+                                        style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                    <td
+                                            style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                        <div class="content-body"
+                                             style="width: 91.2%;margin-left: auto;margin-right: auto;text-align: left;color:#000;">
+
+                                            <!-- logo0 -->
+                                            <div
+                                                    style="padding: 0;margin: 0px 0 0px 0;border: 0;text-align: right;vertical-align: top;margin-right: -44px;">
+                                                <img src="http://app.vinchin.com/img/notice-bg.png" id="template-logo"
+                                                     style="width: 726px;height: 61px;border-radius: 0px 10px 0px 0px;">
+                                            </div>
+                                            <!-- logo -->
+                                            <div
+                                                    style="padding: 0;margin: 19px 0 45px 0;border: 0;text-align: left;vertical-align: top;">
+                                                <img src="http://app.vinchin.com/img/notice-vinchin.png"
+                                                     style="width: 176px;height: 35px;">
+                                            </div>
+
+                                            <!-- 标题 -->
+                                            <div style="margin: 0 0 12px 0;" id="title">
+                                                            <span class="font-bold" id="template-title"
+                                                                  style="display: inline-block;vertical-align: top;height: auto;font-size: 24px;font-weight: bold;color: #020303;line-height: 26px;">
+                                                                通知标题
+                                                            </span>
+                                                <span class="font-bold" id="template-mode"
+                                                      style="background: rgba(0, 192, 211, 0.1);border-radius: 6px 6px 6px 6px;border: 1px solid #00C0D3;font-family: Microsoft YaHei UI, Microsoft YaHei UI;
+                                                      font-weight: bold;font-size: 18px;color: #00C0D3;line-height: 28px;text-align: left;font-style: normal;text-transform: none;padding: 5px 5px;margin-left: 12px;">
+                                                    日报
+                                                            </span>
+                                            </div>
+                                                <div>
+                                                <span style="height: 20px;">
+                                                                <span class="font-regular" id="template-make-time"
+                                                                      style="display: inline-block;vertical-align: top;height: 20px;font-size: 16px;font-weight: 400;color: #4D4D4D;line-height: 19px;">
+                                                                    生成时间: 2026-3-5 09:15:00
+                                                                </span>
+                                                            </span>
+                                                <span class="font-regular"
+                                                      style="color: #4A5259;display: block;height: auto;font-size: 16px;font-weight: 400;line-height: 23px;">
+
+                                                            </span>
+                                            </div>
+                                            <!-- 内容 -->
+                                            <div class="content-list" id="template-body" style="text-align: left;margin: 29px 0 38px 0;background-color: #F5F8FA;padding: 30px 10px 30px 43px;margin-left: -44px;margin-right: -44px">
+                                                <div id="template-param1">
+                                                    <p><span id="template-param1-title">参数1 </span><span id="template-param1-content">参数描述</span></p>
+                                                </div>
+                                                <div id="template-param2">
+                                                    <p><span id="template-param2-title">参数2 </span><span id="template-param2-content" class="alarm-level-style">参数描述</span></p>
+                                                </div>
+                                                <div id="template-param3">
+                                                    <p><span id="template-param3-title">参数3 </span><span id="template-param3-content">参数描述</span></p>
+                                                </div>
+                                                <div id="template-param4">
+                                                   <p>
+                                                       <div id="template-param4-title"><a href="https://vinchin.com">https://vinchin.com</a></div>
+                                                    <span id="template-param4-content">(如果点击链接无法跳转，请复制链接到浏览器访问)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="font-bold" id="template-text"
+                                                 style="margin-bottom:55px;font-family: Microsoft YaHei UI, Microsoft YaHei UI;font-weight: 400;margin-top: 38px;
+                                                 font-size: 14px;color: #1A1A1A;line-height: 24px;text-align: left;font-style: normal;text-transform: none;">
+                                                <span>如需了解更多详细信息，请</span><span><a style="font-weight: 700;">下载附件</a></span><span>查阅具体信息。</span>
+                                            </div>
+                                            <hr style="height: 1px;background: #EFF2F5;border: none;margin-top: 54px;">
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                <tr
+                                        style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                    <td
+                                            style="padding:0;margin: 0;border: 0;text-align: left;vertical-align: top;">
+                                        <div class="bottom-info font-regular"
+                                             style="width:91.2%; margin: 0 auto; text-align:left;padding: 47px 0 53px 0;font-size: 14px;">
+                                            <span id="template-footer1">若您不想再收到此类邮件，请登录备份系统取消订阅</span>
+                                            <hr
+                                                    style="border: none;border-top: 0px dashed #DBDBDB;margin: 7px 0;">
+                                            <span id="template-footer2">如需支持和帮助，请发送邮箱到 <a class="font-bold" style="color: #00C0D3;"
+                                                                                href="supportEmailHref" id="template-footer3">support@vinchin.com</a></span>
+                                            <span style="float: right;" id="template-footer4">&copy;2025 Vinchin All rights reserved</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;" height="40"></tr>
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
