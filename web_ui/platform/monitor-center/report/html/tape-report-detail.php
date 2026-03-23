@@ -1,4 +1,5 @@
 <!-- BEGIN PLUGIN STYLES -->
+<link href="./plugins/filter/css/filter.css" rel="stylesheet" type="text/css" />
 <link href="./platform/monitor-center/report/css/report.css" rel="stylesheet" type="text/css" />
 <link href="./plugins/table/css/table.css" rel="stylesheet" type="text/css" />
 <!-- END PLUGIN STYLES -->
@@ -125,7 +126,7 @@
                 <div class="table-toolbar-wrapper">
                     <!-- BEGIN LEFT TOOLBAR -->
                     <div class="table-toolbar-wrapper__left">
-                        <div id="tape_report_table_filter_wrapper" class="position-relative me-10"></div>
+                        <div id="tape_report_filter_wrapper" class="position-relative me-10"></div>
                     </div>
                     <!-- END LEFT TOOLBAR -->
 
@@ -144,6 +145,7 @@
 </div>
 
 <!-- BEGIN PLUGIN SCRIPTS -->
+<script src="./plugins/filter/js/filter.js" type="text/javascript"></script>
 <script src="./plugins/table/js/table.js" type="text/javascript"></script>
 <script src="./platform/monitor-center/report/js/tape-report-detail.js" type="text/javascript"></script>
 <!-- END PLUGIN SCRIPTS -->

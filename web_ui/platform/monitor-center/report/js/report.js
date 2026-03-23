@@ -71,6 +71,8 @@ var Report = function () {
     let $noticeDayTime = $('#notice_time_day'); // 通知时间每天 flatpickr JQ对象
     let $noticeWeekTime = $('#notice_time_week'); // 通知时间每周 flatpickr JQ对象
     let $noticeMonthTime = $('#notice_time_month'); // 通知时间每月 flatpickr JQ对象
+    let $vmwareTree = $('#vmware_tree'); // 虚拟机树JQ对象
+    let $vmwareTreeNoData = $('#vmware_tree_no_data'); // 虚拟机树无数据JQ对象
     let CURRENT_TEMPLATE_TYPE = 1; // 当前选中的模版类型
     let CURRENT_BACKUP_SOURCE_TYPE = 1; // 当前选中的备份资源类型
     let CURRENT_REPORT_UUID = ''; // 当前报表UUID
@@ -909,8 +911,8 @@ var Report = function () {
                     case BACKUP_SOURCE_TYPE.TAPE: // 磁带
                         // 磁带设备
                         $('.resource-list-form-group').removeClass('display-none');
-                        $('#resource_list_form_group_label').html('磁带设备');
-                        $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-cidai me-10"></i>选择磁带设备`);
+                        $('#resource_list_form_group_label').html('磁带组');
+                        $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-cidai me-10"></i>选择磁带组`);
                         initResourceListTable(TAPE_LIST_TABLE_OPTIONS, extraParam);
                         
                         $('.inteligentize-forecast-form-group').addClass('display-none');
@@ -1556,6 +1558,129 @@ var Report = function () {
 
     // <============================== BEGIN DATA PROTECTION REPORT LOGIC ==============================>
 
+    let vmTreeObj;
+    let selectedVmIds = [];
+
+    /**
+     * jstree 的 "changed" 事件回调函数。
+     * 当用户勾选或取消勾选节点时，此函数会被触发，并更新 selectedVmIds 数组。
+     * @param {Event} e - 事件对象
+     * @param {object} data - jstree 提供的事件数据
+     */
+    function onVmTreeChange(e, data) {
+        if (!vmTreeObj) return;
+
+        // 获取所有被选中的节点对象
+        const selectedNodes = vmTreeObj.get_selected(true);
+
+        // 筛选出所有叶子节点（即真正的虚拟机），并提取它们的ID
+        // jstree 的 is_parent() 方法可以准确判断一个节点是否为父节点
+        selectedVmIds = selectedNodes
+            .filter(node => !vmTreeObj.is_parent(node))
+            .map(node => node.id);
+    }
+
+    const initVmwareTree = (vcenterPlatformType) => {
+        // 如果已存在一个 jstree 实例，先销毁它以防止冲突
+        if (vmTreeObj) {
+            // jstree V3.x 使用 get_instance().destroy()
+            $.jstree.reference($vmwareTree).destroy();
+        }
+
+        // 显示加载状态
+        $('.tree-list-container__tree').block();
+
+        // 初始化 jstree
+        $vmwareTree.jstree({
+            core: {
+                // jstree 的核心数据源配置
+                data: function (node, cb) {
+                    // jstree 在请求根节点时，node.id 为 '#'
+                    const nodeId = node.id === '#' ? '#' : node.id;
+                    
+                    // 从父节点的 data 属性中获取 vcenter_uuid (如果存在)
+                    // 这是我们后端代码在第二层节点上附加的
+                    const vcenterUuid = (node.data && node.data.vcenter_uuid) ? node.data.vcenter_uuid : null;
+
+                    // 使用封装好的 axiosGet 发起请求
+                    axiosGet('report/vm_tree', {
+                        id: nodeId,
+                        module_type: vcenterPlatformType,
+                        vcenter_uuid: vcenterUuid
+                    }).then(res => {
+                        if (res.success) {
+                            // 仅在初次加载时检查“无数据”状态
+                            if (nodeId === '#' && res.data.length === 0) {
+                                $('.tree-list-no-data').removeClass('display-none');
+                                $('.tree-list-container__tree').addClass('display-none');
+                            } else {
+                                $('.tree-list-no-data').addClass('display-none');
+                                $('.tree-list-container__tree').removeClass('display-none');
+                            }
+                            // 通过回调函数将数据传递给 jstree
+                            console.log(res.data, '返回数据');
+                            cb(res.data);
+                        } else {
+                            UIToastr.showWarning(res.message || '获取虚拟机树数据失败');
+                            cb([]); // 出错时返回空数组
+                        }
+                    }).catch(err => {
+                        console.error('获取虚拟机树数据失败:', err);
+                        UIToastr.showWarning('获取虚拟机树数据失败');
+                        cb([]);
+                    }).finally(() => {
+                        // 仅在初次加载（请求根节点）后解除 UI 锁定
+                        if (nodeId === '#') {
+                            $('.tree-list-container__tree').unblock();
+                        }
+                    });
+                },
+                themes: {
+                    'responsive': true, // 响应式主题
+                }
+            },
+            plugins: ['checkbox', 'wholerow'], // 启用复选框和整行选中插件
+            checkbox: {
+                'keep_selected_style': false,
+                'three_state': true // 启用父子节点联动勾选
+            }
+        }).on('changed.jstree', onVmTreeChange) // 绑定 'changed' 事件
+        .on('ready.jstree', function () {
+            // 树加载完成后，将实例存入全局变量
+            vmTreeObj = $.jstree.reference($vmwareTree);
+        });
+    }
+
+    // /**
+    //  * 获取数据保护报表树数据
+    //  * @param {*} vcenterPlatformType 虚拟化平台类型
+    //  */
+    // const getVmwareTreeData = (vcenterPlatformType) => {
+    //     axiosGet('report/vm_tree', {vcenterPlatformType}).then(res => {
+    //         try {
+    //             if (res.success) {
+    //                 const { data } = res;
+
+    //                 if (data.length > 0) {
+    //                     $('.tree-list-no-data').addClass('display-none');
+    //                     $('.tree-list-container').removeClass('display-none');
+
+    //                     initVmwareTree(data);
+    //                 } else {
+    //                     $('.tree-list-container').addClass('display-none');
+    //                     $('.tree-list-no-data').removeClass('display-none');
+    //                 }
+    //             } else {
+    //                 UIToastr.showWarning('获取树数据失败');
+    //             }
+    //         } catch (error) {
+    //             UIToastr.showWarning('获取树数据失败');
+    //         } finally {
+    //             $('.tree-list-container__tree').unblock();
+    //         }
+    //     });
+    // }
+
     const initModuleTypeCascader = () => {
         if ($('#module_type_cascader').children().length === 0) {
             const cascader = new Cascader({
@@ -1569,10 +1694,28 @@ var Report = function () {
 
                     switch (CURRENT_SELECTED_MODULE_TYPE) {
                         case MODULE_TYPE_MAP.TIMING_BACKUP.VM:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('虚拟化');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.VM);
+                            
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD: 
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('私有云');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PRIVATE_CLOUD);
+
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD: 
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('公有云');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PUBLIC_CLOUD);
+
                             break;
                         case MODULE_TYPE_MAP.TIMING_BACKUP.COMPLETE_MACHINE: 
                             break;
@@ -1664,7 +1807,7 @@ var Report = function () {
         const tapeSelections = $resourceListTable.bootstrapTable('getSelections');
 
         return {
-            tapes: tapeSelections.map(item => ({ id: item.id, name: item.tapeName, groupUuid: item.groupUuid })),
+            tapes: tapeSelections.map(item => ({ id: item.id, name: item.name, groupUuid: item.groupUuid })),
             modules: $('#module_checkbox_groups_wrap').getCascaderCheckboxGroupValues('module_checkbox_groups'),
         };
     }

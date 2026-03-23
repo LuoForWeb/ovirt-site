@@ -149,7 +149,6 @@ var NodeReportDetail = function () {
     }
 
     const initNodeLoadTendencyEchart = (legendData, xAxisData, seriesData) => {
-        console.log(legendData, xAxisData, seriesData, 'initNodeLoadTendencyEchart');
         let echartId = 'usage_tendency_echart';
         if ($(`#${echartId}`).children().length > 0) {
             // 销毁上一个echart

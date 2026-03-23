@@ -161,6 +161,7 @@
 </div>
 
 <!-- BEGIN PLUGIN SCRIPTS -->
+<script src="./plugins/filter/js/filter.js" type="text/javascript"></script>
 <script src="./plugins/table/js/table.js" type="text/javascript"></script>
 <script src="./platform/monitor-center/report/js/storage-report-detail.js" type="text/javascript"></script>
 <!-- END PLUGIN SCRIPTS -->

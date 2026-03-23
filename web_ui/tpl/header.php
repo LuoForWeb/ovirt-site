@@ -33,6 +33,7 @@
     <link href="./assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/global/plugins/select2/css/select2-bootstrap-5-theme.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/global/plugins/bootstrap-daterangepicker/css/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/ztree/css/metroStyle/metroStyle.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/jstree/themes/default/style.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/jquery-smartWizard/css/smart_wizard.min.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
