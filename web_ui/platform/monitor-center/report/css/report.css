@@ -511,3 +511,11 @@
 }
 
 /* END NOTIFY FORM STYLE */
+
+/* BEGIN JSTREE STYLE */
+
+.jstree-icon.jstree-checkbox-disabled {
+    display: none;
+}
+
+/* END JSTREE STYLE */

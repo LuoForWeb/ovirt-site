@@ -39,8 +39,8 @@ return [
     // 数据保护类型定义
     'DATA_PROTECT_TYPE' => [
         'VM' => 1, // 虚拟化保护
-        'PUBLIC_CLOUD' => 2, // 公有云保护
-        'PRIVATE_CLOUD' => 3, // 私有云保护
+        'PRIVATE_CLOUD' => 2, // 私有云保护
+        'PUBLIC_CLOUD' => 3, // 公有云保护
         'SCHEDULED_MACHINE' => 4, // 定时整机保护
         'SCHEDULED_VOLUME' => 5, // 定时卷保护
         'FILE' => 6, // 文件保护

@@ -370,6 +370,7 @@ class Report extends Base
     {
         $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
         $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
+        $dataProtectTypeConfig = xphp_get_config('report', 'DATA_PROTECT_TYPE', 'report');
 
         $groupUuid = $params['groupUuid'];
         $templateName = $params['templateName'];
@@ -405,6 +406,15 @@ class Report extends Base
             case $templateTypeConfig['PRODUCTION_RESOURCE']: // 生产资源报表模板
                 break;
             case $templateTypeConfig['DATA_PROTECT']: // 数据保护报表模板
+                switch ($subType) {
+                    case $dataProtectTypeConfig['VM']: // 虚拟化保护报表
+                    case $dataProtectTypeConfig['PRIVATE_CLOUD']: // 私有云保护报表
+                    case $dataProtectTypeConfig['PUBLIC_CLOUD']: // 公有云保护报表
+                        $detail = $this->assembleVmReportDetails($params['detail']);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case $templateTypeConfig['TASK']: // 任务报表模板
                 break;
@@ -478,6 +488,7 @@ class Report extends Base
 
         $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
         $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
+        $dataProtectTypeConfig = xphp_get_config('report', 'DATA_PROTECT_TYPE', 'report');
 
         $templateUuid = $params['templateUuid'];
         $templateType = $params['templateType'];
@@ -505,6 +516,15 @@ class Report extends Base
             case $templateTypeConfig['PRODUCTION_RESOURCE']: // 生产资源报表模板
                 break;
             case $templateTypeConfig['DATA_PROTECT']: // 数据保护报表模板
+                switch ($subType) {
+                    case $dataProtectTypeConfig['VM']: // 虚拟化保护报表
+                    case $dataProtectTypeConfig['PRIVATE_CLOUD']: // 私有云保护报表
+                    case $dataProtectTypeConfig['PUBLIC_CLOUD']: // 公有云保护报表
+                        $detail = $this->assembleVmReportDetails($params['detail']);
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case $templateTypeConfig['TASK']: // 任务报表模板
                 break;
@@ -585,6 +605,24 @@ class Report extends Base
     {
         return [
             'nodes' => $params['nodes'],
+            'viewOverview' => $params['viewOverview'],
+            'viewUsageTendency' => $params['viewUsageTendency'],
+            'timeRangeType' => $params['timeRangeType'],
+            'timeRange' => $params['timeRange'],
+            'customFields' => $params['customFields'],
+            'path' => $params['path']
+        ];
+    }
+
+    /**
+     * 获取虚拟机报表（虚拟化、私有云、公有云）detail数据
+     * @param mixed $params
+     * @return array{customFields: mixed, path: mixed, timeRange: mixed, timeRangeType: mixed, viewOverview: mixed, viewUsageTendency: mixed, vms: mixed}
+     */
+    private function assembleVmReportDetails($params): array
+    {
+        return [
+            'vms' => $params['vms'],
             'viewOverview' => $params['viewOverview'],
             'viewUsageTendency' => $params['viewUsageTendency'],
             'timeRangeType' => $params['timeRangeType'],
@@ -2608,30 +2646,30 @@ class Report extends Base
 
     /**
      * 获取各虚拟化平台下的虚拟机树（支持 jsTree 懒加载）
-     * @param array $params 可能包含 id, vcenter_uuid, module_type 等参数
+     * @param array $params 可能包含 id, vcenterUuid, module_type 等参数
      * @return array
      * @throws \Exception
      */
     public function getVirtualMachineTree($params): array
     {
         $parentId = (isset($params['id']) && $params['id'] !== '#') ? $params['id'] : null;
-        $vcenterUuid = $params['vcenter_uuid'] ?? null;
+        $vcenterUuid = $params['vcenterUuid'] ?? null;
 
-        $hypervisorConfig = xphp_get_config('vm');
-        $hypervisorGroups = $hypervisorConfig['VMHYPERVISORGROUP'];
+        $vmConfig = xphp_get_config('vm');
+        $hypervisorGroups = $vmConfig['VMHYPERVISORGROUP'];
         $publicCloudPlatforms = $hypervisorGroups['publiccloud'];
         $privateCloudPlatforms = $hypervisorGroups['privatecloud'];
         $allCloudPlatforms = array_merge($publicCloudPlatforms, $privateCloudPlatforms);
-        $hypervisorNames = $hypervisorConfig['VMHYPERVISORDES'];
+        $hypervisorNames = $vmConfig['VMHYPERVISORDES'];
 
         $treeData = [];
 
         // 初始加载 (id is null, from '#') - 只返回第一层：平台类型
         if (is_null($parentId)) {
-            $moduleType = $params['module_type'] ?? 'virtualization';
+            $vcenterPlatformType = $params['vcenterPlatformType'] ?? 'virtualization';
             $platformsToShow = [];
 
-            switch ($moduleType) {
+            switch ($vcenterPlatformType) {
                 case 'public':
                     $platformsToShow = $publicCloudPlatforms;
                     break;
@@ -2656,7 +2694,7 @@ class Report extends Base
                         'parent' => '#',
                         'text' => $hypervisorNames[$type],
                         'children' => true, // 告诉 jstree 这个节点可以展开
-                        'state' => ['disabled' => true], // 设置为不可勾选
+                        'state' => ['checkbox_disabled' => true], // 设置为不可勾选
                     ];
                 }
             }
@@ -2665,49 +2703,89 @@ class Report extends Base
         // 第二层加载：父节点是平台类型 (e.g., 'vmware', 'hyperv')
         // 通过检查 $parentId 是否在我们的平台名称列表里来判断
         else if (in_array($parentId, array_keys($hypervisorNames)) && !filter_var($parentId, FILTER_VALIDATE_URL) && strpos($parentId, '-') === false) {
-            $sql = "SELECT vcenter_id, vcenter_ip, vcenter_uuid, vcenter_name, hypervisor_type FROM vm_vcenter WHERE hypervisor_type = ?";
+            $sql = "SELECT vcenter_id, vcenter_ip, vcenter_uuid, nickname, hypervisor_type FROM vm_vcenter WHERE hypervisor_type = ?";
             $vcenters = $this->dbSelect($sql, [$parentId]);
 
             foreach ($vcenters as $vcenter) {
                 $treeData[] = [
                     'id' => $vcenter['vcenter_uuid'],
                     'parent' => $vcenter['hypervisor_type'],
-                    'text' => $vcenter['vcenter_name'],
-                    'a_attr' => ['title' => $vcenter['vcenter_name'] . ' (' . $vcenter['vcenter_ip'] . ')'],
+                    'text' => $vcenter['nickname'] ? $vcenter['nickname'] : $vcenter['vcenter_ip'],
+                    'a_attr' => ['title' => $vcenter['nickname'] . ' (' . $vcenter['vcenter_ip'] . ')'],
                     'children' => true, // vCenter 节点也可以展开
-                    'data' => ['vcenter_uuid' => $vcenter['vcenter_uuid']], // 将 vcenter_uuid 放入 data 属性，供前端发请求时使用
+                    'data' => ['vcenterUuid' => $vcenter['vcenter_uuid']], // 将 vcenter_uuid 放入 data 属性，供前端发请求时使用
                 ];
             }
         }
-        // 第三层及以后加载：父节点是 UUID
+
+        // 从第三层开始，vcenter_uuid 是必需的
         else {
-            if ($vcenterUuid) {
-                $sql = "SELECT tree_id, display_mode, vcenter_uuid, type, name, uuid, parent_uuid, dir_path FROM vm_tree WHERE parent_uuid = ? AND vcenter_uuid = ? AND display_mode = 1";
-                $children = $this->dbSelect($sql, [$parentId, $vcenterUuid]);
-            } else {
-                $sql = "SELECT tree_id, display_mode, vcenter_uuid, type, name, uuid, parent_uuid, dir_path FROM vm_tree WHERE parent_uuid = ? AND display_mode = 1";
-                $children = $this->dbSelect($sql, [$parentId]);
+            if (!$vcenterUuid) {
+                // 如果前端没有传来 vcenter_uuid，无法继续查询，返回空
+                return [];
             }
 
-            $childUuids = array_column($children, 'uuid');
-            $subChildrenCount = [];
-            if (!empty($childUuids)) {
-                $placeholders = implode(',', array_fill(0, count($childUuids), '?'));
-                $countSql = "SELECT parent_uuid, COUNT(*) as count FROM vm_tree WHERE parent_uuid IN ($placeholders) AND display_mode = 1 GROUP BY parent_uuid";
-                $counts = $this->dbSelect($countSql, $childUuids);
-                foreach ($counts as $count) {
-                    $subChildrenCount[$count['parent_uuid']] = $count['count'];
+            // 第三层及以后加载：父节点是 UUID，实现分页加载
+            $page = isset($params['page']) ? (int) $params['page'] : 1;
+            $limit = 100;
+            $offset = ($page - 1) * $limit;
+
+            $queryParams = [$parentId, $vcenterUuid];
+            $whereClause = "parent_uuid = ? AND vcenter_uuid = ? AND display_mode = 1";
+
+            // 计算总数
+            $countSql = "SELECT COUNT(*) as total FROM vm_tree WHERE {$whereClause}";
+            $totalResult = $this->dbSelect($countSql, $queryParams);
+            $total = $totalResult[0]['total'] ?? 0;
+
+            if ($total > 0) {
+                // 获取 hypervisor type 以确定排序规则
+                $vcenterInfo = $this->dbSelect("SELECT hypervisor_type FROM vm_vcenter WHERE vcenter_uuid = ?", [$vcenterUuid]);
+                $hypervisor = $vcenterInfo[0]['hypervisor_type'] ?? null;
+
+                $vmwareGroup = xphp_get_config('vm', 'VMHYPERVISORGROUP')['vmware'] ?? [];
+                $isVmware = in_array(intval($hypervisor), $vmwareGroup);
+
+                if ($isVmware) {
+                    // VMware 环境下，使用 gbk 排序
+                    $orderBy = "ORDER BY type, convert(name USING gbk) COLLATE gbk_chinese_ci";
+                } else {
+                    // 其他环境，使用默认排序
+                    $orderBy = "ORDER BY type, name";
+                }
+
+                // 分页查询 vm_tree
+                $dataSql = "SELECT uuid, name, type, parent_uuid FROM vm_tree WHERE {$whereClause} {$orderBy}, name LIMIT {$offset}, {$limit}";
+                $children = $this->dbSelect($dataSql, $queryParams);
+
+                foreach ($children as $child) {
+                    $isVm = ($child['type'] === $vmConfig['VM_TREE_TYPE']['VM']);
+                    $treeData[] = [
+                        'id' => $child['uuid'],
+                        'parent' => $child['parent_uuid'],
+                        'text' => $child['name'],
+                        'type' => $isVm ? 'file' : 'folder',
+                        'children' => !$isVm, // 文件夹可以展开，虚拟机是叶子节点
+                        'a_attr' => ['title' => $child['name']],
+                        'data' => ['vcenterUuid' => $vcenterUuid]
+                    ];
                 }
             }
 
-            foreach ($children as $child) {
-                $hasChildren = isset($subChildrenCount[$child['uuid']]) && $subChildrenCount[$child['uuid']] > 0;
+            if ($total > ($page * $limit)) {
                 $treeData[] = [
-                    'id' => $child['uuid'],
-                    'parent' => $child['parent_uuid'],
-                    'text' => $child['name'],
-                    'a_attr' => ['title' => $child['name']],
-                    'children' => $hasChildren,
+                    'id' => 'load-more_' . $parentId . '_page_' . ($page + 1),
+                    'parent' => $parentId,
+                    'text' => '加载更多...',
+                    'type' => 'file',
+                    'children' => false,
+                    'state' => ['checkbox_disabled' => true],
+                    'li_attr' => [
+                        'class' => 'load-more-node',
+                        'data-page' => $page + 1,
+                        'data-parent-id' => $parentId,
+                        'data-vcenter-uuid' => $vcenterUuid
+                    ]
                 ];
             }
         }

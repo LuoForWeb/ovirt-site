@@ -72,7 +72,6 @@ var Report = function () {
     let $noticeWeekTime = $('#notice_time_week'); // 通知时间每周 flatpickr JQ对象
     let $noticeMonthTime = $('#notice_time_month'); // 通知时间每月 flatpickr JQ对象
     let $vmwareTree = $('#vmware_tree'); // 虚拟机树JQ对象
-    let $vmwareTreeNoData = $('#vmware_tree_no_data'); // 虚拟机树无数据JQ对象
     let CURRENT_TEMPLATE_TYPE = 1; // 当前选中的模版类型
     let CURRENT_BACKUP_SOURCE_TYPE = 1; // 当前选中的备份资源类型
     let CURRENT_REPORT_UUID = ''; // 当前报表UUID
@@ -95,6 +94,8 @@ var Report = function () {
     ];
     let SELECTED_REPORT_TEMPLATE_LIST = []; // 当前选中的报表对象
     let CURRENT_SELECTED_MODULE_TYPE = ''; // 当前选中的模块类型
+    let vmTreeObj; // 虚拟机树对象
+    let CURRENT_SELECTED_VM_ID_LIST = []; // 当前选中的虚拟机ID列表
 
     // <----------------------------- BEGIN REPORT TREE LOGIC ------------------------------->
 
@@ -1372,6 +1373,22 @@ var Report = function () {
     }
 
     /**
+     * 校验选择的虚拟机条数
+     * @returns 
+     */
+    const validateSelectedVms = () => {
+        let selectedVmNodes = $vmwareTree.jstree(true).get_checked();
+
+        if (selectedVmNodes.length === 0) {
+            $('.custom-validate-tip.validate-tree-list-tip').removeClass('display-none');
+            return false;
+        } else {
+            $('.custom-validate-tip.validate-tree-list-tip').addClass('display-none');
+            return true;
+        }
+    }
+
+    /**
      * 自定义时间校验
      * @returns 
      */
@@ -1558,9 +1575,6 @@ var Report = function () {
 
     // <============================== BEGIN DATA PROTECTION REPORT LOGIC ==============================>
 
-    let vmTreeObj;
-    let selectedVmIds = [];
-
     /**
      * jstree 的 "changed" 事件回调函数。
      * 当用户勾选或取消勾选节点时，此函数会被触发，并更新 selectedVmIds 数组。
@@ -1583,58 +1597,56 @@ var Report = function () {
     const initVmwareTree = (vcenterPlatformType) => {
         // 如果已存在一个 jstree 实例，先销毁它以防止冲突
         if (vmTreeObj) {
-            // jstree V3.x 使用 get_instance().destroy()
             $.jstree.reference($vmwareTree).destroy();
         }
 
-        // 显示加载状态
+        const originalTreeData = function (node, cb) {
+            // 在请求根节点时，node.id 为 '#'
+            const nodeId = node.id === '#' ? '#' : node.id;
+            
+            // 从父节点的 data 属性中获取 vcenterUuid (如果存在)
+            // 这是我们后端代码在第二层节点上附加的
+            const vcenterUuid = (node.data && node.data.vcenterUuid) ? node.data.vcenterUuid : null;
+
+            // 使用封装好的 axiosGet 发起请求
+            axiosGet('report/vm_tree', {
+                id: nodeId,
+                vcenterPlatformType: vcenterPlatformType,
+                vcenterUuid: vcenterUuid
+            }).then(res => {
+                if (res.success) {
+                    // 仅在初次加载时检查“无数据”状态
+                    if (nodeId === '#' && res.data.length === 0) {
+                        $('.tree-list-no-data').removeClass('display-none');
+                        $('.tree-list-container__tree').addClass('display-none');
+                    } else {
+                        $('.tree-list-no-data').addClass('display-none');
+                        $('.tree-list-container__tree').removeClass('display-none');
+                    }
+
+                    cb(res.data);
+                } else {
+                    UIToastr.showWarning(res.message || '获取虚拟机树数据失败');
+                    cb([]); // 出错时返回空数组
+                }
+            }).catch(err => {
+                console.error('获取虚拟机树数据失败:', err);
+                UIToastr.showWarning('获取虚拟机树数据失败');
+                cb([]);
+            }).finally(() => {
+                // 仅在初次加载（请求根节点）后解除 UI 锁定
+                if (nodeId === '#') {
+                    $('.tree-list-container__tree').unblock();
+                }
+            });
+        };
+
         $('.tree-list-container__tree').block();
 
-        // 初始化 jstree
         $vmwareTree.jstree({
             core: {
-                // jstree 的核心数据源配置
-                data: function (node, cb) {
-                    // jstree 在请求根节点时，node.id 为 '#'
-                    const nodeId = node.id === '#' ? '#' : node.id;
-                    
-                    // 从父节点的 data 属性中获取 vcenter_uuid (如果存在)
-                    // 这是我们后端代码在第二层节点上附加的
-                    const vcenterUuid = (node.data && node.data.vcenter_uuid) ? node.data.vcenter_uuid : null;
-
-                    // 使用封装好的 axiosGet 发起请求
-                    axiosGet('report/vm_tree', {
-                        id: nodeId,
-                        module_type: vcenterPlatformType,
-                        vcenter_uuid: vcenterUuid
-                    }).then(res => {
-                        if (res.success) {
-                            // 仅在初次加载时检查“无数据”状态
-                            if (nodeId === '#' && res.data.length === 0) {
-                                $('.tree-list-no-data').removeClass('display-none');
-                                $('.tree-list-container__tree').addClass('display-none');
-                            } else {
-                                $('.tree-list-no-data').addClass('display-none');
-                                $('.tree-list-container__tree').removeClass('display-none');
-                            }
-                            // 通过回调函数将数据传递给 jstree
-                            console.log(res.data, '返回数据');
-                            cb(res.data);
-                        } else {
-                            UIToastr.showWarning(res.message || '获取虚拟机树数据失败');
-                            cb([]); // 出错时返回空数组
-                        }
-                    }).catch(err => {
-                        console.error('获取虚拟机树数据失败:', err);
-                        UIToastr.showWarning('获取虚拟机树数据失败');
-                        cb([]);
-                    }).finally(() => {
-                        // 仅在初次加载（请求根节点）后解除 UI 锁定
-                        if (nodeId === '#') {
-                            $('.tree-list-container__tree').unblock();
-                        }
-                    });
-                },
+                data: originalTreeData,
+                check_callback: true,
                 themes: {
                     'responsive': true, // 响应式主题
                 }
@@ -1648,38 +1660,55 @@ var Report = function () {
         .on('ready.jstree', function () {
             // 树加载完成后，将实例存入全局变量
             vmTreeObj = $.jstree.reference($vmwareTree);
+        }).on('select_node.jstree', function (e, data) {
+            if (data.node.original && data.node.original.li_attr && data.node.original.li_attr.class === 'load-more-node') { // 点击了“加载更多”节点
+                const treeInstance = data.instance;
+                const parentId = data.node.parent;
+                const parentNode = treeInstance.get_node(parentId);
+
+                const nextPage = data.node.li_attr['data-page'];
+                const vcenterUuid = data.node.li_attr['data-vcenter-uuid'];
+
+                // 加载更多时保持 offcanvas-body 容器的滚动条位置
+                const scrollContainer = $vmwareTree.closest('.offcanvas-body');
+                const scrollTop = scrollContainer.scrollTop();
+
+                const redrawHandler = function () {
+                    scrollContainer.scrollTop(scrollTop);
+                };
+                // 注册一个一次性的 redraw 事件监听器（.one() 能确保这个监听器在执行一次后就自动移除），在树重绘后恢复滚动位置
+                $vmwareTree.one('redraw.jstree', redrawHandler);
+
+                // 先取消选择“加载更多”节点，避免不必要的事件
+                treeInstance.deselect_node(data.node);
+
+                $('.tree-list-container__tree').block();
+                axiosGet('report/vm_tree', {
+                    id: parentId,
+                    vcenterPlatformType: vcenterPlatformType,
+                    vcenterUuid: vcenterUuid,
+                    page: nextPage
+                }).then(res => {
+                    if (res && res.success) {
+                        $('.tree-list-container__tree').unblock();
+
+                        treeInstance.delete_node(data.node);
+                        res.data.forEach(newNodeData => {
+                            treeInstance.create_node(parentNode, newNodeData, 'last');
+                        });
+
+                        // 手动触发一次完整的重绘，确保 'redraw.jstree' 事件能被正确触发
+                        treeInstance.redraw(true);
+                    } else {
+                        UIToastr.showWarning('加载更多失败');
+                        // 如果加载失败，移除监听器以防止在未来的其他重绘中错误地触发
+                        $vmwareTree.off('redraw.jstree', redrawHandler);
+                        $('.tree-list-container__tree').unblock();
+                    }
+                });
+            }
         });
     }
-
-    // /**
-    //  * 获取数据保护报表树数据
-    //  * @param {*} vcenterPlatformType 虚拟化平台类型
-    //  */
-    // const getVmwareTreeData = (vcenterPlatformType) => {
-    //     axiosGet('report/vm_tree', {vcenterPlatformType}).then(res => {
-    //         try {
-    //             if (res.success) {
-    //                 const { data } = res;
-
-    //                 if (data.length > 0) {
-    //                     $('.tree-list-no-data').addClass('display-none');
-    //                     $('.tree-list-container').removeClass('display-none');
-
-    //                     initVmwareTree(data);
-    //                 } else {
-    //                     $('.tree-list-container').addClass('display-none');
-    //                     $('.tree-list-no-data').removeClass('display-none');
-    //                 }
-    //             } else {
-    //                 UIToastr.showWarning('获取树数据失败');
-    //             }
-    //         } catch (error) {
-    //             UIToastr.showWarning('获取树数据失败');
-    //         } finally {
-    //             $('.tree-list-container__tree').unblock();
-    //         }
-    //     });
-    // }
 
     const initModuleTypeCascader = () => {
         if ($('#module_type_cascader').children().length === 0) {
@@ -1692,48 +1721,74 @@ var Report = function () {
                     console.log(moduls, '级联选择的对象类型');
                     CURRENT_SELECTED_MODULE_TYPE = moduls.length === 2 ? moduls[1].value : '';
 
+                    let extraParam = {}; // TODO:回显时赋值
+
+                    // 显示公共配置
+                    $('.report-name-form-group').removeClass('display-none');
+                    $('.overview-form-group').removeClass('display-none');
+                    $('.tendency-form-group').removeClass('display-none');
+                    $('.customized-data-form-group').removeClass('display-none');
+                    $('.report-path-form-group').removeClass('display-none');
+                    $('.report-description-form-group').removeClass('display-none');
+
+                    // 隐藏非公共配置
+                    $('.modules-checkbox-group').addClass('display-none');
+                    $('.inteligentize-forecast-form-group').addClass('display-none');
+
                     switch (CURRENT_SELECTED_MODULE_TYPE) {
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.VM:
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.VM:
                             $('.tree-list-form-group').removeClass('display-none');
                             $('#tree_list_form_group_label').html('虚拟化');
                             $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
 
-                            initVmwareTree(VCENTER_PLATFORM_TYPE.VM);
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.VM); // 初始化虚拟机树
+
+                            $('.overview-tips-info').empty().html('开启将展示虚拟机总数、任务总数、任务成功率、备份总数据');
+
+                            initCustomizedDataSelect(VM_REPORT_MULTIPLE_OPTIONS, extraParam); // 初始化定制数据下拉选择器
                             
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD:
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD:
                             $('.tree-list-form-group').removeClass('display-none');
                             $('#tree_list_form_group_label').html('私有云');
                             $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
 
-                            initVmwareTree(VCENTER_PLATFORM_TYPE.PRIVATE_CLOUD);
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PRIVATE_CLOUD); // 初始化虚拟机树
+
+                            $('.overview-tips-info').empty().html('开启将展示虚拟机总数、任务总数、任务成功率、备份总数据');
+
+                            initCustomizedDataSelect(VM_REPORT_MULTIPLE_OPTIONS, extraParam); // 初始化定制数据下拉选择器
 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD:
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD:
                             $('.tree-list-form-group').removeClass('display-none');
                             $('#tree_list_form_group_label').html('公有云');
                             $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
 
-                            initVmwareTree(VCENTER_PLATFORM_TYPE.PUBLIC_CLOUD);
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PUBLIC_CLOUD); // 初始化虚拟机树
+
+                            $('.overview-tips-info').empty().html('开启将展示虚拟机总数、任务总数、任务成功率、备份总数据');
+
+                            initCustomizedDataSelect(VM_REPORT_MULTIPLE_OPTIONS, extraParam); // 初始化定制数据下拉选择器
 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.COMPLETE_MACHINE: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.COMPLETE_MACHINE: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.VOLUME: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.VOLUME: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.FILE: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.FILE: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.NAS: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.NAS: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.HADOOP: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.HADOOP: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.OBS: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.OBS: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.DB: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.DB: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.M365: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.M365: 
                             break;
-                        case MODULE_TYPE_MAP.TIMING_BACKUP.KUBERNETES: 
+                        case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.KUBERNETES: 
                             break;
                         default:
                             break;
@@ -1775,6 +1830,34 @@ var Report = function () {
             case TEMPLATE_TYPE.PRODUCTION_RESOURCE: // 生产资源报表模板
                 break;
             case TEMPLATE_TYPE.DATA_PROTECTION: // 数据保护报表模板
+                switch (CURRENT_SELECTED_MODULE_TYPE) {
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.VM:
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD:
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD:
+                        let isSelectedVmsValid = validateSelectedVms(); // 校验虚拟机条数
+
+                        return reportFormValidator.checkAll() === 0 && isSelectedVmsValid && isCustomizedTimeValid && isReportPathValid;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.COMPLETE_MACHINE: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.VOLUME: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.FILE: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.NAS: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.HADOOP: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.OBS: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.DB: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.M365: 
+                        break;
+                    case REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.KUBERNETES: 
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case TEMPLATE_TYPE.TASK: // 任务报表模板
                 break;
@@ -1822,6 +1905,42 @@ var Report = function () {
         return {
             nodes: nodeSelections.map(item => ({ id: item.id, nodeUuid: item.node_uuid, ip: item.ip }))
         };
+    }
+
+    /**
+     * 获取虚拟机保护报表特定参数
+     */
+    const getVmProtectionReportParams = () => {
+        const treeInstance = $vmwareTree.jstree(true);
+        const selectedNodes = treeInstance.get_selected(true);
+
+        const vmList = [];
+
+        console.log(selectedNodes, 'selectedNodes');
+        selectedNodes.forEach(node => {
+            // 只处理文件类型的节点（即虚拟机）
+            if (node.original && node.original.type === 'file') {
+                // `node.parents` 是一个从父节点到根节点的ID数组, 结构类似: [..., vcenter_uuid, hypervisor_type, '#']
+                // 因此，vcenterUuid 是倒数第三个元素
+                const vcenterUuid = node.parents.length >= 3 ? node.parents[node.parents.length - 3] : null;
+
+                // `get_path` 方法可以获取从根到当前节点的路径，第三个参数为true表示获取ID路径
+                // 这个ID路径对于后续回显（懒加载并展开树）至关重要
+                const path = treeInstance.get_path(node, '/', true);
+
+                vmList.push({
+                    uuid: node.id,
+                    name: node.text,
+                    parentUuid: node.parent,
+                    vcenterUuid: vcenterUuid,
+                    path: path
+                });
+            }
+        });
+
+        console.log(vmList, 'vmList');
+
+        return { vms: vmList };
     }
 
     /**
@@ -1873,10 +1992,40 @@ var Report = function () {
         },
 
         /**
-         * 数据保护报表处理器 (待实现)
+         * 数据保护报表处理器
          */
         [TEMPLATE_TYPE.DATA_PROTECTION]: () => {
-            return {};
+            const params = {
+                detail: {},
+                subType: REPORT_MODULE_TYPE_TO_SUB_TYPE_MAP[CURRENT_SELECTED_MODULE_TYPE]
+            };
+
+            // 收集此类型下的通用参数
+            params.detail.viewOverview = $overviewSwitch.get(0).checked;
+            params.detail.viewUsageTendency = $tendencySwitch.get(0).checked;
+            if (params.detail.viewUsageTendency) {
+                params.detail.timeRangeType = CURRENT_SELECTED_TIME_RANGE_TYPE;
+                if (params.detail.timeRangeType === RUNNING_TIME_TYPE.CUSTOM) {
+                    params.detail.timeRange = `${CURRENT_CUSTOM_TIME_RANGE.startTime} ⇀ ${CURRENT_CUSTOM_TIME_RANGE.endTime}`;
+                }
+            }
+            params.detail.customFields = $customizeDataSelect.select2('val');
+
+            // 根据子类型（虚拟化、私有云、混合云、物理机、虚拟机、数据库、文件系统、NAS、Hadoop等等）调用对应的参数收集函数
+            const subTypeHandlers = {
+                [REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.VM]: getVmProtectionReportParams,
+                [REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD]: getVmProtectionReportParams,
+                [REPORT_MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD]: getVmProtectionReportParams,
+            };
+
+            const subTypeHandler = subTypeHandlers[CURRENT_SELECTED_MODULE_TYPE];
+            console.log(subTypeHandlers[CURRENT_SELECTED_MODULE_TYPE], 'subTypeHandlers[CURRENT_SELECTED_MODULE_TYPE]');
+            if (subTypeHandler) {
+                // 将子类型收集的参数合并到 detail 对象中
+                Object.assign(params.detail, subTypeHandler());
+            }
+
+            return params;
         },
 
         /**

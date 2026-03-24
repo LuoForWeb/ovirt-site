@@ -167,7 +167,55 @@ const NODE_REPORT_MULTIPLE_OPTIONS = [
         id: 'status',
         text: '节点状态'
     },
-]
+];
+
+// 虚拟机报表多选项数组
+const VM_REPORT_MULTIPLE_OPTIONS = [
+    {
+        id: 'vmName',
+        text: '虚拟机名'
+    },
+    {
+        id: 'vmIp',
+        text: '虚拟机IP'
+    },
+    {
+        id: 'vmStatus',
+        text: '状态'
+    },
+    {
+        id: 'vcenterType',
+        text: '虚拟化类型'
+    },
+    {
+        id: 'protectStatus',
+        text: '保护状态'
+    },
+    {
+        id: 'lastBackupResult',
+        text: '上次备份结果'
+    },
+    {
+        id: 'lastBackupTime',
+        text: '上次备份时间'
+    },
+    {
+        id: 'vmSize',
+        text: '虚拟机大小'
+    },
+    {
+        id: 'writeSize',
+        text: '写入大小'
+    },
+    {
+        id: 'successCount',
+        text: '成功次数'
+    },
+    {
+        id: 'failCount',
+        text: '失败次数'
+    }
+];
 
 // 模块类型级联复选框组数组
 const MODULE_CASCADER_GROUPS = [
