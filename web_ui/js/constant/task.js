@@ -839,8 +839,8 @@ const BUSINESS_TYPE_MODULE_TYPE_TREE = [
     }
 ];
 
-// 业务类型 - 模块类型的映射关系
-const MODULE_TYPE_MAP = {
+// 报表 - 业务类型 - 模块类型的映射关系
+const REPORT_MODULE_TYPE_MAP = {
     TIMING_BACKUP: {
         VM: '2-1',
         PRIVATE_CLOUD: '2-2',
@@ -865,4 +865,26 @@ const MODULE_TYPE_MAP = {
         DB: '12-0',
         FILE: '26-0'
     }
+};
+
+// 报表 - 模块类型 - bd_report表中 sub_type 映射关系
+const REPORT_MODULE_TYPE_TO_SUB_TYPE_MAP = {
+    '2-1': 1,
+    '2-2': 2,
+    '2-3': 3,
+    '5-1': 4,
+    '5-0': 5,
+    '3-1': 6,
+    '3-2': 7,
+    '3-3': 8,
+    '3-4': 9,
+    '4-0': 10,
+    '14-0': 11,
+    '28-0': 12,
+    '10-1-2': 13,
+    '10-1-1': 14,
+    '10-0-4': 15,
+    '10-0-3': 16,
+    '12-0': 17,
+    '26-0': 18
 }

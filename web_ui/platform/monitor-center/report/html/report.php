@@ -69,7 +69,7 @@
         </div>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body test-offcanvas-body">
         <form id="report_form" class="form report-form needs-validation" novalidate>
             <!-- BEGIN TEMPLATE TYPE -->
             <div class="form-group">
@@ -173,6 +173,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="custom-validate-tip validate-tree-list-tip display-none">至少选择一项</div>
                 </div>
             </div>
             <!-- END TREE LIST -->
