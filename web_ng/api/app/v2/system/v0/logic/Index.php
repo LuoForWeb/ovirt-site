@@ -33,9 +33,9 @@ class Index extends Base
 
         $sql_product_type = "select settings_content from bd_system_settings where settings_type = 24";
         $result_product_type = $this->dbSelect($sql_product_type);
-        if(empty($result_product_type)){
+        if (empty($result_product_type)) {
             $login_product_type = "";
-        }else{
+        } else {
             $login_product_type = $result_product_type[0]['settings_content'];
         }
 
@@ -107,7 +107,7 @@ class Index extends Base
         if (empty($data)) {
             return [];
         }
-        $data = v1_decrypt($data[0]['extension']);
+        $data = v2_decrypt($data[0]['extension']);
         return json_decode($data, true);
     }
 

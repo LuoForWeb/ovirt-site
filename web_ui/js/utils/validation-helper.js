@@ -14,28 +14,23 @@ const EMAIL_VALID_EXP = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/; // 邮�
 const illeagalEmailsCheck = (val) => {
     let result = {
         flag: false,
-        message: ''
+        index: 0
     };
 
-    if (!val) {
-        result.flag = true;
-        result.message = LANG.UI_EMAIL_ADDRESS_CANNOT_EMPTY;
-    } else {
-        let emails = val.split('\n');
+    let emails = val.split('\n');
 
-        emails = emails.filter(Boolean).map(i => {
-            // 空格替换为空字符串
-            return i.replace(/\s/g, '');
-        }).filter(Boolean);
+    emails = emails.filter(Boolean).map(i => {
+        // 空格替换为空字符串
+        return i.replace(/\s/g, '');
+    }).filter(Boolean);
 
-        for (let i = 0; i < emails.length; i++) {
-            if (!EMAIL_VALID_EXP.test(emails[i])) {
-                result.flag = true;
-                result.message = `${LANG.UI_EMERGENCY_RECOVERY_THE}${i + 1}${LANG.UI_EMAILS_FORMAT_UNVALID_TIPS}`;
-                break;
-            } else {
-                result.flag = false;
-            }
+    for (let i = 0; i < emails.length; i++) {
+        if (!EMAIL_VALID_EXP.test(emails[i])) {
+            result.flag = true;
+            result.index = i + 1;
+            break;
+        } else {
+            result.flag = false;
         }
     }
 

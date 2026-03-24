@@ -1,4 +1,10 @@
 <?php
+/*
+ * @Author: ChengJiaFu
+ * @Date: 2026-03-19 17:35:24
+ * @Description: 报表Logic
+ * @version: 1.0
+ */
 
 namespace app\v2\report\v0\logic;
 
@@ -9,6 +15,7 @@ use app\v2\job\v0\logic\JobInfo;
 use app\v2\homepage\v0\logic\homePageInfo;
 use app\v2\common\logic\Report as ReportHandler;
 use app\v2\vm\v0\logic\VmJobInfo;
+use app\v2\resources\v0\logic\Node as NodeHandler;
 
 class Report extends Base
 {
@@ -361,8 +368,8 @@ class Report extends Base
      */
     public function createReport($params): array
     {
-        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE');
-        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE');
+        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
+        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
 
         $groupUuid = $params['groupUuid'];
         $templateName = $params['templateName'];
@@ -389,6 +396,7 @@ class Report extends Base
                         $detail = $this->assembleTapeReportDetails($params['detail']);
                         break;
                     case $backupSourceTypeConfig['NODE']: // 节点报表模板
+                        $detail = $this->assembleNodeReportDetails($params['detail']);
                         break;
                     default:
                         break;
@@ -468,8 +476,8 @@ class Report extends Base
             return ['success' => true, 'message' => '更新成功'];
         }
 
-        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE');
-        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE');
+        $templateTypeConfig = xphp_get_config('report', 'TEMPLATE_TYPE', 'report');
+        $backupSourceTypeConfig = xphp_get_config('report', 'BACKUP_RESOURCE_TYPE', 'report');
 
         $templateUuid = $params['templateUuid'];
         $templateType = $params['templateType'];
@@ -488,6 +496,7 @@ class Report extends Base
                         $detail = $this->assembleTapeReportDetails($params['detail']);
                         break;
                     case $backupSourceTypeConfig['NODE']: // 节点报表模板
+                        $detail = $this->assembleNodeReportDetails($params['detail']);
                         break;
                     default:
                         break;
@@ -568,6 +577,24 @@ class Report extends Base
     }
 
     /**
+     * 组装节点报表detail数据
+     * @param mixed $params
+     * @return void
+     */
+    private function assembleNodeReportDetails($params): array
+    {
+        return [
+            'nodes' => $params['nodes'],
+            'viewOverview' => $params['viewOverview'],
+            'viewUsageTendency' => $params['viewUsageTendency'],
+            'timeRangeType' => $params['timeRangeType'],
+            'timeRange' => $params['timeRange'],
+            'customFields' => $params['customFields'],
+            'path' => $params['path']
+        ];
+    }
+
+    /**
      * 获取报表列表
      * @param mixed $params
      * @return array{rows: array, total: mixed}
@@ -642,9 +669,33 @@ class Report extends Base
         $sql = "SELECT * FROM bd_report WHERE {$where} ORDER BY {$sort} {$order} LIMIT {$offset}, {$limit}";
         $reports = $this->dbSelect($sql, $queryParams);
 
-        $rows = [];
+        // 批量获取通知策略信息以避免N+1查询
+        $noticeIds = array_filter(array_column($reports, 'email_notice_id'));
+        $noticeConfigsMap = [];
+        if (!empty($noticeIds)) {
+            $uniqueNoticeIds = array_unique($noticeIds);
+            $placeholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+            $noticeSql = "SELECT id, email_notice_flag, report_config, receive_email FROM bd_email_notice WHERE id IN ($placeholders)";
+            $noticeData = $this->dbSelect($noticeSql, array_values($uniqueNoticeIds));
+
+            foreach ($noticeData as $notice) {
+                $noticeConfigsMap[$notice['id']] = [
+                    'emailNoticeFlag' => $notice['email_notice_flag'],
+                    'reportConfig' => json_decode($notice['report_config'], true),
+                    'receiveEmail' => json_decode($notice['receive_email'], true)
+                ];
+            }
+        }
+
+        $formattedReports = [];
         foreach ($reports as $report) {
-            $rows[] = [
+            $detail = json_decode($report['detail'], true);
+            $noticeConfig = new \stdClass(); // 默认为空对象 {}
+            if (!empty($report['email_notice_id']) && isset($noticeConfigsMap[$report['email_notice_id']])) {
+                $noticeConfig = $noticeConfigsMap[$report['email_notice_id']];
+            }
+
+            $formattedReports[] = [
                 'templateUuid' => $report['template_uuid'],
                 'groupUuid' => $report['group_uuid'],
                 'templateName' => $report['template_name'],
@@ -657,12 +708,13 @@ class Report extends Base
                 'emailNoticeId' => $report['email_notice_id'],
                 'create_time' => $report['create_time'],
                 'defaultTemplateFlag' => $report['default_template_flag'],
+                'noticeConfig' => $noticeConfig
             ];
         }
 
         return [
             'total' => $total,
-            'rows' => $rows
+            'rows' => $formattedReports
         ];
     }
 
@@ -796,27 +848,47 @@ class Report extends Base
         $groupUuid = $params['group_uuid'] ?? null;
 
         if (empty($groupUuid)) {
-            return ['success' => false, 'message' => '缺少group_uuid参数'];
+            return ['success' => false, 'message' => '未指定任何报表文件夹'];
         }
 
         $this->dbBeginTransaction();
-
         try {
+            // 1. 递归获取所有待删除的文件夹UUID（包括自身）
             $allFoldersToDelete = $this->getDescendantFolders($groupUuid);
             $allFoldersToDelete[] = $groupUuid;
 
             if (!empty($allFoldersToDelete)) {
                 $folderUuidsPlaceholder = implode(',', array_fill(0, count($allFoldersToDelete), '?'));
 
-                $deleteReportsSql = "DELETE FROM bd_report WHERE group_uuid IN ({$folderUuidsPlaceholder})";
-                $this->dbExec($deleteReportsSql, $allFoldersToDelete);
+                // 2. 根据文件夹UUID，查询出所有待删除报表关联的 email_notice_id
+                $selectReportsSql = "SELECT email_notice_id FROM bd_report WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $reportsInFolders = $this->dbSelect($selectReportsSql, $allFoldersToDelete);
 
-                $deleteGroupsSql = "DELETE FROM bd_report_group WHERE group_uuid IN ({$folderUuidsPlaceholder})";
-                $this->dbExec($deleteGroupsSql, $allFoldersToDelete);
+                $noticeIdsToDelete = [];
+                foreach ($reportsInFolders as $report) {
+                    if (!empty($report['email_notice_id'])) {
+                        $noticeIdsToDelete[] = $report['email_notice_id'];
+                    }
+                }
+
+                // 3. 如果有关联的通知配置，则从 bd_email_notice 表中删除它们
+                if (!empty($noticeIdsToDelete)) {
+                    $uniqueNoticeIds = array_unique($noticeIdsToDelete);
+                    $noticePlaceholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+                    $deleteNoticeSql = "DELETE FROM bd_email_notice WHERE id IN ($noticePlaceholders)";
+                    $this->dbExec($deleteNoticeSql, array_values($uniqueNoticeIds));
+                }
+
+                // 4. 从 bd_report 表中删除这些文件夹下的所有报表
+                $deleteReportSql = "DELETE FROM bd_report WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $this->dbExec($deleteReportSql, $allFoldersToDelete);
+
+                // 5. 从 bd_report_group 表中删除所有相关文件夹
+                $deleteGroupSql = "DELETE FROM bd_report_group WHERE group_uuid IN ($folderUuidsPlaceholder)";
+                $this->dbExec($deleteGroupSql, $allFoldersToDelete);
             }
 
-            $this->dbCommit();
-
+            $this->dbCommit(); // 提交事务
             return ['success' => true, 'message' => '删除成功'];
         } catch (\Exception $e) {
             $this->dbRollBack();
@@ -848,22 +920,43 @@ class Report extends Base
      * @param mixed $params
      * @return array{message: string, success: bool}
      */
-    public function deleteReport($params)
+    public function deleteReport($params): array
     {
         $templateUuids = explode(',', $params['templateUuids'] ?? null);
 
         if (empty($templateUuids)) {
-            return ['success' => false, 'message' => '缺少templateUuids参数'];
+            return ['success' => false, 'message' => '未指定任务报表'];
         }
 
         try {
+            // 1. 根据 templateUuids 查询出所有需要删除的 email_notice_id
             $placeholders = implode(',', array_fill(0, count($templateUuids), '?'));
-            $deleteSql = "DELETE FROM bd_report WHERE template_uuid IN ($placeholders)";
-            $this->dbExec($deleteSql, $templateUuids);
+            $selectSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid IN ($placeholders)";
+            $reportsToDelete = $this->dbSelect($selectSql, $templateUuids);
 
-            return ['success' => true, 'message' => '删除成功'];
+            $noticeIdsToDelete = [];
+            foreach ($reportsToDelete as $report) {
+                if (!empty($report['email_notice_id'])) {
+                    $noticeIdsToDelete[] = $report['email_notice_id'];
+                }
+            }
+
+            // 2. 如果有关联的通知配置，则从 bd_email_notice 表中删除它们
+            if (!empty($noticeIdsToDelete)) {
+                // 去重，以防多个报表共享同一个通知配置（虽然不太可能，但作为防御性措施）
+                $uniqueNoticeIds = array_unique($noticeIdsToDelete);
+                $noticePlaceholders = implode(',', array_fill(0, count($uniqueNoticeIds), '?'));
+                $deleteNoticeSql = "DELETE FROM bd_email_notice WHERE id IN ($noticePlaceholders)";
+                $this->dbExec($deleteNoticeSql, array_values($uniqueNoticeIds));
+            }
+
+            // 3. 从 bd_report 表中删除报表本身
+            $deleteReportSql = "DELETE FROM bd_report WHERE template_uuid IN ($placeholders)";
+            $this->dbExec($deleteReportSql, $templateUuids);
+
+            return ['success' => true, 'message' => '报表删除成功'];
         } catch (\Exception $e) {
-            return ['success' => false, 'message' => '删除失败: ' . $e->getMessage()];
+            return ['success' => false, 'message' => '报表删除失败: ' . $e->getMessage()];
         }
     }
 
@@ -1089,15 +1182,22 @@ class Report extends Base
      */
     public function getStorageUsageTendency($params): array
     {
+        $storageTypeCfg = xphp_get_config('storage', 'BD_STORAGE_TYPE');
         $startTime = $params['startTime'];
         $endTime = $params['endTime'];
         $storageUuidsParam = $params['storageUuids'];
+        $tapeStorgeFlag = $params['tapeStorgeFlag'] ?? false;
 
         $storageUuids = [];
         if (!empty($storageUuidsParam)) {
             $storageUuids = is_array($storageUuidsParam) ? $storageUuidsParam : [$storageUuidsParam];
         } else {
-            $storageData = $this->dbSelect("SELECT storage_uuid FROM bd_storage_resource", []);
+            if ($tapeStorgeFlag) {
+                $storageData = $this->dbSelect("SELECT storage_uuid FROM bd_storage_resource WHERE storage_type = ?", [$storageTypeCfg['TAPE']]);
+            } else {
+                $storageData = $this->dbSelect("SELECT storage_uuid FROM bd_storage_resource", []);
+            }
+
             foreach ($storageData as $row) {
                 $storageUuids[] = $row['storage_uuid'];
             }
@@ -1365,8 +1465,8 @@ class Report extends Base
         $sort = $sortFields[$params['sort']] ?? 'bs.total_size';
         $order = $params['order'] ?: 'desc';
         $search = $params['search'];
-        $storageType = $params['storage_type'];
-        $storageStatus = $params['storage_status'];
+        $storageType = $params['storageType'];
+        $storageStatus = $params['storageStatus'];
         $storageUse = $params['storage_use'];
 
         $fromAndJoins = "
@@ -1532,6 +1632,9 @@ class Report extends Base
         $tapeStatsSql = "
             SELECT
                 COUNT(*) AS total_tapes,
+                SUM(capacity) AS total_space,
+                SUM(free_space) AS free_space,
+                SUM(used_space) AS used_space,
                 SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END) AS used_tapes,
                 SUM(CASE WHEN status != 2 THEN 1 ELSE 0 END) AS online_tapes,
                 SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END) AS offline_tapes
@@ -1544,6 +1647,9 @@ class Report extends Base
         $usedTapes = $tapeStats[0]['used_tapes'] ?? 0;
         $onlineTapes = $tapeStats[0]['online_tapes'] ?? 0;
         $offlineTapes = $tapeStats[0]['offline_tapes'] ?? 0;
+        $totalSpace = $tapeStats[0]['total_space'] ?? 0;
+        $freeSpace = $tapeStats[0]['free_space'] ?? 0;
+        $usedSpace = $tapeStats[0]['used_space'] ?? 0;
 
         // 获取装载率
         $loadingRate = 0;
@@ -1558,6 +1664,90 @@ class Report extends Base
             'onlineTapes' => (int) $onlineTapes,
             'offlineTapes' => (int) $offlineTapes,
             'loadingRate' => $loadingRate,
+            'totalSpace' => $totalSpace,
+            'freeSpace' => $freeSpace,
+            'usedSpace' => $usedSpace,
+        ];
+    }
+
+    /**
+     * 获取磁带组列表
+     * @param mixed $params
+     * @return void
+     */
+    public function getTapeGroup($params): array
+    {
+        $search = $params['search'];
+        $offset = $params['offset'] ?? 0;
+        $limit = $params['limit'] ?? 10;
+        $sortFields = [
+            'name' => 'btg.name',
+            'status' => 'bsr.status',
+            'tape_count' => 'tape_count',
+            'total_capacity' => 'total_capacity',
+        ];
+        $sort = $sortFields[$params['sort']] ?? 'btg.id';
+        $order = $params['order'] ?? 'asc';
+
+        $fromAndJoins = "
+            FROM
+                bd_tape_group btg
+            LEFT JOIN
+                bd_tape_carriage btc ON btg.group_uuid = btc.group_uuid
+            LEFT JOIN
+                bd_storage_resource bsr ON btg.group_uuid = bsr.storage_uuid
+        ";
+
+        $whereConditions = ['1 = 1'];
+        $sqlParams = [];
+
+        if (!empty($search)) {
+            $whereConditions[] = 'btg.name LIKE ?';
+            $sqlParams[] = '%' . $search . '%';
+        }
+
+        $whereClause = ' WHERE ' . implode(' AND ', $whereConditions);
+
+        $groupBy = " GROUP BY btg.id, btg.group_uuid, btg.name, bsr.status";
+
+        $sqlCount = "SELECT COUNT(*) as total FROM (SELECT btg.id " . $fromAndJoins . $whereClause . $groupBy . ") as count_subquery";
+        $countResult = $this->dbSelect($sqlCount, $sqlParams);
+        $total = $countResult[0]['total'] ?? 0;
+
+        $sql = "
+            SELECT
+                btg.id,
+                btg.group_uuid,
+                btg.name,
+                bsr.status,
+                COUNT(btc.id) AS tape_count,
+                SUM(btc.capacity) AS total_capacity,
+                SUM(btc.free_space) AS available_capacity
+            " . $fromAndJoins . $whereClause . "
+            " . $groupBy . "
+            ORDER BY
+                $sort $order
+            LIMIT
+                $offset, $limit
+        ";
+        $data = $this->dbSelect($sql, $sqlParams);
+
+        $rows = [];
+        foreach ($data as $d) {
+            $rows[] = [
+                'id' => $d['id'],
+                'groupUuid' => $d['group_uuid'],
+                'name' => $d['name'],
+                'status' => $d['status'],
+                'tapeCount' => $d['tape_count'],
+                'totalCapacity' => v2_calsize($d['total_capacity'], true),
+                'availableCapacity' => v2_calsize($d['available_capacity'], true),
+            ];
+        }
+
+        return [
+            'rows' => $rows,
+            'total' => $total
         ];
     }
 
@@ -1672,32 +1862,63 @@ class Report extends Base
      */
     public function getNodeOverview(): array
     {
+        $allNodeStatus = xphp_get_config('node', 'NODE_OPERATE_STATUS', 'resources');
+        $abnormalStatusCode = $allNodeStatus['ABNORMAL'] ?? 4; // 异常状态码
+        $offlineNodeStatusCode = $allNodeStatus['OFFLINE']; // 节点“强制离线”状态码
+        $moduleOnlineFlag = xphp_get_config('app', 'FLAG')['SET']; // 模块“在线”标志
+
+        // 使用原生SQL查询以获得最佳性能，避免N+1问题
         $sql = "
-            SELECT 
-                COUNT(node_uuid) AS total_nodes,
-                SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END) AS online_nodes,
-                SUM(CASE WHEN status = 4 THEN 1 ELSE 0 END) AS offline_nodes,
-                SUM(CASE WHEN status = 5 THEN 1 ELSE 0 END) AS missing_nodes
-            FROM
-                bd_node
+        SELECT
+            COUNT(n.node_uuid) AS total_nodes,
+            SUM(IF(n.status = {$abnormalStatusCode}, 1, 0)) AS abnormal_nodes,
+            SUM(
+                IF(
+                    -- 条件1: 必须部署了模块 (module_count > 0)
+                    IFNULL(gm.module_count, 0) > 0
+                    -- 条件2: 节点自身状态不能是“强制离线”
+                    AND n.status != {$offlineNodeStatusCode}
+                    -- 条件3: 所有已部署模块都必须在线 (offline_module_count = 0)
+                    AND IFNULL(gm.offline_module_count, 0) = 0,
+                    1,
+                    0
+                )
+            ) AS online_nodes_count
+        FROM
+            bd_node n
+        LEFT JOIN
+            (
+                SELECT
+                    node_uuid,
+                    COUNT(*) AS module_count,
+                    SUM(IF(online_flag != {$moduleOnlineFlag}, 1, 0)) AS offline_module_count
+                FROM
+                    bd_module_server
+                GROUP BY
+                    node_uuid
+            ) AS gm ON n.node_uuid = gm.node_uuid
         ";
 
-        $data = $this->dbSelect($sql);
-
-        if (!empty($data)) {
+        $overviewData = $this->dbSelect($sql);
+        if (empty($overviewData) || !isset($overviewData[0])) {
+            // 如果查询失败或没有数据，返回空概览
             return [
-                'total_nodes' => $data[0]['total_nodes'],
-                'online_nodes' => $data[0]['online_nodes'],
-                'offline_nodes' => $data[0]['offline_nodes'],
-                'missing_nodes' => $data[0]['missing_nodes'],
+                'totalNodes' => 0,
+                'onlineNodes' => 0,
+                'offlineNodes' => 0,
+                'abnormalNodes' => 0,
             ];
         }
 
+        $stats = $overviewData[0];
+        // 计算离线节点数
+        $offline_nodes_count = (int) $stats['total_nodes'] - (int) $stats['online_nodes_count'];
+
         return [
-            'totalNodes' => 0,
-            'onlineNodes' => 0,
-            'offlineNodes' => 0,
-            'missingNodes' => 0,
+            'totalNodes' => (int) $stats['total_nodes'],
+            'onlineNodes' => (int) $stats['online_nodes_count'],
+            'offlineNodes' => $offline_nodes_count,
+            'abnormalNodes' => (int) $stats['abnormal_nodes'] ?? 0,
         ];
     }
 
@@ -1848,9 +2069,139 @@ class Report extends Base
      * @param mixed $params
      * @return void
      */
-    public function getNodeLoadTendency($params)
+    public function getNodeLoadTendency($params): array
     {
+        // 1. 处理输入参数
+        $startTime = $params['startTime'] ?? date('Y-m-d', strtotime('-1 month'));
+        $endTime = $params['endTime'] ?? date('Y-m-d');
+        $nodeUuids = $params['nodeUuids'] ?? [];
+        $loadMinuteType = $params['loadMinuteType'] ?? 1;
 
+        // 动态选择负载字段
+        $loadField = 'system_load_1';
+        if ($loadMinuteType == 2) {
+            $loadField = 'system_load_5';
+        } elseif ($loadMinuteType == 3) {
+            $loadField = 'system_load_15';
+        }
+
+        // 2. 如果未传入nodeUuids，则获取所有节点
+        if (empty($nodeUuids)) {
+            $allNodesForUuid = $this->dbSelect("SELECT node_uuid FROM bd_node");
+            $nodeUuids = array_column($allNodesForUuid, 'node_uuid');
+        }
+
+        if (empty($nodeUuids)) {
+            // 如果没有任何节点，返回一个空的ECharts结构
+            return ['legend' => ['data' => []], 'xAxis' => ['data' => []], 'series' => []];
+        }
+
+        // 3. 获取节点详细信息 (hostname, type) 用于图例和样式
+        $placeholders = implode(',', array_fill(0, count($nodeUuids), '?'));
+        $nodeInfoSql = "SELECT node_uuid, host_name, node_type FROM bd_node WHERE node_uuid IN ($placeholders)";
+        $nodeInfoList = $this->dbSelect($nodeInfoSql, $nodeUuids);
+        $nodeInfoMap = array_column($nodeInfoList, null, 'node_uuid');
+
+        // 4.查询监控数据
+        $startTimestamp = strtotime($startTime . ' 00:00:00');
+        $endTimestamp = strtotime($endTime . ' 23:59:59');
+        $duration = $endTimestamp - $startTimestamp;
+
+        // 目标数据点数量，可以根据需要调整，150是一个比较均衡的值
+        $targetPoints = 150;
+        // 最小采样间隔（秒），例如监控数据是每分钟一条，则最小间隔不应小于60秒
+        $minInterval = 60;
+
+        // 计算每个时间窗口的宽度（秒），并确保不小于最小间隔
+        $interval = max(floor($duration / $targetPoints), $minInterval);
+
+        $monitorSql = "SELECT
+            node_uuid,
+            AVG({$loadField}) as load_value,
+            DATE_FORMAT(FROM_UNIXTIME(FLOOR(UNIX_TIMESTAMP(monitor_time) / {$interval}) * {$interval}), '%Y-%m-%d %H:%i') as monitor_time
+            FROM 
+                bd_system_monitor_m
+            WHERE 
+                node_uuid IN ($placeholders)
+                AND monitor_time BETWEEN ? AND ?
+            GROUP BY
+                node_uuid,
+                FLOOR(UNIX_TIMESTAMP(monitor_time) / {$interval})
+            ORDER BY 
+                monitor_time ASC";
+
+        $monitorParams = array_merge($nodeUuids, [date('Y-m-d H:i:s', $startTimestamp), date('Y-m-d H:i:s', $endTimestamp)]);
+        $monitorData = $this->dbSelect($monitorSql, $monitorParams);
+
+        // 5. 数据重组与格式化为ECharts结构
+        $legendData = [];
+        $xAxisData = [];
+        $seriesMap = [];
+
+        foreach ($nodeInfoMap as $uuid => $info) {
+            $legendData[] = $info['host_name'];
+            $seriesMap[$uuid] = [
+                'name' => $info['host_name'],
+                'type' => 'line',
+                'smooth' => true,
+                'data' => [],
+            ];
+            if ($info['node_type'] == 1) {
+                $seriesMap[$uuid]['areaStyle'] = ['opacity' => 0.1];
+                $seriesMap[$uuid]['markPoint'] = ['data' => [['type' => 'max', 'name' => '峰值']]];
+            }
+        }
+
+        if (empty($monitorData)) {
+            return [
+                'legend' => ['data' => $legendData],
+                'xAxis' => ['data' => []],
+                'yAxis' => ['type' => 'value', 'name' => '负载指数'],
+                'series' => array_values($seriesMap)
+            ];
+        }
+
+        $xAxisData = array_unique(array_column($monitorData, 'monitor_time'));
+        sort($xAxisData);
+
+        $timeIndexMap = array_flip($xAxisData);
+        $timeCount = count($xAxisData);
+
+        foreach ($seriesMap as $uuid => &$series) {
+            $series['data'] = array_fill(0, $timeCount, null);
+        }
+        unset($series);
+
+        foreach ($monitorData as $record) {
+            $uuid = $record['node_uuid'];
+            $time = $record['monitor_time'];
+            $value = $record['load_value'];
+            if (isset($timeIndexMap[$time]) && isset($seriesMap[$uuid])) {
+                $index = $timeIndexMap[$time];
+                $seriesMap[$uuid]['data'][$index] = round($value, 2); // 保留两位小数
+            }
+        }
+
+        // 6. 组装最终的ECharts Option对象
+        $echartsOption = [
+            'legend' => [
+                'data' => $legendData,
+                'type' => 'scroll', // 当图例过多时可以滚动
+                'bottom' => 0
+            ],
+            'xAxis' => [
+                'type' => 'category',
+                'boundaryGap' => false,
+                'data' => $xAxisData
+            ],
+            'yAxis' => [
+                'type' => 'value',
+                'name' => '负载指数'
+            ],
+            'series' => array_values($seriesMap) // 转换为索引数组
+        ];
+
+        return $echartsOption;
     }
 
     /**
@@ -1858,9 +2209,12 @@ class Report extends Base
      * @param mixed $params
      * @return void
      */
-    public function getNodeReportList($params)
+    public function getNodeReportList($params): array
     {
+        $nodeHandler = new NodeHandler();
+        $result = $nodeHandler->getNodes($params);
 
+        return $result;
     }
 
     /**
@@ -2253,6 +2607,115 @@ class Report extends Base
     }
 
     /**
+     * 获取各虚拟化平台下的虚拟机树（支持 jsTree 懒加载）
+     * @param array $params 可能包含 id, vcenter_uuid, module_type 等参数
+     * @return array
+     * @throws \Exception
+     */
+    public function getVirtualMachineTree($params): array
+    {
+        $parentId = (isset($params['id']) && $params['id'] !== '#') ? $params['id'] : null;
+        $vcenterUuid = $params['vcenter_uuid'] ?? null;
+
+        $hypervisorConfig = xphp_get_config('vm');
+        $hypervisorGroups = $hypervisorConfig['VMHYPERVISORGROUP'];
+        $publicCloudPlatforms = $hypervisorGroups['publiccloud'];
+        $privateCloudPlatforms = $hypervisorGroups['privatecloud'];
+        $allCloudPlatforms = array_merge($publicCloudPlatforms, $privateCloudPlatforms);
+        $hypervisorNames = $hypervisorConfig['VMHYPERVISORDES'];
+
+        $treeData = [];
+
+        // 初始加载 (id is null, from '#') - 只返回第一层：平台类型
+        if (is_null($parentId)) {
+            $moduleType = $params['module_type'] ?? 'virtualization';
+            $platformsToShow = [];
+
+            switch ($moduleType) {
+                case 'public':
+                    $platformsToShow = $publicCloudPlatforms;
+                    break;
+                case 'private':
+                    $platformsToShow = $privateCloudPlatforms;
+                    break;
+                default: // 'virtualization'
+                    // 从数据库中获取所有实际存在的平台类型
+                    $sql = "SELECT DISTINCT hypervisor_type FROM vm_vcenter";
+                    $typesData = $this->dbSelect($sql);
+                    $allTypesInDB = array_column($typesData, 'hypervisor_type');
+                    // 筛选出不属于云平台的类型
+                    $platformsToShow = array_diff($allTypesInDB, $allCloudPlatforms);
+                    break;
+            }
+
+            foreach ($platformsToShow as $type) {
+                // 确保该平台类型有对应的名称
+                if (isset($hypervisorNames[$type])) {
+                    $treeData[] = [
+                        'id' => $type,
+                        'parent' => '#',
+                        'text' => $hypervisorNames[$type],
+                        'children' => true, // 告诉 jstree 这个节点可以展开
+                        'state' => ['disabled' => true], // 设置为不可勾选
+                    ];
+                }
+            }
+        }
+
+        // 第二层加载：父节点是平台类型 (e.g., 'vmware', 'hyperv')
+        // 通过检查 $parentId 是否在我们的平台名称列表里来判断
+        else if (in_array($parentId, array_keys($hypervisorNames)) && !filter_var($parentId, FILTER_VALIDATE_URL) && strpos($parentId, '-') === false) {
+            $sql = "SELECT vcenter_id, vcenter_ip, vcenter_uuid, vcenter_name, hypervisor_type FROM vm_vcenter WHERE hypervisor_type = ?";
+            $vcenters = $this->dbSelect($sql, [$parentId]);
+
+            foreach ($vcenters as $vcenter) {
+                $treeData[] = [
+                    'id' => $vcenter['vcenter_uuid'],
+                    'parent' => $vcenter['hypervisor_type'],
+                    'text' => $vcenter['vcenter_name'],
+                    'a_attr' => ['title' => $vcenter['vcenter_name'] . ' (' . $vcenter['vcenter_ip'] . ')'],
+                    'children' => true, // vCenter 节点也可以展开
+                    'data' => ['vcenter_uuid' => $vcenter['vcenter_uuid']], // 将 vcenter_uuid 放入 data 属性，供前端发请求时使用
+                ];
+            }
+        }
+        // 第三层及以后加载：父节点是 UUID
+        else {
+            if ($vcenterUuid) {
+                $sql = "SELECT tree_id, display_mode, vcenter_uuid, type, name, uuid, parent_uuid, dir_path FROM vm_tree WHERE parent_uuid = ? AND vcenter_uuid = ? AND display_mode = 1";
+                $children = $this->dbSelect($sql, [$parentId, $vcenterUuid]);
+            } else {
+                $sql = "SELECT tree_id, display_mode, vcenter_uuid, type, name, uuid, parent_uuid, dir_path FROM vm_tree WHERE parent_uuid = ? AND display_mode = 1";
+                $children = $this->dbSelect($sql, [$parentId]);
+            }
+
+            $childUuids = array_column($children, 'uuid');
+            $subChildrenCount = [];
+            if (!empty($childUuids)) {
+                $placeholders = implode(',', array_fill(0, count($childUuids), '?'));
+                $countSql = "SELECT parent_uuid, COUNT(*) as count FROM vm_tree WHERE parent_uuid IN ($placeholders) AND display_mode = 1 GROUP BY parent_uuid";
+                $counts = $this->dbSelect($countSql, $childUuids);
+                foreach ($counts as $count) {
+                    $subChildrenCount[$count['parent_uuid']] = $count['count'];
+                }
+            }
+
+            foreach ($children as $child) {
+                $hasChildren = isset($subChildrenCount[$child['uuid']]) && $subChildrenCount[$child['uuid']] > 0;
+                $treeData[] = [
+                    'id' => $child['uuid'],
+                    'parent' => $child['parent_uuid'],
+                    'text' => $child['name'],
+                    'a_attr' => ['title' => $child['name']],
+                    'children' => $hasChildren,
+                ];
+            }
+        }
+
+        return $treeData;
+    }
+
+    /**
      * 获取运行趋势数据（供第三方接口调用 - DBS项目获取虚拟机近十四天运行趋势数据）
      * @param mixed $params
      * @return void
@@ -2385,5 +2848,126 @@ class Report extends Base
             'code' => 0,
             'msg' => $result
         ];
+    }
+
+    /**
+     * 配置报表通知
+     * @param mixed $params
+     * @return string
+     */
+    public function configureReportNotice($params): array
+    {
+        $templateUuids = json_decode($params['templateUuids'], true) ?: [];
+        $noticeFlag = $params['emailNotifyFlag'];
+
+        if (empty($templateUuids)) {
+            return ['success' => false, 'message' => '未指定报表'];
+        }
+
+        // 开启事务，确保操作的原子性
+        $this->dbBeginTransaction();
+
+        try {
+            if ($noticeFlag) {
+                // 逻辑分支 A：开启或更新通知配置
+                $notifyContentTypeCfg = xphp_get_config('report', 'NOTIFY_CONTENT_TYPE', 'report');
+                $exportDetailTypeCfg = xphp_get_config('report', 'EXPORT_DETAIL_TYPE', 'report');
+                $singleTaskObjectTypeCfg = xphp_get_config('report', 'SINGLE_TASK_OBJECT_TYPE', 'report');
+
+                // 1. 准备通知配置的 JSON 数据
+                $reportConfigData = [];
+                $recEmails = $params['recEmails'];
+                $noticeContentTypes = json_decode($params['noticeContentTypes'], true);
+                $reportConfigData['timeStrategy'] = $params['timeStrategy'];
+                $reportConfigData['noticeContentTypes'] = $params['noticeContentTypes'];
+
+                // 获取通知明细内容
+                if (in_array($notifyContentTypeCfg['DETAIL'], $noticeContentTypes)) {
+                    $detailExportRange = $params['detailExportRange'];
+                    $reportConfigData['detailExportRange'] = $detailExportRange;
+                    if ($detailExportRange == $exportDetailTypeCfg['CUSTOM']) {
+                        $reportConfigData['exportNums'] = $params['exportNums'];
+                    }
+                }
+
+                // 获取单任务对象内容
+                $singleObjectDetailFlag = $params['singleObjectDetailFlag'];
+                $reportConfigData['singleObjectDetailFlag'] = $singleObjectDetailFlag;
+                if ($singleObjectDetailFlag) {
+                    $singleObjectTypes = json_decode($params['singleObjectTypes'], true);
+                    $reportConfigData['singleObjectTypes'] = $params['singleObjectTypes'];
+                    if (in_array($singleTaskObjectTypeCfg['HISTORY_RUN_RECORD'], $singleObjectTypes)) {
+                        $historyRunRecordExportRange = $params['historyRunRecordExportRange'];
+                        $reportConfigData['historyRunRecordExportRange'] = $historyRunRecordExportRange;
+                        if ($historyRunRecordExportRange == $exportDetailTypeCfg['CUSTOM']) {
+                            $reportConfigData['exportHistoryNums'] = $params['exportHistoryNums'];
+                        }
+                    }
+                }
+
+                // 附件格式
+                $reportConfigData['attachmentFormats'] = $params['attachmentFormats'];
+                $reportConfigJson = json_encode($reportConfigData);
+
+                // 2. 遍历所有报表 UUID
+                foreach ($templateUuids as $uuid) {
+                    // 2.1 查询报表现有的 email_notice_id
+                    $reportSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid = ?";
+                    $reportInfo = $this->dbSelect($reportSql, [$uuid]);
+                    $emailNoticeId = $reportInfo[0]['email_notice_id'] ?? null;
+
+                    if (empty($emailNoticeId)) {
+                        // 2.2 新增：如果 email_notice_id 为空，则插入新记录
+                        $emailNoticeFlag = 1;
+                        $emailNoticeType = 2; // 2代表来自报表的邮件配置
+                        $insertSql = "INSERT INTO bd_email_notice (email_notice_flag, report_config, receive_email, email_notice_type) VALUES (?, ?, ?, ?)";
+                        $this->dbExec($insertSql, [$emailNoticeFlag, $reportConfigJson, $recEmails, $emailNoticeType]);
+
+                        $newNoticeId = $this->dbLastInsertId();
+
+                        // 2.3 更新 bd_report 表，关联新的 email_notice_id
+                        $updateReportSql = "UPDATE bd_report SET email_notice_id = ?, notice_flag = 1 WHERE template_uuid = ?";
+                        $this->dbExec($updateReportSql, [$newNoticeId, $uuid]);
+                    } else {
+                        // 2.4 更新：如果 email_notice_id 已存在，则更新现有记录
+                        $updateNoticeSql = "UPDATE bd_email_notice SET report_config = ?, receive_email = ? WHERE id = ?";
+                        $this->dbExec($updateNoticeSql, [$reportConfigJson, $recEmails, $emailNoticeId]);
+
+                        // 确保报表的通知标记为开启
+                        $updateReportSql = "UPDATE bd_report SET notice_flag = 1 WHERE template_uuid = ?";
+                        $this->dbExec($updateReportSql, [$uuid]);
+                    }
+                }
+            } else {
+                // 逻辑分支 B：关闭通知配置
+                foreach ($templateUuids as $uuid) {
+                    // 1. 查询报表现有的 email_notice_id
+                    $reportSql = "SELECT email_notice_id FROM bd_report WHERE template_uuid = ?";
+                    $reportInfo = $this->dbSelect($reportSql, [$uuid]);
+                    $emailNoticeId = $reportInfo[0]['email_notice_id'] ?? null;
+
+                    // 2. 如果存在通知配置，则删除
+                    if (!empty($emailNoticeId)) {
+                        $deleteSql = "DELETE FROM bd_email_notice WHERE id = ?";
+                        $this->dbExec($deleteSql, [$emailNoticeId]);
+                    }
+
+                    // 3. 更新报表状态为“关闭通知”，并清空关联 ID
+                    $updateReportSql = "UPDATE bd_report SET notice_flag = 2, email_notice_id = NULL WHERE template_uuid = ?";
+                    $this->dbExec($updateReportSql, [$uuid]);
+                }
+            }
+
+            // 提交事务
+            $this->dbCommit();
+
+            return ['success' => true, 'message' => '通知配置成功'];
+        } catch (\Exception $e) {
+            // 如果任何步骤出错，回滚事务
+            $this->dbRollBack();
+            // 可以选择性地记录错误日志
+            // xphp_log($e->getMessage(), 'error');
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 }

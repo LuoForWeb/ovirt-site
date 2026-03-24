@@ -372,7 +372,7 @@ Cascader.prototype.createUl = function (data) {
     $.each(arr, function (i, data) {
         let menuItemHtml = '';
 
-        if (data.children) {
+        if (data.children && data.children.length > 0) {
             menuItemHtml = `<li data-label="${data.label}" data-value="${data.value}" class="ui-cascader-menu-item lastchild">${data.label}<i class="viconfont vicon-gengduo"></i></li>`;
         } else {
             menuItemHtml = `<li data-label="${data.label}" data-value="${data.value}" class="ui-cascader-menu-item">${data.label}</li>`;
@@ -416,7 +416,7 @@ Cascader.prototype.htmlClickHandler = function (e) {
     if (this.list.hasClass("hid") && this.searchedList.hasClass("hid")) return;
 
     var cascader = $(e.target).parents(".ui-cascader");
-    if (cascader.size() == 0) {
+    if (cascader.length == 0) {
         this.popClose();
     }
 };
@@ -488,7 +488,7 @@ Cascader.prototype.highlighting = function (jqElArr, highStr) {
 
 Cascader.prototype.scrollToOpened = function (selectedItem) {
     var listUl = selectedItem.parents("ul");
-    if (selectedItem.size() > 0) {
+    if (selectedItem.length > 0) {
         var scrollTop = listUl.scrollTop(),
             top = selectedItem.position().top + scrollTop;
         if (scrollTop < top) {

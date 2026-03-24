@@ -1,4 +1,5 @@
 <!-- BEGIN PLUGIN STYLES -->
+<link href="./plugins/filter/css/filter.css" rel="stylesheet" type="text/css" />
 <link href="./platform/monitor-center/report/css/report.css" rel="stylesheet" type="text/css" />
 <link href="./plugins/table/css/table.css" rel="stylesheet" type="text/css" />
 <!-- END PLUGIN STYLES -->
@@ -33,29 +34,29 @@
                     <div class="tape-overview-cards">
                         <div class="tape-overview-cards__item">
                             <span class="name">磁带库总数</span>
-                            <span class="value" id="overview_total_tape_library">100</span>
+                            <span class="value" id="overview_total_tape_library"></span>
                         </div>
                         <div class="tape-overview-cards__item">
                             <span class="name">已使用磁带</span>
-                            <span class="value" id="overview_used_tape">52</span>
+                            <span class="value" id="overview_used_tape"></span>
                         </div>
                         <div class="tape-overview-cards__item">
                             <span class="name">在线磁带</span>
-                            <span class="value" id="overview_online_tape">12</span>
+                            <span class="value" id="overview_online_tape"></span>
                         </div>
                         <div class="tape-overview-cards__item">
                             <span class="name">离线磁带</span>
-                            <span class="value" id="overview_offline_tape">52</span>
+                            <span class="value" id="overview_offline_tape"></span>
                         </div>
                         <div class="tape-overview-cards__item">
                             <span class="name">驱动器总数</span>
-                            <span class="value" id="overview_total_drive">52</span>
+                            <span class="value" id="overview_total_drive"></span>
                         </div>
                         <div class="tape-overview-cards__item">
                             <span class="name">装载率</span>
                             <span class="value">
-                                <span id="overview_tape_usage">28</span>
-                                <span class="unit" id="overview_tape_usage_unit">%</span>
+                                <span id="overview_tape_usage"></span>
+                                <span class="unit" id="overview_tape_usage_unit"></span>
                             </span>
                         </div>
                     </div>
@@ -66,8 +67,8 @@
                                 <div class="sumarry-wrap">
                                     <span class="name">磁带总容量</span>
                                     <span class="value">
-                                        <span id="overview_total_capacity">550</span>
-                                        <span class="unit" id="overview_total_capacity_unit">TB</span>
+                                        <span id="overview_total_capacity"></span>
+                                        <span class="unit" id="overview_total_capacity_unit"></span>
                                     </span>
                                 </div>
                                 <div class="particulars-wrap">
@@ -77,8 +78,8 @@
                                             已用容量
                                         </span>
                                         <span class="value">
-                                            <span id="overview_used_capacity">252</span>
-                                            <span class="unit" id="overview_used_capacity_unit">TB</span>
+                                            <span id="overview_used_capacity"></span>
+                                            <span class="unit" id="overview_used_capacity_unit"></span>
                                         </span>
                                     </div>
                                     <div class="particulars-wrap__item">
@@ -87,8 +88,8 @@
                                             剩余容量
                                         </span>
                                         <span class="value">
-                                            <span id="overview_free_capacity">201</span>
-                                            <span class="unit" id="overview_free_capacity_unit">TB</span>
+                                            <span id="overview_free_capacity"></span>
+                                            <span class="unit" id="overview_free_capacity_unit"></span>
                                         </span>
                                     </div>
                                 </div>
@@ -124,7 +125,9 @@
             <div class="table-container">
                 <div class="table-toolbar-wrapper">
                     <!-- BEGIN LEFT TOOLBAR -->
-                    <div class="table-toolbar-wrapper__left"></div>
+                    <div class="table-toolbar-wrapper__left">
+                        <div id="tape_report_filter_wrapper" class="position-relative me-10"></div>
+                    </div>
                     <!-- END LEFT TOOLBAR -->
 
                     <!-- BEGIN RIGHT TOOLBAR -->
@@ -142,6 +145,7 @@
 </div>
 
 <!-- BEGIN PLUGIN SCRIPTS -->
+<script src="./plugins/filter/js/filter.js" type="text/javascript"></script>
 <script src="./plugins/table/js/table.js" type="text/javascript"></script>
 <script src="./platform/monitor-center/report/js/tape-report-detail.js" type="text/javascript"></script>
 <!-- END PLUGIN SCRIPTS -->

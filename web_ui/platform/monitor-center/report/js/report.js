@@ -39,11 +39,14 @@ var Report = function () {
         }
     ];
     let reportFormValidator = null; // 报表表单校验器
+    let noticeFormValidator = null; // 报表通知表单校验器
     let $reportTree = $('#report_tree'); // 报表树JQ对象
     let $resportPathTree = $('.report-path-tree'); // 报表路径树JQ对象
     let $reportTable = $('#report_table'); // 报表表格JQ对象
-    let $reportOffcanvas = $('.report-offcanvas'); // 报表表单抽屉JQ对象
+    let $reportOffcanvas = $('#report_offcanvas'); // 报表表单抽屉JQ对象
     let $reportOffcanvasTitle = $('#report_offcanvas_title'); // 报表表单抽屉标题JQ对象
+    let $notifyOffcanvas = $('#notify_offcanvas'); // 通知表单抽屉JQ对象
+    let $openNotifyOffcanvasBtn = $('#open_notify_offcanvas_btn'); // 打开通知表单抽屉按钮JQ对象
     let $templateTypeSelect = $('#template_type_select'); // 模板类型选择框JQ对象
     let $templateNameInput = $('#report_name'); // 模板名输入框JQ对象
     let $resourceTypeRadioGroup = $('#resource_type_radio_group'); // 备份资源类型单选框JQ对象
@@ -57,6 +60,19 @@ var Report = function () {
     let $timeRangePicker = $('#time_range_picker'); // 时间范围选择器JQ对象
     let $reportPathTree = $('#report_path_tree'); // 报表路径树JQ对象
     let $deleteCustomReportBtn = $('#delete_custom_report_btn'); // 删除自定义报表按钮JQ对象
+    let $notifyEmailSwitch = $('#email_notify_switch'); // 邮件通知开关JQ对象
+    let $timeStrategyTabs = $('#time_strategy_tabs'); // 时间策略标签页JQ对象
+    let $perdayNotifySwitch = $('#daily_notify_switch');
+    let $perweekNotifySwitch = $('#weekly_notify_switch');
+    let $permonthNotifySwitch = $('#monthly_notify_switch');
+    let $peryearNotifySwitch = $('#yearly_notify_switch');
+    let $weekCheckboxGroup = $('#week_checkbox_group'); // 每周 checkbox group JQ对象
+    let $monthCheckboxGroup = $('#month_checkbox_group'); // 每月 checkbox group JQ对象
+    let $noticeDayTime = $('#notice_time_day'); // 通知时间每天 flatpickr JQ对象
+    let $noticeWeekTime = $('#notice_time_week'); // 通知时间每周 flatpickr JQ对象
+    let $noticeMonthTime = $('#notice_time_month'); // 通知时间每月 flatpickr JQ对象
+    let $vmwareTree = $('#vmware_tree'); // 虚拟机树JQ对象
+    let $vmwareTreeNoData = $('#vmware_tree_no_data'); // 虚拟机树无数据JQ对象
     let CURRENT_TEMPLATE_TYPE = 1; // 当前选中的模版类型
     let CURRENT_BACKUP_SOURCE_TYPE = 1; // 当前选中的备份资源类型
     let CURRENT_REPORT_UUID = ''; // 当前报表UUID
@@ -77,6 +93,8 @@ var Report = function () {
         { useIcon: true, iconClass: 'vicon-cidai', text: '磁带', value: '2' },
         { useIcon: true, iconClass: 'vicon-beifenjiedian', text: '节点', value: '3' }
     ];
+    let SELECTED_REPORT_TEMPLATE_LIST = []; // 当前选中的报表对象
+    let CURRENT_SELECTED_MODULE_TYPE = ''; // 当前选中的模块类型
 
     // <----------------------------- BEGIN REPORT TREE LOGIC ------------------------------->
 
@@ -91,9 +109,12 @@ var Report = function () {
                 const searchTerm = value ? value.trim() : '';
 
                 if (searchTerm) {
-                    isSearchingTreeFlag = true; 
+                    isSearchingTreeFlag = true;
+                    
+                    $('.tree-wrapper__tree').block();
+                    axiosGet('report/tree', { search: searchTerm }).then(res => {
+                        $('.tree-wrapper__tree').unblock();
 
-                    pAjaxRequest({ search: searchTerm }, 'api/v2/report/tree', 'GET', (res) => {
                         if (res && res.success) {
                             // 搜索成功后，将返回的数据作为树的新数据源，并刷新树
                             tree.settings.core.data = res.data;
@@ -183,7 +204,11 @@ var Report = function () {
                         },
                         callback: function(result) {
                             if (result) {
-                                pAjaxRequest({ group_uuid: obj.id }, '/api/v2/report/group', 'DELETE', (res) => {
+                                $('.tree-wrapper__tree').block();
+
+                                axiosDelete('report/group', { group_uuid: obj.id }).then(res => {
+                                    $('.tree-wrapper__tree').unblock();
+
                                     if (res && res.success) {
                                         inst.delete_node(obj);
                                         UIToastr.showSuccess('删除成功');
@@ -191,8 +216,12 @@ var Report = function () {
                                         if (operatePathTreeFlag) {
                                             // 报表路径树节点删除成功后，刷新主报表树并更新表格
                                             $reportTree.jstree(true).refresh();
-                                            $reportTable.bootstrapTable('refresh');
                                         }
+
+                                        // 刷新报表表格(group_uuid置为空)
+                                        $reportTable.bootstrapTable('refresh', { query: { group_uuid: '' } });
+                                        // 高亮 报表模板文件夹
+                                        $reportTree.jstree(true).select_node('0');
                                     } else {
                                         UIToastr.showWarning('重命名失败');
                                     }
@@ -231,7 +260,9 @@ var Report = function () {
                         },
                         callback: function(result) {
                             if (result) {
-                                pAjaxRequest({ templateUuids: obj.id }, '/api/v2/report', 'DELETE', (res) => {
+                                $('.tree-wrapper__tree').block();
+                                axiosDelete('report', { templateUuids: obj.id }).then(res => {
+                                    $('.tree-wrapper__tree').unblock();
                                     if (res && res.success) {
                                         inst.delete_node(inst.get_node(data.reference));
                                         $reportTable.bootstrapTable('refresh');
@@ -258,51 +289,41 @@ var Report = function () {
     const renameTreeNods = (tree, data, operatePathTreeFlag) => {
         // 通过判断旧名称或临时ID，确定是新建节点操作
         if (data.old === 'New node' && data.node.id.indexOf('j') === 0) {
-            pAjaxRequest(
-                { parent_uuid: data.node.parent, group_name: data.text },
-                'api/v2/report/group',
-                'POST',
-                (res) => {
-                    if (res && res.success) {
-                        UIToastr.showSuccess('新建子文件夹成功');
-                        // 接口成功后，用后端返回的真实ID更新临时节点
-                        tree.set_id(data.node, res.data.id);
-                        // 可以在这里给新节点附加其他属性
-                        const newNode = tree.get_node(res.data.id);
-                        newNode.original.li_attr = res.data.li_attr;
+            axiosPost('report/group', { parent_uuid: data.node.parent, group_name: data.text }).then(res => {
+                if (res && res.success) {
+                    UIToastr.showSuccess('新建子文件夹成功');
+                    // 接口成功后，用后端返回的真实ID更新临时节点
+                    tree.set_id(data.node, res.data.id);
+                    // 可以在这里给新节点附加其他属性
+                    const newNode = tree.get_node(res.data.id);
+                    newNode.original.li_attr = res.data.li_attr;
 
-                        if (operatePathTreeFlag) {
-                            // 路径树节点新建成功后，刷新主报表树
-                            $reportTree.jstree(true).refresh();
-                        }
-                    } else {
-                        UIToastr.showWarning('新建子文件夹失败');
-                        // 如果创建失败，刷新父节点以移除临时节点
-                        tree.refresh_node(data.node.parent);
+                    if (operatePathTreeFlag) {
+                        // 路径树节点新建成功后，刷新主报表树
+                        $reportTree.jstree(true).refresh();
                     }
+                } else {
+                    UIToastr.showWarning('新建子文件夹失败');
+                    // 如果创建失败，刷新父节点以移除临时节点
+                    tree.refresh_node(data.node.parent);
                 }
-            );
+            });
         } else {
             const renameFolderFlag = data.node.type === 'folder';
             if (renameFolderFlag) { // 重命名文件夹
-                pAjaxRequest(
-                    { group_uuid: data.node.id, group_name: data.text },
-                    'api/v2/report/group',
-                    'PUT',
-                    (res) => {
-                        if (res && res.success) {
-                            UIToastr.showSuccess('重命名成功');
+                axiosPut('report/group', { group_uuid: data.node.id, group_name: data.text }).then(res => {
+                    if (res && res.success) {
+                        UIToastr.showSuccess('重命名成功');
 
-                            if (operatePathTreeFlag) {
-                                // 路径树节点修改成功后，刷新主报表树
-                                $reportTree.jstree(true).refresh();
-                            }
-                        } else {
-                            UIToastr.showWarning('重命名失败');
-                            tree.refresh_node(data.node.parent);
+                        if (operatePathTreeFlag) {
+                            // 路径树节点修改成功后，刷新主报表树
+                            $reportTree.jstree(true).refresh();
                         }
+                    } else {
+                        UIToastr.showWarning('重命名失败');
+                        tree.refresh_node(data.node.parent);
                     }
-                );
+                });
             } else { // 重命名文件
                 let params = {
                     templateUuid: data.node.id,
@@ -310,7 +331,7 @@ var Report = function () {
                     onlyRenameReportName: true
                 }
 
-                pAjaxRequest(params, 'api/v2/report', 'PUT', (res) => {
+                axiosPut('report', params).then(res => {
                     if (res && res.success) {
                         $reportTable.bootstrapTable('refresh');
                         UIToastr.showSuccess('重命名成功');
@@ -318,7 +339,7 @@ var Report = function () {
                         UIToastr.showWarning('重命名失败');
                         tree.refresh_node(data.node.parent);
                     }
-                })
+                });
             }
         }
     }
@@ -341,13 +362,14 @@ var Report = function () {
         // 存储原始的懒加载数据处理函数
         originalTreeData = function (node, cb) {
             const nodeId = node.id;
-            pAjaxRequest({ id: nodeId }, 'api/v2/report/tree', 'GET', (res) => {
+
+            axiosGet('report/tree', { id: nodeId }).then(res => {
                 if (res && res.success) {
                     cb(res.data);
                 } else {
                     UIToastr.showWarning('获取报表树失败');
                     cb([]);
-                }
+                } 
             });
         };
 
@@ -457,7 +479,11 @@ var Report = function () {
                 },
                 callback: function(result) {
                     if (result) {
-                        pAjaxRequest({ templateUuids: templateUuids.join(',') }, '/api/v2/report', 'DELETE', (res) => {
+                        $('.report-table-content-wrapper').block();
+
+                        axiosDelete('report', { templateUuids: templateUuids.join(',') }).then(res => {
+                            $('.report-table-content-wrapper').unblock();
+
                             if (res && res.success) {
                                 // 删除树上的节点
                                 templateUuids.forEach(templateUuid => {
@@ -477,14 +503,6 @@ var Report = function () {
                 }
             });
         });
-    }
-
-    const formatReportTemplateName = function(value) {
-        return `
-            <a href="" class="ajaxify" data-bs-toggle="tooltip" data-bs-placement="top" title="${value}">
-                <span class="display-inline-block vertical-align-middle text-overflow-ellipsis" >${value}</span>
-            </a>
-        `;
     }
 
     const operateEvents = {
@@ -521,7 +539,10 @@ var Report = function () {
                 },
                 callback: function(result) {
                     if (result) {
-                        pAjaxRequest({ templateUuids: templateUuid }, '/api/v2/report', 'DELETE', (res) => {
+                        $('.report-table-content-wrapper').block();
+
+                        axiosDelete('report', { templateUuids: templateUuid }).then(res => {
+                            $('.report-table-content-wrapper').unblock();
                             if (res && res.success) {
                                 // 删除树上的节点
                                 const treeNode = $reportTree.jstree(true).get_node(templateUuid);
@@ -529,6 +550,8 @@ var Report = function () {
                                     $reportTree.jstree(true).delete_node(templateUuid);
                                 }
 
+                                $openNotifyOffcanvasBtn.prop('disabled', true);
+                                $deleteCustomReportBtn.prop('disabled', true);
                                 $reportTable.bootstrapTable('refresh');
                                 UIToastr.showSuccess('删除成功');
                             } else {
@@ -649,22 +672,63 @@ var Report = function () {
                         formatter: operateFormatter
                     }
                 ],
-                onCheck: function () {
+                onCheck: function (row) {
                     $deleteCustomReportBtn.prop('disabled', false);
+                    $openNotifyOffcanvasBtn.prop('disabled', false);
+
+                    let exists = SELECTED_REPORT_TEMPLATE_LIST.some(function(item) {
+                        return item.templateUuid === row.templateUuid;
+                    });
+
+                    if (!exists) {
+                        SELECTED_REPORT_TEMPLATE_LIST.push({
+                            templateUuid: row.templateUuid,
+                            noticeConfig: row.noticeConfig
+                        });
+                    }
                 },
-                onUncheck: function() {
-                    let selectedRows = $reportTable.bootstrapTable('getSelections');
-                    if (selectedRows.length === 0) {
+                onUncheck: function(row) {
+                    let index = SELECTED_REPORT_TEMPLATE_LIST.findIndex(function(item) {
+                        return item.templateUuid === row.templateUuid;
+                    });
+
+                    if (index > -1) {
+                        SELECTED_REPORT_TEMPLATE_LIST.splice(index, 1);
+                    }
+
+                    // 根据剩余选项更新按钮状态
+                    if (SELECTED_REPORT_TEMPLATE_LIST.length === 0) {
                         $deleteCustomReportBtn.prop('disabled', true);
-                    } else {
-                        $deleteCustomReportBtn.prop('disabled', false);
+                        $openNotifyOffcanvasBtn.prop('disabled', true);
                     }
                 },
                 onCheckAll: function (rows) {
                     $deleteCustomReportBtn.prop('disabled', false);
+                    $openNotifyOffcanvasBtn.prop('disabled', false);
+                    rows.forEach(function (row) {
+                        let exists = SELECTED_REPORT_TEMPLATE_LIST.some(function(item) {
+                            return item.templateUuid === row.templateUuid;
+                        });
+
+                        if (!exists) {
+                            SELECTED_REPORT_TEMPLATE_LIST.push({
+                                templateUuid: row.templateUuid,
+                                noticeConfig: row.noticeConfig
+                            });
+                        }
+                    });
                 },
                 onUncheckAll: function (rows) {
                     $deleteCustomReportBtn.prop('disabled', true);
+                    $openNotifyOffcanvasBtn.prop('disabled', true);
+
+                    let uncheckedUuids = rows.map(function (row) {
+                        return row.templateUuid;
+                    });
+
+                    SELECTED_REPORT_TEMPLATE_LIST = SELECTED_REPORT_TEMPLATE_LIST.filter(function (item) {
+                        return !uncheckedUuids.includes(item.templateUuid);
+                    });
                 },
             };
 
@@ -672,6 +736,24 @@ var Report = function () {
         } else {
             $reportTable.bootstrapTable('refresh', { query: { ...FILTER_PARAMS }});
         }
+    }
+
+    /**
+     * 监听报表过滤器按钮更新事件
+     *
+     */
+    const watchReportTableFilter = () => {
+        window.$off('report_table_filter_btn-updateFilterEvent'); // 移除所有旧的过滤器监听
+
+        window.$on('report_table_filter_btn-updateFilterEvent', (filterData) => {
+            if (Array.isArray(filterData) && filterData.length > 0) {
+                FILTER_PARAMS.template_type = filterData[0].value.map(v => parseInt(v)).join(',');
+            } else {
+                FILTER_PARAMS.template_type = [];
+            }
+
+            $reportTable.bootstrapTable('refresh', { pageNumber: 1, query: { ...FILTER_PARAMS } });
+        });
     }
     
     // <----------------------------- END REPORT TABLE LOGIC -------------------------------->
@@ -682,8 +764,37 @@ var Report = function () {
     const handleTemplateTypeChange = () => {
         $templateTypeSelect.on('change', function () {
             CURRENT_TEMPLATE_TYPE = parseInt($(this).val());
+
+            switch (CURRENT_TEMPLATE_TYPE) {
+                case TEMPLATE_TYPE.BACKUP_RESOURCE: // 备份资源
+                    $('.backup-resource-form-group').removeClass('display-none');
+                    $('.module-type-form-group').addClass('display-none');
+                    break;
+                case TEMPLATE_TYPE.PRODUCTION_RESOURCE: // 生产资源
+                    $('.backup-resource-form-group').addClass('display-none');
+                    $('.module-type-form-group').addClass('display-none');
+
+                    break;
+                case TEMPLATE_TYPE.DATA_PROTECTION: // 数据保护
+                    initModuleTypeCascader();
+                    $('.backup-resource-form-group').addClass('display-none');
+                    $('.module-type-form-group').removeClass('display-none');
+                    break;
+                case TEMPLATE_TYPE.TASK: // 任务
+                    $('.backup-resource-form-group').addClass('display-none');
+                    $('.module-type-form-group').addClass('display-none');
+                    break;
+                case TEMPLATE_TYPE.USER: // 用户
+                    $('.backup-resource-form-group').addClass('display-none');
+                    $('.module-type-form-group').addClass('display-none');
+                    break;
+                default:
+                    break;
+            }
         });
     }
+
+    // <===================== BEGIN BACKUP RESOURCE REPORT LOGIC =========================>
 
     /**
      * 初始化备份资源类型单选框组
@@ -757,7 +868,6 @@ var Report = function () {
                         $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-cunchushebei me-10"></i>选择存储设备`);
                         initResourceListTable(STORAGE_LIST_TABLE_OPTIONS, extraParam);
 
-                        $('.node-form-group').addClass('display-none');
                         $('.inteligentize-forecast-form-group').removeClass('display-none');
 
                         $('.overview-tips-info').empty().html('开启将展示存储总数、在线存储、离线存储、存储使用率、存储容量统计和存储使用排行的数据');
@@ -801,11 +911,10 @@ var Report = function () {
                     case BACKUP_SOURCE_TYPE.TAPE: // 磁带
                         // 磁带设备
                         $('.resource-list-form-group').removeClass('display-none');
-                        $('#resource_list_form_group_label').html('磁带设备');
-                        $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-cidai me-10"></i>选择磁带设备`);
+                        $('#resource_list_form_group_label').html('磁带组');
+                        $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-cidai me-10"></i>选择磁带组`);
                         initResourceListTable(TAPE_LIST_TABLE_OPTIONS, extraParam);
                         
-                        $('.node-form-group').addClass('display-none');
                         $('.inteligentize-forecast-form-group').addClass('display-none');
 
                         $('.overview-tips-info').empty().html('开启将展示磁带库总数、驱动器总数、离线磁带、已使用磁带、装载率、磁带容量统计');
@@ -845,17 +954,22 @@ var Report = function () {
                         break;
                     case BACKUP_SOURCE_TYPE.NODE: // 节点
                         // 节点
-                        $('.node-form-group').removeClass('display-none');
-                        $('#node_data_select2').select2({
-                            minimumResultsForSearch: Infinity,
-                            theme: 'bootstrap-5'
-                        });
+                        $('.resource-list-form-group').removeClass('display-none');
+                        $('#resource_list_form_group_label').html('节点');
+                        $('#resource_list_form_group_accordion_btn').html(`<i class="viconfont vicon-node_manager me-10"></i>选择节点`);
+                        initResourceListTable(NODE_LIST_TABLE_OPTIONS, extraParam);
 
                         // 模块类型级联组
                         $('.modules-checkbox-group').addClass('display-none');
                         $('.inteligentize-forecast-form-group').addClass('display-none');
 
-                        $('.overview-tips-info').empty().html('开启将展示节点概览数据');
+                        $('.overview-tips-info').empty().html('开启将展示节点总数、在线节点、离线节点、异常节点');
+
+                        initCustomizedDataSelect(NODE_REPORT_MULTIPLE_OPTIONS, extraParam); // 初始化定制数据下拉选择器
+
+                        if (JSON.stringify(extraParam) !== '{}') {
+                            $resourceTypeRadioGroup.setRadioButtonGroupDisabled([BACKUP_SOURCE_TYPE.STORAGE, BACKUP_SOURCE_TYPE.TAPE], true); // 禁用 存储和磁带 项
+                        }
 
                         break;
                     default:
@@ -907,6 +1021,9 @@ var Report = function () {
                                         break;
                                     case BACKUP_SOURCE_TYPE.TAPE: // 磁带报表
                                         resources = Array.isArray(echoData.detail.tapes) && echoData.detail.tapes.length > 0 ? echoData.detail.tapes : [];
+                                        break;
+                                    case BACKUP_SOURCE_TYPE.NODE: // 节点报表
+                                        resources = Array.isArray(echoData.detail.nodes) && echoData.detail.nodes.length > 0 ? echoData.detail.nodes : [];
                                         break;
                                     default:
                                         break;
@@ -1116,7 +1233,7 @@ var Report = function () {
             core: {
                 data: function (node, cb) {
                     const nodeId = node.id;
-                    pAjaxRequest({ id: nodeId }, '/api/v2/report/path_tree', 'GET', (res) => {
+                    axiosGet('report/path_tree', { id: nodeId }).then(res => {
                         if (res && res.success) {
                             if (nodeId === '#') {
                                 const rootNode = res.data.find(n => n.id === 'root');
@@ -1241,7 +1358,7 @@ var Report = function () {
     /**
      * 校验选择的存储条数
      */
-    const validateSelectedStorages = () => {
+    const validateSelectedResources = () => {
         let selectedRows = $resourceListTable.bootstrapTable('getSelections');
 
         if (selectedRows.length === 0) {
@@ -1313,6 +1430,7 @@ var Report = function () {
      * 重置表单
      */
     const handleResetReportForm = () => {
+        $templateTypeSelect.prop('disabled', false);
         $templateTypeSelect.val(TEMPLATE_TYPE.BACKUP_RESOURCE).trigger('change');
 
         $('.backup-resource-form-group').removeClass('display-none');
@@ -1326,8 +1444,6 @@ var Report = function () {
 
         $('.overview-form-group').addClass('display-none');
         $overviewSwitch.prop('checked', false);
-
-        $('.node-form-group').addClass('display-none');
         
         $('.tendency-form-group').addClass('display-none');
         $tendencySwitch.prop('checked', false);
@@ -1360,6 +1476,10 @@ var Report = function () {
         $('#description').val('');
     }
 
+    /**
+     * 初始化报表表单
+     * @param {*} currentReport 当前报表
+     */
     const initReportOffcanvas = (currentReport = {}) => {
         if (ADD_CUSTOM_REPORT_FLAG) { // 新建表单重置：模板类型重置为备份资源，资源类型取消选中，其他项均隐藏
             handleResetReportForm();
@@ -1395,7 +1515,7 @@ var Report = function () {
             }
         }
 
-        $('#report_offcanvas').offcanvas('show');
+        $reportOffcanvas.offcanvas('show');
     }
 
     const initPageSelect2 = () => {
@@ -1428,6 +1548,203 @@ var Report = function () {
         });
     }
 
+    // <============================== END BACKUP RESOURCE REPORT LOGIC ==============================>
+
+
+    // <============================== BEGIN PRODUCT RESOURCE REPORT LOGIC ==============================>
+
+    // <============================== END PRODUCT RESOURCE REPORT LOGIC ================================>
+
+
+    // <============================== BEGIN DATA PROTECTION REPORT LOGIC ==============================>
+
+    let vmTreeObj;
+    let selectedVmIds = [];
+
+    /**
+     * jstree 的 "changed" 事件回调函数。
+     * 当用户勾选或取消勾选节点时，此函数会被触发，并更新 selectedVmIds 数组。
+     * @param {Event} e - 事件对象
+     * @param {object} data - jstree 提供的事件数据
+     */
+    function onVmTreeChange(e, data) {
+        if (!vmTreeObj) return;
+
+        // 获取所有被选中的节点对象
+        const selectedNodes = vmTreeObj.get_selected(true);
+
+        // 筛选出所有叶子节点（即真正的虚拟机），并提取它们的ID
+        // jstree 的 is_parent() 方法可以准确判断一个节点是否为父节点
+        selectedVmIds = selectedNodes
+            .filter(node => !vmTreeObj.is_parent(node))
+            .map(node => node.id);
+    }
+
+    const initVmwareTree = (vcenterPlatformType) => {
+        // 如果已存在一个 jstree 实例，先销毁它以防止冲突
+        if (vmTreeObj) {
+            // jstree V3.x 使用 get_instance().destroy()
+            $.jstree.reference($vmwareTree).destroy();
+        }
+
+        // 显示加载状态
+        $('.tree-list-container__tree').block();
+
+        // 初始化 jstree
+        $vmwareTree.jstree({
+            core: {
+                // jstree 的核心数据源配置
+                data: function (node, cb) {
+                    // jstree 在请求根节点时，node.id 为 '#'
+                    const nodeId = node.id === '#' ? '#' : node.id;
+                    
+                    // 从父节点的 data 属性中获取 vcenter_uuid (如果存在)
+                    // 这是我们后端代码在第二层节点上附加的
+                    const vcenterUuid = (node.data && node.data.vcenter_uuid) ? node.data.vcenter_uuid : null;
+
+                    // 使用封装好的 axiosGet 发起请求
+                    axiosGet('report/vm_tree', {
+                        id: nodeId,
+                        module_type: vcenterPlatformType,
+                        vcenter_uuid: vcenterUuid
+                    }).then(res => {
+                        if (res.success) {
+                            // 仅在初次加载时检查“无数据”状态
+                            if (nodeId === '#' && res.data.length === 0) {
+                                $('.tree-list-no-data').removeClass('display-none');
+                                $('.tree-list-container__tree').addClass('display-none');
+                            } else {
+                                $('.tree-list-no-data').addClass('display-none');
+                                $('.tree-list-container__tree').removeClass('display-none');
+                            }
+                            // 通过回调函数将数据传递给 jstree
+                            console.log(res.data, '返回数据');
+                            cb(res.data);
+                        } else {
+                            UIToastr.showWarning(res.message || '获取虚拟机树数据失败');
+                            cb([]); // 出错时返回空数组
+                        }
+                    }).catch(err => {
+                        console.error('获取虚拟机树数据失败:', err);
+                        UIToastr.showWarning('获取虚拟机树数据失败');
+                        cb([]);
+                    }).finally(() => {
+                        // 仅在初次加载（请求根节点）后解除 UI 锁定
+                        if (nodeId === '#') {
+                            $('.tree-list-container__tree').unblock();
+                        }
+                    });
+                },
+                themes: {
+                    'responsive': true, // 响应式主题
+                }
+            },
+            plugins: ['checkbox', 'wholerow'], // 启用复选框和整行选中插件
+            checkbox: {
+                'keep_selected_style': false,
+                'three_state': true // 启用父子节点联动勾选
+            }
+        }).on('changed.jstree', onVmTreeChange) // 绑定 'changed' 事件
+        .on('ready.jstree', function () {
+            // 树加载完成后，将实例存入全局变量
+            vmTreeObj = $.jstree.reference($vmwareTree);
+        });
+    }
+
+    // /**
+    //  * 获取数据保护报表树数据
+    //  * @param {*} vcenterPlatformType 虚拟化平台类型
+    //  */
+    // const getVmwareTreeData = (vcenterPlatformType) => {
+    //     axiosGet('report/vm_tree', {vcenterPlatformType}).then(res => {
+    //         try {
+    //             if (res.success) {
+    //                 const { data } = res;
+
+    //                 if (data.length > 0) {
+    //                     $('.tree-list-no-data').addClass('display-none');
+    //                     $('.tree-list-container').removeClass('display-none');
+
+    //                     initVmwareTree(data);
+    //                 } else {
+    //                     $('.tree-list-container').addClass('display-none');
+    //                     $('.tree-list-no-data').removeClass('display-none');
+    //                 }
+    //             } else {
+    //                 UIToastr.showWarning('获取树数据失败');
+    //             }
+    //         } catch (error) {
+    //             UIToastr.showWarning('获取树数据失败');
+    //         } finally {
+    //             $('.tree-list-container__tree').unblock();
+    //         }
+    //     });
+    // }
+
+    const initModuleTypeCascader = () => {
+        if ($('#module_type_cascader').children().length === 0) {
+            const cascader = new Cascader({
+                container: "#module_type_cascader",
+                data: BUSINESS_TYPE_MODULE_TYPE_TREE,
+                placeholder: '请选择对象类型',
+                clearable: true,
+                selectFn: (moduls) => {
+                    console.log(moduls, '级联选择的对象类型');
+                    CURRENT_SELECTED_MODULE_TYPE = moduls.length === 2 ? moduls[1].value : '';
+
+                    switch (CURRENT_SELECTED_MODULE_TYPE) {
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.VM:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('虚拟化');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.VM);
+                            
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.PRIVATE_CLOUD:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('私有云');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PRIVATE_CLOUD);
+
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.PUBLIC_CLOUD:
+                            $('.tree-list-form-group').removeClass('display-none');
+                            $('#tree_list_form_group_label').html('公有云');
+                            $('#tree_list_form_group_accordion_btn').html(`<i class="viconfont vicon-overview-vm me-10"></i>选择虚拟机`);
+
+                            initVmwareTree(VCENTER_PLATFORM_TYPE.PUBLIC_CLOUD);
+
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.COMPLETE_MACHINE: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.VOLUME: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.FILE: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.NAS: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.HADOOP: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.OBS: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.DB: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.M365: 
+                            break;
+                        case MODULE_TYPE_MAP.TIMING_BACKUP.KUBERNETES: 
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
+    }
+
+    // <============================== END DATA PROTECTION REPORT LOGIC ================================>
+
     /**
      * 当前报表表单校验是否通过
      */
@@ -1440,15 +1757,17 @@ var Report = function () {
             case TEMPLATE_TYPE.BACKUP_RESOURCE: // 备份资源报表模板
                 switch (CURRENT_BACKUP_SOURCE_TYPE) {
                     case BACKUP_SOURCE_TYPE.STORAGE: // 存储报表
-                        let isSelectedStoragesValid = validateSelectedStorages(); // 校验存储条数
+                        let isSelectedStoragesValid = validateSelectedResources(); // 校验存储条数
 
                         return reportFormValidator.checkAll() === 0 && isSelectedStoragesValid && isCustomizedTimeValid && isReportPathValid;
                     case BACKUP_SOURCE_TYPE.TAPE: // 磁带报表
-                        let isSelectedTapesValid = validateSelectedStorages(); // 校验磁带条数
+                        let isSelectedTapesValid = validateSelectedResources(); // 校验磁带条数
 
                         return reportFormValidator.checkAll() === 0 && isSelectedTapesValid && isCustomizedTimeValid && isReportPathValid;
                     case BACKUP_SOURCE_TYPE.NODE: // 节点报表
-                        break;
+                        let isSelectedNodessValid = validateSelectedResources(); // 校验节点个数
+
+                        return reportFormValidator.checkAll() === 0 && isSelectedNodessValid && isCustomizedTimeValid && isReportPathValid;
                     default:
                         break;
                 }
@@ -1488,8 +1807,20 @@ var Report = function () {
         const tapeSelections = $resourceListTable.bootstrapTable('getSelections');
 
         return {
-            tapes: tapeSelections.map(item => ({ id: item.id, name: item.tapeName, groupUuid: item.groupUuid })),
+            tapes: tapeSelections.map(item => ({ id: item.id, name: item.name, groupUuid: item.groupUuid })),
             modules: $('#module_checkbox_groups_wrap').getCascaderCheckboxGroupValues('module_checkbox_groups'),
+        };
+    }
+
+    /**
+     * 获取节点报表特定参数
+     * @returns 
+     */
+    const getNodeReportParams = () => {
+        const nodeSelections = $resourceListTable.bootstrapTable('getSelections');
+
+        return {
+            nodes: nodeSelections.map(item => ({ id: item.id, nodeUuid: item.node_uuid, ip: item.ip }))
         };
     }
 
@@ -1521,7 +1852,7 @@ var Report = function () {
             const subTypeHandlers = {
                 [BACKUP_SOURCE_TYPE.STORAGE]: getStorageReportParams,
                 [BACKUP_SOURCE_TYPE.TAPE]: getTapeReportParams,
-                [BACKUP_SOURCE_TYPE.NODE]: () => ({}), // 节点类型暂无特殊参数
+                [BACKUP_SOURCE_TYPE.NODE]: getNodeReportParams,
             };
 
             const subTypeHandler = subTypeHandlers[CURRENT_BACKUP_SOURCE_TYPE];
@@ -1567,9 +1898,7 @@ var Report = function () {
      * 处理报表表单提交
      */
     const handleReportFormSubmit = () => {
-        $('#report_form_submit').on('click', (event) => {
-            event.preventDefault();
-
+        $('#report_form_submit').on('click', () => {
             console.log(reportFormIsValid(), '表单校验是否通过');
             if (reportFormIsValid()) { // 判断表单是否检验通过
                 const templateType = CURRENT_TEMPLATE_TYPE; // 模板类型
@@ -1613,7 +1942,7 @@ var Report = function () {
                 if (ADD_CUSTOM_REPORT_FLAG || COPY_NEW_REPORT_FALG) { // 新建或复制新建报表
                     $reportOffcanvas.block();
 
-                    pAjaxRequest(params, '/api/v2/report', 'POST', (res) => {
+                    axiosPost('report', params).then(res => {
                         $reportOffcanvas.unblock();
                         if (res.success) {
                             UIToastr.showSuccess('新建报表', '新建报表成功');
@@ -1627,6 +1956,8 @@ var Report = function () {
                                 $reportTree.jstree(true).refresh_node(firstCheckedNodeId);
                             });
 
+                            $deleteCustomReportBtn.prop('disabled', true);
+                            $openNotifyOffcanvasBtn.prop('disabled', true);
                             $reportOffcanvas.offcanvas('hide');
                         } else {
                             UIToastr.showWarning('新建报表', '新建报表失败');
@@ -1637,7 +1968,7 @@ var Report = function () {
 
                     params.onlyRenameReportName = false;
                     params.templateUuid = CURRENT_REPORT_UUID;
-                    pAjaxRequest(params, '/api/v2/report', 'PUT', (res) => {
+                    axiosPut('report', params).then(res => {
                         $reportOffcanvas.unblock();
                         if (res.success) {
                             UIToastr.showSuccess('修改报表', '修改报表成功');
@@ -1650,10 +1981,13 @@ var Report = function () {
                                 // 节点展开后刷新该节点的子节点列表
                                 $reportTree.jstree(true).refresh_node(firstCheckedNodeId);
                             });
+
+                            $deleteCustomReportBtn.prop('disabled', true);
+                            $openNotifyOffcanvasBtn.prop('disabled', true);
                             $reportOffcanvas.offcanvas('hide');
                         } else {
                             UIToastr.showWarning('修改报表', '修改报表失败');
-                        }
+                        } 
                     });
                 }
             }
@@ -1669,19 +2003,582 @@ var Report = function () {
         });
     }
 
-    const watchReportTableFilter = () => {
-        window.$off('report_table_filter_btn-updateFilterEvent'); // 移除所有旧的过滤器监听
+    // <----------------------------- END REPORT FORM LOGIC --------------------------------->
 
-        window.$on('report_table_filter_btn-updateFilterEvent', (filterData) => {
-            if (Array.isArray(filterData) && filterData.length > 0) {
-                FILTER_PARAMS.template_type = filterData[0].value.map(v => parseInt(v)).join(',');
-            } else {
-                FILTER_PARAMS.template_type = [];
+    // <----------------------------- BEGIN NOTIFY FORM LOGIC ------------------------------->
+
+    const initNotifyOffcanvas = () => {
+        if (SELECTED_REPORT_TEMPLATE_LIST.length === 1) { // 仅勾选一个报表时，需要回显配置数据
+            const { noticeConfig } = SELECTED_REPORT_TEMPLATE_LIST[0];
+
+            if (JSON.stringify(noticeConfig) === '{}') { // 未配置通知
+                $notifyEmailSwitch.prop('checked', false);
+                $('#notify_strategy_wrap').removeClass('show');
+                handleEmailSwitchChange();
+            } else { // 开启了通知则回显表单
+                $notifyEmailSwitch.prop('checked', true);
+                $('#notify_strategy_wrap').addClass('show');
+
+                const { receiveEmail, reportConfig } = noticeConfig;
+                const { timeStrategy, noticeContentTypes, attachmentFormats} = reportConfig;
+
+                let timeStrategyList = JSON.parse(timeStrategy);
+                timeStrategyList.forEach(item => {
+                    switch (parseInt(item.type)) {
+                        case NOTIFY_TIMESTRATEGY_TYPE.DAILY: // 日报
+                            $perdayNotifySwitch.prop('checked', true);
+                            $('#perday_strategy_wrap').addClass('show');
+                            $noticeDayTime.val(item.noticeTime);
+                            $timeStrategyTabs.find(':first .nav-link').addClass('checked');
+                            break;
+                        case NOTIFY_TIMESTRATEGY_TYPE.WEEKLY: // 周报
+                            console.log(item.days, 'item.days');
+                            $perweekNotifySwitch.prop('checked', true);
+                            $('#perweek_strategy_wrap').addClass('show');
+                            $weekCheckboxGroup.setCheckboxGroupValues(item.days);
+                            $noticeWeekTime.val(item.noticeTime);
+                            $timeStrategyTabs.find(':nth-child(2) .nav-link').addClass('checked');   
+                            break;
+                        case NOTIFY_TIMESTRATEGY_TYPE.MONTHLY: // 月报
+                            $permonthNotifySwitch.prop('checked', true);
+                            $('#permonth_strategy_wrap').addClass('show');
+                            $monthCheckboxGroup.setCheckboxGroupValues(item.days);
+                            $noticeMonthTime.val(item.noticeTime);
+                            $timeStrategyTabs.find(':nth-child(3) .nav-link').addClass('checked');
+                            break;
+                        case NOTIFY_TIMESTRATEGY_TYPE.YEARLY: // 年报
+                            $peryearNotifySwitch.prop('checked', true);
+                            $timeStrategyTabs.find(':nth-child(4) .nav-link').addClass('checked');
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                $('#receive_emails').val(receiveEmail.join('\n'));
+
+                let noticeContentList = JSON.parse(noticeContentTypes);
+                $('#notify_content_checkbox_group').setCheckboxGroupValues(noticeContentList);
+
+                if (noticeContentList.includes(NOTIFY_CONTENT.DETAIL)) { // 包含数据明细
+                    $('.detail-export-form-group').removeClass('display-none');
+                    $('.detail-export-content-form-group').removeClass('display-none');
+
+                    $('#export_detail_radio_group').setRadioGroupValue(reportConfig.detailExportRange);
+
+                    if (reportConfig.detailExportRange === EXPORT_DETAIL_TYPE.CUSTOM) { // 选择的是自定义条数
+                        $('.export-nums-spinner').removeClass('display-none');
+                        $('#export_nums').val(parseInt(reportConfig.exportNums));
+                    } else {
+                        $('.export-nums-spinner').addClass('display-none');
+                        $('#export_nums').val(10);
+                    }
+                } else {
+                    $('.detail-export-form-group').removeClass('display-none');
+                    $('.detail-export-content-form-group').addClass('display-none');
+                }
+
+                if (reportConfig.singleObjectDetailFlag === true) {
+                    $('#single_object_switch').prop('checked', true);
+                    $('#single_object_config_wrap').addClass('show');
+
+                    let singleObjectList = JSON.parse(reportConfig.singleObjectTypes);
+
+                    $('#single_object_checkbox_group').setCheckboxGroupValues(singleObjectList);
+                    if (singleObjectList.includes(SINGLE_TASK_OBJECT_TYPE.HISTORY_RUN_RECORD)) { // 勾选了历史运行记录
+                        $('.history-detail-export-form-group').removeClass('display-none');
+                        $('.history-detail-export-content-form-group').removeClass('display-none');
+
+                        $('#single_detail_radio_group').setRadioGroupValue(reportConfig.historyRunRecordExportRange);
+
+                        if (reportConfig.historyRunRecordExportRange === EXPORT_DETAIL_TYPE.CUSTOM) { // 选择的是自定义条数
+                            $('.export-single-nums-spinner').removeClass('display-none');
+                            $('#single_spinner_num').val(parseInt(reportConfig.exportHistoryNums));
+                        } else {
+                            $('.export-single-nums-spinner').addClass('display-none');
+                        }
+                    } else {
+                        $('.history-detail-export-form-group').addClass('display-none');
+                        $('.history-detail-export-content-form-group').addClass('display-none');
+                    }
+                } else {
+                    $('#single_object_switch').prop('checked', false);
+                    $('#single_object_config_wrap').removeClass('show');
+                }
+
+                $('#attachment_format_checkbox_group').setCheckboxGroupValues(JSON.parse(attachmentFormats));
             }
+        } else { // 勾选多个报表，相当于重置配置表单
+            $notifyEmailSwitch.prop('checked', false);
+            $('#notify_strategy_wrap').removeClass('show');
+            handleEmailSwitchChange();
+        }
 
-            $reportTable.bootstrapTable('refresh', { pageNumber: 1, query: { ...FILTER_PARAMS } });
+        $notifyOffcanvas.offcanvas('show');
+    }
+
+    const initSpinnerGroup = () => {
+        $('#export_nums').inputSpinner({
+            groupClass: 'spinner-group export-nums-spinner'
+        });
+
+        // 初始化完后先隐藏，等待选择自定义条数时再显示
+        $('.export-nums-spinner').addClass('display-none');
+
+        $('#single_spinner_num').inputSpinner({
+            groupClass: 'spinner-group export-single-nums-spinner'
+        });
+
+        // 初始化完后先隐藏，等待选择自定义条数时再显示
+        $('.export-single-nums-spinner').addClass('display-none');
+    }
+
+    /**
+     * 初始化通知表单校验器
+     */
+    const initNoticeFormValidator = () => {
+        // 初始化表单校验器
+        noticeFormValidator = $('#notify_form').jbvalidator({
+            errorMessage: true,
+            successClass: true
+        });
+
+        // 自定义表单校验
+        noticeFormValidator.validator.custom = (el) => {
+
+            // 多邮箱校验
+            if ($(el).is('[name=emails]')) {
+                let text = $(el).val();
+
+                // eslint-disable-next-line no-undef
+                let result = illeagalEmailsCheck(text);
+
+                if (result.flag) {
+                    return `第${result.index}行邮箱格式不正确，请重新输入`;
+                }
+            }
+        };
+    }
+
+    /**
+     * 处理通知表单提交
+     *
+     */
+    const handleNoticeFormSubmit = () => {
+        $('#notice_form_submit').on('click', () => {
+            let templateUuids = JSON.stringify(SELECTED_REPORT_TEMPLATE_LIST.map(i => i.templateUuid));
+            let emailNotifyFlag = $notifyEmailSwitch.get(0).checked;
+
+            let params = {};
+            params.emailNotifyFlag = emailNotifyFlag;
+            params.templateUuids = templateUuids;
+
+            if (emailNotifyFlag) { // 开启了邮件通知，进行表单校验和参数获取
+                const noticeFormIsValid = noticeFormValidator.checkAll() === 0;
+                const notifyStrategyIsValid = checkNoticeStrategyIsValid();
+
+                if (noticeFormIsValid && notifyStrategyIsValid) {
+                    // 获取邮件通知策略
+                    let timeStrategy = [];
+                    let checkedTabItems = $('#time_strategy_tabs').find('.nav-item .nav-link.checked').map(function() {
+                        return $(this).attr('href');
+                    }).get();
+
+                    checkedTabItems.forEach(item => {
+                        switch (item) {
+                            case '#tab_perday': // 日报
+                                timeStrategy.push({ type: 1, noticeTime: $noticeDayTime.val() });
+                                break;
+                            case '#tab_perweek': // 周报
+                                timeStrategy.push({ type: 2, noticeTime: $noticeWeekTime.val(), days: $weekCheckboxGroup.getCheckboxGroupValues() });
+                                break;
+                            case '#tab_permonth': // 月报
+                                timeStrategy.push({ type: 3, noticeTime: $noticeMonthTime.val(), days: $monthCheckboxGroup.getCheckboxGroupValues() });
+                                break;
+                            case '#tab_peryear': // 年报
+                                timeStrategy.push({ type: 4, noticeTime: '' });
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+
+                    params.timeStrategy = JSON.stringify(timeStrategy);
+
+                    let recEmails = $('#receive_emails').val().split('\n'); // 获取通知邮箱
+                    params.recEmails = JSON.stringify(recEmails);
+
+                    let noticeContentTypes = $('#notify_content_checkbox_group').getCheckboxGroupValues(); // 获取通知内容
+                    params.noticeContentTypes = JSON.stringify(noticeContentTypes);
+
+                    if (noticeContentTypes.includes(NOTIFY_CONTENT.DETAIL)) { // 包含数据明细通知内容类型
+                        // 获取数据明细导出范围
+                        let detailExportRange = $('#export_detail_radio_group').getRadioGroupValue();
+                        params.detailExportRange = detailExportRange;
+
+                        if (detailExportRange === EXPORT_DETAIL_TYPE.CUSTOM) { // 自定义条数
+                            let exportNums = $('#export_nums').val();
+                            params.exportNums = exportNums;
+                        }
+                    }
+
+                    let singleObjectDetailFlag = $('#single_object_switch').get(0).checked;
+                    params.singleObjectDetailFlag = singleObjectDetailFlag;
+
+                    if (singleObjectDetailFlag) { // 开启单对象详情
+                        let singleObjectTypes = $('#single_object_checkbox_group').getCheckboxGroupValues(); // 获取单对象详情类型
+                        params.singleObjectTypes = JSON.stringify(singleObjectTypes);
+
+                        if (singleObjectTypes.includes(SINGLE_TASK_OBJECT_TYPE.HISTORY_RUN_RECORD)) { // 包含历史运行记录
+                            // 获取历史运行记录导出范围
+                            let historyRunRecordExportRange = $('#single_detail_radio_group').getRadioGroupValue();
+                            params.historyRunRecordExportRange = historyRunRecordExportRange;
+
+                            if (historyRunRecordExportRange === EXPORT_DETAIL_TYPE.CUSTOM) { // 自定义条数
+                                let exportHistoryNums = $('#single_spinner_num').val();
+                                params.exportHistoryNums = exportHistoryNums;
+                            }
+                        }
+                    }
+                    
+                    let attachmentFormats = $('#attachment_format_checkbox_group').getCheckboxGroupValues(); // 获取附件格式
+                    params.attachmentFormats = JSON.stringify(attachmentFormats);
+
+                    $('.report-offcanvas show .offcanvas-body').block();
+                    axiosPost('report/notice', params).then(res => {
+                        if (res.success) {
+                            UIToastr.showSuccess('通知配置成功');
+
+                            $openNotifyOffcanvasBtn.prop('disabled', true);
+                            $deleteCustomReportBtn.prop('disabled', true);
+                            SELECTED_REPORT_TEMPLATE_LIST = []; // 清空选中的报表模板 uuids
+                            $notifyOffcanvas.offcanvas('hide');
+                            $reportTable.bootstrapTable('refresh');
+                        } else {
+                            UIToastr.showWarning('通知配置失败');
+                        }
+                    });
+                }
+            } else { // 未开启邮件通知，不需要检验直接调接口
+                $('.report-offcanvas show .offcanvas-body').block();
+                axiosPost('report/notice', params).then(res => {
+                    if (res.success) {
+                        UIToastr.showSuccess('通知配置成功');
+
+                        $openNotifyOffcanvasBtn.prop('disabled', true);
+                        $deleteCustomReportBtn.prop('disabled', true);
+                        SELECTED_REPORT_TEMPLATE_LIST = []; // 清空选中的报表模板 uuids
+                        $notifyOffcanvas.offcanvas('hide');
+                        $reportTable.bootstrapTable('refresh');
+                    } else {
+                        UIToastr.showWarning('通知配置失败');
+                    }
+                });
+            }
+        })
+    }
+
+    /**
+     * 处理邮件通知开关change（同时应用于单个报表打开通知配置时的回显）
+     */
+    const handleEmailSwitchChange = () => {
+        let emailNotifyFlag = $notifyEmailSwitch.get(0).checked;
+
+        if (!emailNotifyFlag) { // 关闭时重置表单
+            // 一键清除表单校验样式
+            noticeFormValidator.resetStyle();
+
+            // 重置日报
+            $perdayNotifySwitch.prop('checked', false);
+            $('#perday_strategy_wrap').removeClass('show');
+            $noticeDayTime.val('');
+            $timeStrategyTabs.find(':first .nav-link').removeClass('checked').addClass('active');
+
+            // 重置周报
+            $perweekNotifySwitch.prop('checked', false);
+            $('#perweek_strategy_wrap').removeClass('show');
+            $weekCheckboxGroup.setCheckboxGroupValues([]); // 重置checkbox group
+            $noticeWeekTime.val('');
+            $timeStrategyTabs.find(':nth-child(2) .nav-link').removeClass('checked').removeClass('active');
+
+            // 重置月报
+            $permonthNotifySwitch.prop('checked', false);
+            $('#permonth_strategy_wrap').removeClass('show');
+            $monthCheckboxGroup.setCheckboxGroupValues([]); // 重置checkbox group
+            $noticeMonthTime.val('');
+            $timeStrategyTabs.find(':nth-child(3) .nav-link').removeClass('checked').removeClass('active');
+
+            // 重置年报
+            $peryearNotifySwitch.prop('checked', false);
+            $timeStrategyTabs.find(':nth-child(4) .nav-link').removeClass('checked').removeClass('active');
+
+            $('#time_strategy_tab_content').find('.tab-pane').removeClass('show active');
+            $('#time_strategy_tab_content').find(':first.tab-pane').addClass('show active');
+
+            // 重置邮箱
+            $('#receive_emails').val('');
+
+            // 重置通知内容 checkbox group
+            $('#notify_content_checkbox_group').setCheckboxGroupValues([]);
+            $('.detail-export-form-group').addClass('display-none');
+            $('.detail-export-content-form-group').addClass('display-none');
+            $('#export_detail_radio_group').setRadioGroupValue(EXPORT_DETAIL_TYPE.ALL);
+            $('#export_nums').val(10);
+            
+            // 重置单对象详情
+            $('#single_object_switch').prop('checked', false);
+            $('#single_object_config_wrap').removeClass('show');
+
+            // 重置单对象详情 checkbox group
+            $('#single_object_checkbox_group').setCheckboxGroupValues([]);
+            $('.history-detail-export-form-group').addClass('display-none');
+            $('.history-detail-export-content-form-group').addClass('display-none');
+            $('#single_detail_radio_group').setRadioGroupValue(EXPORT_DETAIL_TYPE.ALL);
+            $('#single_spinner_num').val(10);
+
+            // 重置附件格式 checkbox group
+            $('#attachment_format_checkbox_group').setCheckboxGroupValues([]);
+        } else {
+            // 这两项如果填过数字值，在关闭时 display-none class不知道为什么加不上，但这两行代码放在开启这是生效的
+            $('.export-nums-spinner').addClass('display-none');
+            $('.export-single-nums-spinner').addClass('display-none');
+        }
+    }
+
+    const watchEmailSwitchChange = () => {
+        $notifyEmailSwitch.on('change', () => {
+            handleEmailSwitchChange();
         });
     }
+
+    const hanldeNotifySwitchChange = () => {
+       $perdayNotifySwitch.on('change', function() {
+            if ($(this).is(':checked')) {
+                if ($noticeDayTime.val() !== '') {
+                    $timeStrategyTabs.find(':first .nav-link').addClass('checked');
+                } else {
+                    $timeStrategyTabs.find(':first .nav-link').removeClass('checked');
+                }
+            } else {
+                $timeStrategyTabs.find(':first .nav-link').removeClass('checked');
+
+                $noticeDayTime.val('');
+                $noticeDayTime.removeClass('is-invalid').removeClass('is-valid');
+            }
+
+            $('.validate-notice-strategy-tip').css({'top': '174px'});
+       });
+
+       $perweekNotifySwitch.on('change', function() {
+            if ($(this).is(':checked')) {
+                let checkedWeeks = $weekCheckboxGroup.getCheckboxGroupValues();
+                let noticeWeekTime = $noticeWeekTime.val();
+
+                if (checkedWeeks.length > 0 && noticeWeekTime !== '') {
+                    $timeStrategyTabs.find(':nth-child(2) .nav-link').addClass('checked');
+                } else {
+                    $timeStrategyTabs.find(':nth-child(2) .nav-link').removeClass('checked');
+                }
+
+                $('.validate-notice-strategy-tip').css({'top': '217px'});
+            } else {
+                $timeStrategyTabs.find(':nth-child(2) .nav-link').removeClass('checked');
+                $noticeWeekTime.val('');
+                $noticeWeekTime.removeClass('is-invalid').removeClass('is-valid');
+                $('#week_checkbox_group .checkbox-group-wrapper').find('.check-group-wrapper__item .form-check-input').removeClass('is-valid').removeClass('is-invalid');
+
+                $('.validate-notice-strategy-tip').css({'top': '174px'});
+            }
+       });
+
+       $permonthNotifySwitch.on('change', function() {
+            if ($(this).is(':checked')) {
+                let checkedMonths = $monthCheckboxGroup.getCheckboxGroupValues();
+                let noticeMonthTime = $noticeMonthTime.val();
+
+                if (checkedMonths.length > 0 && noticeMonthTime !== '') {
+                    $timeStrategyTabs.find(':nth-child(3) .nav-link').addClass('checked');
+                } else {
+                    $timeStrategyTabs.find(':nth-child(3) .nav-link').removeClass('checked');
+                }
+
+                $('.validate-notice-strategy-tip').css({'top': '337px'});
+            } else {
+                $timeStrategyTabs.find(':nth-child(3) .nav-link').removeClass('checked');
+                $noticeMonthTime.val('');
+                $noticeMonthTime.removeClass('is-invalid').removeClass('is-valid');
+                $('#month_checkbox_group .checkbox-group-wrapper').find('.check-group-wrapper__item .form-check-input').removeClass('is-valid').removeClass('is-invalid');
+
+                $('.validate-notice-strategy-tip').css({'top': '174px'});
+            }
+       });
+
+       $peryearNotifySwitch.on('change', function() {
+            if ($(this).is(':checked')) {
+                $timeStrategyTabs.find(':nth-child(4) .nav-link').addClass('checked');
+            } else {
+                $timeStrategyTabs.find(':nth-child(4) .nav-link').removeClass('checked');
+            }
+       });
+    }
+
+    const handleNoticeTimeChange = () => {
+        $noticeDayTime.on('change', function() {
+            if ($(this).val() !== '') {
+                $timeStrategyTabs.find(':first .nav-link').addClass('checked');
+            } else {
+                $timeStrategyTabs.find(':first .nav-link').removeClass('checked');
+            }
+        });
+
+        $noticeWeekTime.on('change', function() {
+            let checkedWeeks = $weekCheckboxGroup.getCheckboxGroupValues();
+
+            if (checkedWeeks.length > 0 && $(this).val() !== '') {
+                $timeStrategyTabs.find(':nth-child(2) .nav-link').addClass('checked');
+            } else {
+                $timeStrategyTabs.find(':nth-child(2) .nav-link').removeClass('checked');
+            }
+        });
+
+        $noticeMonthTime.on('change', function() {
+            let checkedMonths = $monthCheckboxGroup.getCheckboxGroupValues();
+            if (checkedMonths.length > 0 && $(this).val() !== '') {
+                $timeStrategyTabs.find(':nth-child(3) .nav-link').addClass('checked');
+            } else {
+                $timeStrategyTabs.find(':nth-child(3) .nav-link').removeClass('checked');
+            }
+        });
+    }
+
+    const checkNoticeStrategyIsValid = () => {
+        let valid = true;
+        let checkedTabItems = $('#time_strategy_tabs').find('.nav-item .nav-link.checked');
+
+        $('.validate-notice-strategy-tip').empty();
+        
+        if (checkedTabItems.length === 0) { // 策略未配置
+            $('.validate-notice-strategy-tip').html('邮件通知已开启，请配置通知策略');
+            $('.validate-notice-strategy-tip').removeClass('display-none');
+
+            valid =  false;
+        } else {
+            $('.validate-notice-strategy-tip').addClass('display-none');
+        }
+
+        return valid;
+    }
+
+    /**
+     * 初始化报表通知表单
+     */
+    const initReportNoticeForm = () => {
+        // 生成每周 checkbox group
+        $weekCheckboxGroup.initCheckboxGroup({
+            checkboxData: WEEKS, 
+            checkedValues: [], 
+            onChange: function(allValues) {
+                if (allValues.length > 0 && $noticeWeekTime.val() !== '') {
+                    $timeStrategyTabs.find(':nth-child(2) .nav-link').addClass('checked');
+                } else {
+                    $timeStrategyTabs.find(':nth-child(2) .nav-link').removeClass('checked');
+                }
+            }
+        });
+
+        // 生成每月 checkbox group
+        $monthCheckboxGroup.initCheckboxGroup({
+            checkboxData: MONTHS,
+            checkedValues: [],
+            onChange: function(allValues) {
+                if (allValues.length > 0 && $noticeMonthTime.val() !== '') {
+                    $timeStrategyTabs.find(':nth-child(3) .nav-link').addClass('checked');
+                } else {
+                    $timeStrategyTabs.find(':nth-child(3) .nav-link').removeClass('checked');
+                }
+            }
+        });
+
+        // 生成通知内容 checkbox group
+        $('#notify_content_checkbox_group').initCheckboxGroup({
+            checkboxData: NOTIFY_CONTENT_TYPES,
+            checkedValues: [],
+            onChange: function(allValues) {
+                if (allValues.includes(NOTIFY_CONTENT.DETAIL)) { // 如果选择了数据明细则显示数据明细导出范围
+                    $('.detail-export-form-group').removeClass('display-none');
+                    $('.detail-export-content-form-group').removeClass('display-none');
+                } else {
+                    $('.detail-export-form-group').addClass('display-none');
+                    $('.detail-export-content-form-group').addClass('display-none');
+                }
+            }
+        });
+
+        // 数据明细通知内容 radio group
+        $('#export_detail_radio_group').initRadioGroup({
+            name: 'detailRange',
+            radioData: EXPORT_DETAIL_RADIO_TYPES,
+            selectedValue: 1,
+            onChange: function (currentValue) {
+                if (currentValue === EXPORT_DETAIL_TYPE.CUSTOM) { // 选择自定义条数时显示自定义条数输入框
+                    $('.export-nums-spinner').removeClass('display-none');
+                } else {
+                    $('.export-nums-spinner').addClass('display-none');
+                }
+            }
+        });
+
+        // 附件格式 checkbox group
+        $('#attachment_format_checkbox_group').initCheckboxGroup({checkboxData: ATTACHMENT_FORMATS});
+
+        // 单对象详情 checkbox group (以任务报表为例)
+        $('#single_object_checkbox_group').initCheckboxGroup({
+            checkboxData: SINGLE_TASK_OBJECT_TYPES,
+            checkedValues: [],
+            onChange: function(allValues) {
+                if (allValues.includes(SINGLE_TASK_OBJECT_TYPE.HISTORY_RUN_RECORD)) { // 勾选了历史运行记录时显示自定义条数输入框
+                    $('.history-detail-export-form-group').removeClass('display-none');
+                    $('.history-detail-export-content-form-group').removeClass('display-none');
+                } else {
+                    $('.history-detail-export-form-group').addClass('display-none');
+                    $('.history-detail-export-content-form-group').addClass('display-none');
+                }
+            }
+        });
+
+        // 历史运行记录导出范围
+        $('#single_detail_radio_group').initRadioGroup({
+            name: 'singleDetailRange',
+            radioData: EXPORT_HISTORY_RECOEDS_RADIO_TYPES,
+            selectedValue: 1,
+            onChange: function (currentValue) {
+                if (currentValue === EXPORT_DETAIL_TYPE.CUSTOM) {
+                    $('.export-single-nums-spinner').removeClass('display-none');
+                } else {
+                    $('.export-single-nums-spinner').addClass('display-none');
+                }
+            }
+        });
+
+        initSpinnerGroup();
+
+        // 初始化表单校验器
+        initNoticeFormValidator();
+
+        // 邮件通知开关 switch change
+        watchEmailSwitchChange();
+
+        // 配置日报、周报、月报、年报通知开关change
+        hanldeNotifySwitchChange();
+
+        // 处理通知时间 change
+        handleNoticeTimeChange();
+
+        // 处理表单提交
+        handleNoticeFormSubmit();
+    }
+
+    // <----------------------------- END NOTIFY FORM LOGIC --------------------------------->
 
     const initListeners = () => {
         $('#open_report_drawer_btn').on('click', () => {
@@ -1690,6 +2587,10 @@ var Report = function () {
             $reportOffcanvasTitle.empty().html('新建');
 
             initReportOffcanvas();
+        });
+
+        $openNotifyOffcanvasBtn.on('click', () => {
+            initNotifyOffcanvas();
         });
 
         initSearchInput(); // 初始化搜索输入框插件
@@ -1711,9 +2612,9 @@ var Report = function () {
         watchReportOffcanvasShow(); // 监听报表新建/修改弹窗显示事件
 
         watchReportTableFilter(); // 监听报表表格过滤器事件
-    }
 
-    // <----------------------------- END REPORT FORM LOGIC --------------------------------->
+        initReportNoticeForm(); // 初始化系统通知表单
+    }
 
     return{
         init: function () {

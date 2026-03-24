@@ -5,6 +5,9 @@
 <link href="./plugins/inline-label-select/css/inline-label-select.css" rel="stylesheet" type="text/css" />
 <link href="./plugins/cascader-checkbox-group/css/cascader-checkbox-group.css" rel="stylesheet" type="text/css" />
 <link href="./plugins/search-input/css/search-input.css" rel="stylesheet" type="text/css" />
+<link href="./plugins/checkbox-group/css/checkbox-group.css" rel="stylesheet" type="text/css" />
+<link href="./plugins/radio-group/css/radio-group.css" rel="stylesheet" type="text/css" />
+<link href="./plugins/cascader/css/cascader.css" rel="stylesheet" type="text/css" />
 <link href="./platform/monitor-center/report/css/report.css" rel="stylesheet" type="text/css" />
 <!-- END PLUGIN STYLES -->
 
@@ -34,7 +37,13 @@
                     <button class="btn btn-icon-secondary-primary me-10" disabled id="delete_custom_report_btn">
                         <i class="viconfont vicon-a-Deleteshanchu2"></i>
                     </button>
-                    <div id="report_table_filter_wrapper" class="position-relative"></div>
+
+                    <div id="report_table_filter_wrapper" class="position-relative me-10"></div>
+                    
+                    <button class="btn btn-secondary-primary" id="open_notify_offcanvas_btn" disabled>
+                        <i class="viconfont vicon-a-Remindtixing me-4"></i>
+                        通知策略
+                    </button>
                 </div>
                 <!-- END LEFT TOOLBAR -->
 
@@ -61,7 +70,7 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <form id="report_form" class="form system-notice-form needs-validation" novalidate>
+        <form id="report_form" class="form report-form needs-validation" novalidate>
             <!-- BEGIN TEMPLATE TYPE -->
             <div class="form-group">
                 <div class="form-group__label col-md-2">
@@ -78,6 +87,7 @@
                 </div>
             </div>
             <!-- END TEMPLATE TYPE -->
+
             <!-- BEGIN SUB TEMPLATE TYPE -->
             <div class="form-group backup-resource-form-group">
                 <div class="form-group__label col-md-2">
@@ -87,7 +97,16 @@
                     <div id="resource_type_radio_group"></div>
                 </div>
             </div>
+            <div class="form-group module-type-form-group display-none">
+                <div class="form-group__label col-md-2">
+                    对象类型
+                </div>
+                <div class="form-group__content col-md-10">
+                    <div id="module_type_cascader" class="wp-100"></div>
+                </div>
+            </div>
             <!-- END SUB TEMPLATE TYPE -->
+
             <!-- BEGIN REPORT NAME -->
             <div class="form-group report-name-form-group is-required display-none">
                 <div class="form-group__label col-md-2">
@@ -130,6 +149,34 @@
             </div>
             <!-- END RESOURCE LIST -->
 
+            <!-- BEGIN TREE LIST -->
+            <div class="form-group tree-list-form-group align-items-baseline is-required display-none">
+                <div class="form-group__label col-md-2">
+                    <span id="tree_list_form_group_label"></span>
+                </div>
+                <div class="form-group__content col-md-10">
+                    <div class="accordion tree-list-form-group-accordion" id="tree_list_form_group_accordion">
+                        <div class="accordion-header collapsed" data-bs-toggle="collapse" data-bs-target="#tree_list_form_group_accordion_body" aria-expanded="false">
+                            <div class="accordion-button" id="tree_list_form_group_accordion_btn"></div>    
+                        </div>
+                        <div id="tree_list_form_group_accordion_body" class="collapse" data-bs-parent="#tree_list_form_group_accordion">
+                            <div class="accordion-panel">
+                                <div class="tree-list-container">
+                                    <div class="tree-list-container__toolbar"></div>
+                                    <div class="tree-list-container__tree" id="vmware_tree"></div>
+                                </div>
+                                
+                                <div class="tree-list-no-data display-none">
+                                  <img src="/platform/monitor-center/report/img/nodata.svg" />
+                                  <span class="no-data-tip">暂无数据</span>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TREE LIST -->
+
             <!-- BEGIN OVERVIEW SWITCH-->
             <div class="form-group overview-form-group mb-40 display-none">
                 <div class="form-group__label col-md-2">
@@ -143,17 +190,6 @@
                 </div>
             </div>
             <!-- END OVERVIEW SWITCH -->
-
-            <!-- BEGIN NODE SELECT2 -->
-            <div class="form-group node-form-group is-required display-none">
-                <div class="form-group__label col-md-2">
-                    节点
-                </div>
-                <div class="form-group__content col-md-10">
-                    <select id="node_data_select2" class="form-control select2" multiple></select>
-                </div>
-            </div>
-            <!-- END NODE SELECT2 -->
 
             <!-- BEGIN TENDENCY SWITCH -->
             <div class="form-group tendency-form-group display-none">
@@ -253,6 +289,255 @@
 </div>
 <!-- END REPORT OFFCANVAS -->
 
+<!-- BEGIN NOTIFY STRATEGY OFFCANVAS -->
+<div class="offcanvas offcanvas-end offcanvas-end-lg notify-offcanvas" tabindex="-1" id="notify_offcanvas" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="static">
+    <div class="offcanvas-header">
+        <div class="offcanvas-title">
+            <span class="offcanvas-title__text">
+                <i class="viconfont vicon-a-Remindtixing me-8"></i>
+                通知配置
+            </span>
+        </div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form id="notify_form" class="form notify-form needs-validation" novalidate>
+            <!-- BEGIN EMAIL NOTIFY SWITCH-->
+            <div class="form-group email-notify-form-group">
+                <div class="form-group__label col-md-2">
+                    邮件通知
+                </div>
+                <div class="form-group__content col-md-10">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="email_notify_switch" data-bs-toggle="collapse" data-bs-target="#notify_strategy_wrap" aria-expanded="false">
+                    </div>
+                </div>
+            </div>
+            <!-- END EMAIL NOTIFY SWITCH -->
+            
+            <!-- BEGIN EMAIL NOTIFY STRATEGY WRAPPER -->
+            <div id="notify_strategy_wrap" class="collapse tendency-wrap">
+                <!-- BEGIN NOTIFY STRATEGY -->
+                <div class="form-group is-required align-items-baseline">
+                    <div class="form-group__label col-md-2">通知策略</div>
+                    <div class="form-group__content time-strategy-wrapper col-md-10">
+                        <ul class="nav nav-tabs nav-tabs-vertical" role="tablist" id="time_strategy_tabs">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#tab_perday" aria-selected="true" role="tab" tabindex="-1">
+                                    <span class="me-8">日报</span>
+                                    <i class="viconfont vicon-wancheng"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#tab_perweek" aria-selected="false" role="tab" tabindex="-1">
+                                    <span class="me-8">周报</span>
+                                    <i class="viconfont vicon-wancheng"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#tab_permonth" aria-selected="false" role="tab">
+                                    <span class="me-8">月报</span>
+                                    <i class="viconfont vicon-wancheng"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#tab_peryear" aria-selected="false" tabindex="-1" role="tab">
+                                    <span class="me-8">年报</span>
+                                    <i class="viconfont vicon-wancheng"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="time_strategy_tab_content">
+                            <div class="tab-pane fade active show" id="tab_perday" role="tabpanel">
+                                <div class="form-group">
+                                    <div class="form-group__label col-md-3">
+                                        配置日报
+                                    </div>
+                                    <div class="form-group__content col-md-9">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="daily_notify_switch" data-bs-toggle="collapse" data-bs-target="#perday_strategy_wrap" aria-expanded="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="perday_strategy_wrap" class="collapse">
+                                    <div class="form-group is-required">
+                                        <div class="form-group__label col-md-3">
+                                            通知时间
+                                        </div>
+                                        <div class="form-group__content col-md-6">
+                                            <input id="notice_time_day" class="form-control flatpickr-timepicker" required data-v-message="请选择通知时间" placeholder="请选择通知时间">
+                                            <i class="viconfont vicon-ge_time_point input-i"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_perweek" role="tabpanel">
+                                <div class="form-group">
+                                    <div class="form-group__label col-md-3">
+                                        配置周报
+                                    </div>
+                                    <div class="form-group__content col-md-9">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="weekly_notify_switch" data-bs-toggle="collapse" data-bs-target="#perweek_strategy_wrap" aria-expanded="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="perweek_strategy_wrap" class="collapse">
+                                    <div class="form-group align-items-baseline is-required">
+                                        <div class="form-group__label col-md-3">
+                                            每周
+                                        </div>
+                                        <div class="form-group__content week-checkbox-group col-md-9" id="week_checkbox_group" data-checkbox-group data-v-min-select="1" data-v-required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group is-required">
+                                        <div class="form-group__label col-md-3">
+                                            通知时间
+                                        </div>
+                                        <div class="form-group__content col-md-6">
+                                            <input id="notice_time_week" class="form-control flatpickr-timepicker" required data-v-message="请选择通知时间" placeholder="请选择通知时间">
+                                            <i class="viconfont vicon-ge_time_point input-i"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_permonth" role="tabpanel">
+                                <div class="form-group">
+                                    <div class="form-group__label col-md-3">
+                                        配置月报
+                                    </div>
+                                    <div class="form-group__content col-md-9">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="monthly_notify_switch" data-bs-toggle="collapse" data-bs-target="#permonth_strategy_wrap" aria-expanded="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="permonth_strategy_wrap" class="collapse">
+                                    <div class="form-group align-items-baseline is-required">
+                                        <div class="form-group__label col-md-3">
+                                            每月
+                                        </div>
+                                        <div class="form-group__content month-checkbox-group col-md-9" id="month_checkbox_group" data-checkbox-group data-v-min-select="1" data-v-required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group is-required">
+                                        <div class="form-group__label col-md-3">
+                                            通知时间
+                                        </div>
+                                        <div class="form-group__content col-md-6">
+                                            <input id="notice_time_month" class="form-control flatpickr-timepicker" required data-v-message="请选择通知时间" placeholder="请选择通知时间">
+                                            <i class="viconfont vicon-ge_time_point input-i"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab_peryear" role="tabpanel">
+                                <div class="form-group">
+                                    <div class="form-group__label col-md-3">
+                                        配置年报
+                                    </div>
+                                    <div class="form-group__content col-md-9">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="yearly_notify_switch">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="validate-notice-strategy-tip display-none"></div>
+                    </div>
+                </div>
+                <!-- END NOTIFY STRATEGY -->
+
+                <!-- BEGIN NOTIFY EMAIL ADDRESS -->
+                <div class="form-group form-textarea-group is-required">
+                    <div class="form-group__label col-md-2">通知邮箱</div>
+                    <div class="form-group__content col-md-10">
+                        <textarea type="textarea" name="emails" id="receive_emails" class="form-control form-control-textarea" required placeholder="请输入邮箱地址，多个邮箱请换行分隔"></textarea>
+                    </div>
+                </div>
+                <!-- END NOTIFY EMAIL ADDRESS -->
+
+                <!-- BEGIN NOTIFY CONTENT -->
+                <div class="form-group is-required">
+                    <div class="form-group__label col-md-2">通知内容</div>
+                    <div class="form-group__content notify-content-wrap col-md-10" id="notify_content_checkbox_group" data-checkbox-group data-v-min-select="1" data-v-required>
+                                            
+                    </div>
+                </div>
+                <div class="form-group detail-export-form-group display-none mb-8">
+                    <div class="form-group__label col-md-2"></div>
+                    <div class="form-group__content">
+                        <span class="details-label">数据明细导出范围</span>
+                    </div>
+                </div>
+                <div class="form-group detail-export-content-form-group display-none">
+                    <div class="form-group__label col-md-2"></div>
+                    <div class="form-group__content export-detail-content h-36px col-md-10">
+                        <div id="export_detail_radio_group"></div>
+                        
+                        <input type="text" id="export_nums" class="form-control" required value="10" min="1" max="9999" step="5">
+                    </div>
+                </div>
+                <!-- END NOTIFY CONTENT -->
+
+                <!-- BEGIN SINGLE NOTIFY CONFIG -->
+                <div class="form-group">
+                    <div class="form-group__label col-md-2">
+                        单对象详情
+                    </div>
+                    <div class="form-group__content col-md-10">
+                        <div class="form-check form-switch me-10">
+                            <input class="form-check-input" type="checkbox" id="single_object_switch" data-bs-toggle="collapse" data-bs-target="#single_object_config_wrap" aria-expanded="false">
+                        </div>
+                        <i class="vinconfont vincon-tishi" data-bs-toggle="tooltip" data-bs-placement="right" title="开启后同步通知当前报表数据明细中已选中范围内的单个对象的详情报表"></i>
+                    </div>
+                </div>
+                <div id="single_object_config_wrap" class="collapse">
+                    <div class="form-group">
+                        <div class="form-group__label col-md-2"></div>
+                        <div class="form-group__content single-detail-content col-md-10" id="single_object_checkbox_group" data-checkbox-group data-v-min-select="1" data-v-required>         
+                        </div>
+                    </div>
+                    <div class="form-group history-detail-export-form-group display-none mb-8">
+                        <div class="form-group__label col-md-2"></div>
+                        <div class="form-group__content">
+                            <span class="details-label">历史运行记录导出范围</span>
+                        </div>
+                    </div>
+                    <div class="form-group history-detail-export-content-form-group display-none mb-24">
+                        <div class="form-group__label col-md-2"></div>
+                        <div class="form-group__content export-single-detail-content h-36px col-md-10">
+                            <div id="single_detail_radio_group"></div>
+                            
+                            <input type="text" id="single_spinner_num" class="form-control" required value="10" min="1" max="9999" step="5">
+                        </div>
+                    </div>
+                </div>
+                <!-- END SINGLE NOTIFY CONFIG -->
+
+                <!-- BEGIN ARRACHMENT FORMAT -->
+                <div class="form-group is-required">
+                    <div class="form-group__label col-md-2">附件格式</div>
+                    <div class="form-group__content attachment-format-wrap col-md-10" id="attachment_format_checkbox_group" data-checkbox-group data-v-min-select="1" data-v-required>                
+                    </div>
+                </div>
+                <!-- END ARRACHMENT FORMAT -->
+            </div>
+            <!-- END EMAIL NOTIFY STRATEGY WRAPPER -->
+        </form>
+    </div>
+    <div class="offcanvas-footer flex-items-center justify-content-end">
+        <div class="btn-group">
+            <button class="btn btn-lg btn-outline-primary me-16" data-bs-dismiss="offcanvas" aria-label="Close">关闭</button>
+            <button class="btn btn-lg btn-primary" id="notice_form_submit">确认</button>
+        </div>
+    </div>
+</div>
+<!-- END NOTIFY STRATEGY OFFCANVAS -->
+
 <!-- BEGIN PLUGIN SCRIPTS -->
 <script src="/assets/global/plugins/jstree/jstree.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/echarts/echarts.common.min.js" type="text/javascript"></script>
@@ -262,5 +547,8 @@
 <script src="./plugins/inline-label-select/js/inline-label-select.js" type="text/javascript"></script>
 <script src="/plugins/cascader-checkbox-group/js/cascader-checkbox-group.js" type="text/javascript"></script>
 <script src="/plugins/search-input/js/search-input.js" type="text/javascript"></script>
+<script src="/plugins/checkbox-group/js/checkbox-group.js" type="text/javascript"></script>
+<script src="/plugins/radio-group/js/radio-group.js" type="text/javascript"></script>
+<script src="/plugins/cascader/js/cascader.js" type="text/javascript"></script>
 <script src="./platform/monitor-center/report/js/report.js" type="text/javascript"></script>
 <!-- END PLUGIN SCRIPTS -->

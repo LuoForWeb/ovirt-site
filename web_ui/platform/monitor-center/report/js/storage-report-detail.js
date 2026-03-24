@@ -14,6 +14,7 @@ var StorageReportDetail = function () {
     let $reportDetailTable = $('#report_detail_table');
     let CURRENT_TIME_RANGE_TYPE = 4; // 默认查看近一月的趋势
     let TABLE_CUSTOM_FIELDS = []; // 表格定制数据
+    let filterParams = {}; // 过滤器组件选择的过滤选项参数
     const STORAGE_REPORT_TABLE_FILTER_OPTIONS = [
         {
             label: '存储类型',
@@ -321,7 +322,7 @@ var StorageReportDetail = function () {
      * 获取概览数据
      */
     const getOverviewData = () => {
-        pAjaxRequest({}, 'api/v1/report/storage_overview', 'GET', (res) => {
+        axiosGet('report/storage_overview', {}).then(res => {
             $('.overview-card').block();
             try {
                 
@@ -491,12 +492,9 @@ var StorageReportDetail = function () {
                 break;
         }
 
-        let params = {
-            startTime: '2025-12-01',
-            endTime: '2025-12-31'
-        }
+        let params = { startTime: formatDate(startTime), endTime: formatDate(endTime) }
 
-        pAjaxRequest(params, 'api/v1/report/storage_usage_tendency', 'GET', (res) => {
+        axiosGet('report/storage_usage_tendency', params).then(res => {
             $('.tendency-card').block();
             try {
                 if (res.success) {
@@ -741,6 +739,14 @@ var StorageReportDetail = function () {
 
     // <----------------------------- BEGIN REPORT DETAIL TABLE LOGIC ------------------------------->
 
+    const initDataDetailTableFilter = (filterData) => {
+        $('#storage_report_filter_wrapper').initFilter({
+            filterSlotId: 'storage_report_filter_wrapper',
+            filterBtnId: 'storage_report_filter_btn',
+            filters: filterData
+        });
+    }
+
     /**
      * 初始化数据明细表格
      */
@@ -748,7 +754,7 @@ var StorageReportDetail = function () {
         if ($reportDetailTable.children().length === 0) {
             const options = {
                 url: 'report/storage_list',
-                filterBtnId: '',
+                filterBtnId: 'storage_report_filter_btn',
                 rightCustomToolbar: 'report-detail-right-toolbar-wrapper',
                 buttonsToolbar: '.toolbar-buttons-wrapper.report-detail-toolbar-buttons', // 自定义按钮工具栏class
                 search: true, // 是否启用搜索
@@ -756,6 +762,7 @@ var StorageReportDetail = function () {
                 showColumns: false, // 是否启用列筛选
                 showExport: false, // 是否启用导出功能
                 showRefresh: true, // 是否启用刷新功能
+                autoHeight: true, // 是否自适应高度，适用于父容器没有固定高度的场景
                 tableContentWrapper: '.table-content-wrapper.report-detail-table-content-wrapper',
                 pageList: [10, 25, 50, 100],
                 columns: [
@@ -791,14 +798,23 @@ var StorageReportDetail = function () {
                     },
                     {
                         field: 'storageStatus',
-                        title: '状态',
+                        title: '存储状态',
                         sortable: true,
                         visible: TABLE_CUSTOM_FIELDS.includes('storageStatus'),
                         formatter: function (value) {
-                            if(value) {
-                                return `<span class="badge badge-success">正常</span>`;
-                             } else {
-                                return `<span class="badge badge-secondary">异常</span>`;
+                            switch (value) {
+                                case CONF.STORAGE_STATUS.ONLINE:
+                                    return `<span class="badge badge-success">在线</span>`;
+                                case CONF.STORAGE_STATUS.CREATING:
+                                    return `<span class="badge badge-primary">创建中</span>`;
+                                case CONF.STORAGE_STATUS.OFFLINE:
+                                    return `<span class="badge badge-secondary">离线</span>`;
+                                case CONF.STORAGE_STATUS.UNMOUNT:
+                                    return `<span class="badge badge-secondary">挂载</span>`;
+                                case CONF.STORAGE_STATUS.WARNING:
+                                    return `<span class="badge badge-warning">警告</span>`;
+                                default:
+                                    return;
                             }
                          }
                     },
@@ -810,7 +826,7 @@ var StorageReportDetail = function () {
                     },
                     {
                         field: 'nodeStatus',
-                        title: '状态',
+                        title: '节点状态',
                         sortable: true,
                         visible: TABLE_CUSTOM_FIELDS.includes('nodeStatus'),
                         formatter: function (value) {
@@ -834,77 +850,77 @@ var StorageReportDetail = function () {
 
 
     const getReportDetail = () => {
-        pAjaxRequest({ uuid: REPORT_TEMPLATE_UUID }, 'api/v1/report/detail', 'GET', (res) => {
-        try {
-            if (res.success) {
-                let reportName = res.data.templateName;
-                let description = res.data.description;
-                let viewOverview = res.data.detail.viewOverview;
-                let viewUsageTendency = res.data.detail.viewUsageTendency;
-                let availabilityForecase = res.data.detail.availabilityForecase;
-                let customFields = res.data.detail.customFields;
+        axiosGet('report/detail', { uuid: REPORT_TEMPLATE_UUID }).then(res => {
+            try {
+                if (res.success) {
+                    let reportName = res.data.templateName;
+                    let description = res.data.description;
+                    let viewOverview = res.data.detail.viewOverview;
+                    let viewUsageTendency = res.data.detail.viewUsageTendency;
+                    let availabilityForecase = res.data.detail.availabilityForecase;
+                    let customFields = res.data.detail.customFields;
 
-                $('#overview_title').empty().html(reportName);
-                $('#overview_description').empty().html(description);
+                    $('#overview_title').empty().html(reportName);
+                    $('#overview_description').empty().html(description);
 
-                // 概览数据
-                if (viewOverview) {
-                    $('.overview-wrapper').removeClass('display-none');
-                    getOverviewData();
-                } else {
-                    $('.overview-wrapper').addClass('display-none');
-                }
-
-                // 使用趋势
-                if (viewUsageTendency) {
-                    $('.tendency-card').removeClass('display-none');
-
-                    getUsageTendencyData();
-                } else {
-                    $('.tendency-card').addClass('display-none');
-                }
-
-                // 智能化预测
-                if (availabilityForecase) {
-                    $('.forecast-card').removeClass('display-none');
-
-                    getAvailabilityForecastData();
-                } else {
-                    $('.forecast-card').addClass('display-none');
-                }
-
-                // 数据明细
-                if (customFields.length !== 0) {
-                    $('.table-card').removeClass('display-none');
-
-                    TABLE_CUSTOM_FIELDS = [...customFields];
-                    let filterFields = []; // 获取过滤器组件中的选项
-                    if (TABLE_CUSTOM_FIELDS.indexOf('type') > -1) filterFields.push('type');
-                    if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
-
-                    if (filterFields.length > 0) {
-                        let filterData = STORAGE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
-                            return filterFields.includes(option.field);
-                        });
-
-                        // 渲染数据明细表格过滤器
-                        // initDataDetailTableFilter(filterData);
+                    // 概览数据
+                    if (viewOverview) {
+                        $('.overview-wrapper').removeClass('display-none');
+                        getOverviewData();
+                    } else {
+                        $('.overview-wrapper').addClass('display-none');
                     }
 
-                    // 渲染数据明细表格
-                    initDataDetailTable();
+                    // 使用趋势
+                    if (viewUsageTendency) {
+                        $('.tendency-card').removeClass('display-none');
 
+                        getUsageTendencyData();
+                    } else {
+                        $('.tendency-card').addClass('display-none');
+                    }
+
+                    // 智能化预测
+                    if (availabilityForecase) {
+                        $('.forecast-card').removeClass('display-none');
+
+                        getAvailabilityForecastData();
+                    } else {
+                        $('.forecast-card').addClass('display-none');
+                    }
+
+                    // 数据明细
+                    if (customFields.length !== 0) {
+                        $('.table-card').removeClass('display-none');
+
+                        TABLE_CUSTOM_FIELDS = [...customFields];
+                        let filterFields = []; // 获取过滤器组件中的选项
+                        if (TABLE_CUSTOM_FIELDS.indexOf('type') > -1) filterFields.push('type');
+                        if (TABLE_CUSTOM_FIELDS.indexOf('storageStatus') > -1) filterFields.push('storageStatus');
+
+                        if (filterFields.length > 0) {
+                            let filterData = STORAGE_REPORT_TABLE_FILTER_OPTIONS.filter(option => {
+                                return filterFields.includes(option.field);
+                            });
+
+                            // 渲染数据明细表格过滤器
+                            initDataDetailTableFilter(filterData);
+                        }
+
+                        // 渲染数据明细表格
+                        initDataDetailTable();
+
+                    } else {
+                        $('.table-card').addClass('display-none');
+                    }
                 } else {
-                    $('.table-card').addClass('display-none');
+                    UIToastr.showWarning('获取报表详情数据失败');
                 }
-            } else {
-                UIToastr.showWarning('获取报表详情数据失败');
+            } catch (error) {
+                console.log(error, 'error');
+                UIToastr.showWarning('获取报表详情数据失败')
             }
-        } catch (error) {
-            console.log(error, 'error');
-            UIToastr.showWarning('获取报表详情数据失败')
-        }
-      });
+        });
     }
 
     const initRouteParams = () => {
@@ -925,6 +941,34 @@ var StorageReportDetail = function () {
 
         $timeRangeType.on('change', function () {
             CURRENT_TIME_RANGE_TYPE = parseInt($(this).val());
+
+            getUsageTendencyData();
+        });
+
+        window.$off('storage_report_filter_btn-updateFilterEvent');
+
+        window.$on('storage_report_filter_btn-updateFilterEvent', (filterData) => {
+            if (filterData.length > 0) {
+                let storageTypeList = getTableFilterParams('type', filterData);
+                let storageStatusList = getTableFilterParams('storageStatus', filterData);
+
+                if (storageTypeList.value.length > 0) {
+                    filterParams.storageType = storageTypeList.value;
+                } else {
+                    filterParams.storageType = '';
+                }
+
+                if (storageStatusList.value.length > 0) {
+                    filterParams.storageStatus = storageStatusList.value;
+                } else {
+                    filterParams.storageStatus = '';
+                }
+            } else {
+                filterParams.storageType = '';
+                filterParams.storageStatus = '';
+            }
+
+            $reportDetailTable.bootstrapTable('refresh', { query: { ...filterParams } });
         });
     }
     

@@ -151,6 +151,15 @@ class Report extends AuthBase
         $this->success('', $info);
     }
 
+    public function getTapeGroup()
+    {
+        $info = $this->logic()->getTapeGroup($this->param);
+        if (empty($info)) {
+            $this->error();
+        }
+        $this->success('', $info);
+    }
+
     /**
      * 获取磁带备份数据明细
      * @return void
@@ -274,6 +283,17 @@ class Report extends AuthBase
         if (empty($info)) {
             $this->error();
         }
+
+        $this->success('', $info);
+    }
+
+    /**
+     * 获取虚拟机树
+     * @return void
+     */
+    public function getVirtualMachineTree()
+    {
+        $info = $this->logic()->getVirtualMachineTree($this->param);
 
         $this->success('', $info);
     }
