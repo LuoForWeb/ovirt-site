@@ -5,6 +5,8 @@
  * 以  xphp_开头，单词之间用 _ 下划线隔开，单词用小写
  */
 
+use phpseclib3\Crypt\Rijndael as Crypt_Rijndael;
+
 /**
  * 用户登录成功获取信息
  * @param string $authtoken token值
@@ -161,7 +163,7 @@ function xphp_user_loginout()
 }
 
 /**
- * 是否读取老版本的配置
+* 是否读取老版本的配置
  * 是的话返回 根目录地址
  * 不是的话 返回false
  * @return bool
@@ -243,7 +245,7 @@ function xphp_get_in_array($array = [], $arrayKey = [], $tenantuuid = '', $homep
         }
 
         if (!empty($tenantuuid) && in_array($item['name'], ['remote_system', 'cloud_storage', 'vm_overview', 'billing_manager'])) {
-            continue;
+          continue;
         }
 
         // 检查当前项的 name 是否在允许列表中
@@ -266,8 +268,8 @@ function xphp_get_in_array($array = [], $arrayKey = [], $tenantuuid = '', $homep
             }
 
             $arr = [
-                'name' => $name,
-                'path' => $path,
+                'name'  => $name,
+                'path'  => $path,
                 'class' => $item['class'] ?? '',
                 'level' => $item['level'] ?? 0,
                 'showChild' => $item['showChild'] ?? false,
@@ -393,7 +395,7 @@ function xphp_get_web_lang($key = '', $pre = '', $force = false)
 }
 
 /**
- * 语言包类型获取 根据当前登录的用户
+* 语言包类型获取 根据当前登录的用户
  * @return string
  */
 function xphp_get_language_type()
@@ -479,7 +481,7 @@ function xphp_get_config(string $name, $key = '', $module = '', $force = false)
 }
 
 /**
- * 递归的比较数组并替换
+* 递归的比较数组并替换
  * @param array $arrA 名称
  * @param array $arrB 键
  * @return void
@@ -517,7 +519,7 @@ function xphp_get_desc(string $name, string $key, $module = '', $force = false)
     $cache = cache($cachekey);
     if (empty($cache) || $force) {
         // 对所有的描述文件配置进行一个短暂缓存,避免同一个接口多次请求
-        $keys = 'xphp_desc_list_' . $name . '_' . $module . '_' . $version;
+        $keys = 'xphp_desc_list_' . $name . '_' . $module  . '_' . $version;
         // 强制获取缓存
         $config = cache($keys);
         if (empty($config) || $force) {
@@ -612,7 +614,7 @@ function xphp_decrypt_js($data = '')
  */
 function xphp_xss_remove($data)
 {
-    if ($data === '' || $data === (string) ((int) $data)) {
+    if ($data === '' || $data === (string)((int)$data)) {
         return $data;
     }
 
@@ -661,7 +663,7 @@ function xphp_uuid(): string
     if (function_exists('com_create_guid')) {
         $uuid = com_create_guid();
     } else {
-        mt_srand((int) ((double) microtime() * 10000));
+        mt_srand((int)((double)microtime() * 10000));
         $charid = strtoupper(md5(uniqid(rand(), true)));
         $hyphen = chr(45);// "-"
         $uuid = chr(123)// "{"
@@ -705,11 +707,11 @@ function xphp_encrpt($data, $key = 'vinchin', $expire = 0): string
     for ($i = 0; $i < $len; $i++) {
         $str .= chr(ord(substr($data, $i, 1)) + (ord(substr($char, $i, 1))) % 256);
     }
-    return str_replace(array(
+    return str_replace(array (
         '+',
         '/',
         '='
-    ), array(
+    ), array (
         '-',
         '_',
         ''
@@ -726,10 +728,10 @@ function xphp_encrpt($data, $key = 'vinchin', $expire = 0): string
 function xphp_decrypt($data, $key = 'vinchin'): string
 {
     $key = md5($key);
-    $data = str_replace(array(
+    $data = str_replace(array (
         '-',
         '_'
-    ), array(
+    ), array (
         '+',
         '/'
     ), $data);
@@ -833,7 +835,7 @@ function xphp_three_powers(): bool
         $sql = "select extension from bd_license";
         $data = dbSelect($sql, array());
         if (!empty($data)) {
-            $data = json_decode(v2_decrypt($data[0]['extension']), true);
+            $data = json_decode(xphp_aes_decrypt($data[0]['extension']), true);
             if (!empty($data)) {
                 $pagelist = $data['p']; // 授权页面
                 $authFun = $data['f']; // 授权功能
@@ -852,7 +854,77 @@ function xphp_three_powers(): bool
 }
 
 /**
- * 校验当前登录用户是否是属于三权用户级别
+ * 加密字符串
+ * AES-256 CBC
+ * @param string $plaintext 字符
+ * @return string base64字符串
+ */
+function xphp_aes_encrypt($plaintext = '')
+{
+    if (!(PHP_VERSION_ID >= 70000)) {
+        return v2_encrype54($plaintext);
+    }
+    if (empty($plaintext)) {
+        return '';
+    }
+    $key = pack('H*', xphp_get_config('app')['SECRET_KEY']);
+    $cipher = 'AES-256-CBC';
+    $ivlen = openssl_cipher_iv_length($cipher);
+    $iv2 = openssl_random_pseudo_bytes($ivlen);
+    $iv2 = openssl_random_pseudo_bytes($ivlen);
+    $iv = $iv2 . $iv2;  //凑齐32位,为了兼容之前的版本
+    $cipher = new Crypt_Rijndael('cbc');
+    $cipher->setBlockLength(256);
+    // keys are null-padded to the closest valid size
+    // longer than the longest key and it's truncated
+    $cipher->setKeyLength(256);
+    $cipher->setKey($key);
+    // the IV defaults to all-NULLs if not explicitly defined
+    $cipher->setIV($iv);
+    $cipher->disablePadding();
+    $length = strlen($plaintext);
+    $pad = 32 - ($length % 32);
+    $plaintext = str_pad($plaintext, $length + $pad, chr(0));
+
+    return base64_encode($iv . $cipher->encrypt($plaintext));
+}
+
+/**
+ * 解密字符串
+ * AES-256 CBC
+ * @param string $ciphertext 字符
+ * @return string
+ */
+function xphp_aes_decrypt($ciphertext = '')
+{
+    if (!(PHP_VERSION_ID >= 70000)) {
+        return v2_decrypt54($ciphertext);
+    }
+    if (empty($ciphertext)) {
+        return '';
+    }
+    $key = pack('H*', xphp_get_config('app')['SECRET_KEY']);
+    $ciphertextdec = base64_decode($ciphertext);
+    $ivlen = 32;
+    # 初始向量大小，可以通过 mcrypt_get_iv_size() 来获得
+    $ivdec = substr($ciphertextdec, 0, $ivlen);
+    # 获取除初始向量外的密文
+    $ciphertextdec = substr($ciphertextdec, $ivlen);
+    $cipher = new Crypt_Rijndael('cbc'); // could use CRYPT_RIJNDAEL_MODE_CBC
+    $cipher->setBlockLength(256);
+    // keys are null-padded to the closest valid size
+    // longer than the longest key and it's truncated
+    $cipher->setKeyLength(256);
+    $cipher->setKey($key);
+    // the IV defaults to all-NULLs if not explicitly defined
+    $cipher->setIV($ivdec);
+    $cipher->disablePadding();
+
+    return trim($cipher->decrypt($ciphertextdec));
+}
+
+/**
+* 校验当前登录用户是否是属于三权用户级别
  * @param string $useruuid 用户uuid
  * @return bool
  */
@@ -886,7 +958,7 @@ function xphp_check_three_user(string $useruuid): bool
 }
 
 /**
- * 根据用户uuid和权限标识返回管理的用户uuid集合
+* 根据用户uuid和权限标识返回管理的用户uuid集合
  * @param string $uuid 用户uuid
  * @param string $auth 权限标识
  * @return array
@@ -930,7 +1002,7 @@ function xphp_get_manager_uuid(string $uuid, string $auth = ''): array
 }
 
 /**
- * 判断用户是否有操作关联用户的权限
+* 判断用户是否有操作关联用户的权限
  * @param string $authcode 权限码
  * @param array  $useruuid 被操作的用户uuid集合
  * @return boolean
@@ -1088,9 +1160,9 @@ function xphp_qrcode($url = '', $outfile = false)
  */
 function xphp_wechat($type = '', $cache = [])
 {
-    $options = array(
-        'appid' => $cache['appid'], // 填写高级调用功能的app id
-        'appsecret' => $cache['appsecret'], // 填写高级调用功能的密钥
+    $options = array (
+        'appid' => $cache ['appid'], // 填写高级调用功能的app id
+        'appsecret' => $cache ['appsecret'], // 填写高级调用功能的密钥
     );
 
     include_once(API_PATH . 'extend/wechat-php-sdk/include.php');
@@ -1123,10 +1195,10 @@ function xphp_send_wechat_template($openid = [], $templateid = '', $info = [], $
     // 批量发送消息
     foreach ($openid as $item) {
         $data = [];
-        $data['touser'] = $item;
-        $data['template_id'] = $templateid;
-        $data['data'] = $info;
-        $data['url'] = $url;
+        $data ['touser'] = $item;
+        $data ['template_id'] = $templateid;
+        $data ['data'] = $info;
+        $data ['url'] = $url;
         if ($wechatmode == 1) {
             // 中转服务
             $return = xphp_send_wechat_transfer($data, $config);
@@ -1267,11 +1339,11 @@ function xphp_send_wework_api($config = [], $message = [], $istest = 0): bool
     $result = json_decode($response, true);
     if ($result['errcode'] === 0) {
         return true;
-        // echo Xphp::$lang['WEB_UTILS_SEND_INFO_SUCCESS'];
+       // echo Xphp::$lang['WEB_UTILS_SEND_INFO_SUCCESS'];
     } else {
         // file_put_contents(ROOT_PATH . 'log.txt', $result['errmsg'] . date('Y-m-d H:i') . PHP_EOL, FILE_APPEND);
         return false;
-        // echo Xphp::$lang['WEB_UTILS_SEND_INFO_ERROR'] . $result['errmsg'];
+       // echo Xphp::$lang['WEB_UTILS_SEND_INFO_ERROR'] . $result['errmsg'];
     }
 }
 
@@ -1295,7 +1367,7 @@ function xphp_random_code($length = 4)
 }
 
 /**
- * 获取缓存 原则，先判断是否存在memchached服务，存在，则取，否则就取 session的缓存
+* 获取缓存 原则，先判断是否存在memchached服务，存在，则取，否则就取 session的缓存
  * @param string  $key  缓存的key
  * @param boolean $flag 是否共享
  * @return string|array|number|*
@@ -1380,7 +1452,7 @@ function xphp_format_duration(int $timestampStart, int $timestampEnd): string
 }
 
 /**
- * 提供一个以秒为单位的时间戳，返回 xx小时xx分xx秒
+* 提供一个以秒为单位的时间戳，返回 xx小时xx分xx秒
  * @param int $seconds 秒
  * @return string
  */
@@ -1416,7 +1488,7 @@ function xphp_makepicByEchars(array $options, string $output = ''): array
     }
 
     $vendor = xphp_get_config('app', 'SYSTEM_INFO')['vendor'];
-    $basePath = "/usr/share/nginx/{$vendor}/echarts-render";
+    $basePath =  "/usr/share/nginx/{$vendor}/echarts-render";
     if (!is_dir($basePath)) {
         if (!mkdir($basePath, 0755, true) && !is_dir($basePath)) {
             return ['code' => -1, 'msg' => "can not make dir : {$basePath}"];
@@ -1430,7 +1502,7 @@ function xphp_makepicByEchars(array $options, string $output = ''): array
         }
     }
     $configFile = $savePath . "{$output}.json";
-    $imgFile = $basePath . "{$output}.png";
+    $imgFile    = $basePath . "{$output}.png";
 
     // 保存配置
     try {

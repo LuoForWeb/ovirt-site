@@ -1195,3 +1195,191 @@ function v2_tape_timepoint_sql($where = '')
                 {$where}
             HAVING LENGTH(timepoint_uuid) = 36";
 }
+
+/**
+* 根据传递的类型，返回最终的邮件通知模板内容
+ * @param int $type 通知类型 0、内容通知 1、系统告警 2、任务告警 3、报表通知 4、重置密码 5、数据验证
+ * @param string $title   标题
+ * @param string $content 内容
+ * @param array $param1   参数1数组 title => '', content => ''
+ * @param array $param2   参数1数组 title => '', content => ''
+ * @param array $param3   参数1数组 title => '', content => ''
+ * @param int $reportType  报表通知类型 1日报，2周报，3月报，4年报
+ */
+function v2_get_notice_template(int $type, string $title, string $content = '', $param1 = [], $param2 = [], $param3 = [], $reportType = 0)
+{
+
+  $html = file_get_contents(DATA_PATH . 'notice.html');
+  // 强制转为 UTF-8，避免编码问题
+  $html = mb_convert_encoding($html, 'UTF-8', 'auto');
+  $makeTime = date(xphp_get_config('special', 'dateformat'));
+  switch ($type) {
+      case 1:
+          // 系统告警
+          $modifications = [
+              ['id' => 'template-mode', 'remove' => true], // 删除指定ID的元素
+              ['id' => 'template-mode', 'remove' => true],
+              ['id' => 'template-param3', 'remove' => true],
+              ['id' => 'template-param4', 'remove' => true],
+              ['id' => 'template-param1-title', 'content' => $param1['title']],
+              ['id' => 'template-param1-content', 'content' => $param1['content']],
+              ['id' => 'template-param2-title', 'content' => $param2['title']],
+              ['id' => 'template-param2-content', 'content' => $param2['content']],
+          ];
+          $content = empty($content) ? '如需了解更多详细信息，请登录备份系统查看。' : $content;
+          break;
+      case 2:
+          // 任务告警
+          $modifications = [
+              ['id' => 'template-mode', 'remove' => true], // 删除指定ID的元素
+              ['id' => 'template-param4', 'remove' => true],
+              ['id' => 'template-param1-title', 'content' => $param1['title']],
+              ['id' => 'template-param1-content', 'content' => $param1['content']],
+              ['id' => 'template-param2-title', 'content' => $param2['title']],
+              ['id' => 'template-param2-content', 'content' => $param2['content']],
+              ['id' => 'template-param3-title', 'content' => $param3['title']],
+              ['id' => 'template-param3-content', 'content' => $param3['content']],
+          ];
+          $content = empty($content) ? '如需了解更多详细信息，请登录备份系统查看。' : '';
+          break;
+      case 3:
+          // 报表通知
+          $reportTypeArr = [
+              1 => '日报',
+              2 => '周报',
+              3 => '月报',
+              4 => '年报',
+          ];
+          $mode = $reportTypeArr[$reportType] ?? '';
+          $modifications = [
+              ['id' => 'template-param4', 'remove' => true],
+              ['id' => 'template-mode', 'content' => $mode],
+              ['id' => 'template-param1-title', 'content' => $param1['title']],
+              ['id' => 'template-param1-content', 'content' => $param1['content']],
+              ['id' => 'template-param2-title', 'content' => $param2['title']],
+              ['id' => 'template-param2-content', 'content' => $param2['content']],
+              ['id' => 'template-param3-title', 'content' => $param3['title']],
+              ['id' => 'template-param3-content', 'content' => $param3['content']],
+          ];
+          $content = empty($content) ?
+              '<span>报表详细统计数据均已生成专项报告，请</span><span><a style="font-weight: 700;">下载附件</a></span><span>查阅具体信息。</span>'
+                : '';
+          break;
+      case 4:
+          // 重置密码
+          $modifications = [
+              ['id' => 'template-mode', 'remove' => true], // 删除指定ID的元素
+              ['id' => 'template-param1', 'remove' => true],
+              ['id' => 'template-param2', 'remove' => true],
+              ['id' => 'template-param3', 'remove' => true],
+              ['id' => 'template-param4-title', 'content' => $param1['title']],
+              ['id' => 'template-param4-content', 'content' => $param1['content']],
+          ];
+          $content = empty($content) ?  '链接有效时间：<span><a style="font-weight: 700;">5分钟</a></span>' : $content;
+          break;
+      case 5:
+          // 数据验证
+          $modifications = [
+              ['id' => 'template-mode', 'remove' => true], // 删除指定ID的元素
+              ['id' => 'template-param4', 'remove' => true],
+              ['id' => 'template-param1-title', 'content' => $param1['title']],
+              ['id' => 'template-param1-content', 'content' => $param1['content']],
+              ['id' => 'template-param2-title', 'content' => $param2['title']],
+              ['id' => 'template-param2-content', 'content' => $param2['content']],
+              ['id' => 'template-param3-title', 'content' => $param3['title']],
+              ['id' => 'template-param3-content', 'content' => $param3['content']],
+          ];
+          $content = empty($content) ? '<span>如需了解更多详细信息，请</span><span><a style="font-weight: 700;">下载附件</a></span><span>查阅具体信息。</span>' : '';
+          break;
+      default:
+          // 默认文件通知
+          $modifications = [
+              ['id' => 'template-mode', 'remove' => true], // 删除指定ID的元素
+              ['id' => 'template-body', 'remove' => true],
+          ];
+  }
+
+    $modifications[] = ['id' => 'template-make-time', 'content' => '生成时间：' . $makeTime];
+    $modifications[] = ['id' => 'template-title', 'content' => $title];
+    $modifications[] = ['id' => 'template-text', 'content' => $content];
+    $modifications[] = ['id' => 'template-footer4', 'content' => '&copy;'.date('Y').' Vinchin All rights reserved'];
+
+    $vendor = xphp_get_config('app', 'SYSTEM_INFO');
+    $vendor['vendor'] != 'vinchin' && $modifications[] = ['id' => 'template-logo', 'remove' => true];
+    if ($vendor['enterprise'] == 'enterprise_en') {
+        // 英文版
+        $modifications[] = ['id' => 'template-footer1', 'content' => 'If you wish to unsubscribe or modify your preferences, please click here：interServerHost'];
+        $modifications[] = ['id' => 'template-footer2', 'content' => 'For support and assistance, please send an email to'];
+    }
+
+   return v2_modify_html_content($html, $modifications);
+
+}
+
+/**
+ * 修改HTML内容的方法
+ * @param string $html 原始HTML字符串
+ * @param array $modifications 需要进行的修改列表，每个元素包含'id', 'newId'(可选), 'content'(可选)
+ * @return string 修改后的HTML字符串
+ */
+function v2_modify_html_content($html, $modifications) {
+    // 创建DOM文档对象并加载HTML
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true); // 禁用内部错误输出
+
+    // ✅ 关键修复：将 UTF-8 字符串转为 HTML-ENTITIES，再加载
+    $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+
+    $dom->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    libxml_clear_errors();
+
+    $xpath = new DOMXPath($dom);
+
+    foreach ($modifications as $modification) {
+        $nodes = $xpath->query("//*[@id='{$modification['id']}']");
+        foreach ($nodes as $node) {
+            if (isset($modification['newId'])) {
+                // 更改ID
+                $node->setAttribute('id', $modification['newId']);
+            }
+            if (isset($modification['content'])) {
+                // 更新内容
+                v2_set_inner_html($node, $modification['content']);
+            }
+            if (isset($modification['remove']) && $modification['remove'] === true) {
+                // 删除节点
+                $node->parentNode->removeChild($node);
+            }
+        }
+    }
+
+    // 返回修改后的HTML
+    return $dom->saveHTML();
+}
+
+/**
+ * 安全地设置innerHTML的方法
+ * @param DOMElement $element 目标元素
+ * @param string $html 要插入的HTML代码
+ */
+function v2_set_inner_html($element, $html) {
+    $doc = $element->ownerDocument;
+    // 创建临时文档解析HTML片段
+    $tempDoc = new DOMDocument();
+    libxml_use_internal_errors(true);
+    // ✅ 修复：先转为 HTML-ENTITIES
+    $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+    $tempDoc->loadHTML('<div>' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    libxml_clear_errors();
+
+    // 清空原内容
+    while ($element->hasChildNodes()) {
+        $element->removeChild($element->firstChild);
+    }
+
+    // 导入并添加新内容
+    foreach ($tempDoc->documentElement->childNodes as $child) {
+        $imported = $doc->importNode($child, true);
+        $element->appendChild($imported);
+    }
+}
