@@ -5,6 +5,8 @@
  * 以  xphp_开头，单词之间用 _ 下划线隔开，单词用小写
  */
 
+use phpseclib3\Crypt\Rijndael as Crypt_Rijndael;
+
 /**
  * 用户登录成功获取信息
  * @param string $authtoken token值
@@ -833,7 +835,7 @@ function xphp_three_powers(): bool
         $sql = "select extension from bd_license";
         $data = dbSelect($sql, array());
         if (!empty($data)) {
-            $data = json_decode(v1_decrypt($data[0]['extension']), true);
+            $data = json_decode(xphp_aes_decrypt($data[0]['extension']), true);
             if (!empty($data)) {
                 $pagelist = $data['p']; // 授权页面
                 $authFun = $data['f']; // 授权功能
@@ -849,6 +851,76 @@ function xphp_three_powers(): bool
     }
 
     return $cache == 1;
+}
+
+/**
+ * 加密字符串
+ * AES-256 CBC
+ * @param string $plaintext 字符
+ * @return string base64字符串
+ */
+function xphp_aes_encrypt($plaintext = '')
+{
+    if (!(PHP_VERSION_ID >= 70000)) {
+        return v2_encrype54($plaintext);
+    }
+    if (empty($plaintext)) {
+        return '';
+    }
+    $key = pack('H*', xphp_get_config('app')['SECRET_KEY']);
+    $cipher = 'AES-256-CBC';
+    $ivlen = openssl_cipher_iv_length($cipher);
+    $iv2 = openssl_random_pseudo_bytes($ivlen);
+    $iv2 = openssl_random_pseudo_bytes($ivlen);
+    $iv = $iv2 . $iv2;  //凑齐32位,为了兼容之前的版本
+    $cipher = new Crypt_Rijndael('cbc');
+    $cipher->setBlockLength(256);
+    // keys are null-padded to the closest valid size
+    // longer than the longest key and it's truncated
+    $cipher->setKeyLength(256);
+    $cipher->setKey($key);
+    // the IV defaults to all-NULLs if not explicitly defined
+    $cipher->setIV($iv);
+    $cipher->disablePadding();
+    $length = strlen($plaintext);
+    $pad = 32 - ($length % 32);
+    $plaintext = str_pad($plaintext, $length + $pad, chr(0));
+
+    return base64_encode($iv . $cipher->encrypt($plaintext));
+}
+
+/**
+ * 解密字符串
+ * AES-256 CBC
+ * @param string $ciphertext 字符
+ * @return string
+ */
+function xphp_aes_decrypt($ciphertext = '')
+{
+    if (!(PHP_VERSION_ID >= 70000)) {
+        return v2_decrypt54($ciphertext);
+    }
+    if (empty($ciphertext)) {
+        return '';
+    }
+    $key = pack('H*', xphp_get_config('app')['SECRET_KEY']);
+    $ciphertextdec = base64_decode($ciphertext);
+    $ivlen = 32;
+    # 初始向量大小，可以通过 mcrypt_get_iv_size() 来获得
+    $ivdec = substr($ciphertextdec, 0, $ivlen);
+    # 获取除初始向量外的密文
+    $ciphertextdec = substr($ciphertextdec, $ivlen);
+    $cipher = new Crypt_Rijndael('cbc'); // could use CRYPT_RIJNDAEL_MODE_CBC
+    $cipher->setBlockLength(256);
+    // keys are null-padded to the closest valid size
+    // longer than the longest key and it's truncated
+    $cipher->setKeyLength(256);
+    $cipher->setKey($key);
+    // the IV defaults to all-NULLs if not explicitly defined
+    $cipher->setIV($ivdec);
+    $cipher->disablePadding();
+
+    return trim($cipher->decrypt($ciphertextdec));
 }
 
 /**
