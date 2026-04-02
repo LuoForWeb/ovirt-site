@@ -1,0 +1,361 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+
+<body>
+<style type="text/css">
+    .vinbox style,
+    .vinbox script,
+    .vinbox head,
+    .vinbox link,
+    .vinbox meta {
+        display: none !important;
+    }
+
+    .font-bold {
+        font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+        font-weight: bold
+    }
+
+    .font-regular {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        font-weight: 400
+    }
+
+    .font-success {
+        color: #24CCA7 !important;
+    }
+
+    .font-warning {
+        color: #FFC700 !important;
+    }
+
+    .font-error {
+        color: #F1416C !important;
+    }
+
+    .font-normal {
+        color: #313344 !important;
+    }
+
+    .bg-success {
+        background: #24CCA7;
+    }
+
+    .bg-warning {
+        background: #FFC700;
+    }
+
+    .bg-error {
+        background: #F1416C;
+    }
+
+    .content-list,
+    .content-list div {
+        overflow: auto
+    }
+
+    .content-list p {
+        margin: 8px 0;
+        width: 33.3%;
+        float: left;
+    }
+
+    .content-list div>p:nth-child(2) {
+        text-align: center
+    }
+
+    .content-list div>p:nth-child(2)>span {
+        text-align: left
+    }
+
+    .content-list div>p:nth-child(3) {
+        text-align: right
+    }
+
+    .content-list div>p:nth-child(3)>span {
+        text-align: left
+    }
+
+    .content-list p>span {
+        vertical-align: top;
+    }
+
+    .content-list p>span:nth-child(1) {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        display: inline-block;
+        height: 18px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #6B6F85;
+        line-height: 16px;
+        word-break: break-all;
+    }
+
+    .content-list p>span:nth-child(2) {
+        font-family: Microsoft YaHei UI-Bold, Microsoft YaHei UI;
+        margin-left: 20px;
+        display: inline-table;
+        height: 18px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #313344;
+        line-height: 16px;
+        word-break: break-all;
+    }
+
+    .bottom-info span {
+        display: inline-block;
+        height: 23px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #6C757D;
+        line-height: 23px;
+    }
+
+    .display-hide {
+        display: none
+    }
+
+    .display-show {
+        display: table
+    }
+
+    .content-table {
+        word-break: break-all
+    }
+
+    .content-table th {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        height: 50px;
+        background: #F5F8FA;
+        font-size: 14px;
+        font-weight: 400;
+        color: #313344;
+        line-height: 16px;
+        padding-left: 18px;
+        border-top: 1px solid #EFF2F5;
+        border-bottom: 1px solid #EFF2F5;
+    }
+
+    .content-table th:nth-child(1),
+    .content-table th:nth-child(2),
+    .content-table th:nth-child(3),
+    .content-table th:nth-child(4),
+    .content-table th:nth-child(5),
+    .content-table th:nth-child(6) {
+        width: 20%;
+    }
+
+    .content-table td {
+        font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;
+        height: 50px;
+        background: #FFFFFF;
+        font-size: 12px;
+        font-weight: 400;
+        color: #6B6F85;
+        line-height: 14px;
+        padding-left: 18px;
+        border-bottom: 1px solid #F3F6F9;
+    }
+
+    .content-table td>span {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        width: 47px;
+        height: 27px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    .vm-status-success {
+        background: #E8FFF3;
+        color: #24CCA7;
+    }
+
+    .vm-status-error {
+        background: #FFF5F8;
+        color: #F1416C;
+    }
+
+    .vm-status-waiting {
+        background: #F1FAFF;
+        color: #00A3FF;
+    }
+</style>
+
+<div id="vinchin_body">
+    <div id="mailContentContainer" class="vinbox qm_con_body_content qqmail_webmail_only">
+        <div style="font-family: Microsoft YaHei UI-Regular, Microsoft YaHei UI;">
+            <center>
+                <table class="email-body"
+                       style="align-self: center;vertical-align: top;border: 0;border-collapse: collapse;margin-left: auto;margin-right: auto;width: 100%;height: 100%;background-color: #EAECED;">
+                    <tbody>
+                    <tr height="30"
+                        style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;"></tr>
+                    <tr style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                        <td style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                            <table class="email-content"
+                                   style="align-self: center;vertical-align: top;border: 0;border-collapse: collapse;margin-left: auto;margin-right: auto;width: 1000px;background-color: #FFFFFF;">
+                                <tbody>
+                                <tr class="bg-success"
+                                    style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;display: block;height: 6px;">
+                                </tr>
+                                <tr
+                                        style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                    <td
+                                            style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                        <div class="content-body"
+                                             style="width: 91.2%;margin-left: auto;margin-right: auto;text-align: left;color:#000;">
+                                            <!-- logo -->
+                                            <div
+                                                    style="padding: 0;margin: 46px 0 45px 0;border: 0;text-align: left;vertical-align: top;">
+                                                <!-- <img src="https://www.vinchin.cn/res/img/email/logo-mini.png"
+                                                     style="width: 58px;height: 58px;"> -->
+                                            </div>
+
+                                            <!-- 标题 -->
+                                            <div style="margin: 0 0 36px 0;">
+                                                            <span class="font-bold"
+                                                                  style="display: inline-block;vertical-align: top;height: auto;font-size: 22px;font-weight: bold;color: #020303;line-height: 26px;">
+                                                                templateType hadoop集群管理报表
+                                                            </span>
+                                                <span class="font-bold"
+                                                      style="display: inline-block;vertical-align: top;height: auto;font-size: 22px;font-weight: bold;color: #020303;line-height: 26px;">
+                                                              
+                                                            </span>
+                                                <span style="height: 20px;float: right;">
+                                                                <img src="https://www.vinchin.cn/res/img/email/iconfont/clock.png"
+                                                                     style="width: 20px;height: 20px;">
+                                                                <span class="font-regular"
+                                                                      style="display: inline-block;vertical-align: top;height: 20px;font-size: 16px;font-weight: 400;color: #3F4254;line-height: 19px;">
+                                                                    报告生成时间: reportCreateTime
+                                                                </span>
+                                                            </span>
+                                                <span class="font-regular"
+                                                      style="color: #4A5259;display: block;height: auto;font-size: 16px;font-weight: 400;line-height: 23px;">
+                                                              
+                                                            </span>
+                                            </div>
+                                            <!-- 内容 -->
+                                            <div class="content-list"
+                                                 style="text-align: left;background-color: #ccc;padding: 15px 10px;">
+                                                <div>
+                                                    <p><span>模板名: </span><span>reportName</span></p>
+                                                    <p><span>模板类型: </span><span>hadoop集群</span></p>
+                                                    <p><span> 创建时间:</span><span>reportTime</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="font-bold"
+                                                 style="vertical-align: top;height: auto;font-size: 18px;font-weight: bold;color: #020303;margin-top: 28px">
+                                                 备份系统: nodeName
+                                            </div>
+                                            <hr style="height: 1px;background: #EFF2F5;border: none;">
+                                            <div
+                                                    style="display: flex; width: 100%; margin: 40px 0px; height: 300px;align-items: center; justify-content: space-between;flex-wrap: wrap;">
+                                            
+                            
+                                                    <div
+                                                            style="height: 45px; width: 40%;background-color: #F5F8FA;border-radius: 30px;padding: 0 20px;display: flex; align-items: center;">
+                                                        <div
+                                                                style="width: 15px; height: 15px;background: #ffffff;border: 1px solid #ccc; border-radius: 50%; flex-shrink: 0;">
+                                                        </div>
+                                                        <div style="margin-left: 20px; width: 70%;">集群总数:
+                                                        </div>
+                                                        <div
+                                                                style="font-weight: 600;font-size: 20px;color: #2D3748;">
+                                                                hadoop_total </div>
+                                                    </div>
+                                                    <div
+                                                            style="height: 40px; width: 40%;background-color: #F5F8FA;border-radius: 30px; display: flex; align-items: center; padding: 0 20px;">
+                                                        <div
+                                                                style="width: 15px; height: 15px;background: #24CCA7;border: 1px solid #ccc;border-radius: 50%; flex-shrink: 0;">
+                                                        </div>
+                                                        <div style="margin-left: 20px; width: 70%;">授权集群:
+                                                        </div>
+                                                        <div style="font-weight: 600;font-size: 20px;color: #2D3748;">
+                                                            hadoop_auth</div>
+                                                    </div>
+                                                    <div
+                                                            style="height: 40px; width: 40%;background-color: #F5F8FA;border-radius: 30px; display: flex; align-items: center; padding: 0 20px;">
+                                                        <div
+                                                                style="width: 15px; height: 15px;background: #24CCA7;border: 1px solid #ccc;border-radius: 50%; flex-shrink: 0;">
+                                                        </div>
+                                                        <div style="margin-left: 20px; width: 70%;">在线集群:
+                                                        </div>
+                                                        <div
+                                                                style="font-weight: 600;font-size: 20px;color: #2D3748;">
+                                                                hadoop_online</div>
+                                                    </div>
+                                                    <div
+                                                            style="height: 40px; width: 40%;background-color: #F5F8FA;border-radius: 30px; display: flex; align-items: center; padding: 0 20px;">
+                                                        <div
+                                                                style="width: 15px; height: 15px; background: #7E8299;border: 1px solid #ccc;border-radius: 50%; flex-shrink: 0;">
+                                                        </div>
+                                                        <div style="margin-left: 20px; width: 70%;">离线集群:
+                                                        </div>
+                                                        <div
+                                                                style="font-weight: 600;font-size: 20px;color: #2D3748;">
+                                                                hadoop_offline</div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="font-bold"
+                                                 style="vertical-align: top;height: auto;font-size: 18px;font-weight: bold;color: #020303;margin-top: 28px">
+
+                                            </div>
+                                            <!-- <div class="font-bold"
+                                                 style="vertical-align: top;height: auto;font-size: 18px;font-weight: bold;color: #020303;margin: 28px 0px">
+                                                最近七天,产生<span
+                                                    style="color: red;">task_number</span>条任务告警信息，<span
+                                                    style="color: red;">system_number</span>条系统告警信息
+                                            </div>
+                                            <div class="font-bold" -->
+                                                 <!-- style="display: inline-block;vertical-align: top;height: auto;font-size: 18px;font-weight: bold;color: #020303;margin-top: 28px">
+                                                详细列表
+                                            </div>
+                                            <table class="content-table"
+                                                   style="align-self: center;text-align: left;vertical-align: top;border: 0;border-collapse: collapse;margin-top: 28px;width: 100%;">
+                                                <thead>
+                                                <tr>
+                                                    <th>集群总数</th>
+                                                    <th>授权集群</th>
+                                                    <th>在线集群</th>
+                                                    <th>离线集群</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                #tableContent#
+                                                </tbody>
+                                            </table> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr height="60"
+                                    style="padding: 0;margin: 0;border: 0;text-align: center;vertical-align: top;">
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </div>
+    <div style="display: none" id="job_time">taskTime</div>
+    <div style="display: none" id="job_data">taskNumber</div>
+
+</div>
+<script>
+    window.onload = function () {
+
+    }
+
+</script>
+</body>
+
+</html>

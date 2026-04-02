@@ -1,0 +1,113 @@
+<?php
+
+namespace app\v1\filecopy\v0\logic;
+
+use app\v1\common\logic\Base;
+use app\v1\common\logic\JobController;
+use app\v1\filecopy\v0\service\Service;
+use xphp\db\Op;
+
+/**
+ * note          文件同步 -- 任务操作 logic
+ * @author       wuxian@vinchin.com
+ * @date         2024/7/17 16:15
+ * @version      1.0.0
+ * @copyright    Copyright 2024 vinchin.com
+ */
+class FilecopyJobController extends JobController
+{
+    /**
+     * 启动任务 demo
+     * @param string $taskUuid  任务uuid
+     * @param int    $startType 启动类型
+     * @return json
+     */
+    public function startJob(string $taskUuid, int $startType)
+    {
+        // 查询出任务的一些信息
+        $task = $this->getTask($taskUuid);
+        $syncMode = '';
+        $taskType = xphp_get_config('task', 'TASKTYPE');
+        switch ($startType) {
+            case 0:
+                // 启动策略
+                $opName = 'BD_TASK_OP_START_TIMESTRATEGY';
+                break;
+            case $taskType['FILE_COPY']:
+                // 启动复制任务
+                $opName = 'SYNC_FS_OP_CODE_COPY';
+                $syncMode = xphp_get_config('file_copy')['SYNC_MODE']['SYNC_FS_TASK_MODE_SYNC_TO_OTHER'];
+                break;
+            case $taskType['FILE_COMPARE']:
+                // 启动对比任务
+                $opName = 'SYNC_FS_OP_CODE_COMPARE';
+                $syncMode = xphp_get_config('file_copy')['SYNC_MODE']['SYNC_FS_TASK_MODE_COMPARE'];
+                break;
+        }
+        
+        $msg = [
+            'task_uuid' => $taskUuid,
+            'backup_mode' => $startType,
+            'time_strategy_id' => 0,
+            'auto_start_flag' => xphp_get_config('app', 'FLAG')['UNSET'],
+            'sync_mode' => $syncMode
+        ];
+        return $this->opUnifyMsg($taskUuid, $opName, $msg, false, true);
+    }
+
+    /**
+     * 停止任务
+     * @param string $taskUuid 任务uuid
+     * @return string
+     */
+    public function stopJob(string $taskUuid)
+    {
+        $task = $this->getTask($taskUuid);
+        $opName = 'SYNC_FS_OP_CODE_STOP_TASK';
+        $msg = [
+            'task_uuid' => $taskUuid,
+        ];
+        return $this->opUnifyMsg($taskUuid, $opName, $msg, false, true);
+    }
+
+    /**
+     * 删除任务
+     * @param string $taskUuid 任务uuid
+     * @return string
+     */
+    public function delJob(string $taskUuid)
+    {
+
+        // 查询出任务的一些信息
+        $task = $this->getTask($taskUuid);
+        // 检查任务是否在运行中
+        if ($task['task_status'] == xphp_get_config('task', 'TASKSTATUS')['RUNNING']) {
+            return $this->muOpResult(
+                false,
+                xphp_get_lang('WEB_VM_BACKUP_ALREADY_RUNNING'),
+                xphp_get_lang('WEB_VM_BACKUP_ALREADY_RUNNING_TIPS'),
+                'warning'
+            );
+        }
+        $opName = 'SYNC_FS_OP_CODE_DELETE_TASK';
+        $msg = [
+            'task_uuid_list' => [$taskUuid]
+        ];
+        return $this->opUnifyMsg($taskUuid, $opName, $msg, false, true);
+    }
+
+    /**
+     * 统一发送消息到后台
+     * @param string $taskUuid 任务uuid
+     * @param string $opName   操作码
+     * @param  array  $msg      消息
+     * @param bool   $sync     是否同步
+     * @param bool   $command  是否命令
+     * @return void
+     */
+    private function opUnifyMsg(string $taskUuid, string $opName, array $msg, $sync = false, $command = false)
+    {
+        $mbResult = (new Service())->opUnifyMsg($taskUuid, $opName, $msg, $sync, $command);
+        return $this->outMsg($mbResult, $opName,'filecopy');
+    }
+}
