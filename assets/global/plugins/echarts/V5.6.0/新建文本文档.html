@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 ECharts 文件 -->
+   <script src="./echarts.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+    <!-- 为ECharts准备一个具备大小（宽高）的DOM -->
+    <div id="main" style="width: 500px;height: 500px;"></div>
+    <img src="./111.png" id="bg_img" style="display:none" />
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var value = 0.8, // 0~1之间
+        startAngle = 220, //开始角度
+        endAngle = -40, // 结束角度
+        splitCount = 60, // 刻度数量
+        pointerAngle = (startAngle - endAngle) * (1 - value) + endAngle; // 当前指针（值）角度
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+          title: {
+                text: value,
+                left: 'center',
+                top: '37%',
+                fontFamily: 'Roboto, Roboto',
+                textStyle: {
+                  color: '#415058',
+                  fontSize: 22
+                }
+              },
+          series: [
+            {
+              type: 'gauge',
+              radius: '100%',
+              startAngle: pointerAngle,
+              endAngle: endAngle,
+              splitNumber: 1,
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  width: 3,
+                  opacity: 0
+                }
+              },
+              title: { show: false },
+              detail: {
+                    offsetCenter: [0, 14],
+                    color: '#818181',
+                    fontSize: 14,
+                    fontWeight: 400,
+                    formatter: function (value) {
+                      return '已用';//LANG.UI_PUBLIC_VM_USED
+                    }
+                  },
+              splitLine: { show: false },
+              axisTick: {
+                length: 27,
+                splitNumber: Math.ceil((1 - value) * splitCount),
+                lineStyle: {
+                  color: 'grey',
+                  width: 3
+                }
+              },
+              axisLabel: { 
+                show: false,
+              },
+              pointer: { show: false },
+              itemStyle: {},
+              data: [
+                {
+                  value: value,
+                  name: 'test gauge'
+                }
+              ]
+            },
+            
+            {
+              type: 'gauge',
+              radius: '100%',
+              startAngle: startAngle,
+              endAngle: pointerAngle,
+              splitNumber: 1,
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  width: 3,
+                  opacity: 0
+                }
+              },
+              title: { show: false },
+              detail: { show: false },
+              splitLine: { show: false },
+              axisTick: {
+                length: 27,
+                splitNumber: Math.ceil(value * splitCount),
+                lineStyle: {
+                  color: {
+                    image: document.getElementById('bg_img'),
+                    repeat: 'no-repeat'
+                  },
+                  width: 3,
+                  shadowColor: '#CEF1FF', // 阴影颜色
+                  shadowBlur: 10, // 阴影的模糊大小
+                  shadowOffsetX: 0, // 阴影水平方向上的偏移
+                  shadowOffsetY: -2, // 阴影垂直方向上的偏移
+                }
+              },
+              axisLabel: { show: false },
+              pointer: { show: false },
+              itemStyle: {},
+              data: [
+                {
+                  value: value,
+                  name: 'test gauge'
+                }
+              ]
+            },
+            
+          ]
+        };
+        myChart.setOption(option);
+        
+    </script>
+</body>
+</html>

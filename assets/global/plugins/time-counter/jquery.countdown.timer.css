@@ -1,0 +1,17 @@
+#counter { margin-top: 20px; margin-left: 135px; width: 215px; height: 59px; border-radius: 3px; -webkit-border-radius: 3px; -opera-border-radius: 3px; -moz-border-radius: 3px; margin-left: auto; margin-right: auto; }
+#counter_item1 { margin-left: 2px; }
+.counter_item { width: 40px; height: 55px; background: #0CC5F1; overflow: hidden; float: left; margin-top: 2px; }
+.counter_item .digit, .counter_item .front { width: 40px; height: 55px; overflow: hidden; }
+.counter_item .front {  position: absolute; z-index: 10; }
+.counter_item .digit_colon { background: transparent url(images/counter_digits.png) no-repeat 0 0px; }
+.counter_item .digit0 { background: transparent url(images/counter_digits.png) no-repeat 5px -55px; }
+.counter_item .digit1 { background: transparent url(images/counter_digits.png) no-repeat 5px -110px; }
+.counter_item .digit2 { background: transparent url(images/counter_digits.png) no-repeat 5px -165px; }
+.counter_item .digit3 { background: transparent url(images/counter_digits.png) no-repeat 5px -220px; }
+.counter_item .digit4 { background: transparent url(images/counter_digits.png) no-repeat 5px -275px; }
+.counter_item .digit5 { background: transparent url(images/counter_digits.png) no-repeat 5px -330px; }
+.counter_item .digit6 { background: transparent url(images/counter_digits.png) no-repeat 5px -385px; }
+.counter_item .digit7 { background: transparent url(images/counter_digits.png) no-repeat 5px -440px; }
+.counter_item .digit8 { background: transparent url(images/counter_digits.png) no-repeat 5px -495px; }
+.counter_item .digit9 { background: transparent url(images/counter_digits.png) no-repeat 5px -550px; }
+.counter_item .digit_cherry { background: transparent url(images/counter_digits.png) no-repeat 0 -605px; }
