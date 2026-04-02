@@ -1,0 +1,7 @@
+/*数据库实时样式*/
+
+@media screen and (max-width: 1440px){
+    #topline_transmitting,#topline_error{
+        margin-top: 4.4rem !important;
+    }
+}

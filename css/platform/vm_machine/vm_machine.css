@@ -1,0 +1,33 @@
+.del-parent-div{
+    margin-right: 0px;
+}
+#delete-vm_list {
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    height: 34px;
+    color: white;
+    background-color: #0FBF98;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.exch-forbid-event {
+    pointer-events: none;
+    background-color: #EBEBEB !important;
+}
+#edit-vm_list:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+#manage-network:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+
+
+.leftTool .btn{background: #fff;}
+.adv_list span{
+    width: 170px;
+    display: block;
+    float: left;
+    overflow: hidden;
+}
+
+#add-vm_list:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+#edit-vm_list:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+
+#vm_resource_modal .list-option .label-span{margin-left: -10px;line-height: 24px;}

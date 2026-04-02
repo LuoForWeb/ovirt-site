@@ -1,0 +1,13 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#232;&#191;&#144;&#232;&#161;&#140;">
+<rect id="Rectangle 1080" opacity="0.08" width="44" height="44" rx="22" fill="#679DEB"/>
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M14.4817 13H29.7137L31.996 24.0004H32.1667V31.7921H12V24.0004H12.1724L14.4817 13ZM28.4997 27.8963C28.4997 28.5291 27.9867 29.0421 27.3538 29.0421C26.721 29.0421 26.208 28.5291 26.208 27.8963C26.208 27.2634 26.721 26.7504 27.3538 26.7504C27.9867 26.7504 28.4997 27.2634 28.4997 27.8963ZM15.666 28.8129H23.4577V26.9796H15.666V28.8129ZM25.7478 15.6254L27.083 16.8418L20.7342 22.6254L17.083 19.2992L18.4182 18.0828L20.7342 20.1927L25.7478 15.6254Z" fill="url(#paint0_linear_12_8985)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_12_8985" x1="19.9876" y1="13.2065" x2="23.7346" y2="32.2151" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3D85F0" stop-opacity="0.9"/>
+<stop offset="0.9999" stop-color="#1C8CCB" stop-opacity="0.350313"/>
+<stop offset="1" stop-color="#229CE1" stop-opacity="0.34"/>
+</linearGradient>
+</defs>
+</svg>

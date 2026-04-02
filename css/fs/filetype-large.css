@@ -1,0 +1,189 @@
+@CHARSET "UTF-8";
+.filetype-large{background:url(../../img/fs/filetype-middle.png) 0 0 no-repeat;height: 48px;width: 48px;float: left;margin-right: 3px;}
+
+.filetype-eps-l {
+background-position: -0px -0px;
+}
+.filetype-exe-l {
+background-position: -48px -0px;
+}
+.filetype-flv-l {
+background-position: -0px -48px;
+}
+.filetype-gif-l {
+background-position: -48px -48px;
+}
+.filetype-h-l {
+background-position: -96px -0px;
+}
+.filetype-html-l {
+background-position: -96px -48px;
+}
+.filetype-ics-l {
+background-position: -0px -96px;
+}
+.filetype-iso-l {
+background-position: -48px -96px;
+}
+.filetype-java-l {
+background-position: -96px -96px;
+}
+.filetype-jpg-l {
+background-position: -144px -0px;
+}
+.filetype-key-l {
+background-position: -144px -48px;
+}
+.filetype-m4v-l {
+background-position: -144px -96px;
+}
+.filetype-mid-l {
+background-position: -0px -144px;
+}
+.filetype-mov-l {
+background-position: -48px -144px;
+}
+.filetype-mp3-l {
+background-position: -96px -144px;
+}
+.filetype-mp4-l {
+background-position: -144px -144px;
+}
+.filetype-mpg-l {
+background-position: -192px -0px;
+}
+.filetype-odp-l {
+background-position: -192px -48px;
+}
+.filetype-ods-l {
+background-position: -192px -96px;
+}
+.filetype-odt-l {
+background-position: -192px -144px;
+}
+.filetype-otp-l {
+background-position: -0px -192px;
+}
+.filetype-ots-l {
+background-position: -48px -192px;
+}
+.filetype-ott-l {
+background-position: -96px -192px;
+}
+.filetype-pdf-l {
+background-position: -144px -192px;
+}
+.filetype-php-l {
+background-position: -192px -192px;
+}
+.filetype-png-l {
+background-position: -240px -0px;
+}
+.filetype-pps-l {
+background-position: -240px -48px;
+}
+.filetype-ppt-l {
+background-position: -240px -96px;
+}
+.filetype-psd-l {
+background-position: -240px -144px;
+}
+.filetype-py-l {
+background-position: -240px -192px;
+}
+.filetype-qt-l {
+background-position: -0px -240px;
+}
+.filetype-rar-l {
+background-position: -48px -240px;
+}
+.filetype-rb-l {
+background-position: -96px -240px;
+}
+.filetype-rtf-l {
+background-position: -144px -240px;
+}
+.filetype-sql-l {
+background-position: -192px -240px;
+}
+.filetype-tga-l {
+background-position: -240px -240px;
+}
+.filetype-tgz-l {
+background-position: -288px -0px;
+}
+.filetype-tiff-l {
+background-position: -288px -48px;
+}
+.filetype-txt-l {
+background-position: -288px -96px;
+}
+.filetype-wav-l {
+background-position: -288px -144px;
+}
+.filetype-xls-l {
+background-position: -288px -192px;
+}
+.filetype-xlsx-l {
+background-position: -288px -240px;
+}
+.filetype-xml-l {
+background-position: -0px -288px;
+}
+.filetype-yml-l {
+background-position: -48px -288px;
+}
+.filetype-zip-l {
+background-position: -96px -288px;
+}
+.filetype-aac-l {
+background-position: -144px -288px;
+}
+.filetype-ai-l {
+background-position: -192px -288px;
+}
+.filetype-aiff-l {
+background-position: -240px -288px;
+}
+.filetype-asp-l {
+background-position: -288px -288px;
+}
+.filetype-avi-l {
+background-position: -336px -0px;
+}
+.filetype-bmp-l {
+background-position: -336px -48px;
+}
+.filetype-c-l {
+background-position: -336px -96px;
+}
+.filetype-cpp-l {
+background-position: -336px -144px;
+}
+.filetype-css-l {
+background-position: -336px -192px;
+}
+.filetype-dat-l {
+background-position: -336px -240px;
+}
+.filetype-dmg-l {
+background-position: -336px -288px;
+}
+.filetype-doc-l {
+background-position: -0px -336px;
+}
+.filetype-docx-l {
+background-position: -48px -336px;
+}
+.filetype-dot-l {
+background-position: -96px -336px;
+}
+.filetype-dotx-l {
+background-position: -144px -336px;
+}
+.filetype-dwg-l {
+background-position: -192px -336px;
+}
+.filetype-dxf-l {
+background-position: -240px -336px;
+}

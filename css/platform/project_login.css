@@ -1,0 +1,650 @@
+/** 登录*/
+body{
+    background-size: cover;
+}
+.logoMedium{
+    text-align: center;
+}
+.logo img{
+    position: absolute;
+    left: 1.6%;
+    top: 5.5%;
+}
+.login-content,.forget-pwd-content,.send-success-content,.reset-pwd-content,.edit-pwd-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+.login-content-right,.forget-pwd-content-right,.send-success-content-right,.reset-pwd-content-right,.edit-pwd-content-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+input::placeholder {
+    color: #CDCDCD !important; /* 设置占位符文本的颜色 */
+}
+.cardLeft{
+    width: 43%;
+    min-width: 540px;
+    height: 100%;
+    background: linear-gradient(153deg, rgba(255, 255, 255, 0.36) 24.3%, rgba(255, 255, 255, 0.60) 39.89%, rgba(255, 255, 255, 0.60) 59.83%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardMedium{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.leftLayOut-left-content{
+    width: 510px;
+}
+.mediumLayOut-medium-content{
+    width: 694px !important;
+    padding: 62px 92px;
+    border-radius: 4px;
+    background: linear-gradient(187deg, rgba(176, 236, 255, 0.18) 7.71%, rgba(211, 245, 255, 0.30) 43.1%, rgba(255, 255, 255, 0.60) 88.67%);
+    backdrop-filter: blur(4px);
+}
+
+/*.login-content::before,.forget-pwd-content::before,.send-success-content::before,.reset-pwd-content::before,.edit-pwd-content:before {*/
+/*    content: "";*/
+/*    width: 43%;*/
+/*    height: 100%;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    z-index: -1;*/
+/*    background: linear-gradient(153deg, rgba(255, 255, 255, 0.36) 24.3%, rgba(255, 255, 255, 0.60) 39.89%, rgba(255, 255, 255, 0.60) 59.83%);*/
+/*    backdrop-filter: blur(4px);*/
+/*}*/
+.welcome-login-tip {
+    color: #3A73FB;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 5.28px;
+    text-align: center;
+}
+.welcome-tip {
+    color: #2D3748;
+    text-align: center;
+}
+.form-title{
+    color: #575F6D;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 24px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2.6px;
+    text-align: center;
+}
+.alert {
+    background: rgba(217,77,77,0.2300);
+    border-style: none;
+    color: #E22E00;
+    font-size: 16px;
+    border-width: 1px;
+    text-align: center;
+}
+.email-alert,.edit-alert,.reset-alert{
+    background: rgba(58, 115, 251, 0.1);
+    color: #3A73FB;
+}
+input[name='username'],input[name='password'],input[name='email'],input[name='resetPassWord'],input[name='oldpass'],input[name='newPassword']{
+    padding-left: 45px;
+}
+.form-group{
+    width: 510px;
+    height: 52px;
+    border-radius: 5px;
+    opacity: 1;
+    border-style: none;
+    margin-bottom: 17px;
+}
+.mb37{
+    margin-bottom: 37px !important;
+}
+.code {
+    display: none;
+    margin-bottom: 16px;
+}
+.code .input-val{
+    width: 330px;
+    height: 52px;
+    background: #fff;
+    border-radius: 5px;
+    opacity: 1;
+    color: #2D3748;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 14px;
+    padding-left:16px ;
+}
+.code .code-canvas{
+    float: right;
+    border-radius: 5px;
+}
+.checkbox{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.rememberLeft{
+    display: flex;
+    line-height: 20px;
+}
+.rememberLeft img{
+    margin-top: -4px;
+    margin-right: 10px;
+}
+.remember-pwd{
+    margin-left:3px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #87959B;
+    line-height: 20px;
+}
+.form-actions .forget-pwd{
+    font-size: 12px;
+    font-weight: 400;
+}
+.form-actions .forget-pwd a{
+    color: #3A73FB;
+    text-decoration: none;
+}
+.form-actions .forget-pwd a:hover{
+    color: #779FFF;
+}
+.form-actions .btn,.resetPwd,#login,.link-failure .return-login{
+    width: 510px;
+    height: 52px;
+    background: #3A73FB;
+    border-radius: 5px;
+    border-style: none;
+    opacity: 1;
+    color:#FFFFFF;
+    font-size: 20px;
+    outline: none;
+    margin-top: 19px;
+}
+.form-actions .btn:focus,.resetPwd:focus,#login:focus{
+    outline: none;
+}
+.form-actions .btn:hover,.resetPwd:hover,#login:hover{
+    background: #779FFF;
+}
+.login-line{
+    margin-top: 24px;
+}
+.login-line .line{
+    display: inline-block;
+    padding-top: 3px;
+    width: 208px;
+    border-top: 1px dashed #6B767B;
+}
+.login-line .menuLine{
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background: #3A73FB;
+}
+.login-line .download-agent {
+    color: #3A73FB;
+}
+.nosupporttips{
+    margin-top: 15px;
+    font-size: 16px;
+}
+.contentpakage {
+    margin-top: 12px;
+}
+.agent-form {
+    position: relative;
+}
+.agent-type,.divcontrol{
+    margin-bottom: 8px;
+    color:#808080;
+}
+.divcontrol{
+    margin-top: 12px;
+}
+.vendor_div,.filesystem_div,.dbtimingClient_div,.dbcdpClient_div,.dbprotectsystem_div {
+    width: 394px;
+}
+.agenttype-select,.filesystem_select,.vendor_select,.version_select,.ossystem_select{
+    color: #7E8299 !important;
+}
+.form-control {
+    font-weight: normal;
+    height: 52px;
+    color: #2D3748;
+    box-shadow: none;
+    background: #FFFFFF;
+}
+.form-control:focus{
+    border-color: #3A73FB;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.download_btn{
+    float: left;
+    width: 104px;
+    height: 52px;
+    font-size: 14px;
+    background-color: transparent;
+    border-radius: 5px;
+    opacity: 1;border: 1px solid #3A73FB;
+    margin-left: 10px;
+    color: #3A73FB;
+    letter-spacing: 1px;
+    position: absolute;
+    top:120px;
+    right: 0
+}
+.downloadBtn:hover{
+    background-color: #3A73FB;
+    color:#000F14;
+}
+
+.download_btn .downloadIcon{
+    fill:#3A73FB;
+}
+.has-error{
+    margin-bottom: 36px;
+}
+.has-error,.help-block{
+    color: #E22E00 !important;
+    margin-top: 8px;
+}
+.has-error i {
+    color: #E22E00 !important;
+}
+.input-icon,.form-input {
+    position: relative;
+}
+.input-icon .eye svg .a,.form-input .eye svg .a{
+    fill:#fff;
+}
+.input-icon .eye-close svg .a,.form-input .eye-close svg .a{
+    fill: #fff;
+}
+.has-error .form-control:focus {
+    -webkit-box-shadow: none;
+}
+.display-none, .display-hide {
+    display: none;
+}
+.close {
+    display: inline-block;
+    margin-top: 7px;
+    margin-right: 0px;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat !important;
+    text-indent: -10000px;
+    outline: none;
+    background-image: url(/img/platform/remove-icon.png) !important;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* 添加一个背景图片作为伪元素 */
+    background: #ffffff url('/img/platform/login/arrows.svg') no-repeat calc(100% - 16px)center !important;
+    /* 调整 padding-right 以给图标留出空间 */
+    padding-right: 20px !important;
+}
+.input-icon i,.form-input i {
+    color: #3A73FB;
+    display: block;
+    position: absolute;
+    margin: 0px 2px 4px 20px;
+    width: 16px;
+    font-size: 16px;
+    text-align: center;
+    height: 52px;
+    line-height: 52px;
+}
+.has-error .form-control{
+    border:1px solid #E22E00 !important;
+}
+input::-webkit-input-placeholder {
+    color: #CDCDCD;
+}
+.visible-ie9 {
+    display: none;
+}
+.form-group .lock svg .password{
+    fill: #fff;
+}
+.form-group .eye-close,.form-group .eye{
+    margin-left: 474px !important;
+    z-index: 10 !important;
+}
+input[type=checkbox]{
+    margin: 2px 7px 18px 0 !important;
+}
+.form-actions .form-actions .line{
+    display: inline-block;
+    padding-top: 3px;
+    width: 79px;
+    border-top: 1px dashed rgb(107, 118, 123);;
+}
+.downLoad svg .a{
+    fill:#3A73FB;
+}
+.in-error{
+    border-color: #E22E00 !important;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:10;
+}
+#modal {
+    width: 440px;
+    height: 200px;
+    border-radius: 5px;
+    background: #FFF;
+    font-size: 16px;
+    color: #2D3748;
+    padding: 59px 15px 40px 15px;
+    box-shadow: none;
+    text-align: center;
+}
+.buttonAction{
+    margin-top: 44px;
+}
+.edit_pwd_button,.login_success_button{
+    width: 100px;
+    height: 36px;
+    opacity: 1;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    background: #3A73FB;
+    color: #FFFFFF;
+}
+.login_success_button{
+    background: #E0F5FF;
+    color: #3A73FB;
+}
+/** forget_pwd.css */
+.forget-pwd-content .alert,.reset-pwd-content .alert{
+    border-radius: 5px;
+    background: rgba(58, 115, 251, 0.1);
+    color: #3A73FB;
+    margin-bottom: 10px;
+}
+.forget-pwd-content .welcome-login-tip,.send-success-content .welcome-login-tip,.reset-pwd-content .welcome-login-tip,.edit-pwd-content .welcome-login-tip{
+    font-size: 24px;
+}
+.forget-pwd-content .form-title,.send-success-content .form-title,.reset-pwd-content .form-title,.edit-pwd-content .form-title{
+    font-size: 16px;
+}
+.forget-pwd-tips {
+    border-radius: 5px;
+    background: rgba(58, 115, 251, 0.05);
+    height: 140px;
+    color: #779FFF;
+    padding: 22px 0px 22px 24px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.focusIcon {
+    color: #28A7EF !important;
+}
+.focusInput {
+    border-color: #28A7EF !important;
+}
+.usernameTips{
+    margin-top: 8px;;
+}
+.modal-content{
+    background: #FFFFFF;
+    width: 440px;
+    height: 200px;
+    margin-top: 50%;
+    margin-left: 20%;
+    box-shadow: none;
+}
+.modal-header{
+    border-style: none;
+}
+#modalShow{
+    padding:50px;
+    top:10px
+}
+.faa-parent{
+    font-size: 36px;
+    color:#fff;
+    margin-left: 30%;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1000;
+}
+.fa-spinner{
+    color: #3A73FB;
+}
+
+
+/** send_success.css*/
+.send-suceess-content,.reset-suceess-content,.link-content{
+    width: 510px;
+    height: 120px;
+    background: rgba(48, 199, 149, 0.1);
+    padding:37px 0 38px 32px;
+    border-radius: 5px;
+}
+.send-suceess-img,.reset-suceess-img,.link-failure-img{
+    float: left;
+    margin-right: 30px;
+    margin-top: -5px;
+}
+.send-suceess-tips, .reset-suceess-tips,.link-failure-tips{
+    display: inline-block;
+    color: #30C795;
+    font-size: 16px;
+}
+.send-success-buttons{
+    width: 510px;
+    margin-top: 32px;
+}
+.return-back{
+    width: 124px;
+    height: 52px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 5px;;
+    border: 1px solid #3A73FB;
+}
+.return-login,.reset-success-button .return-login {
+    width: 374px;
+    height: 52px;
+    background-color: #3A73FB;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #FFFFFF;
+}
+.return-back a {
+    color: #3A73FB !important;
+}
+.return-login a {
+    color: #FFFFFF !important;
+}
+.reset-success-button .return-login {
+    width: 510px;
+    height: 52px;
+}
+.reset-success-button,.link-failure-button {
+    margin-top: 36px;
+}
+.lock-title{
+    text-align: center;
+}
+.lock-img, .lock-img-title{
+    display: inline-block;
+}
+.lock-img img{
+    margin-top: -13px;
+    margin-right: 13px;
+}
+.lock-img-title {
+    color: #575F6D;
+    font-size: 26px;
+    letter-spacing: 1.56px;
+}
+.lockTips{
+    width: 510px;
+    height: 48px;
+    background:rgba(58, 115, 251, 0.1);
+    text-align: center;
+    color: #3A73FB;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding-top: 16px ;
+}
+.link-content {
+    background: rgba(241, 159, 0, 0.1);
+}
+.link-failure-tips {
+    color: #F19F00;
+}
+.reset-pwd-content .user{
+    color: #7F7F7F;
+}
+.form-control[readonly]{
+    color: #808080;
+}
+
+.errorTip,.errorTip .focusIcon{
+    margin-top: 10px;
+    color: #E22E00 !important;
+}
+.link-failure .return-login{
+    margin-top: 36px;
+}
+.copyright {
+    position: absolute;
+    color: #2D3748;
+    font-size: 12px;
+    font-weight: 400;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0.4;
+}
+.copyright p {
+    margin-bottom: 23px;
+}
+
+
+/*去掉IE浏览器input框自带的小眼睛*/
+input::-ms-reveal{display:none;}
+
+#capslock-warning,#old-capslock-warning,#new-capslock-warning,#re-capslock-warning{
+    color:#3A73FB !important;
+    margin-left: 440px !important;
+    display: none;
+}
+
+/*  媒体查询*/
+@media screen and (max-width: 1600px){
+    html{
+        font-size: 16px;
+    }
+    .rightImg{
+        padding-right: 70px;
+    }
+}
+@media screen and (max-width: 1440px){
+    .login-content{
+        left: 0;
+    }
+    .forget-content{
+        left: 0;
+    }
+    .sendSuccess-content{
+        left: 0;
+    }
+    .lock-content{
+        left: 0;
+    }
+    .modal-content{
+        margin-top: 30%;
+        margin-left:13% ;
+    }
+    .rightImg{
+        padding-right: 30px;
+    }
+    .modifyPwd-content{
+        left: 0;
+    }
+    .rightImg img{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1400px){
+    .login-content{
+        left: 0px;
+    }
+    .forget-content{
+        left: 0px;
+    }
+    .sendSuccess-content{
+        left: 0px;
+    }
+    .lock-content{
+        left: 0px;
+    }
+    .rightImg img{
+        display: none;
+    }
+    .rightImg{
+        padding-right: 0;
+    }
+    .content{
+        display: flex;
+        width: 510px;
+        margin-top:0;
+        left: 0px;
+    }
+    .content .login{
+        margin-right: 0px !important;
+    }
+    .content .forgetPwd{
+        margin-right: 0px !important;
+    }
+    .content .contentTip{
+        margin-right: 0px !important;
+    }
+    .content .lock{
+        margin-right: 0px !important;
+    }
+    .shape3,.shape4{
+        display: none;
+    }
+    .image-shape1,.image-shape2,.image-shape3{
+        display: none;
+    }
+    .content .modifyPwd{
+        margin-right: 0px !important;
+    }
+}

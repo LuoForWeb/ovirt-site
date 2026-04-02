@@ -1,0 +1,154 @@
+/* 开始-公共 */
+#tab2 {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.dbSeparatorCls {
+    border-bottom: 1px dashed #F0F0F0;
+}
+
+#tab4 .form-control-static {
+    color: #333;
+}
+
+/* 结束-公共 */
+
+/* Oracle - 跳过坏块 */
+.skip-datafile-bad-block-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.skip-datafile-bad-block-item .skip-datafile-bad-block-item__left {
+    width: calc(100% - 42px);
+}
+
+.skip-datafile-bad-block-item .skip-datafile-bad-block-item__left .panel-title .accordion-toggle {
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.skip-datafile-bad-block-item .skip-datafile-bad-block-item__right {
+    width: 34px;
+    height: 34px;
+    margin-left: 8px;
+}
+
+.skip-datafile-bad-block-item .skip-datafile-bad-block-item__right button {
+    width: 34px;
+    height: 34px;
+    background-color: #F0F0F0;
+    border: 1px solid #F0F0F0;
+    color: #999;
+}
+
+.skip-datafile-bad-block-item .skip-datafile-bad-block-item__right button:hover {
+}
+
+.skip-datafile-bad-block-label {
+    margin-bottom: 8px;
+}
+
+.skip-datafile-bad-block-tree__wrapper {
+    border: 1px solid #E6E6E6;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.skip-datafile-bad-block-tree {
+    padding: 0;
+}
+
+.skip-datafile-bad-block-configure__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.skip-datafile-bad-block-configure_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skip-datafile-bad-block-configure_item .table-space-label {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.skip-datafile-bad-block-configure_item .table-space-btn {
+    width: 160px;
+    padding-left: 8px;
+}
+
+.skip-datafile-bad-block-configure_item .table-space-result {
+    width: 100px;
+    color: #50CD89;
+}
+/* END - Oracle - 跳过坏块 */
+
+/* Oracle - 跳过坏块Modal */
+#skipDatafileBadBlockModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#skipDatafileBadBlockModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#skipDatafileBadBlockModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+#skipDatafileBadBlockModal .batch-config {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#batchBadBlockNum {
+    width: 90px;
+    margin-left: 8px;
+}
+
+#batchBadBlockApply {
+    width: 60px;
+    height: 34px;
+    margin-left: 8px;
+}
+
+#vin_skip_datafile_bad_block_toolbar .mr12 {
+    margin-right: 0;
+}
+
+#skipDatafileBadBlockModal .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 260px;
+}
+/* END - Oracle - 跳过坏块Modal */
+
+/* 高级配置滚动修正 */
+#tabAdvancedContent div.abnormal-handle-form {
+    overflow-y: auto;
+}
+
+textarea#customRmanCmd {
+    resize: none;
+}
+
+p.advancedPerformanceShow {
+    width: 100%;
+}
+
+#dbShowTree {
+    max-height: 300px;
+    overflow: auto;
+}

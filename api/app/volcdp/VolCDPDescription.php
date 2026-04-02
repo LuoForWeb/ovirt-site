@@ -1,0 +1,218 @@
+<?php
+/**
+ *卷CDP模块描述定义
+ *TODO 每一个定义都关联语言文件
+ */
+
+return array(
+    //传输模式
+    'VolCdpTransportMode' => array(
+        'file' => Xphp::$_lang['WEB_PLATFORM_PUBLIC_UNKNOWN'],
+        'nbd' => Xphp::$_lang['UI_BACKUP_TRANSPORT_NBD'],
+        'nbdssl' => Xphp::$_lang['UI_BACKUP_TRANSPORT_NBDSSL'],
+        'san' => Xphp::$_lang['UI_BACKUP_TRANSPORT_SAN'],
+        'hotadd' => Xphp::$_lang['UI_BACKUP_TRANSPORT_HOTADD']
+    ),
+    //事件信息
+    'VolCdpEventDes' => array(
+        "VOL_CDP_LOG_DESC_KEY_MONITOR_APPLICATION_EVENT_LOG" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_MONITOR_APPLICATION_EVENT_LOG'],
+        "VOL_CDP_LOG_DESC_KEY_SETUP_EVENT_LOG" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SETUP_EVENT_LOG'],
+        "VOL_CDP_LOG_DESC_KEY_SYSTEM_EVENT_LOG" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SYSTEM_EVENT_LOG'],
+        "VOL_CDP_LOG_DESC_KEY_OS_INSTALL_SOFTWARE" => Xphp::$_lang['EB_VOL_CDP_LOG_DESC_KEY_OS_INSTALL_SOFTWARE'],
+        "VOL_CDP_LOG_DESC_KEY_OS_UNINSTALL_SOFTWARE" =>Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_OS_UNINSTALL_SOFTWARE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_OPERATION_OBJECTS" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_OPERATION_OBJECTS'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_OPERATION_OBJECTS" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_OPERATION_OBJECTS'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_TABLE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_TABLE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_MODIFY_TABLE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_MODIFY_TABLE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TABLE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TABLE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_DB" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_DB'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_DB" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_DB'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_TABLESPACE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_TABLESPACE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TABLESPACE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TABLESPACE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_DATAFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_DATAFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_DATAFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_DATAFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_TEMPFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DWEB_ESC_KEY_DB_APP_CREATE_TEMPFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TEMPFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TEMPFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TEMPFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_TEMPFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_LOGFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_CREATE_LOGFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_LOGFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DELETE_LOGFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_ADD_CONTROLFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_ADD_CONTROLFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_REMOVE_CONTROLFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_REMOVE_CONTROLFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_ADD_CONTROLFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_ADD_CONTROLFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_REMOVE_CONTROLFILE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_REMOVE_CONTROLFILE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_SHUTDOWN_INSTANCE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_SHUTDOWN_INSTANCE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_OPEN_INSTANCE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_OPEN_INSTANCE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_INSTANCE_FAULT" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_INSTANCE_FAULT'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_INSTANCE_STOPED" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_INSTANCE_STOPED'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DB_OFFLINE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DB_OFFLINE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DB_ONLINE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DB_ONLINE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DB_DETACH" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DB_DETACH'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_DB_START" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_DB_START'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_TABLESPACE_OFFLINE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_TABLESPACE_OFFLINE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_TABLESPACE_ONLINE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_TABLESPACE_ONLINE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_PHYSIC_CHANGE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_PHYSIC_CHANGE'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_LOGIC_CHANGE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_LOGIC_CHANG'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_AUTO_LABEL_POINT" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_MONITOR_AUTO_LABEL_POINT'],
+        "VOL_CDP_LOG_DESC_KEY_DB_APP_MANUAL_CREATE_LABEL_POINT" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_DB_APP_MANUAL_CREATE_LABEL_POINT'],
+        "VOL_CDP_LOG_DESC_KEY_AUTO_TAKEOVER_CONDITION_TRIGGER_WITHOUT_FLAG_ENABLE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_AUTO_TAKEOVER_CONDITION_TRIGGER_WITHOUT_FLAG_ENABLE'],
+
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_INSTALL" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_INSTALL'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_UNINSTALL" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_UNINSTALL'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_UPDATE" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SOFTWARE_UPDATE'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_BOOT" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_BOOT'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_SHUTDOWN" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_SHUTDOWN'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SERVICE_START" =>  Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SERVICE_START'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SERVICE_STOP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SERVICE_STOP'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_ADD_GROUP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_ADD_GROUP'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_ADD_USER" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_ADD_USER'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_DEL_GROUP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_DEL_GROUP'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_DEL_USER" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_DEL_USER'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_USER_CHAUTHTOK" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_USER_CHAUTHTOK'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_MAC_STATUS" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_MAC_STATUS'],
+        "VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_RUNLEVEL" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_LINUX_OS_SYSTEM_RUNLEVEL'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_SOFTWARE_UNINSTALL" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_SOFTWARE_UNINSTALL'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_SOFTWARE_INSTALL" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_SOFTWARE_INSTALL'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_ADD_USER" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_ADD_USER'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_REMOVE_USER" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_REMOVE_USER'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_ADD_IP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_ADD_IP'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_REMOVE_IP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_REMOVE_IP'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_SLEEP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_SLEEP'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_RECOVER_FROM_SEEP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_RECOVER_FROM_SEEP'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_BOOT" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_BOOT'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_SHUTDOWN" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_SHUTDOWN'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_UNEXPECTED_STOP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_UNEXPECTED_STOP'],
+        "VOL_CDP_LOG_DESC_KEY_WINDOWS_SERVICE_START" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_WINDOWS_SERVICE_START'],
+        "VOL_CDP_LOG_DESC_KEY_SQLSERVER_STATUS" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SQLSERVER_STATUS'],
+        "VOL_CDP_LOG_DESC_KEY_SQLSERVER_DB_START" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SQLSERVER_DB_START'],
+        "VOL_CDP_LOG_DESC_KEY_SQLSERVER_INSTANCE_START" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SQLSERVER_INSTANCE_START'],
+        "VOL_CDP_LOG_DESC_KEY_SQLSERVER_INSTANCE_STOP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_SQLSERVER_INSTANCE_STOP'],
+        "VOL_CDP_LOG_DESC_KEY_ORACEL_SHUTDOWN" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_ORACEL_SHUTDOWN'],
+        "VOL_CDP_LOG_DESC_KEY_ORACEL_COMPLETELY_STOP" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_ORACEL_COMPLETELY_STOP'],
+        "VOL_CDP_LOG_DESC_KEY_ORACE_START" => Xphp::$_lang['WEB_VOL_CDP_LOG_DESC_KEY_ORACE_START'],
+        
+    ),
+    //IO 复制模式0：unset, 1:sync, 2:async
+    'IoReplicationMode' => array(
+        Xphp::$_lang['WEB_DRILLS_NOT_CONFIG'],
+        Xphp::$_lang['UI_VOL_CDP_SYN'],
+        Xphp::$_lang['UI_VOL_CDP_ASY'],
+    ),
+    //任务运行阶段
+    'TASK_RUNNING_STAGE' => array(
+        'UNKNOWN' => 0,  //unknown task status
+        'WAIT_EXEC' => 1,  //等待
+        'INIT_SYNC' => 20,  //初始化同步
+        'REALTIME_SYNC' => 21,  //备份实时同步
+        'WAIT_CONVERT_TO_REALTIME_SYNC' =>22, //等待切换至实时保护,所有操作和判断与实时同步一致
+        'SERVER_CONS_CHECK' => 40,  //服务端的数据一致性校验
+        'STANDBY_CONS_CHECK' => 41,  //备机的数据一致性校验
+        'REALTIME_CONSISTENCY_CHECK' => 42,  //实时数据校验
+        'IN_TAKEOVER' => 60,  //接管中
+        'IN_TAKEOVER_STARTING' => 61,  //接管启动中
+        'FAILBACK_INIT_SYNC' => 80,  //逆向初始同步
+        'FAILBACK_REALTIME_SYNC' => 81,  //逆向实时同步
+        'FAILBACK_IN_STARTING' => 82  //任务回切启动中
+    ), 
+    //任务是否配置备机/数据源是否来源于备机
+    'STANDBYCONF' => array(
+        "NOT_CONF" =>0,  //未配置
+        "CONFIGURED" =>1,  //配置备机
+    ),
+    //恢复数据来源
+    'RECOVERY_DATA_SOURCE' => array(
+        "UNKNOWN" =>0,
+        "BACKUP_SERVER" =>1,  // 恢复数据来源于备份服务器
+        "STANDBY" =>2  //恢复数据来源于备机
+    ),
+    //数据存储对象
+    'DATA_SOURCE' => array(
+        'UNKNOWN' =>0,  //未知类型
+        'BACKUP_SERVER' =>1,  //备份服务器
+        'STANDBY' =>2,  //备机
+        'BACKUP_SERVER_OR_STANDBY' =>3,  //备份服务器和备机均有存放
+    ),
+    //接管任务类型
+    'TAKEOVER_TYPE' => array(
+        "UNKNOWN" =>0,
+        'AUTO_TAKEOVER' =>1, //自动接管
+        "HAND_OVER" =>2, //手动接管
+    ),
+    //事件类型
+    'LOGTYPE' => array(
+        'UNKNOWN' => 0,
+        'SYSTEM' => 1,
+        'APP' => 2,
+    ),
+    //事件等级
+    'LOGLEVEL' => array(
+        'UNKNOWN' => 0,
+        'NORMAL' => 1,
+        'WARN' => 2,
+        'ERROR' => 3,
+    ),
+    
+    //备份集状态
+    'VOL_STORAGE_STATUS' => array(
+        'VOL_CDP_VOL_STORAGE_IN_UNKNOWN' =>0,  //未知状态： 该状态下不能被 接管 或 恢复，即不能被选择创建手动接管或恢复作业。
+        'VOL_CDP_VOL_STORAGE_IN_NEW' => 1,  //新建状态 :该状态下不能被 接管 或 恢复，即不能被选择创建手动接管或恢复作业。
+        'VOL_CDP_VOL_STORAGE_IN_INIT_SYNC' =>2,  //初始同步: 该状态下不能被 接管 或 恢复，即不能被选择创建手动接管或恢复作业。
+        'VOL_CDP_VOL_STORAGE_IN_REALTIME_SYNC' =>3,  //实时同步:如果当前关联的备份任务正在运行，该状态下可以被 接管，但不能被恢复, 如果当前关联的备份任务未运行，该状态下可以被 接管 或 恢复。
+        'VOL_CDP_VOL_STORAGE_IN_IMAGE_MERGE' =>4,  //镜像合并中 :如果当前关联的备份任务正在运行，该状态下不能被 接管 或 恢复，则不能即不能被选择创建手动接管或恢复作业。 如果当前关联的备份任务未运行，该状态下可以被 接管 或 恢复。
+    ),
+    
+    //时间集范围类型
+    'BACKUP_SET_INTERVAL_TYPE' => array(
+        'LAST_TEN_MIN' => 1,  //最近十分钟
+        'LAST_ONE_HOUR' => 2,  //最近一小时
+        'LAST_ONE_DAY' => 3,  //最近一天
+        'LAST_SEVEN_DAY' => 4,  //最近7天
+        'LAST_THIRTY_DAY' => 5,  //最近30天
+        'LAST_NINETY_DAY' => 6,  //最近90天
+        'CUSTOM' => 7,  //自定义
+    ),
+    //客户端数据存储类型
+    'BACKUP_AGENT_STORAGE_LOCATION' => array(
+        "UNKNOWN" => '0000',
+        "SERVER" => '0001',
+        "STANDBY" => '0010',
+        "BOTH" => '0011',
+    ),
+	//卷类型二进制定义
+    'VOL_TYPE' => array(
+        'BD_VOLUME_TYPE_UNKNOWN' => 0x0000,
+        'BD_BASIC_PARTITION' => 0x0001,
+        'BD_GPT_PARTITION' => 0x0002,
+        'BD_DYNAMIC_VOLUME' => 0x0004,
+        'BD_LVM_VOLUME' => 0x0008,
+        'BD_EFI_VOLUME' => 0x0010,			    //EFI system partition.
+        'BD_BOOT_VOLUME' => 0x0020,			//Bios boot partition.
+        'BD_SYSTEM_VOLUME' => 0x0040,			//Partitions for operating system load system data
+        'BD_WIN_RESERVE_VOLUME' => 0x0080,		//Windows
+        'BD_WIN_RECOVERY_VOLUME' => 0x0100,	//Windows
+        'BD_HIDDEN_VOLUME' => 0x0200,			//
+        'BD_PV_VOLUME' => 0x0400,
+        'BD_DMRAID_VOLUME' => 0x0800,
+        'BD_MPATH_VOLUME' => 0x1000,
+        'BD_EXTEND_VOLUME' => 0x2000,           //MBR extend partition.
+        'BD_LOGIC_VOLUME' => 0x4000,            //MBR logic partition.
+        'BD_REMOVABLE_VOLUME' => 0x8000,       //removable device
+        'BD_WIN_FIRMWARE_BOOT_VOLUME' => 0x10000,  //current windows real boot volume
+        'BD_SWAP_VOLUME' => 0x20000,    //Swap partition
+    ),
+    //卷实时备份任务备份模式
+    'VOL_CDP_BACKUP_MODE' => array(
+        "REAL_TIME_BACKUP" => 1,  //实时备份
+        "MASTER_AGENT_COPY" => 2,   //主备复制
+        "REAL_TIME_BACKUP_AND_COPY" =>3,  //实时备份+主备复制
+    ),
+    //内嵌应用场景
+	'EMD_VM_ROLE' => array(
+        "EMD_VM_ROLE_UNKNOW" => 0,
+		"EMD_VM_ROLE_DRILL" =>99,  //实时验证验证
+		"EMD_VM_ROLE_TAKEOVER" =>100,  //实时接管
+		"EMD_VM_ROLE_VIRTUAL_LAB" =>101,
+		"EMD_VM_ROLE_MANUAL_VERIFY" => 102,
+		"EMD_VM_ROLE_AUTOMATIC_VERIFY" =>103,
+    ),
+);
+?>

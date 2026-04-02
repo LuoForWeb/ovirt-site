@@ -1,0 +1,537 @@
+#clusterManager {
+    height: calc(100% - 22px);
+}
+
+#clusterManager .portlet-body {
+    padding: 20px;
+}
+
+/* 开始 - 未配置集群 */
+
+#clusterManager .not-config {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clusterManager .not-config__wrapper {
+    width: 823px;
+    height: 228px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 100px;
+}
+
+#clusterManager .not-config__wrapper .not-config__center {
+    width: 40px;
+    height: 100%;
+}
+
+#clusterManager .not-config__wrapper .not-config__right {
+    width: 433px;
+}
+
+/* 提示标题 */
+#clusterManager .not-config__wrapper .not-config__right span.title {
+    display: block;
+    color: #333;
+    font-size: 18px;
+    font-family: "Microsoft YaHei ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#clusterManager .not-config__wrapper .not-config__right ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* 提示信息 */
+#clusterManager .not-config__wrapper .not-config__right ol li {
+    color: #999;
+    font-size: 12px;
+    font-family: "Microsoft YaHei ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 2;
+}
+
+/* 配置集群按钮的图标 */
+#clusterManager .not-config__wrapper .not-config__right div.btn i {
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+}
+
+/* 结束 - 未配置集群 */
+
+/* 开始 - 已配置集群 */
+
+#clusterManager .has-config {
+    width: 100%;
+    height: 100%;
+    /* padding: 20px; */
+    display: none;
+}
+
+#clusterManager .has-config__wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+:root {
+    --cluster-config-left-width: 520px;
+    --cluster-operate-log-ul-height: 400px;
+}
+
+@media (max-width: 1440px) {
+    :root {
+        --cluster-config-left-width: 460px;
+    }
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --cluster-config-left-width: 400px;
+    }
+}
+
+@media (max-height: 900px) {
+    :root {
+        --cluster-operate-log-ul-height: 380px;
+    }
+}
+
+@media (max-height: 800px) {
+    :root {
+        --cluster-operate-log-ul-height: 300px;
+    }
+}
+
+#clusterManager .has-config__left {
+    width: calc(var(--cluster-config-left-width));
+    margin-right: 10px;
+}
+
+#clusterManager .has-config__right {
+    margin-left: 10px;
+    width: calc(100% - var(--cluster-config-left-width) - 20px);
+}
+
+#clusterManager .has-config .form-group {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+#clusterManager .has-config .control-label {
+    width: 70px;
+    text-align: right;
+    padding: 8px 0 0 0;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #666;
+    font-family: "Microsoft YaHei ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#clusterManager .has-config .control-item {
+    width: calc(var(--cluster-config-left-width) - 70px - 20px);
+    padding: 0;
+    margin-left: 10px;
+}
+
+#clusterManager .has-config .config-text {
+    display: inline-block;
+    width: 52px;
+    color: #333;
+    font-size: 14px;
+    font-family: "Microsoft YaHei ui", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-right: 5px;
+}
+
+#clusterServiceIp {
+    display: inline!important;
+}
+
+#clusterManager .has-config .config-item {
+    margin-right: 20px;
+}
+
+/* 按钮 */
+#changeConfig,
+#startCluster,
+#stopCluster,
+#switchMasterNode {
+    height: 34px;
+    display: inline-flex;
+    color: #fff;
+    background-color: #0FBF98;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 2px !important;
+    cursor: pointer;
+}
+#changeConfig[disabled],
+#startCluster[disabled],
+#stopCluster[disabled],
+#switchMasterNode[disabled] {
+    cursor: not-allowed;
+}
+
+#switchMasterNode {
+    width: 98px;
+}
+
+#changeConfig:hover,
+#startCluster:hover,
+#stopCluster:hover,
+#switchMasterNode:hover {
+    background-color: #0EB28E   ;
+}
+
+#clusterNodeSelect {
+    width: calc(var(--cluster-config-left-width) - 70px - 20px - 10px - 98px);
+    display: inline-block;
+}
+
+#clusterConfigBtn.disabled,
+#changeConfig.disabled,
+#startCluster.disabled,
+#stopCluster.disabled,
+#switchMasterNode.disabled,
+#clusterNodeSelect.disabled {
+    display: none!important;
+}
+
+#clusterOperateProgressDiv .control-item {
+    display: flex;
+    align-items: center;
+}
+
+#clusterOperateProgress {
+    width: calc(var(--cluster-config-left-width) - 70px - 20px - 10px - 98px);
+    display: inline-block;
+    border-radius: 5px!important;
+    background-color: #F6F6F6;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    height: 16px;
+    margin: 0;
+}
+
+#clusterOperateProgress .progress-bar {
+    line-height: 1.5;
+}
+
+#clusterManager .has-config .cluster-topological-div,
+#clusterManager .has-config .cluster-operate-log-div {
+    display: flex;
+    align-items: flex-start;
+}
+
+#clusterManager .has-config .cluster-operate-log-label {
+    font-size: 14px;
+}
+
+#clusterManager .has-config .cluster-topological__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* border: 1px #f0f0f0 solid; */
+    /*background-color: #F6F6F6;*/
+    border-left: 1px dashed #e0e0e0;
+}
+
+.cluster-operate-log__wrapper {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    border: 1px #f0f0f0 solid;
+    padding: 20px;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.cluster-operate-log--title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cluster-operate-log--content {
+    /*border: 1px #f0f0f0 solid;*/
+    width: 100%;
+}
+
+#clusterOperateLogUl {
+    width: var(--cluster-config-left-width);
+    padding: 0;
+    max-height: var(--cluster-operate-log-ul-height);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#clusterOperateLogUl .log-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    min-height: 24px;
+    line-height: 1.5;
+}
+
+#clusterOperateLogUl .log-item__left {
+    width: calc(var(--cluster-config-left-width) - 150px);
+    font-size: 12px;
+    color: #999999;
+    padding-left: 8px;
+    text-align: left;
+    /* overflow-x: hidden; */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+    overflow-wrap: anywhere;
+    word-break: break-all;
+}
+
+#clusterOperateLogUl .log-item__right {
+    width: 130px;
+    font-size: 12px;
+    color: #CCCCCC;
+    padding-right: 8px;
+    text-align: right;
+}
+
+/* 拓扑图 */
+#clusterTopological {
+    width: 100%;
+    /* height: 360px; */
+}
+
+.label {
+    width: 52px;
+    color: #7E8299;
+    background-color: #7e829933;
+    justify-content: center;
+}
+
+.label-success {
+    color: #50CD89;
+    background-color: #50CD8933;
+}
+
+.label-danger {
+    color: #F1416C;
+    background-color: #f1416c33;
+}
+
+.label-info {
+    color: #00A3FF;
+    background-color: #00A3FF33;
+}
+
+.label-warning {
+    color: #F19F00;
+    background-color: #FFF3DD;
+}
+
+/* 结束 - 已配置集群 */
+
+/* 开始 - 抽屉 */
+
+/* 抽屉大小 */
+#configClusterDrawer {
+    width: 900px;
+}
+
+#configClusterDrawer .drawer-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#configClusterDrawer .drawer-title {
+    margin: 0;
+    color: #333;
+    font-size: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+#configClusterDrawer .drawer-title .title {
+    font-size: 16px;
+    color: #333;
+    margin-left: 8px;
+}
+
+#configClusterDrawer .drawer-footer .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#configClusterDrawer .drawer-body .form-group {
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+#configClusterDrawer .drawer-body .form-group .drawer-item-label {
+    width: 120px;
+}
+
+#configClusterDrawer .drawer-body .form-group .drawer-item-content {
+    width: calc(100% - 160px);
+    margin: 0 20px;
+}
+
+#configClusterDrawer .drawer-body .form-group .drawer-item-content.spinner__wrapper {
+    width: 400px;
+    margin: 0 20px;
+}
+
+#configClusterDrawer .drawer-body .config-priority .config-priority__wrapper {
+    min-height: 200px;
+    max-height: 300px;
+    border: 1px solid #f0f0f0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#configNodePriority {
+    padding: 0 20px;
+}
+
+#configNodePriority .node-priority-item {
+    height: 34px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    padding: 0 10px;
+    margin: 20px 0;
+    cursor: move;
+}
+
+#configNodePriority .node-priority-item.current {
+    border: 1px solid #0FBF98;
+}
+
+#configNodePriority .node-priority-item.current .icon i {
+    color: #0FBF98;
+}
+
+#configNodePriority .node-priority-item.disabled {
+    color: #999;
+    cursor: not-allowed;
+    border: none;
+}
+
+#configNodePriority .node-priority-item.disabled .icon i {
+    color: #999;
+}
+
+/* 结束 - 抽屉 */
+
+/* 开始 - 表格 */
+
+.bootstrap-table .fixed-table-container .fixed-table-body {
+    height: auto;
+    max-height: 300px;
+}
+
+.bootstrap-table .fixed-table-container .table thead th .th-inner {
+    background-color: #F7F9FA;
+}
+
+/* 结束 - 表格 */
+
+/* 开始 - echarts */
+
+#clusterTopological .node-more {
+    width: 243px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 6px 16px;
+}
+
+#clusterTopological .node-more__header {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+#clusterTopological .node-more__header .text {
+    font-size: 14px;
+    color: #333;
+}
+
+#clusterTopological .node-more .node-list {
+    /*max-height: 300px;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+}
+
+#clusterTopological .node-more-item {
+    width: 211px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+#clusterTopological .node-more-item:last-child {
+    border: none;
+}
+
+#clusterTopological .node-more__left {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+#clusterTopological .node-more__left .hostname {
+    word-break: break-all;
+    word-wrap: normal;
+    white-space: normal;
+    font-size: 12px;
+    color: #333;
+}
+
+#clusterTopological .node-more__left .nicname {
+    word-break: break-all;
+    word-wrap: normal;
+    white-space: normal;
+    font-size: 12px;
+    color: #999;
+}
+
+#clusterTopological .node-more__left .offline-module {
+    word-break: break-all;
+    word-wrap: normal;
+    white-space: normal;
+    font-size: 12px;
+    color: #F19F00;
+}
+
+#clusterTopological .node-more__right {
+    position: relative;
+    top: 5px;
+}
+
+/* 结束 - echarts */
+
+/* 开始-确认框 */
+.modal-scrollable:has(> .bootbox.drawer-confirm-bootbox) {
+    z-index: 10054 !important;
+}
+
+.modal-scrollable:has(> .bootbox.drawer-confirm-bootbox) + .modal-backdrop.fade.in  {
+    z-index: 10053 !important;
+}
+/* 结束-确认框 */

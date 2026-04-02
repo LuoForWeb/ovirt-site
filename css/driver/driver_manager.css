@@ -1,0 +1,149 @@
+/* 开始-添加驱动 */
+
+#driverContent .table-container {
+    height: calc(100% - 40px);
+}
+
+#addDriverDrawer {
+    width: 600px;
+}
+
+#addDriverDrawer .drawer-header,
+#driverDetailDrawer .drawer-header {
+    padding: 16px 20px;
+}
+
+#addDriverDrawer .drawer-title,
+#driverDetailDrawer .drawer-title {
+    padding: 0;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0;
+}
+
+#addDriverDrawer .drawer-title .icon__wrapper,
+#addDriverDrawer .drawer-title .title,
+#addDriverDrawer .drawer-title .drawer-close,
+#driverDetailDrawer .drawer-title .icon__wrapper,
+#driverDetailDrawer .drawer-title .title,
+#driverDetailDrawer .drawer-title .drawer-close {
+    font-size: 16px;
+}
+
+#addDriverDrawer .drawer-title .icon,
+#driverDetailDrawer .drawer-title .icon {
+    margin-right: 8px;
+}
+
+#addDriverDrawer .drawer-body,
+#driverDetailDrawer .drawer-body {
+    padding: 20px;
+}
+
+#addDriverForm {
+    padding: 0 16px;
+}
+
+#addDriverForm .form-body {
+    padding: 0 12px;
+}
+
+#addDriverForm .alert.alert-danger {
+    margin: 0 0 24px 0;
+    padding: 16px;
+}
+
+#addDriverForm .form-group {
+    margin: 0 0 24px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#addDriverForm .drawer-item-label {
+    width: 84px;
+}
+
+#addDriverForm .drawer-item-content {
+    width: calc(100% - 84px);
+    padding-left: 20px;
+}
+
+#driverOsType .radio-group__item {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 0;
+}
+
+#addDriverDrawer .drawer-footer,
+#driverDetailDrawer .drawer-footer {
+    padding: 12px 20px;
+}
+
+#addDriverDrawer .drawer-footer .form-actions,
+#driverDetailDrawer .drawer-footer .form-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* 结束-添加驱动 */
+
+/* 开始-驱动详情 */
+
+#driverDetailDrawer {
+    width: 800px;
+}
+
+#driverDetailForm .detail-preview-div {
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #FAFAFA;
+    margin-bottom: 16px;
+}
+
+#driverDetailForm .detail-preview-div .row {
+    margin: 0;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item:last-child {
+    margin-bottom: 0;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item-label {
+    width: 100px;
+    height: 20px;
+    margin-right: 8px;
+    padding: 2px 0;
+    color: #999999;
+    text-align: left;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item-content {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    font-size: 0;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item-content .text {
+    font-size: 14px;
+    color: #333333;
+}
+
+#driverDetailForm .detail-preview-div .detail-preview__item-content .img {
+    margin-right: 8px;
+}
+
+#driverDetailForm .detail-table-div {
+    margin-bottom: 16px;
+}
+
+/* 结束-驱动详情 */

@@ -1,0 +1,86 @@
+/* 开始-页面布局 */
+#nodeNetworkPoolList {
+    height: 100%;
+}
+
+#nodeNetworkPoolList .table-container {
+    height: calc(100% - 46px);
+}
+
+#nodeNetworkPoolList .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#nodeNetworkPoolList .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#nodeNetworkPoolList .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+
+/* 结束-页面布局 */
+
+/* 开始-抽屉 */
+
+/* 开始-添加/修改网络资源池 */
+
+/* 抽屉大小 */
+#modifyNodeNetworkPoolDrawer {
+    width: 600px;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-title {
+    margin: 0;
+    color: #333;
+    font-size: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-title .title {
+    font-size: 16px;
+    color: #333;
+    margin-left: 8px;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-footer .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#modifyNodeNetworkPoolForm {
+    height: auto;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-body .form-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-body .form-group .drawer-item-label {
+    width: 120px;
+}
+
+#modifyNodeNetworkPoolDrawer .drawer-body .form-group .drawer-item-content {
+    width: calc(100% - 200px);
+    margin: 0 40px;
+}
+
+#nodeNetworkListTree {
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* 结束-添加/修改网络资源池 */
+
+/* 结束 - 抽屉 */

@@ -1,0 +1,48 @@
+/* 开始-页面布局 */
+#nodeList {
+    height: 100%;
+}
+
+#nodeList .table-container {
+    height: calc(100% - 100px);
+}
+
+#nodeList .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#nodeList .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#nodeList .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+/* 结束-页面布局 */
+
+#remotemodaldiv .modal-header,
+#setNodeCacheDiv .modal-header,
+#resourceLimitModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#remotemodaldiv .modal-header .modal-title,
+#setNodeCacheDiv .modal-header .modal-title,
+#resourceLimitModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#remotemodaldiv .modal-header .modal-title i,
+#setNodeCacheDiv .modal-header .modal-title i,
+#resourceLimitModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#remotemodaldiv .modal-header .modal-title .text,
+#setNodeCacheDiv .modal-header .modal-title .text,
+#resourceLimitModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}

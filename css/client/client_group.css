@@ -1,0 +1,37 @@
+/* 开始-样式调整 */
+#clientgroupdiv .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#clientgroupdiv .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 65px);
+}
+
+#clientgroupdiv .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%;
+}
+/* 结束-样式调整 */
+
+/* 弹窗 */
+#moveClientModal .modal-header,
+#groupModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#moveClientModal .modal-header .modal-title,
+#groupModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#moveClientModal .modal-header .modal-title i,
+#groupModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#moveClientModal .modal-header .modal-title .text,
+#groupModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}

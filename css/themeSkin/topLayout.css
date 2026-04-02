@@ -1,0 +1,9 @@
+.page-content-wrapper .page-content{
+    margin: 0 !important;
+}
+.page-sidebar-wrapper{
+    display: none;
+}
+.hor-menu.hor-menu-light{
+    display: block;
+}

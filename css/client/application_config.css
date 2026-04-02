@@ -1,0 +1,45 @@
+/* 开始-页面布局 */
+#appconfig .tab-content {
+    height: calc(100% - 20px);
+}
+
+#appconfig .table-container {
+    height: calc(100% - 50px);
+}
+
+#appconfig .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#appconfig .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#appconfig .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#appconfig .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+/* 结束-页面布局 */
+
+/* 模态弹窗优化 */
+#appModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#appModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#appModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#appModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}

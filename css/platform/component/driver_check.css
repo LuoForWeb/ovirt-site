@@ -1,0 +1,142 @@
+.driver-check__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 检测主机列表 */
+.driver-check-content__wrapper {
+    /* border: 1px solid #E6E6E6; */
+    /* padding: 12px; */
+    /* margin: 0 15px; */
+}
+
+.driver-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #E6E6E6;
+    padding: 12px;
+}
+
+/* 开始 - 单个主机样式 */
+
+.driver-check-list li.driver-check-item {
+    display: flex;
+    align-items: center;
+    padding: 11px 8px;
+}
+
+.driver-check-list li.driver-check-item:not(:last-of-type) {
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.driver-check-list li.driver-check-item .driver-check-item__name,
+.driver-check-list li.driver-check-item .driver-check-item__platform,
+.driver-check-list li.driver-check-item .driver-check-item__driver {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    /* height: 18px; */
+    line-height: 18px;
+    height: 24px;
+}
+
+.driver-check-list li.driver-check-item .driver-check-item__name {
+    padding-right: 4px;
+}
+
+.driver-check-list li.driver-check-item .driver-check-item__name .description {
+    font-size: 12px;
+    color: #a0a0a0;
+    display: inline-block;
+}
+
+.driver-check-list li.driver-check-item .driver-check-item__name .description a {
+    padding-left: 4px;
+    color: #00A3FF;
+}
+
+.driver-check-list li.driver-check-item span.text,
+.driver-check-list div.driver-check-result span.text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #7E8299;
+}
+
+.driver-check-list li.driver-check-item .driver-check-item__name span.text {
+    white-space: nowrap;
+}
+
+.driver-check-list li.driver-check-item span.text i.check-error {
+    color: #f1416c;
+    margin-right: 8px;
+}
+
+.driver-check-list li.driver-check-item span.text i.check-success {
+    color: #0fbf98;
+    margin-right: 8px;
+}
+
+.driver-check-list li.driver-check-item span.text button.link,
+.driver-check-list div.driver-check-result span.text button.link {
+    padding: 0;
+    position: relative;
+    top: -1px;
+}
+
+.driver-check-list div.driver-check-result {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    height: 42px;
+    background-color: #F5F5F5;
+    padding: 12px;
+}
+
+.driver-check-list div.driver-check-result .driver-check-result__name,
+.driver-check-list div.driver-check-result .driver-check-result__detail,
+.driver-check-list div.driver-check-result .driver-check-result__upload {
+    line-height: 18px;
+    padding: 0;
+    height: 18px;
+}
+
+.driver-check-list div.driver-check-result .driver-check-result__name {
+    padding-right: 4px;
+}
+
+.driver-check-list div.driver-check-result .driver-check-result__detail span.text {
+    color: #333;
+    white-space: nowrap;
+}
+
+.driver-check-list div.driver-check-result .driver-check-result__upload {
+    text-align: right;
+}
+
+.driver-check__wrapper .driver-config__label {
+    /* padding-right: 20px; */
+}
+
+.driver-check__wrapper .driverCheckBtnDiv .driver-config__content {
+    /* padding-left: 0; */
+}
+
+.driver-check-content__wrapper {
+    /* margin-left: 0; */
+}
+
+/* 模态 */
+/* 图标与文本对齐 */
+.driver-check-modal__wrapper .modal-header .modal-title .viconfont
+{
+    position: relative;
+    top: 1px;
+}

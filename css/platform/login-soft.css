@@ -1,0 +1,333 @@
+/***
+Login page
+***/
+/* logo page */
+.login {
+    background-color: #666 !important;
+    font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.login .logo {
+    margin: 120px auto 10px auto;
+    padding: 15px;
+    text-align: center;
+}
+
+.login .content {
+    padding: 1.66rem;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background: #fff;
+    box-shadow: 0 80px 150px 50px rgba(23, 88, 120, 0.50);
+    border-radius: 4px !important;
+    width: 43%;
+    height: 96.8%;
+}
+
+.login .content h3 {
+    color: #eee;
+}
+
+.login .content h4 {
+    color: #eee;
+}
+
+.login .content p,
+.login .content label {
+    color: #fff;
+}
+
+.login .content .login-form,
+.login .content .forget-form {
+    padding: 0px;
+    margin: 0px;
+}
+
+.login .content .form-control {
+    background-color: #fff;
+}
+
+
+.login .content .register-form {
+    display: none;
+}
+
+.login .content .form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.login .content .form-actions {
+    background-color: transparent;
+    clear: both;
+    border: 0px;
+    padding: 7px 30px 25px 30px;
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.login .content .form-actions .checkbox {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.login .content .forget-form .form-actions {
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+
+.login .content .register-form .form-actions {
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 0px;
+}
+
+.login .content .form-actions .checkbox {
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.login .content .form-actions .btn {
+    margin-top: 1px;
+    font-size: 16px;
+}
+
+.login .content .forget-password {
+    margin-top: 25px;
+}
+
+.login .content .create-account {
+    border-top: 1px dotted #eee;
+    padding-top: 10px;
+    margin-top: 15px;
+}
+
+.login .content .create-account a {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* select2 dropdowns */
+.login .content .select2-container i {
+    display: inline-block;
+    position: relative;
+    color: #ccc;
+    z-index: 1;
+    top: 1px;
+    margin: 4px 4px 0px -1px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login .form-group .has-error {
+    color: #FC4850 !important;
+}
+
+.login .content .has-error i {
+    color: #FC4850 !important;
+}
+
+.login .content .has-error .select2-container i {
+    color: #FC4850;
+}
+
+.login .content .select2-container a span {
+    font-size: 13px;
+}
+
+.login .content .select2-container a span img {
+    margin-left: 4px;
+}
+
+.login .product {
+    width: 42.5rem;
+    position: absolute;
+    left: 4rem;
+    top: 10.93rem;
+}
+
+.login .product .productName {
+    font-size: 2.83rem;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+}
+
+.login .product .productDes {
+    font-size: 1.33rem;
+    color: #ffffff;
+    opacity: 0.6;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.windows-ml {
+    margin-left: 35px !important;
+}
+
+.node-ml {
+    margin-left: 20px !important;
+}
+
+.xe-ml {
+    margin-left: 20px !important;
+}
+
+.xe-ml10 {
+    width: 130px;
+    margin-left: 10px !important;
+}
+
+.downloadback {
+    text-align: right;
+    padding: 20px 30px 0px 30px !important;
+}
+
+.pl10 {
+    padding-left: 10px !important;
+}
+
+.pl15 {
+    padding-left: 15px !important;
+}
+
+.pl20 {
+    padding-left: 20px !important;
+}
+
+.pl25 {
+    padding-left: 25px !important;
+}
+
+.pl30 {
+    padding-left: 30px !important;
+}
+
+/* footer copyright */
+.login .copyright {
+    padding: 10px;
+    color: #eee;
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 0;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px !important;
+
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+    font-size: 1rem !important;
+    padding-right: 0px !important;
+}
+
+.form-horizontal .form-group .form-control {
+    border-radius: 4px !important;
+    width: 292px;
+    height: 40px;
+    color: #223D65;
+    font-size: 1rem;
+}
+
+.has-error .form-control {
+    border-color: 1px solid #E22E00 !important;
+}
+
+@media (max-width: 480px) {
+    /***
+    Login page
+    ***/
+    .login .logo {
+        margin-top: 10px;
+    }
+
+    .login .content {
+        padding: 30px;
+        width: 222px;
+    }
+
+    .login .content h3 {
+        font-size: 22px;
+    }
+
+    .login .checkbox {
+        font-size: 13px;
+    }
+
+    .ml15 {
+        margin-left: 15px;
+    }
+}
+
+.login .form-group .has-error input {
+    border-color: #FC4850;
+}
+
+/*forget_pwd.php*/
+.focusIcon {
+    color: #00E2DB !important;
+}
+
+.focusInput {
+    border-color: #00E2D9 !important;
+}
+
+/*lock.css*/
+.display-none, .display-hide {
+    display: none;
+}
+
+@media (max-width: 1365px) {
+    .login .content {
+        width: 440px;
+    }
+
+    .login .product {
+        width: 36.5rem;
+        z-index: -1;
+    }
+}
+
+@media (max-width: 1366px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1367px) and (max-width: 1440px) {
+    html {
+        font-size: 12.5px;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1600px ) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1601px ) and (max-width: 1920px) {
+    html {
+        font-size: 16.8px;
+    }
+}
+
+@media (min-width: 1601px ) and (max-width: 1920px) {
+    html {
+        font-size: 16.8px;
+    }
+}

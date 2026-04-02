@@ -1,0 +1,35 @@
+<svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" transform="translate(13 12)" fill="white" fill-opacity="0.01"/>
+<path d="M13.5 20C13.5 15.8579 16.8579 12.5 21 12.5C25.1421 12.5 28.5 15.8579 28.5 20C28.5 24.1421 25.1421 27.5 21 27.5C16.8579 27.5 13.5 24.1421 13.5 20Z" fill="white" stroke="#D9D9D9"/>
+<rect width="16" height="16" transform="translate(35 12)" fill="white" fill-opacity="0.01"/>
+<circle cx="43" cy="20" r="8" fill="#ECF1FF"/>
+<path d="M35.5 20C35.5 15.8579 38.8579 12.5 43 12.5C47.1421 12.5 50.5 15.8579 50.5 20C50.5 24.1421 47.1421 27.5 43 27.5C38.8579 27.5 35.5 24.1421 35.5 20Z" fill="white" stroke="#28A7EF"/>
+<rect width="16" height="16" transform="translate(57 12)" fill="white" fill-opacity="0.01"/>
+<circle cx="65" cy="20" r="8" fill="#ECF1FF"/>
+<path d="M57.5 20C57.5 15.8579 60.8579 12.5 65 12.5C69.1421 12.5 72.5 15.8579 72.5 20C72.5 24.1421 69.1421 27.5 65 27.5C60.8579 27.5 57.5 24.1421 57.5 20Z" fill="white" stroke="#28A7EF"/>
+<rect x="61" y="16" width="8" height="8" rx="4" fill="#28A7EF"/>
+<g clip-path="url(#clip0_529_1773)">
+<rect width="16" height="16" transform="translate(79 12)" fill="white" fill-opacity="0.01"/>
+<path d="M79.5 20C79.5 15.8579 82.8579 12.5 87 12.5C91.1421 12.5 94.5 15.8579 94.5 20C94.5 24.1421 91.1421 27.5 87 27.5C82.8579 27.5 79.5 24.1421 79.5 20Z" fill="#F5F5F5" stroke="#D9D9D9"/>
+</g>
+<g clip-path="url(#clip1_529_1773)">
+<rect width="16" height="16" transform="translate(101 12)" fill="white" fill-opacity="0.01"/>
+<path d="M101.5 20C101.5 15.8579 104.858 12.5 109 12.5C113.142 12.5 116.5 15.8579 116.5 20C116.5 24.1421 113.142 27.5 109 27.5C104.858 27.5 101.5 24.1421 101.5 20Z" fill="#F5F5F5" stroke="#D9D9D9"/>
+<rect x="105" y="16" width="8" height="8" rx="4" fill="#CCCCCC"/>
+</g>
+<rect x="124.5" y="13.5" width="13" height="13" rx="1.5" stroke="#CCCCCC"/>
+<rect x="146.5" y="13.5" width="13" height="13" rx="1.5" fill="#EBEBEB" stroke="#CCCCCC"/>
+<rect x="168.5" y="13.5" width="13" height="13" rx="1.5" fill="#28A7EF" stroke="#28A7EF"/>
+<path d="M171.5 20L174 22.5L179 17.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="190" y="13" width="14" height="14" rx="2" fill="#E6E6E6"/>
+<rect x="212.5" y="13.5" width="13" height="13" rx="1.5" fill="#E6E6E6" stroke="#E6E6E6"/>
+<path d="M215.5 20L218 22.5L223 17.5" stroke="white" stroke-width="1.58" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<clipPath id="clip0_529_1773">
+<rect width="16" height="16" fill="white" transform="translate(79 12)"/>
+</clipPath>
+<clipPath id="clip1_529_1773">
+<rect width="16" height="16" fill="white" transform="translate(101 12)"/>
+</clipPath>
+</defs>
+</svg>

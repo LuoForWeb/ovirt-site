@@ -1,0 +1,92 @@
+#oracleRecoveryContentDrawer {
+    width: 800px;
+}
+
+#oracleRecoveryContentDrawer .drawer-header {
+    padding: 16px 20px;
+}
+
+#oracleRecoveryContentDrawer .drawer-header .drawer-title {
+    margin: 0;
+    height: 20px;
+}
+
+#oracleRecoveryContentDrawer .drawer-header .drawer-title .name {
+    position: relative;
+    top: -1px;
+    font-size: 16px;
+    color: #333;
+}
+
+#oracleRecoveryContentDrawer .drawer-body {
+    padding: 20px;
+}
+
+#oracleRecoveryContentDrawer .drawer-body .portlet-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+#oracleRecoveryContentDrawer .drawer-body .portlet-body .form-group .control-label {
+    text-align: right;
+}
+
+#oracle-recovery-content-tree,
+#pfile-content,
+#listener-content,
+#tnsnames-content,
+#sqlnet-content {
+    max-height: 300px;
+    overflow: auto;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+#historytable table.detailstable tbody td,
+#historyjobdiv table#history_table tbody.db-protected-table-detail td {
+    word-break: break-all;
+}
+
+#runningLogDetailDrawer,
+#historyErrorDetailDrawer {
+    width: 900px;
+}
+
+#runningLogDetailDrawer .drawer-header,
+#historyErrorDetailDrawer .drawer-header {
+    height: 52px;
+}
+
+#runningLogDetailDrawer .drawer-header .drawer-title,
+#historyErrorDetailDrawer .drawer-header .drawer-title {
+    height: 20px;
+    margin-top: 0;
+    color: #333;
+    font-size: 0;
+    line-height: 20px;
+}
+
+#runningLogDetailDrawer .drawer-header .drawer-title i,
+#historyErrorDetailDrawer .drawer-header .drawer-title i {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+#runningLogDetailDrawer .drawer-header .drawer-title span.text,
+#historyErrorDetailDrawer .drawer-header .drawer-title span.text {
+    font-size: 16px;
+}
+
+#runningLogDetailDrawer .drawer-body,
+#historyErrorDetailDrawer .drawer-body {
+    padding: 20px;
+}
+
+#runningLogDetailDrawer .drawer-body .portlet-body,
+#historyErrorDetailDrawer .drawer-body .portlet-body {
+    padding: 0!important;
+    overflow: auto;
+    height: 100%;
+}

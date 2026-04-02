@@ -1,0 +1,170 @@
+/* 调整客户端表格 */
+#clientlist div.table-scrollable {
+    min-height: 500px;
+}
+
+#clientmanagerdiv .client-manager-table-container {
+    height: calc(100% - 185px);
+}
+
+#clientmanagerdiv .client-manager-table-container .bootstrap-table {
+    height: 100%;
+}
+
+#clientmanagerdiv .client-manager-table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#clientmanagerdiv .client-manager-table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100% !important;
+}
+
+/* 代理升级 */
+#agentModal .modal-header,
+#advanceSearchModal .modal-header,
+#detailsModal .modal-header,
+#editModal .modal-header,
+#downloadModal .modal-header,
+#upgradeModal .modal-header,
+#installDriverModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#agentModal .modal-header .modal-title,
+#advanceSearchModal .modal-header .modal-title,
+#detailsModal .modal-header .modal-title,
+#editModal .modal-header .modal-title,
+#downloadModal .modal-header .modal-title,
+#upgradeModal .modal-header .modal-title,
+#installDriverModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#agentModal .modal-header .modal-title i,
+#advanceSearchModal .modal-header .modal-title i,
+#detailsModal .modal-header .modal-title i,
+#editModal .modal-header .modal-title i,
+#downloadModal .modal-header .modal-title i,
+#upgradeModal .modal-header .modal-title i,
+#installDriverModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#agentModal .modal-header .modal-title .text,
+#advanceSearchModal .modal-header .modal-title .text,
+#detailsModal .modal-header .modal-title .text,
+#editModal .modal-header .modal-title .text,
+#downloadModal .modal-header .modal-title .text,
+#upgradeModal .modal-header .modal-title .text,
+#installDriverModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+#upgradeModal .modal-body,
+#installDriverModal .modal-body {
+    padding: 0;
+}
+
+#upgradeModal .modal-body .portlet-body .tab-content,
+#installDriverModal .modal-body .portlet-body .tab-content {
+    padding: 20px;
+}
+
+#addModal .modal-header {
+    padding: 16px 20px 0 20px !important;
+    border: none;
+}
+
+#addModal .modal-header .portlet-title {
+    border-top: 0;
+    height: auto;
+    min-height: auto;
+    padding: 0;
+}
+
+/* 开始-抽屉样式调整 */
+#detailsDrawer {
+    width: 853px;
+}
+
+#detailsDrawer .drawer-header {
+    padding: 16px 20px;
+}
+
+#detailsDrawer .drawer-header .drawer-title {
+    margin: 0;
+    height: 20px;
+}
+
+#detailsDrawer .drawer-header .drawer-title .text {
+    position: relative;
+    top: -1px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+}
+
+#detailsDrawer .section-title {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#detailsDrawer .section-title .section-title__decoration {
+    margin-right: 8px;
+    height: 14px;
+}
+
+#detailsDrawer .section-title .section-title__name {
+    line-height: 22px;
+    font-size: 14px;
+    color: #333;
+}
+
+#detailsDrawer .section-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    margin: 0 0 20px;
+}
+
+#detailsDrawer .section-wrapper .section-item {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#detailsDrawer .section-wrapper .section-item:not(:first-child) {
+    margin-top: 12px;
+}
+
+#detailsDrawer .section-wrapper .section-item .name,
+#detailsDrawer .section-wrapper .section-item .value {
+    padding: 0;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+#detailsDrawer .section-wrapper .section-item .name {
+    color: #666;
+}
+
+#detailsDrawer .section-wrapper .section-item .value {
+    color: #333;
+}
+
+#detailsDrawer #networkTableWrapper {
+    height: auto;
+}
+
+#detailsDrawer #networkTableWrapper .fixed-table-body {
+    max-height: unset!important;
+    height: auto;
+}
+/* 结束-抽屉样式调整 */

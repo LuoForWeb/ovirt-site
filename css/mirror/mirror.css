@@ -1,0 +1,119 @@
+/* 开始-页面样式调整 */
+#clientmirrordiv {
+    height: 100%;
+}
+
+#clientmirrordiv .table-container {
+    height: calc(100% - 46px);
+}
+
+#clientmirrordiv .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#clientmirrordiv .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#clientmirrordiv .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+/* 结束-页面样式调整 */
+
+#drawer-add {
+    width: 700px;
+    overflow: hidden;
+}
+
+#drawer-add .drawer-header {
+    height: 52px;
+}
+
+#drawer-add .drawer-header .drawer-title {
+    height: 20px;
+    margin-top: 0;
+    color: #333;
+    font-size: 0;
+    line-height: 20px;
+}
+
+#drawer-add .drawer-header .drawer-title i {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+#drawer-add .drawer-header .drawer-title span.text {
+    font-size: 16px;
+}
+
+.add-body {
+    padding: 20px;
+    flex: 1;
+    overflow: auto;
+}
+.title-head {
+    display: flex;
+    align-items: center;
+}
+.head-point {
+    width: 4px;
+    height: 14px;
+    background: #0FBF98;
+    border-radius: 2px 2px 2px 2px !important;
+}
+.head-text {
+    font-family: Microsoft YaHei UI, Microsoft YaHei UI;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+    margin-left: 8px;
+}
+.system-setting {
+    width: 100%;
+    height: 312px;
+    padding-top: 20px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    background: #FAFAFA;
+    border-radius: 4px 4px 4px 4px !important;
+}
+.label-text {
+    text-align: right;
+}
+.detail-left {
+    display: flex;
+    align-items: center;
+}
+.marTop {
+    margin-top: 24px;
+}
+.select-with {
+    width: 400px;
+}
+.backup-setting {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding: 20px 0px;
+    background: #FAFAFA;
+    border-radius: 4px 4px 4px 4px !important;
+}
+
+#radio_group_3 .radio-group__item {
+    width: 108px;
+    height: 108px;
+}
+
+/* 弹窗样式调整 */
+.modal-backdrop.fade.in {
+    z-index: 10053!important;
+}
+
+.modal-scrollable {
+    z-index: 10054!important;
+}
+
+/* 网络配置组件微调 */
+#ipConfig_ipv4_form .networkConfigLabel,
+#ipConfig_ipv6_form .networkConfigLabel {
+    padding-left: 0;
+}

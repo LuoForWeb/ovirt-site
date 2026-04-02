@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 orch.svg 页-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.45428in" height="6.08548in"
+		viewBox="0 0 464.708 438.154" xml:space="preserve" color-interpolation-filters="sRGB" class="st13">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st2 {fill:#000000;font-family:微软雅黑;font-size:1.24999em}
+		.st3 {font-size:1em}
+		.st4 {stroke:#000000;stroke-dasharray:6,6;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st5 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}
+		.st6 {fill:#5b9bd5;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st7 {fill:#ffffff;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st8 {fill:#ffffff}
+		.st9 {fill:#ffffff;font-family:微软雅黑;font-size:1.24999em}
+		.st10 {fill:#ff3300;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st11 {stroke:#ffffff;stroke-linecap:butt;stroke-width:0.5}
+		.st12 {fill:#ffffff;stroke:#000000;stroke-dasharray:3.5,2.5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st13 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="连接线" v:index="0"/>
+		<g id="shape84-1" v:mID="84" v:groupContext="shape" transform="translate(230.765,-0.25)">
+			<title>工作表.84</title>
+			<desc>IP192.168.1.108 vIP: 192.168.3.108</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="93.4441" cy="414.604" width="186.89" height="47.1019"/>
+			<rect x="0" y="391.053" width="186.888" height="47.1019" class="st1"/>
+			<text x="29.75" y="407.85" class="st2" v:langID="2052"><v:paragraph v:spLine="-0.6" v:horizAlign="1"/><v:tabList/>IP：192.168.1.108<v:newlineChar/><v:newlineChar/><tspan
+						x="29.29" dy="1.2em" class="st3">vIP</tspan>: 192.168.3.108</text>		</g>
+		<g id="shape99-5" v:mID="99" v:groupContext="shape" transform="translate(202.639,-188.809)">
+			<title>工作表.99</title>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<rect x="0" y="422.96" width="166.115" height="15.1942" class="st1"/>
+		</g>
+		<g id="shape100-7" v:mID="100" v:groupContext="shape" transform="translate(354.581,-268.991)">
+			<title>工作表.100</title>
+			<desc>隔离网络</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="54.9389" cy="423.772" width="109.88" height="28.7651"/>
+			<rect x="0" y="409.389" width="109.878" height="28.7651" class="st1"/>
+			<text x="24.94" y="427.52" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>隔离网络</text>		</g>
+		<g id="shape102-10" v:mID="102" v:groupContext="shape" transform="translate(187.028,-245.486)">
+			<title>工作表.102</title>
+			<desc>eth1</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="41.0242" cy="426.507" width="82.05" height="23.2948"/>
+			<rect x="0" y="414.86" width="82.0485" height="23.2948" class="st1"/>
+			<text x="24.96" y="430.26" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>eth1</text>		</g>
+		<g id="shape108-13" v:mID="108" v:groupContext="shape" transform="translate(2.05202,-3.17668)">
+			<title>工作表.108</title>
+			<desc>192.168.1.162</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="104.266" cy="416.067" width="208.54" height="44.1752"/>
+			<rect x="0" y="393.979" width="208.531" height="44.1752" class="st1"/>
+			<text x="4" y="419.82" class="st2" v:langID="2052"><v:paragraph v:spLine="-1"/><v:tabList/>192.168.1.162</text>		</g>
+		<g id="shape112-16" v:mID="112" v:groupContext="shape" transform="translate(185.994,-185.244)">
+			<title>工作表.112</title>
+			<desc>eth0</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="41.0242" cy="426.507" width="82.05" height="23.2948"/>
+			<rect x="0" y="414.86" width="82.0485" height="23.2948" class="st1"/>
+			<text x="24.96" y="430.26" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>eth0</text>		</g>
+		<g id="shape113-19" v:mID="113" v:groupContext="shape" transform="translate(342.162,-71.8274)">
+			<title>工作表.113</title>
+			<desc>备份服务器</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="54.9389" cy="422.061" width="109.88" height="32.1873"/>
+			<rect x="0" y="405.967" width="109.878" height="32.1873" class="st1"/>
+			<text x="17.44" y="425.81" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>备份服务器</text>		</g>
+		<g id="shape114-22" v:mID="114" v:groupContext="shape" transform="translate(60.451,-211.632)">
+			<title>工作表.114</title>
+			<desc>代理网关</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="54.9389" cy="422.061" width="109.88" height="32.1873"/>
+			<rect x="0" y="405.967" width="109.878" height="32.1873" class="st1"/>
+			<text x="24.94" y="425.81" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>代理网关</text>		</g>
+		<g id="shape121-25" v:mID="121" v:groupContext="shape" transform="translate(0.25,-393.729)">
+			<title>工作表.121</title>
+			<desc>192.168.1.162</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="63.7795" cy="416.067" width="127.56" height="44.1752"/>
+			<rect x="0" y="393.979" width="127.559" height="44.1752" class="st1"/>
+			<text x="4" y="419.82" class="st2" v:langID="2052"><v:paragraph v:spLine="-1"/><v:tabList/>192.168.1.162</text>		</g>
+		<g id="shape129-28" v:mID="129" v:groupContext="shape" v:layerMember="0" transform="translate(5.91929,-275.697)">
+			<title>动态连接线</title>
+			<path d="M0 431.07 L357.73 431.07" class="st4"/>
+		</g>
+		<g id="shape130-31" v:mID="130" v:groupContext="shape" v:layerMember="0" transform="translate(5.91929,-171.949)">
+			<title>动态连接线.130</title>
+			<path d="M0 431.07 L357.73 431.07" class="st5"/>
+		</g>
+		<g id="shape131-34" v:mID="131" v:groupContext="shape" v:layerMember="0" transform="translate(36.7793,-178.857)">
+			<title>动态连接线.131</title>
+			<path d="M7.09 438.15 L7.09 524.66" class="st5"/>
+		</g>
+		<g id="shape132-37" v:mID="132" v:groupContext="shape" v:layerMember="0" transform="translate(310.643,-177.925)">
+			<title>动态连接线.132</title>
+			<path d="M7.09 438.15 L7.09 523.73" class="st5"/>
+		</g>
+		<g id="group85-40" transform="translate(276.705,-51.325)" v:mID="85" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="AssetNumber" v:lbl="资产号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="SerialNumber" v:lbl="序列号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Location" v:lbl="位置" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Building" v:lbl="构建" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Room" v:lbl="空间" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Manufacturer" v:lbl="制造商" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ProductNumber" v:lbl="产品编号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="PartNumber" v:lbl="部件号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ProductDescription" v:lbl="产品说明" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="NetworkName" v:lbl="网络名称" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="IPAddress" v:lbl="IP 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="SubnetMask" v:lbl="子网掩码" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="AdminInterface" v:lbl="管理接口" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="NumberofPorts" v:lbl="端口数目" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="CommunityString" v:lbl="团体字符串" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="NetworkDescription" v:lbl="网络说明" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="MACAddress" v:lbl="MAC 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="CPU" v:lbl="CPU" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Memory" v:lbl="内存" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="OperatingSystem" v:lbl="操作系统" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="HardDriveSize" v:lbl="硬盘容量" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Department" v:lbl="部门" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ShapeClass" v:lbl="ShapeClass" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(设备)"/>
+				<v:cp v:nameU="ShapeType" v:lbl="ShapeType" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(服务器)"/>
+				<v:cp v:nameU="BelongsTo" v:lbl="属于" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true" v:ask="false"
+						v:langID="2052" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShapeClass" v:prompt="" v:val="VT0(5):26"/>
+				<v:ud v:nameU="SolSH" v:prompt="" v:val="VT15({BF0433D9-CD73-4EB5-8390-8653BE590246}):41"/>
+				<v:ud v:nameU="visLegendShape" v:prompt="" v:val="VT0(2):26"/>
+			</v:userDefs>
+			<title>服务器.86</title>
+			<g id="shape86-41" v:mID="86" v:groupContext="shape" transform="translate(14.8352,0)">
+				<title>工作表.86</title>
+				<rect x="0" y="356.106" width="52.3781" height="82.0485" class="st6"/>
+			</g>
+			<g id="shape87-43" v:mID="87" v:groupContext="shape" transform="translate(53.9821,-35.0248)">
+				<title>工作表.87</title>
+				<ellipse cx="3.16625" cy="434.988" rx="3.16625" ry="3.16625" class="st7"/>
+			</g>
+			<g id="shape88-45" v:mID="88" v:groupContext="shape" transform="translate(34.768,-13.4494)">
+				<title>工作表.88</title>
+				<v:userDefs>
+					<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
+				</v:userDefs>
+				<path d="M-0 438.15 L25.55 438.15 L25.55 436.1 L-0 436.1 L-0 438.15 ZM-0 431.93 L25.55 431.93 L25.55 429.88 L-0 429.88
+							 L-0 431.93 ZM-0 425.71 L25.55 425.71 L25.55 423.66 L-0 423.66 L-0 425.71 Z" class="st8"/>
+			</g>
+		</g>
+		<g id="shape133-48" v:mID="133" v:groupContext="shape" v:layerMember="0" transform="translate(37.3484,-283.821)">
+			<title>动态连接线.133</title>
+			<path d="M6.64 438.15 L7.53 364.7" class="st4"/>
+		</g>
+		<g id="group134-51" transform="translate(3.85405,-316.249)" v:mID="134" v:groupContext="group">
+			<title>工作表.134</title>
+			<g id="group94-52" v:mID="94" v:groupContext="group">
+				<v:custProps>
+					<v:cp v:nameU="AssetNumber" v:lbl="资产号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="SerialNumber" v:lbl="序列号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Location" v:lbl="位置" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Building" v:lbl="构建" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Room" v:lbl="空间" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Manufacturer" v:lbl="制造商" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ProductNumber" v:lbl="产品编号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="PartNumber" v:lbl="部件号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ProductDescription" v:lbl="产品说明" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NetworkName" v:lbl="网络名称" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="IPAddress" v:lbl="IP 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="SubnetMask" v:lbl="子网掩码" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="AdminInterface" v:lbl="管理接口" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NumberofPorts" v:lbl="端口数目" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="CommunityString" v:lbl="团体字符串" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NetworkDescription" v:lbl="网络说明" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="MACAddress" v:lbl="MAC 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="CPU" v:lbl="CPU" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Memory" v:lbl="内存" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="OperatingSystem" v:lbl="操作系统" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="HardDriveSize" v:lbl="硬盘容量" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Department" v:lbl="部门" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ShapeClass" v:lbl="ShapeClass" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(设备)"/>
+					<v:cp v:nameU="ShapeType" v:lbl="ShapeType" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(服务器)"/>
+					<v:cp v:nameU="BelongsTo" v:lbl="属于" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+				</v:custProps>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+					<v:ud v:nameU="ShapeClass" v:prompt="" v:val="VT0(5):26"/>
+					<v:ud v:nameU="SolSH" v:prompt="" v:val="VT15({BF0433D9-CD73-4EB5-8390-8653BE590246}):41"/>
+					<v:ud v:nameU="visLegendShape" v:prompt="" v:val="VT0(2):26"/>
+				</v:userDefs>
+				<title>服务器.95</title>
+				<g id="shape95-53" v:mID="95" v:groupContext="shape" transform="translate(14.8352,0)">
+					<title>工作表.95</title>
+					<rect x="0" y="356.106" width="52.3781" height="82.0485" class="st6"/>
+				</g>
+				<g id="shape96-55" v:mID="96" v:groupContext="shape" transform="translate(53.9821,-35.0248)">
+					<title>工作表.96</title>
+					<ellipse cx="3.16625" cy="434.988" rx="3.16625" ry="3.16625" class="st6"/>
+				</g>
+				<g id="shape97-57" v:mID="97" v:groupContext="shape" transform="translate(34.768,-13.4494)">
+					<title>工作表.97</title>
+					<v:userDefs>
+						<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT0(1):26"/>
+						<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
+					</v:userDefs>
+					<path d="M-0 438.15 L25.55 438.15 L25.55 436.1 L-0 436.1 L-0 438.15 ZM-0 431.93 L25.55 431.93 L25.55 429.88 L-0
+								 429.88 L-0 431.93 ZM-0 425.71 L25.55 425.71 L25.55 423.66 L-0 423.66 L-0 425.71 Z" class="st8"/>
+				</g>
+			</g>
+			<g id="shape115-60" v:mID="115" v:groupContext="shape" transform="translate(7.99361E-015,-40.4846)">
+				<title>工作表.115</title>
+				<desc>VM</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="41.0242" cy="423.772" width="82.05" height="28.7651"/>
+				<rect x="0" y="409.389" width="82.0485" height="28.7651" class="st1"/>
+				<text x="28.62" y="427.52" class="st9" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>VM</text>			</g>
+		</g>
+		<g id="shape135-63" v:mID="135" v:groupContext="shape" v:layerMember="0" transform="translate(193.32,-227.965)">
+			<title>动态连接线.135</title>
+			<path d="M7.09 438.15 L7.09 383.79" class="st4"/>
+		</g>
+		<g id="shape136-66" v:mID="136" v:groupContext="shape" v:layerMember="0" transform="translate(193.32,-227.965)">
+			<title>动态连接线.136</title>
+			<path d="M7.09 438.15 L7.09 485.24" class="st5"/>
+		</g>
+		<g id="group122-69" transform="translate(173.133,-205.878)" v:mID="122" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="AssetNumber" v:lbl="资产号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="SerialNumber" v:lbl="序列号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Location" v:lbl="位置" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Building" v:lbl="构建" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Room" v:lbl="空间" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false" v:ask="false"
+						v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="Manufacturer" v:lbl="制造商" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ProductNumber" v:lbl="产品编号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="PartNumber" v:lbl="部件号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+						v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ProductDescription" v:lbl="产品说明" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+						v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+				<v:cp v:nameU="ShapeClass" v:lbl="ShapeClass" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(设备)"/>
+				<v:cp v:nameU="ShapeType" v:lbl="ShapeType" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(设备)"/>
+				<v:cp v:nameU="SubShapeType" v:lbl="SubShapeType" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+						v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(防火墙)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShapeClass" v:prompt="" v:val="VT0(5):26"/>
+				<v:ud v:nameU="SolSH" v:prompt="" v:val="VT15({BF0433D9-CD73-4EB5-8390-8653BE590246}):41"/>
+				<v:ud v:nameU="visLegendShape" v:prompt="" v:val="VT0(2):26"/>
+			</v:userDefs>
+			<title>防火墙.122</title>
+			<g id="shape123-70" v:mID="123" v:groupContext="shape" transform="translate(0.419592,-4.76114)">
+				<title>工作表.123</title>
+				<rect x="0" y="403.502" width="53.7079" height="34.6529" class="st10"/>
+			</g>
+			<g id="shape124-72" v:mID="124" v:groupContext="shape" transform="translate(0.669592,-5.01114)">
+				<title>工作表.124</title>
+				<v:userDefs>
+					<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT0(1):26"/>
+					<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT5(#ff3300)"/>
+				</v:userDefs>
+				<path d="M0 433.28 L53.21 433.28" class="st11"/>
+				<path d="M0 428.4 L53.21 428.4" class="st11"/>
+				<path d="M0 423.52 L53.21 423.52" class="st11"/>
+				<path d="M0 418.64 L53.21 418.64" class="st11"/>
+				<path d="M0 413.76 L53.21 413.76" class="st11"/>
+				<path d="M0 408.88 L53.21 408.88" class="st11"/>
+				<path d="M13.3 438.15 L13.3 433.28" class="st11"/>
+				<path d="M26.6 438.15 L26.6 433.28" class="st11"/>
+				<path d="M39.91 438.15 L39.91 433.28" class="st11"/>
+				<path d="M6.65 433.28 L6.65 428.4" class="st11"/>
+				<path d="M19.95 433.28 L19.95 428.4" class="st11"/>
+				<path d="M33.25 433.28 L33.25 428.4" class="st11"/>
+				<path d="M46.56 433.28 L46.56 428.4" class="st11"/>
+				<path d="M13.3 428.4 L13.3 423.52" class="st11"/>
+				<path d="M26.6 428.4 L26.6 423.52" class="st11"/>
+				<path d="M39.91 428.4 L39.91 423.52" class="st11"/>
+				<path d="M6.65 423.52 L6.65 418.64" class="st11"/>
+				<path d="M19.95 423.52 L19.95 418.64" class="st11"/>
+				<path d="M33.25 423.52 L33.25 418.64" class="st11"/>
+				<path d="M46.56 423.52 L46.56 418.64" class="st11"/>
+				<path d="M13.3 418.64 L13.3 413.76" class="st11"/>
+				<path d="M26.6 418.64 L26.6 413.76" class="st11"/>
+				<path d="M39.91 418.64 L39.91 413.76" class="st11"/>
+				<path d="M6.65 413.76 L6.65 408.88" class="st11"/>
+				<path d="M19.95 413.76 L19.95 408.88" class="st11"/>
+				<path d="M33.25 413.76 L33.25 408.88" class="st11"/>
+				<path d="M46.56 413.76 L46.56 408.88" class="st11"/>
+				<path d="M13.3 408.88 L13.3 404" class="st11"/>
+				<path d="M26.6 408.88 L26.6 404" class="st11"/>
+				<path d="M39.91 408.88 L39.91 404" class="st11"/>
+			</g>
+		</g>
+		<g id="shape137-104" v:mID="137" v:groupContext="shape" transform="translate(354.581,-163.9)">
+			<title>工作表.137</title>
+			<desc>生产网络</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="54.9389" cy="423.772" width="109.88" height="28.7651"/>
+			<rect x="0" y="409.389" width="109.878" height="28.7651" class="st1"/>
+			<text x="24.94" y="427.52" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>生产网络</text>		</g>
+		<g id="group139-107" transform="translate(2.84168,-51.325)" v:mID="139" v:groupContext="group">
+			<title>工作表.139</title>
+			<g id="group104-108" v:mID="104" v:groupContext="group">
+				<v:custProps>
+					<v:cp v:nameU="AssetNumber" v:lbl="资产号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="SerialNumber" v:lbl="序列号" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Location" v:lbl="位置" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Building" v:lbl="构建" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Room" v:lbl="空间" v:prompt="" v:type="0" v:format="" v:sortKey="Asset" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Manufacturer" v:lbl="制造商" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ProductNumber" v:lbl="产品编号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="PartNumber" v:lbl="部件号" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ProductDescription" v:lbl="产品说明" v:prompt="" v:type="0" v:format="" v:sortKey="Equipment"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NetworkName" v:lbl="网络名称" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="IPAddress" v:lbl="IP 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="SubnetMask" v:lbl="子网掩码" v:prompt="" v:type="0" v:format="" v:sortKey="Network" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="AdminInterface" v:lbl="管理接口" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NumberofPorts" v:lbl="端口数目" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="CommunityString" v:lbl="团体字符串" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="NetworkDescription" v:lbl="网络说明" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="MACAddress" v:lbl="MAC 地址" v:prompt="" v:type="0" v:format="" v:sortKey="Network"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="CPU" v:lbl="CPU" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Memory" v:lbl="内存" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="OperatingSystem" v:lbl="操作系统" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="HardDriveSize" v:lbl="硬盘容量" v:prompt="" v:type="0" v:format="" v:sortKey="Workstation"
+							v:invis="false" v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="Department" v:lbl="部门" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+					<v:cp v:nameU="ShapeClass" v:lbl="ShapeClass" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(设备)"/>
+					<v:cp v:nameU="ShapeType" v:lbl="ShapeType" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0" v:val="VT4(服务器)"/>
+					<v:cp v:nameU="BelongsTo" v:lbl="属于" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="true"
+							v:ask="false" v:langID="2052" v:cal="0"/>
+				</v:custProps>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+					<v:ud v:nameU="ShapeClass" v:prompt="" v:val="VT0(5):26"/>
+					<v:ud v:nameU="SolSH" v:prompt="" v:val="VT15({BF0433D9-CD73-4EB5-8390-8653BE590246}):41"/>
+					<v:ud v:nameU="visLegendShape" v:prompt="" v:val="VT0(2):26"/>
+				</v:userDefs>
+				<title>服务器.114</title>
+				<g id="shape105-109" v:mID="105" v:groupContext="shape" transform="translate(14.8352,0)">
+					<title>工作表.105</title>
+					<rect x="0" y="356.106" width="52.3781" height="82.0485" class="st6"/>
+				</g>
+				<g id="shape106-111" v:mID="106" v:groupContext="shape" transform="translate(53.9821,-35.0248)">
+					<title>工作表.106</title>
+					<ellipse cx="3.16625" cy="434.988" rx="3.16625" ry="3.16625" class="st6"/>
+				</g>
+				<g id="shape107-113" v:mID="107" v:groupContext="shape" transform="translate(34.768,-13.4494)">
+					<title>工作表.107</title>
+					<v:userDefs>
+						<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT0(1):26"/>
+						<v:ud v:nameU="SurroundingRegionColor" v:prompt="" v:val="VT5(#5b9bd5)"/>
+					</v:userDefs>
+					<path d="M-0 438.15 L25.55 438.15 L25.55 436.1 L-0 436.1 L-0 438.15 ZM-0 431.93 L25.55 431.93 L25.55 429.88 L-0
+								 429.88 L-0 431.93 ZM-0 425.71 L25.55 425.71 L25.55 423.66 L-0 423.66 L-0 425.71 Z" class="st8"/>
+				</g>
+			</g>
+			<g id="shape116-116" v:mID="116" v:groupContext="shape" transform="translate(2.02475,-39.2926)">
+				<title>工作表.116</title>
+				<desc>VM</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="41.0242" cy="423.772" width="82.05" height="28.7651"/>
+				<rect x="0" y="409.389" width="82.0485" height="28.7651" class="st1"/>
+				<text x="28.62" y="427.52" class="st9" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>VM</text>			</g>
+		</g>
+		<g id="shape155-119" v:mID="155" v:groupContext="shape" transform="translate(241.195,-189.363)">
+			<title>工作表.155</title>
+			<desc>192.168.3.163</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="63.7795" cy="430.557" width="127.56" height="15.1942"/>
+			<rect x="0" y="422.96" width="127.559" height="15.1942" class="st1"/>
+			<text x="14.38" y="434.31" class="st2" v:langID="2052"><v:paragraph v:spLine="-1" v:horizAlign="1"/><v:tabList/>192.168.3.163</text>		</g>
+		<g id="group158-122" transform="translate(152.612,-316.249)" v:mID="158" v:groupContext="group">
+			<title>工作表.158</title>
+			<g id="shape153-123" v:mID="153" v:groupContext="shape">
+				<title>矩形</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<path d="M0 438.15 L292.04 438.15 L292.04 323.63 L0 323.63 L0 438.15 Z" class="st12"/>
+			</g>
+			<g id="group152-125" transform="translate(9.58122,-26.3312)" v:mID="152" v:groupContext="group">
+				<title>工作表.152</title>
+				<g id="group148-126" v:mID="148" v:groupContext="group">
+					<title>工作表.148</title>
+					<g id="shape98-127" v:mID="98" v:groupContext="shape" transform="translate(0,-34.3276)">
+						<title>工作表.98</title>
+						<desc>原生产网段</desc>
+						<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+						<v:textRect cx="62.8906" cy="414.604" width="125.79" height="47.1019"/>
+						<rect x="0" y="391.053" width="125.781" height="47.1019" class="st1"/>
+						<text x="25.39" y="418.73" class="st2" v:langID="2052"><v:paragraph v:spLine="-1.1" v:horizAlign="1"/><v:tabList/>原生产网段</text>					</g>
+					<g id="shape145-130" v:mID="145" v:groupContext="shape">
+						<title>工作表.145</title>
+						<desc>192.168.1.0</desc>
+						<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+						<v:textRect cx="62.8906" cy="414.604" width="125.79" height="47.1019"/>
+						<rect x="0" y="391.053" width="125.781" height="47.1019" class="st1"/>
+						<text x="22.29" y="418.73" class="st2" v:langID="2052"><v:paragraph v:spLine="-1.1" v:horizAlign="1"/><v:tabList/>192.168.1.0</text>					</g>
+				</g>
+				<g id="group149-133" transform="translate(147.1,0)" v:mID="149" v:groupContext="group">
+					<title>工作表.149</title>
+					<g id="shape150-134" v:mID="150" v:groupContext="shape" transform="translate(0,-34.3276)">
+						<title>工作表.150</title>
+						<desc>隔离网络</desc>
+						<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+						<v:textRect cx="62.8906" cy="414.604" width="125.79" height="47.1019"/>
+						<rect x="0" y="391.053" width="125.781" height="47.1019" class="st1"/>
+						<text x="32.89" y="418.73" class="st2" v:langID="2052"><v:paragraph v:spLine="-1.1" v:horizAlign="1"/><v:tabList/>隔离网络</text>					</g>
+					<g id="shape151-137" v:mID="151" v:groupContext="shape">
+						<title>工作表.151</title>
+						<desc>192.168.2.0</desc>
+						<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+						<v:textRect cx="62.8906" cy="414.604" width="125.79" height="47.1019"/>
+						<rect x="0" y="391.053" width="125.781" height="47.1019" class="st1"/>
+						<text x="22.29" y="418.73" class="st2" v:langID="2052"><v:paragraph v:spLine="-1.1" v:horizAlign="1"/><v:tabList/>192.168.2.0</text>					</g>
+				</g>
+			</g>
+			<g id="shape156-140" v:mID="156" v:groupContext="shape" transform="translate(16.2246,-0.355403)">
+				<title>工作表.156</title>
+				<desc>255.255.255.0</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="73.0108" cy="416.067" width="146.03" height="44.1752"/>
+				<rect x="0" y="393.979" width="146.022" height="44.1752" class="st1"/>
+				<text x="4" y="419.82" class="st2" v:langID="2052"><v:paragraph v:spLine="-1"/><v:tabList/>255.255.255.0</text>			</g>
+			<g id="shape157-143" v:mID="157" v:groupContext="shape" transform="translate(162.246,-0.355403)">
+				<title>工作表.157</title>
+				<desc>255.255.255.0</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="73.0108" cy="416.067" width="146.03" height="44.1752"/>
+				<rect x="0" y="393.979" width="146.022" height="44.1752" class="st1"/>
+				<text x="4" y="419.82" class="st2" v:langID="2052"><v:paragraph v:spLine="-1"/><v:tabList/>255.255.255.0</text>			</g>
+		</g>
+	</g>
+</svg>

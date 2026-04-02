@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  client:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2025-10-10T16:55:54.329667359+08:00"
+    description: A Helm chart for Kubernetes Backup And Recovery Client/Agent
+    digest: f0ac7358d4a11ea93dc4afb6917c38ccea56f1687b43c6234f54e7218a6f0d88
+    name: client
+    type: application
+    urls:
+    - client-1.1.0.tgz
+    version: 1.1.0
+generated: "2025-10-10T16:55:54.328996642+08:00"

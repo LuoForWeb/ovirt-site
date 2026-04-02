@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+/* * {margin: 0;padding: 0;} */
+
+ .timeLine {margin: 60px auto 0;overflow: hidden;position: relative}
+ .timeLine li {background: url(/img/platform/update/back1.png) repeat-y 160px 0;padding-bottom: 30px;zoom: 1;display: flex;}
+ .timeLine li:after {content:" ";display: block;height: 0;clear: both;visibility: hidden;}
+/*         .timeLine li:last-child {background:none !important;} */
+ .timeLine li p {background:url(/img/platform/update/icon1.jpg) no-repeat 152px 0;display:inline-block;width:168px;font-size: 16px;text-align:right;padding-right:30px;color:#1296db;}
+ .timeLine li p span {display: block;color: #6fceff;font-size: 12px;}
+ .timeLine li .con {width: calc(100% - 230px);display:inline-block;padding-left: 30px;border-bottom: 1px #d6d6d6 solid;}
+ .timeLine li .con img{max-width: 100%;}
+
+ /* .on  */
+ .timeLine li.on{background: url(/img/platform/update/back2.png) repeat-y 179px 0;}
+ .timeLine li.on p {background:url(/img/platform/update/icon2.jpg) no-repeat 172px 0;color: #1db702;}
+ .timeLine li.on p span {color: #a8dda3;}
+
+ /* .on 下面的li  */
+ .timeLine li.on ~ li{background: url(/img/platform/update/back3.png) repeat-y 179px 0;}
+ .timeLine li.on ~ li p {background:url(/img/platform/update/icon1.jpg) no-repeat 172px 0;color: #c3c3c3;}
+ .timeLine li.on ~ li p span {color: #d0d0d0;}

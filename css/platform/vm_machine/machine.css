@@ -1,0 +1,103 @@
+#networkInfo .panel-body{
+    max-height: 425px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.network_card{
+    border: 1px solid #eee;
+    padding: 16px 0 0;
+    margin-bottom: 16px;
+    position: relative;
+}
+.network_card .del_card{
+    float: right;
+    margin-right: 12px;
+    cursor: pointer;
+    line-height: 28px;
+}
+
+.network_card .alert_card_del {
+    position: absolute;
+    display: none;
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    background: #FFF;
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.12);
+    right: -8px;
+    top: -65px;}
+.network_card .alert_card_btn_group{
+    cursor: pointer;
+    margin-top: 5px;
+}
+.network_card .alert_card_cacel {
+    float: right;
+    display: flex;
+    width: 43px;
+    height: 22px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: #EBEBEB;
+    }
+.network_card .alert_card_submit {
+    float: left;
+    display: flex;
+    width: 43px;
+    height: 22px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: #0FBF98;
+    color: #fff;margin-right: 5px;}
+.modal-network-footer{
+    height: 35px;
+    font-size: 14px;
+    color: #0FBF98;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 25px;
+    padding: 5px 20px 0;
+    border-top: 1px solid #F0F0F0;
+    background: #FFF;
+}
+.modal-network-footer .left_btn{
+    float: left;
+    cursor: pointer;
+}
+.modal-network-footer .right_btn{
+    float: right;
+    cursor: pointer;
+}
+.show_card_del {
+    position: relative;
+}
+.add_ipv4{
+    line-height: 34px;
+    cursor: pointer;
+}
+.add_ipv4_dns{
+    line-height: 34px;
+    cursor: pointer;
+}
+.add_ipv6{
+    line-height: 34px;
+    cursor: pointer;
+}
+.add_ipv6_dns{
+    line-height: 34px;
+    cursor: pointer;
+}
+.width-100{width: 100%;}
+.line-height12{line-height: 12px;}
+.padding-l-w{padding-left:0;width:14.5%}
+.relative {position: relative;}
+.width-cursor{cursor: pointer;}
+.display-none{display: none;}
+#vm_machine_modal .modal-body .vicon-ge_delete{font-size: 14px;}
+.vm-popovers{line-height: 30px;padding-left: 0;}
+.vm-popovers-padd-left{padding-left: 10px;}
+.vm-add-items{padding-left: 0;color: #00A3FF;}
+
+.marhin-left-160{margin-left: -160px;}

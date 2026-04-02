@@ -1,0 +1,260 @@
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.jump-to-span {
+    right: 158px;
+}
+
+#tage_data_div .ztree li span.button.center_docu{
+    background-position:0;
+}
+
+#tage_data_div .ztree li span.button.bottom_docu{
+    background-position:0;
+}
+
+#tage_data_div .ztree li ul.line{
+    background:0;
+}
+
+
+#recoverFileTree .first-level-node>.switch{
+    position: absolute;
+    right: 30px;
+    width: 212px;
+    height: 32px;
+    padding-left: 194px;
+}
+
+.overflowAuto {
+    overflow: unset !important;
+}
+
+#recoverFileTree .first-level-node > ul {
+    max-height: 372px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #FAFAFA !important;
+}
+#recoverFileTree .first-level-node > ul > li {
+    box-sizing: border-box;
+    padding: 5px 0; /* 控制间距 */
+    margin: 0;
+}
+
+#recoverFileTree {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    padding-right: 10px; /* 防止滚动条遮挡内容 */
+}
+
+#tage_data_div.ztree li{
+    padding: 2px;
+}
+
+/* --- 通用重置：移除 zTree switch 的背景图 --- */
+#tage_data_div .ztree li span.button.switch {
+    background-image: none !important; /* 移除默认背景图 */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 24px; /* 垂直居中 */
+    font-size: 16px;
+    display: inline-block;
+}
+
+/* --- 使用 ::before 伪元素插入箭头字符 --- */
+
+/* ---- 收起状态 (close) -> ▶ ---- */
+#tage_data_div .ztree li span.button.roots_close::before,
+#tage_data_div .ztree li span.button.root_close::before,
+#tage_data_div .ztree li span.button.center_close::before,
+#tage_data_div .ztree li span.button.bottom_close::before,
+#tage_data_div .ztree li span.button.noline_close::before {
+    content: "\e67c";
+    color: #666; /* 箭头颜色 */
+}
+
+/* ---- 展开状态 (open) -> ▼ ---- */
+#tage_data_div .ztree li span.button.roots_open::before,
+#tage_data_div .ztree li span.button.root_open::before,
+#tage_data_div .ztree li span.button.center_open::before,
+#tage_data_div .ztree li span.button.bottom_open::before,
+#tage_data_div .ztree li span.button.noline_open::before {
+    content: "\e7bc";
+    color: #666; /* 箭头颜色 */
+}
+
+/* 可选：微调箭头位置 */
+#tage_data_div .ztree li span.button.switch::before {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/** 各个模块的css 图标**/
+#tage_data_div .ztree-li-img-2_ico_open::before,.ztree-li-img-2_ico_close::before{
+    content: "\e7c2";
+    color: #0FBF98; /* 虚拟机 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#tage_data_div .ztree-li-img-3_ico_open::before,.ztree-li-img-3_ico_close::before{
+    content: "\e78f";
+    color: #0FBF98; /* 文件 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+#tage_data_div .ztree-li-img-4_ico_open::before,.ztree-li-img-4_ico_close::before{
+    content: "\e792";
+    color: #0FBF98; /* 数据库 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+#tage_data_div .ztree-li-img-5_ico_open::before,.ztree-li-img-5_ico_close::before{
+    content: "\e6c4";
+    color: #0FBF98; /* 操作系统 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+#tage_data_div .ztree-li-img-11_ico_open::before,.ztree-li-img-11_ico_close::before{
+    content: "\e6ac";
+    color: #0FBF98; /* NAS 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+#tage_data_div .ztree-li-img-14_ico_open::before,.ztree-li-img-14_ico_close::before{
+    content: "\e651";
+    color: #0FBF98; /* exchange 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+#tage_data_div .ztree-li-img-28_ico_open::before,.ztree-li-img-28_ico_close::before{
+    content: "\e843";
+    color: #0FBF98; /* 容器 图标颜色 */
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#export-type input[type="radio"] {
+    margin: 0;
+    margin-right: 8px;
+    outline: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50% !important;
+    border: solid 1px #999999;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+#export-type input[type="radio"]:checked,
+#export-type input[type="radio"]:active,
+#export-type input[type="radio"]:active:checked{
+    background-image: url('/img/platform/vinblue.svg') !important;
+    background-position: -57px -12px !important;
+    border: 0 !important;
+}
+
+#recoverFileTree.ztree li a {
+    height: 32px;
+}
+
+.ztree li span.button.chk {
+    margin-right: 10px;
+}
+
+.vinchin-wrapper .portlet-body {
+    padding: 0px !important;
+}
+
+.ztree li span {
+    font-size: 14px;
+}
+
+/* 一级节点的默认样式 */
+#tage_data_div .ztree .level0 {
+    background: transparent;
+    border: none;
+}
+
+/* 一级节点选中时：10% 透明度 */
+#tage_data_div .ztree .level0 .nodeSelected {
+    background-color: rgba(15, 191, 152, 0.05) !important; /* #0FBF98 + 10% */
+}
+
+/* 一级节点悬停时：5% 透明度 */
+#tage_data_div .ztree .level0 .nodeHover {
+    background-color: rgba(15, 191, 152, 0.05) !important; /* #0FBF98 + 5% */
+}
+
+/* 确保鼠标悬停时不会触发其他样式干扰 */
+#tage_data_div .ztree .level0:hover {
+    background-color: rgba(15, 191, 152, 0.05) !important;
+}
+/* 一级节点展开时高亮：覆盖整个 <li>（含复选框） */
+#tage_data_div .ztree .first-level-node.node-expanded-active {
+    background-color: rgba(15, 191, 152, 0.1) !important;
+}
+
+/* 悬停效果 */
+#tage_data_div .ztree .first-level-node:hover {
+    background-color: rgba(15, 191, 152, 0.05) !important;
+}
+
+#tage_data_div {
+    height: 100%;
+    margin-top: -20px;
+}
+
+#left-ztee {
+    height: calc(100% + 40px);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #F1F3F5;
+    padding-left: 0px;
+    padding-right: 20px;
+}
+
+#module_type {
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+
+
+#recoverFileTree {
+    display: none;
+}
+
+.col-md-9 {
+    height: calc(100% - 58px);
+    padding-left: 20px;
+    padding-right: 25px;
+}
+
+.col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#tape_monitor {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 16px !important;
+}
+
+#object_name {
+    margin-bottom: 5px;
+    padding-left: 30px;
+}
+
+
+
+
+

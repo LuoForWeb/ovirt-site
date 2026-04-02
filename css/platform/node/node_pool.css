@@ -1,0 +1,174 @@
+/* 开始-页面布局 */
+#nodePoolList {
+    height: 100%;
+}
+
+#nodePoolList .table-container {
+    height: calc(100% - 150px);
+}
+
+#nodePoolList .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#nodePoolList .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#nodePoolList .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+/* 结束-页面布局 */
+
+/* 开始-抽屉 */
+
+/* 开始-添加/修改计算资源池 */
+
+/* 抽屉大小 */
+#modifyNodePoolDrawer {
+    width: 600px;
+}
+
+#modifyNodePoolDrawer .drawer-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#modifyNodePoolDrawer .drawer-title {
+    margin: 0;
+    color: #333;
+    font-size: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+#modifyNodePoolDrawer .drawer-title .title {
+    font-size: 16px;
+    color: #333;
+    margin-left: 8px;
+}
+
+#modifyNodePoolDrawer .drawer-footer .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#modifyNodePoolForm {
+    height: auto;
+}
+
+#modifyNodePoolDrawer .drawer-body .form-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#modifyNodePoolDrawer .drawer-body .form-group .drawer-item-label {
+    width: 120px;
+}
+
+#modifyNodePoolDrawer .drawer-body .form-group .drawer-item-content {
+    width: calc(100% - 200px);
+    margin: 0 40px;
+}
+
+#nodeListTree {
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* 结束-添加/修改计算资源池 */
+
+/* 开始-计算资源池拓扑图 */
+
+/* 抽屉大小 */
+#nodePoolTopologicalDrawer {
+    width: 520px;
+}
+
+#nodePoolTopologicalDrawer .drawer-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#nodePoolTopologicalDrawer .drawer-title {
+    margin: 0;
+    color: #333;
+    font-size: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+#nodePoolTopologicalDrawer .drawer-title .title {
+    font-size: 16px;
+    color: #333;
+    margin-left: 8px;
+}
+
+#nodePoolTopologicalDrawer .drawer-footer .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+/* 拓朴图大小 */
+
+#nodePoolTopological {
+    height: 100%;
+}
+
+/* 结束-计算资源池拓扑图 */
+
+/* 结束-抽屉 */
+
+
+/* 开始 - echarts */
+
+#nodePoolTopological .node-more {
+    width: 223px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 6px 6px;
+}
+
+#nodePoolTopological .node-more__header {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+#nodePoolTopological .node-more__header .text {
+    font-size: 14px;
+    color: #333;
+}
+
+#nodePoolTopological .node-more .node-list {
+    /*max-height: 300px;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+}
+
+#nodePoolTopological .node-more-item {
+    width: 211px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px 0;
+    /*border-bottom: 1px dashed #f0f0f0;*/
+}
+
+#nodePoolTopological .node-more-item:last-child {
+    border: none;
+}
+
+#nodePoolTopological .node-more-item span {
+    word-break: break-all;
+    white-space: break-spaces;
+    font-size: 12px;
+    color: #333;
+}
+
+/* 结束 - echarts */

@@ -1,0 +1,655 @@
+/* 已选择的时间点列表 */
+.addIt-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 开始 - 步骤1样式 */
+/* 结束 - 步骤1样式 */
+
+/* 开始 - 步骤2样式 */
+#host_tree,
+#createNewInstanceHostTree {
+    max-height: 300px;
+    overflow: auto;
+}
+
+/* 结束 - 步骤2样式 */
+
+/* 开始 - 步骤3样式 */
+#dbrecovercontent  .form-horizontal .row-dbrecover {
+    height: 100%;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-bottom: 20px;
+}
+
+#dbrecovercontent  .form-horizontal .row-dbrecover .tabbable-custom {
+    height: 100%;
+}
+
+#dbrecovercontent  .form-horizontal .row-dbrecover .tab-content {
+    /*height: calc(100% - 45px);*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: auto;*/
+}
+
+/* 恢复配置 */
+#tab_recovery_config .logtimelabel {
+    padding-top: 3px;
+}
+
+#tab_recovery_config #logTimeDiv .input-group.date.form_datetime {
+    display: block;
+}
+
+#tab_recovery_config #logtime {
+    width: calc(100% - 70px);
+}
+
+/* 传输策略 */
+#tab_transfer #recoveryThreadDiv .input-group,
+#tab_transfer #mongodbRecoveryThreadDiv .input-group {
+    /*display: block;*/
+}
+
+#tab_transfer #recoveryThreadDiv #recoveryThreadNum,
+#tab_transfer #mongodbRecoveryThreadDiv #mongodbRecoveryThreadNum {
+    /*width: calc(100% - 80px);*/
+}
+
+/* 脚本配置 */
+#tab_script .scriptConfigLabel {
+    padding-top: 3px;
+}
+
+/* 安全策略 */
+#tab_safe_strategy .safeStrategyLabel {
+    padding-top: 2px;
+}
+
+/* 高级配置 */
+#tab_other #tab_advanced_database_config #parallelNumSpinner .input-group {
+    /*display: block;*/
+}
+
+#tab_other #tab_advanced_database_config #parallelNumSpinner #parallelNum {
+    /*width: calc(100% - 80px);*/
+}
+
+/* 结束 - 步骤3样式 */
+
+/* 还原归档日志 */
+#restoreArchivelogTime {
+    cursor: pointer;
+}
+
+.restoreArchivelogSCNDiv div.col-md-4 div {
+    display: flex;
+    align-items: center;
+}
+
+#restoreArchivelogSCN1, #restoreArchivelogSCN2 {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.multiDbConfigTableDiv {
+    overflow-y: auto;
+}
+
+.pfileConfigDiv label,
+.listenerConfigDiv label,
+.tnsnamesConfigDiv label,
+.sqlnetConfigDiv label {
+    /*text-align: left!important;*/
+}
+
+.sys-password-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+/* 步骤4-自定义配置文件 */
+.pfileShow, .listenerShow, .tnsnamesShow, .sqlnetShow {
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #eee;
+    padding: 15px;
+}
+
+#tab4 .form-control-static {
+    color: #333;
+}
+
+/* 显示策略弹窗 */
+#speedModeType {
+    width: 203px;
+}
+
+#rateDiv {
+    display: inline-flex;
+}
+
+#speedSpinnerNumInput {
+    text-align: left;
+}
+
+#unit {
+    width: 80px;
+    margin-left: 10px;
+    height: 33px;
+    text-align: center;
+    border: 1px solid #E6E6E6;
+}
+
+#rateDiv a.popovers {
+    display: block;
+    margin-top: 8px;
+}
+
+/* 自定义配置文件弹窗 */
+label[for="custom-config-modal__content"],
+label[for="custom-config-modal__path"],
+label[for="custom-config-modal__password"] {
+    text-align: left !important;
+}
+
+#custom-config-modal__content {
+    /*height: 400px;*/
+    /*overflow: auto;*/
+    resize: none;
+}
+
+/*---------------------开始-新实例配置---------------------*/
+.form-horizontal .control-label.createNewInstanceLabel {
+    padding-top: 3px;
+}
+
+.createNewInstanceConfigDiv .new-instance-config-item {
+    display: flex;
+    align-items: center;
+}
+
+.createNewInstanceConfigDiv .new-instance-config-item .new-instance-config-item__result-configured {
+    margin-left: 20px;
+    color: #50CD89;
+    cursor: pointer;
+}
+
+.createNewInstanceConfigDiv .new-instance-config-item .new-instance-config-item__result-unconfigured {
+    margin-left: 20px;
+    color: #F1416C;
+    cursor: pointer;
+}
+
+#spfileConfigWrapper .config-label {
+    word-break: break-all;
+}
+
+#spfileConfigWrapper .allow-delete .config-item__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+#spfileConfigWrapper .allow-delete .config-item {
+    display: flex;
+}
+
+#spfileConfigWrapper .config-item__wrapper input {
+    width: calc(100% - 42px);
+}
+
+#spfileConfigWrapper .add-config-value-group .addMoreConfigValue,
+#spfileConfigWrapper .add-config-group .addMoreConfig {
+    font-size: 0;
+    color: #00A3FF;
+    line-height: 14px;
+}
+
+#spfileConfigWrapper .add-config-value-group .addMoreConfigValue span,
+#spfileConfigWrapper .add-config-group .addMoreConfig span {
+    padding-left: 8px;
+    font-size: 14px;
+}
+
+#spfileConfigWrapper .allow-delete .config-item__wrapper .delete-icon__wrapper {
+    width: 34px;
+    height: 34px;
+    padding: 9px;
+    margin-left: 8px;
+    background-color: #fff;
+}
+
+#spfileConfigWrapper .allow-delete .config-item__wrapper .delete-icon__wrapper:hover,
+#spfileConfigWrapper .allow-delete .config-item__wrapper .delete-icon__wrapper:focus {
+    background-color: #F5F5F5;
+}
+
+#spfileConfigWrapper .allow-delete .config-item__wrapper .delete-icon__wrapper .delete-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    color: #333;
+}
+
+#spfileConfigWrapper .allow-delete .config-tips span {
+    color: #333;
+}
+
+#spfileConfigWrapper .allow-delete .config-tips span.error {
+    color: #F1416C;
+}
+
+#spfileConfigWrapper .allow-delete .config-tips span.success {
+    color: #50CD89;
+}
+
+#spfileConfigWrapper .new-config-group .config-label input {
+    text-align: right;
+}
+
+/*---------------------结束-新实例配置---------------------*/
+
+/* Oracle-恢复内容 */
+
+#oracleRecoveryContentBody .panel-body {
+    padding: 0;
+}
+
+#oracleRecoveryContent {
+    overflow: auto;
+    max-height: 400px;
+}
+
+#oracleRecoveryContent span.edit-config-file {
+    color: #0FBF98;
+    height: 13px;
+    display: inline-flex;
+}
+
+#oracleRecoveryContent span.edit-config-file:hover {
+    text-decoration: underline;
+}
+
+#oracleRecoveryContent span.edit-config-file span.text {
+    position: relative;
+    top: -5px;
+    height: 24px;
+    overflow: hidden;
+}
+
+#oracleRecoveryContent i.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+/* sys用户密码 */
+
+#oracleRecoveryContent span.sys-password-span {
+    height: 24px;
+    display: inline-flex;
+}
+
+#oracleRecoveryContent span.sys-password-span span.sys-password__wrapper {
+    height: 24px;
+    display: inline-flex;
+    position: relative;
+}
+
+#oracleRecoveryContent span.sys-password-span span.sys-password__wrapper input.form-control {
+    width: 150px;
+    height: 24px;
+    padding: 0 6px 2px 6px;
+}
+
+#oracleRecoveryContent span.sys-password-span span.sys-password__wrapper i.fa {
+    position: absolute;
+    top: 4px;
+    left: 130px;
+    color: #999;
+    cursor: pointer;
+}
+
+#oracleRecoveryContent span.sys-password-span span.sys-password__wrapper span.popovers {
+    position: absolute;
+    top: 0;
+    left: 160px;
+    width: 20px;
+    height: 20px;
+}
+
+#oracleRecoveryContent span.sys-password-span span.sys-password__wrapper span.popovers i.viconfont {
+    position: absolute;
+    top: 4px;
+    left: 0;
+}
+
+#oracleRecoveryContentShow {
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #eee;
+}
+
+.timer-recovery-newest-tips .alert.alert-danger {
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#timerRecoveryNewestTips {
+    word-break: break-all;
+    margin-left: 8px;
+}
+
+/* Oracle时间点选择 */
+/* TiDB时间点选择 */
+
+.oracleRecoveryTimeSelectWrapper,
+.tidbRecoveryTimeSelectWrapper,
+.oracleRestoreTimeSelectWrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E6E6E6;
+    padding: 20px;
+}
+
+.oracleRecoveryTimeSelectWrapper .select-item,
+.tidbRecoveryTimeSelectWrapper .select-item,
+.oracleRestoreTimeSelectWrapper .select-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.oracleRecoveryTimeSelectWrapper .select-item:not(:last-child),
+.tidbRecoveryTimeSelectWrapper .select-item:not(:last-child),
+.oracleRestoreTimeSelectWrapper .select-item:not(:last-child) {
+    margin-bottom: 23px;
+}
+
+
+.oracleRecoveryTimeSelectWrapper .select-item .minTime,
+.oracleRecoveryTimeSelectWrapper .select-item .maxTime,
+.tidbRecoveryTimeSelectWrapper .select-item .minTime,
+.tidbRecoveryTimeSelectWrapper .select-item .maxTime,
+.oracleRestoreTimeSelectWrapper .select-item .minTime,
+.oracleRestoreTimeSelectWrapper .select-item .maxTime {
+    padding: 3px 8px;
+    background-color: #EBEBEB;
+    color: #333333;
+    border-radius: 4px !important;
+}
+
+/* 组件滑块的偏移修正 */
+.oracleRecoveryTimeSelectWrapper .noUi-target.noUi-horizontal .noUi-handle,
+.tidbRecoveryTimeSelectWrapper .noUi-target.noUi-horizontal .noUi-handle,
+.oracleRestoreTimeSelectWrapper .noUi-target.noUi-horizontal .noUi-handle {
+    top: -6.5px;
+}
+
+/* 恢复时间 */
+#oracleRecoveryTimeShowBackWrapper {
+    display: flex;
+    align-items: center;
+    font-size: 0;
+}
+
+#oracleRecoveryTimeShowBack {
+    font-size: 0;
+    padding: 4px 8px;
+}
+
+#oracleRecoveryTimeShowBackText {
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+#oracleRecoveryTimeShowBackIcon {
+    font-size: 16px;
+}
+
+#oracleRecoveryTimeSelectPicker label[for="oracleRecoveryTimeSelectTime"],
+#tidbRecoveryTimeSelectPicker label[for="tidbRecoveryTimeSelectTime"] {
+    width: 80px;
+    text-align: left;
+}
+
+#oracleRecoveryTimeSelectPicker #oracleRecoveryTimeSelectTime,
+#tidbRecoveryTimeSelectPicker #tidbRecoveryTimeSelectTime {
+    width: calc(100% - 80px);
+}
+
+#oracleRecoveryTimeSelectPicker #oracleRecoveryTimeSelectTime {
+    /*width: calc(100% - 180px);*/
+}
+
+#oracleRecoveryTimeSelectPicker {
+    justify-content: flex-start;
+}
+
+#oracleRecoveryTimeSelectPicker #confirmOracleRecoveryTimeSelectTime {
+    /*margin-left: 20px;*/
+}
+
+/* 不可选择区间定义 */
+.nonsupportAreaWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -14px; 
+    display: inline-block;
+}
+
+.nonsupportArea {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #E4E4E6;
+}
+
+/* 游离点定义 */
+.singleAreaWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -32px; 
+    display: inline-block;
+}
+
+.singleArea {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: #F19F00;
+}
+
+/* 开始时间-结束时间定义 */
+#oracleRestoreTimeSelectStartPicker, #oracleRestoreTimeSelectEndPicker {
+    position: relative;
+    height: 34px;
+}
+
+.oracleRestoreTimeSelectWrapper #oracleRestoreTimeSelectStartTime,
+.oracleRestoreTimeSelectWrapper #oracleRestoreTimeSelectEndTime {
+    padding-left: 82px;
+}
+
+.oracleRestoreTimeSelectWrapper label[for="oracleRestoreTimeSelectStartTime"],
+.oracleRestoreTimeSelectWrapper label[for="oracleRestoreTimeSelectEndTime"] {
+    height: 34px;
+    padding-left: 12px;
+    line-height: 34px;
+    position: relative;
+    top: -34px;
+}
+
+/* oracle-导出树 */
+#oracleExportTree {
+    border: 1px solid #E0E0E0;
+    overflow: auto;
+}
+
+/* 安全策略 */
+#integrityCheck .htmlComplete {
+    width: 100%;
+}
+
+/* 开始-数据库批量恢复 */
+.multi-db-config-item {
+    margin-bottom: 20px;
+}
+
+.multi-db-config-item .sqlServerMultiDbConfig .panel-collapse .panel-body .form-group:last-child,
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.multi-db-config-item .sqlServerMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime,
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime {
+    display: block;
+    width: 100%;
+}
+
+.multi-db-config-item .sqlServerMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime input.rollbackTime,
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime input.rollbackTime {
+    width: calc(100% - 72px);
+}
+
+.multi-db-config-item .sqlServerMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime .input-group-btn,
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .input-group.date.form_datetime .input-group-btn {
+    width: 72px;
+}
+
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .form-group .sapHanaTimepointText {
+    display: block;
+    margin-top: 6px;
+}
+
+.multi-db-config-item .sapHanaMultiDbConfig .panel-collapse .panel-body .form-group .sapHanaTimepointText.storageOffline {
+    color: #999;
+}
+/* 结束-数据库批量恢复 */
+
+/* 开始-恢复来源 */
+#oracleRecoverySpecifyTaskTree,
+#oracleRecoveryBackupTimepointTree,
+#oracleRecoveryBackupTimepointShowTree,
+#oracleExportTree,
+#oracleExportShowTree {
+    max-height: 200px;
+    overflow: auto;
+}
+
+#oracleRecoveryBackupTimepointTree .oracleEncryptPasswordWrapper,
+#oracleExportTree .oracleEncryptPasswordWrapper{
+    position: relative;
+    display: inline-flex;
+    height: 23px;
+    align-items: center;
+}
+
+#oracleRecoveryBackupTimepointTree .oracleEncryptPasswordWrapper label,
+#oracleExportTree .oracleEncryptPasswordWrapper label {
+    height: 23px;
+    margin-right: 8px;
+    padding-top: 0;
+}
+
+#oracleRecoveryBackupTimepointTree .oracleEncryptPasswordWrapper input,
+#oracleExportTree .oracleEncryptPasswordWrapper input {
+    width: 200px;
+    height: 23px;
+    padding: 4px 8px;
+}
+/* 结束-恢复来源 */
+
+/* 开始-模态框样式修正 */
+#createNewInstanceConfigModal .modal-header,
+#oracleRecoveryTimeModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#createNewInstanceConfigModal .modal-header .modal-title,
+#oracleRecoveryTimeModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#createNewInstanceConfigModal .modal-header .modal-title i,
+#oracleRecoveryTimeModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#createNewInstanceConfigModal .modal-header .modal-title .text,
+#oracleRecoveryTimeModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}
+/* 结束-模态框样式修正 */
+
+/* 开始-下拉框修正 */
+
+.tidbRecoveryBackupSetDiv div.searchable-select {
+    width: 100%;
+}
+
+.tidbRecoveryBackupSetDiv div.searchable-select .searchable-select-caret {
+    top: 5px;
+    right: 5px;
+}
+
+.tidbRecoveryBackupSetDiv div.searchable-select .searchable-select-holder {
+    height: 34px;
+    padding: 6px 12px;
+    border: 1px solid #E6E6E6;
+    border-radius: 4px !important;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.tidbRecoveryBackupSetDiv div.searchable-select .searchable-select-dropdown div.searchable-select-items {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.tidbRecoveryBackupSetDiv div.searchable-select .searchable-select-dropdown div.searchable-select-items .searchable-select-item {
+    display: block;
+    white-space: nowrap;
+}
+
+/* 下面位于起草阶段，不能正式应用 */
+/*#tidbRecoveryBackupSet,*/
+/*.tidbRecoveryBackupSetDiv ::picker(select) {*/
+/*    appearance: base-select;  !* 修正下拉框样式 *!*/
+/*    top: calc(anchor(bottom) + 1px);  !* 设置向下拉开 *!*/
+/*    max-height: 300px;*/
+/*}*/
+
+/*#tidbRecoveryBackupSet::picker-icon {*/
+/*}*/
+
+/*#tidbRecoveryBackupSet:open::picker-icon {*/
+/*    rotate: 180deg;*/
+/*}*/
+
+/*#tidbRecoveryBackupSet option {*/
+/*    padding-left: 12px;*/
+/*}*/
+
+/*#tidbRecoveryBackupSet option:hover,*/
+/*#tidbRecoveryBackupSet option:focus {*/
+/*    background: #1967d2 !important;*/
+/*    color: #ffffff !important;*/
+/*}*/
+
+/*#tidbRecoveryBackupSet option::checkmark {*/
+/*    content: none;*/
+/*}*/
+/* 结束-下拉框修正 */

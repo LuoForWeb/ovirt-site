@@ -1,0 +1,114 @@
+.stop-item-block1{
+    margin-top: -5px;
+    margin-bottom: 4px;
+}
+.stop-item-block1-div{
+    display: inline;
+    line-height: 42px;
+}
+.stop-item-block1-div-1{
+    width: 35%;
+    display: inline-block;
+    min-width: 200px;
+}
+.stop-item-block1-div-1-1{
+    display: inline-block;
+    width: 20%;
+    min-width: 100px;
+}
+.stop-item-block1-div-2{
+    margin-left: 8px;
+    margin-right: -18px;
+    width: 30px;
+    display: inline-block;
+    font-family: Microsoft YaHei UI, Microsoft YaHei UI;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+.stop-item-block1-div-3{
+    display: inline-block;
+    width: 35%;
+    min-width: 200px;
+    margin-left: 30px;
+}
+.stop-item-block1-div-3-1{
+    display: inline-block;
+    width: 20%;
+    min-width: 100px;
+}
+.stop-item-block1-div-4{
+    margin-left: 8px;
+    font-family: Microsoft YaHei UI, Microsoft YaHei UI;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+.interval_time_item{
+    height: 34px;
+    line-height: 34px;
+    margin-top: 12px;
+}
+.interval_time_item-1{
+    width: 15%;
+    max-width: 120px;
+    min-width: 70px;
+    display: inline-block;
+}
+.interval_time_item-2{
+    display: inline-block;
+    width: 17%;
+    max-width: 120px;
+    min-width: 95px;
+    margin-bottom: -12px;
+}
+.interval_time_item-3{
+    width: 5%;
+    display: inline-block;
+    max-width: 120px;
+    text-align: center;
+    min-width: 68px;
+}
+.interval_time_item-4{
+    display: inline-block;
+    width: 15%;
+    max-width: 120px;
+    min-width: 70px;
+}
+.interval_time_item-5{
+    display: inline-block;
+    width: 15%;
+    max-width: 100px;
+    min-width: 78px;
+}
+.interval_time_item-2 .input-group{
+    /*display: inline-flex;*/
+}
+.task_time_del{
+    width: 34px;
+    height: 34px;
+    background: #F5F5F5;
+    margin-left: 8px;
+    border-radius: 4px !important;
+    border: none;
+}
+.task_time_del:hover{
+    background: #EBEBEB;
+}
+#addMoreTime{
+    font-family: Microsoft YaHei UI, Microsoft YaHei UI;
+    font-weight: 400;
+    font-size: 14px;
+    color: #0FBF98;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}

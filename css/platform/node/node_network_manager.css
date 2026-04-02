@@ -1,0 +1,42 @@
+#orderModal .modal-header,
+#addModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#orderModal .modal-header .modal-title,
+#addModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#orderModal .modal-header .modal-title i,
+#addModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#orderModal .modal-header .modal-title .text,
+#addModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+#nodeNetworkList {
+    height: 100%;
+}
+
+#nodeNetworkList .table-container {
+    height: calc(100% - 175px);
+}
+
+#nodeNetworkList .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#nodeNetworkList .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#nodeNetworkList .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}

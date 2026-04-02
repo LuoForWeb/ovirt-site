@@ -1,0 +1,106 @@
+
+.network-row{
+}
+#vm_machine_list {width: calc(50% - 10px);height: 480px;float: right;padding-right: 0px;margin-bottom: 20px;}
+#vm_machine_list .topHead{float:left;display: flex;
+    align-items: center;}
+#vm_machine_list .topHead .topPoint{width: 4px;
+    height: 12px;
+    background: #22BC7D;
+    border-radius: 1px 1px 1px 1px;}
+#vm_machine_list .topHead .topTitle{font-weight: 400;
+    font-size: 16px;
+    color: #2D3748;
+    margin-left: 5px;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;}
+#vm_machine_list .topHead2{float: right;
+    height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #979797;
+    line-height: 16px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;cursor: pointer;}
+#vm_machine_list .topHead2 i{height: 18px;line-height: 16px;margin-left: 4px;}
+#network_echars1 {height: 165px;
+    width: 400px;
+    margin: 40px 0 40px calc(50% - 230px);}
+#vm_node_list {width: calc(50% - 10px);height: 480px;float: left;margin-bottom: 20px;}
+#vm_node_list .topHead {float:left;display: flex;
+    align-items: center;}
+#vm_node_list .topHead .topPoint {width: 4px;
+    height: 12px;
+    background: #22BC7D;
+    border-radius: 1px 1px 1px 1px;}
+#vm_node_list .topHead .topTitle {font-weight: 400;
+    font-size: 16px;
+    color: #2D3748;
+    margin-left: 5px;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;}
+#quar-vm_list {float: right;
+    height: 18px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #979797;
+    line-height: 16px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;cursor: pointer;}
+#quar-vm_list i{line-height: 16px;    display: block;
+    float: right;
+    margin-top: 0px;margin-left: 4px;}
+#vm_node_list .item-echarts {height: 245px;width: 100%;margin: 0 auto;}
+#network_echars2{height: 180px;width: 200px;float:left;margin: 40px calc(25% - 135px) 0 calc(25% - 165px);}
+#network_echars3 {height: 180px;width:200px;float:left;margin: 40px auto 0 auto;}
+
+.leftTool .btn{background: #fff;}
+.adv_list span{
+    width: 170px;
+    display: block;
+    float: left;
+    overflow: hidden;
+}
+.del-parent-div{
+    margin-right: 20px;
+}
+#delete-vm_network {
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    height: 34px;
+    color: white;
+    background-color: #0FBF98;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.exch-forbid-event {
+    pointer-events: none;
+    background-color: #EBEBEB  !important;
+}
+#add-vm_network:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+#edit-vm_network:hover{background: rgba(15, 191, 152, 0.10);color: #1EB986}
+#vm_machine_list .pull-right .pagination {margin: 4px 50px 0 0 !important;}
+#vm_node_list .pull-right .pagination {margin: 4px 50px 0 0 !important;}
+
+#vm_network_list .topHead{float:left;display: flex;
+    align-items: center;margin-bottom: 20px;}
+#vm_network_list .topHead .topPoint{width: 4px;
+    height: 12px;
+    background: #22BC7D;
+    border-radius: 1px 1px 1px 1px;}
+#vm_network_list .topHead .topTitle{font-weight: 400;
+    font-size: 16px;
+    color: #2D3748;
+    margin-left: 5px;
+    line-height: 22px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;}
+

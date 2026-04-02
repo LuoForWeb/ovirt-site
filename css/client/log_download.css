@@ -1,0 +1,49 @@
+/* 开始-页面布局 */
+#log-download .tab-content {
+    height: calc(100% - 20px);
+}
+
+#log-download .table-container {
+    height: calc(100% - 50px);
+}
+
+#log-download .table-container .bootstrap-table {
+    height: 100%;
+}
+
+#log-download .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#log-download .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 54px);
+}
+
+#log-download .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100%!important;
+}
+/* 结束-页面布局 */
+
+/* 高级搜索弹窗 */
+#advanceSearchModal .modal-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#advanceSearchModal .modal-header .modal-title {
+    font-size: 0;
+}
+
+#advanceSearchModal .modal-header .modal-title i {
+    position: relative;
+    top: 1px;
+}
+
+#advanceSearchModal .modal-header .modal-title .text {
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+#advanceSearchModal .list-option {
+    margin-top: 0;
+}

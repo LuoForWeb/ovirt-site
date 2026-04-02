@@ -1,0 +1,101 @@
+/* BEGIN TAPE MANAGEMENT STYLE */
+
+.tape-equipment-wrapper {
+    height: calc(100% - 22px);
+}
+
+.tape-management {
+    height: 100%;
+}
+
+.tape-management .tape-management__left {
+    height: 100%;
+}
+
+.tape-management .header {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    border-bottom: 1px solid #F1F3F5;
+}
+
+.structure-management-wrapper {
+    height: calc(100% - 32px);
+    padding-top: 16px;
+}
+
+.structure-management-wrapper .structure-management-wrapper__header {
+    height: 34px;
+    display: flex;
+}
+
+.structure-management-wrapper .structure-management-wrapper__header .btn {
+    width: 72px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.scan-wrap {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.structure-management-wrapper .bs-select {
+    width: 100%;
+    height: 34px;
+    margin: 10px 0;
+    border: 1px solid #e5e5e5;
+}
+
+.structure-management-wrapper .tree-wrapper {
+    height: calc(100% - 88px);
+    padding: 16px;
+    border: 1px solid #E6E6E6;
+    border-radius: 4px !important;
+    overflow: auto;
+}
+
+.tape-management .tape-management__right {
+    height: 100%;
+}
+
+.list-management-wrapper {
+    height: calc(100% - 32px);
+    padding-top: 16px;
+}
+
+.table-container .bootstrap-table {
+    height: 100%;
+}
+
+.table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 40px);
+}
+
+.table-container .bootstrap-table .fixed-table-pagination {
+    height: 40px;
+}
+
+.table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100% !important;
+}
+
+.tape-task-wrapper {
+    height: 100%;
+}
+
+.tape-task-wrapper .table-container {
+    height: calc(100% - 106px);
+}
+
+.tape-monitor-drawer .table-container {
+    height: calc(100% - 46px);
+}
+
+/* END TAPE MANAGEMENT STYLE */

@@ -1,0 +1,261 @@
+
+.paddding-l-r-0{
+    padding-left: 0;
+    padding-right: 0;
+}
+.width-100 {
+    width: 100%;
+}
+.width-100-15 {
+    width: calc(100% - 15px) !important;
+}
+.btn-service {
+    min-width: 108px;height: 34px;font-weight: 400;background: #E7F7F3;
+    border-radius: 2px 2px 2px 2px;
+    font-size: 14px;
+    color: #0FBF98;
+    line-height: 16px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+}
+.btn-service:hover,
+.btn-service:active
+{
+    background: #CFF2EA;
+    font-weight: 400;
+    color: #0FBF98;
+}
+.max-height-300 {max-height: 135px;overflow-y: scroll;}
+.item-service-ip{margin: 8px 0 0;}
+.margin-0{margin:0;}
+.item-service-ip input{
+    height: 34px;
+    border-radius: 2px 2px 2px 2px !important;
+    border: 1px solid #E6E6E6;
+    width: calc(100% - 46px);
+}
+.item-service-ip button{
+    width: 34px;
+    height: 34px;
+    background: #fff;
+    margin-left: 8px;
+    border-radius: 2px 2px 2px 2px;
+    border: none;
+}
+.item-service-ip button:hover,
+.item-service-ip button:active{
+    background: #F5F5F5;
+}
+.service-add-limit-ip {
+    height: 18px;
+}
+.service-add-limit-ip span{
+    font-weight: 400;
+    font-size: 14px;
+    color: #00A3FF;
+    line-height: 16px;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    cursor: pointer;
+}
+.service-add-limit-ip i{
+    margin-right: 8px;
+}
+.control-label {
+    text-align: right;
+}
+.show-item-service-ip {margin-bottom: 0}
+.drawer-backdrop{}
+#storagemount_component_modal {z-index: 10060!important;}
+
+
+
+
+/********  以下是整机恢复目标插件使用的样式  *******/
+ /*按钮*/
+ .recoverTargetZtree .icon_div {
+    display: inline-block;
+    height: 25px;
+    width: 35px;
+    background: url(http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png) no-repeat 12px -127px;
+}
+
+.recoverTargetZtree .icon_div a {
+    display: inline-block;
+    width: 27px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/*end--按钮*/
+
+/*ztree表格*/
+.recoverTargetZtree.ztree {
+    padding: 0;
+    border: 1px solid #F0F0F0;
+    padding-left: 5px;
+}
+
+.recoverTargetZtree.ztree li a {
+    vertical-align: middle;
+    height: 30px;
+}
+
+.recoverTargetZtree.ztree li > a {
+    width: calc(100% - 40px);
+}
+
+.recoverTargetZtree.ztree li > a,
+.recoverTargetZtree.ztree li a.curSelectedNode {
+    padding-top: 0px;
+    background: none;
+    height: auto;
+    border: none;
+    cursor: default;
+    opacity: 1;
+}
+
+.recoverTargetZtree.ztree li ul {
+    padding-left: 0px
+}
+
+.recoverTargetZtree.ztree div.diy span {
+    line-height: 2;
+    vertical-align: middle;
+    margin-right: unset;
+}
+
+.recoverTargetZtree.ztree div.diy {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-top: 1px solid #F0F0F0;
+    display: inline-block;
+    box-sizing: border-box;
+    color: #6c6c6c;
+    font-family: "SimSun";
+    font-size: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+.recoverTargetZtree.ztree div.diy .form-control{
+    position: relative;
+    top: 5px;
+}
+
+.recoverTargetZtree.ztree div.diy:first-child {
+    text-align: left;
+    /* text-indent: 10px; */
+    border-left: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recoverTargetZtree.ztree .head {
+    background: #F7F9FA;
+    position: relative;
+    left: -5px;
+}
+
+.recoverTargetZtree.ztree .head div.diy {
+    border-top: none;
+    /* border-right: 1px solid #CDD2D4; */
+    color: #393C4D;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    text-align: left;
+    left: 5px;
+}
+.recoverTargetZtree.ztree li span.button.chk{
+    margin: 0 12px;
+    position: relative;
+}
+.recoverTargetZtree.ztree li span.button.chk:before{
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: -18px;
+    right: -20px;
+    height: 1px;
+    background-color: #F0F0F0;
+}
+.selectedGreen{
+    color: green;
+}
+.select2-dropdown{
+    z-index: 100052 !important;
+}
+/*vinscript插件*/
+.script_form_content .radio-group .radio-group__item{
+    min-width: 90px;
+    padding: 5px;
+}
+.ace_content{
+    background-color: #FFFFFF;
+}
+.ace-tm .ace_gutter{
+    background-color: #FFFFFF;
+}
+
+.radio-group .radio-group__item{
+    width: 170px;
+    height: 48px;
+    position: relative;
+    padding-right: 20px;
+}
+/* 默认隐藏 i 标签 */
+.radio-group .radio-group__item i.vicon-a-Close-oneguanbi {
+display: none;
+}
+/* 悬停时显示 i 标签 */
+.radio-group .radio-group__item:hover i.vicon-a-Close-oneguanbi {
+display: inline-block;
+}
+.radio-group__item_text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.radio-group__item_button{
+    width: 170px;
+    height: 48px;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 108px;
+    border: 1px solid #E6E6E6;
+    padding: 20px;
+    border-radius: 2px !important;
+    margin-bottom: 12px;
+    color: #666666;
+    cursor: pointer;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.radio-group__item_button span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.save_tab{
+    margin-top: 0px;
+    line-height: 16px;
+    padding-left: 4px;
+    color: #0FBF98;
+}
+.error_tab{
+    margin-top: 0px;
+    line-height: 16px;
+    padding-left: 4px;
+    color: #F19F00;
+}
+.Vinscript_delete{
+    color: #666666;
+    background-color: #F5F5F5;
+}
+.Vinscript_delete:hover{
+    color: #333333;
+    background-color: #f0f0f0;
+}

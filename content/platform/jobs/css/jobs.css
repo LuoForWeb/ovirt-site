@@ -1,0 +1,133 @@
+/* BEGIN JOBS STYLES */
+
+.jobs-wrapper {
+    height: 100%;
+}
+
+.jobs-wrapper .jobs-wrapper__toobar {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.jobs-wrapper .table-container.current-job-table-container {
+    height: calc(100% - 76px);
+}
+
+.jobs-wrapper .table-container.orchestration-job-table-container {
+    height: calc(100% - 176px);
+}
+
+.jobs-wrapper .table-container.history-job-table-container {
+    height: calc(100% - 46px);
+}
+
+.jobs-wrapper .table-container .bootstrap-table {
+    height: 100%;
+}
+
+.jobs-wrapper .table-container .bootstrap-table .fixed-table-container {
+    height: calc(100% - 40px);
+}
+
+.jobs-wrapper .table-container .bootstrap-table .fixed-table-container .fixed-table-body {
+    height: 100% !important;
+}
+
+.jobs-wrapper .table-container .bootstrap-table .fixed-table-pagination {
+    height: 40px;
+}
+
+.jobs-wrapper .table-container .bootstrap-table .fixed-table-pagination .pull-left.pagination-detail {
+    margin: 0;
+}
+
+.jobs-wrapper .table-container .bootstrap-table .fixed-table-pagination .pull-right.pagination {
+    margin: 0;
+}
+
+.jobs-wrapper .alert-info .alert-info-wrapper .alert-info-wrapper__label {
+    font-weight: 700;
+}
+
+.left-toolbar {
+    display: flex;
+    align-items: center;
+}
+
+.jobs-wrapper .filter-dropdown-menu__content .filter-dropdown-menu__content__item {
+    min-width: 125px;
+}
+
+.nodata-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nodata-container .nodata {
+    font-size: 12px;
+    color: #666666;
+}
+
+.history-running-logs-drawer-body {
+    padding: 0;
+}
+
+.virtual-scroll-container {
+    padding: 20px;
+}
+
+.logs-container {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.logs-container .log-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.log-item {
+    padding: 4px;
+    display: flex;
+    align-items: baseline;
+    background-color: #fafafa;
+    border: 0;
+}
+
+.log-item .label {
+    padding: 0;
+    background-color: transparent;
+    margin-right: 8px;
+}
+
+.log-item .log-item__icon i {
+    font-size: 12px;
+}
+
+.log-item .log-item__content {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 12px;
+    color: #999999;
+    word-break: break-all;
+}
+
+.log-item__time {
+    width: 130px;
+    font-size: 12px;
+    font-style: italic;
+    color: #ccc;
+}
+
+.infinite-scroll-loading {
+    text-align: center;
+    padding: 10px 0;
+    color: #666666;
+}
+
+/* END JOBS STYLES */

@@ -1,0 +1,16 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<rect id="Rectangle 79" width="50" height="50" rx="6" fill="#199FE4" fill-opacity="0.1"/>
+<g id="Group 1000002825">
+<g id="Group 1000002823">
+<path id="Line 4 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M15.7695 36.0589C15.7695 35.5391 16.1828 35.1177 16.6926 35.1177H33.308C33.8178 35.1177 34.2311 35.5391 34.2311 36.0589C34.2311 36.5786 33.8178 37 33.308 37H16.6926C16.1828 37 15.7695 36.5786 15.7695 36.0589Z" fill="#199FE4"/>
+<path id="Rectangle 1192 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M13 15.8235C13 14.2641 14.2398 13 15.7692 13H34.2308C35.7602 13 37 14.2641 37 15.8235V29.9412C37 31.5006 35.7602 32.7647 34.2308 32.7647H15.7692C14.2398 32.7647 13 31.5006 13 29.9412V15.8235ZM15.7692 14.8824C15.2594 14.8824 14.8462 15.3037 14.8462 15.8235V29.9412C14.8462 30.461 15.2594 30.8824 15.7692 30.8824H34.2308C34.7406 30.8824 35.1538 30.461 35.1538 29.9412V15.8235C35.1538 15.3037 34.7406 14.8824 34.2308 14.8824H15.7692Z" fill="#199FE4"/>
+</g>
+<g id="Group 1000002824">
+<path id="Vector" d="M30.8463 19.6665L25.6155 16.7646L20.3848 19.6665V25.4705L25.6155 28.3725L30.8463 25.4705V19.6665Z" stroke="#199FE4" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_2" d="M23.1543 21.1169L25.6137 22.5687L28.0759 21.1169" stroke="#199FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M25.6152 22.5686V25.1804" stroke="#199FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>

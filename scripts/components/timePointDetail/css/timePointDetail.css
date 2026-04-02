@@ -1,0 +1,163 @@
+#pointDetailDrawerContent{
+    width: 65%;
+}
+#pointDetailDrawerContent .close{
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    text-indent: unset;
+    background-image: unset !important;
+}
+#pointDetailDrawerContent .drawer-content.drawer-content-scrollable {
+    display: flex;
+    flex-direction: column;
+}
+#pointDetailDrawerContent .drawer-body {
+    flex: 1;
+}
+#pointDetailDrawerContent .drawer-title{
+    font-size: 16px;
+    color: rgb(51, 51, 51);
+    font-weight: 400;
+    height: 16px;
+    line-height: 16px;
+    margin: 0;
+}
+#pointDetailDrawerContent .vicon-shengchengshijian{
+    margin-right: 8px;
+}
+#pointDetailDrawerContent .vicon-fuzhi{
+    color: #999999;
+}
+#pointDetailDrawerContent .vicon-fuzhi:hover{
+    color: #666666;
+}
+#pointDetailDrawerContent .drawer-body{
+    padding: 15px 20px;
+    overflow: auto;
+}
+#pointDetailDrawerContent .detail-content > .basic-info {
+    color: #666666;
+    line-height: 22px;
+    padding: 20px;
+    background-position: 90% 100%;
+    border-radius: 4px !important;
+}
+.detail_bg_normal{
+    background: url(../../../../img/backup_data/bg_point_detail.png) 90% 350% no-repeat, linear-gradient( 0deg, rgba(15,191,152,0.05) 0%, rgba(15,191,152,0.15) 100%);
+}
+.detail_bg_abnormal{
+    background: url(../../../../img/backup_data/bg_abnormal_big.png) 90% 350% no-repeat, linear-gradient(180deg, rgba(241, 159, 0, 0.1) 0%, rgba(241, 159, 0, 0.03) 100%);
+}
+#pointDetailDrawerContent .basic-info label {
+    line-height: 22px;
+    text-align: left;
+    width: 150px;
+    margin-bottom: 0px;
+    font-size: 14px;
+}
+#pointDetailDrawerContent .basic-info .info-timepoint {
+    font-weight: bold;
+    line-height: 22px;
+    color: #333333;
+}
+#pointDetailDrawerContent .basic-info .info-timepoint label {
+    color: #333333;
+}
+#pointDetailDrawerContent .basic-info>div {
+    padding: 4px 0;
+}
+#pointDetailDrawerContent .detail-content .other-info .detail-content_title {
+    padding: 12px 0px;
+}
+#pointDetailDrawerContent .detail-content .other-info .other-info_line {
+    padding-bottom: 12px;
+}
+#pointDetailDrawerContent .detail-content .other-info label {
+    font-size: 14px;
+    color: #666666;
+    line-height: 22px;
+    width: 160px;
+    margin-right: 16px;
+    margin-bottom: 0px;
+}
+#pointDetailDrawerContent .basic-info .info-timepoint label{
+    font-weight: bold;
+    line-height: 22px;
+}
+#pointDetailDrawerContent .detail-content_title{
+    display: flex;
+    align-items: center;
+}
+#pointDetailDrawerContent .detail-content_title .decoration{
+    height: 14px;
+}
+#pointDetailDrawerContent .detail-content_title:not(:first-child), .info_verify .detail-content_title {
+    border-top: 1px dashed #E6E6E6;;
+}
+#pointDetailDrawerContent .detail-content .label-sm{
+	font-weight: 400;
+    display: inline-flex;
+    height: 24px;
+    align-items: center;
+    border-radius: 4px 4px 4px 4px !important;
+    opacity: 1;
+}
+#pointDetailDrawerContent .virus-info .virus-list{
+	display: flex;
+}
+#pointDetailDrawerContent .virus-info .virus-list .infect-list{
+	background: #F5F5F5;
+	border-radius: 4px 4px 4px 4px !important;
+	border: 1px solid #CCCCCC;
+	font-size: 12px;
+	color: #666666;
+	width: 80%;
+}
+#pointDetailDrawerContent.drawer.fade.in {
+    top: 40%;
+}
+#pointDetailDrawerContent .drawer-footer button.btn-default {
+    margin: 0;
+}
+#pointDetailDrawerContent .info-dir_path textarea {
+    color: #333;
+    width: 78%;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 4px 4px !important;
+    resize: none;
+    height: 100px;
+}
+.vicon-Frame11{
+    color: #0FBF98;
+    font-size: 16px;
+}
+#pointDetailDrawerContent .virus-list .table-container{
+    flex: 1;
+}
+#pointDetailDrawerContent #pointVirusListTable .virus_detail-info{
+    max-height: 200px;
+    overflow: auto;
+}
+#pointDetailDrawerContent #pointVirusListTable .virus_detail-info .virus_detail-line{
+    display: flex;
+    padding: 12px 0;
+}
+#pointDetailDrawerContent #pointVirusListTable .virus_detail-info .virus_detail-label{
+    width: 100px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #4D4D4D;
+}
+#pointDetailDrawerContent #pointVirusListTable .virus_detail-info .virus_detail-content{
+    flex: 1;
+}
+.timepoint_node:hover .node_getDetail{
+    display: inline-block;
+}
+@media  (min-width: 1441px) {
+    #pointDetailDrawerContent{
+        width: 50%;
+    }
+}

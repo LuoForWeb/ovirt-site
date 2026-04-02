@@ -1,0 +1,67 @@
+/* 开始-页面布局 */
+
+/* 结束-页面布局 */
+
+/* 开始-抽屉 */
+
+/* 开始-添加/修改存储资源池 */
+
+/* 抽屉大小 */
+#modifyStoragePoolDrawer {
+    width: 1000px;
+}
+
+#modifyStoragePoolDrawer .drawer-header {
+    height: 52px;
+    padding: 16px 20px;
+}
+
+#modifyStoragePoolDrawer .drawer-title {
+    margin: 0;
+    color: #333;
+    font-size: 0;
+    height: 20px;
+    line-height: 20px;
+}
+
+#modifyStoragePoolDrawer .drawer-title .title {
+    font-size: 16px;
+    color: #333;
+    margin-left: 8px;
+}
+
+#modifyStoragePoolDrawer .drawer-footer .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+#modifyStoragePoolForm {
+    height: auto;
+}
+
+#modifyStoragePoolDrawer .drawer-body .form-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#modifyStoragePoolDrawer .drawer-body .form-group .drawer-item-label {
+    width: 120px;
+}
+
+#modifyStoragePoolDrawer .drawer-body .form-group .drawer-item-content {
+    width: calc(100% - 200px);
+    margin: 0 40px;
+}
+
+#storageListTree {
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* 结束-添加/修改存储资源池 */
+
+/* 结束 - 抽屉 */

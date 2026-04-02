@@ -1,0 +1,67 @@
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li > a[href="#log"],
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li > a[href="#dbs"],
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li > a[href="#history"],
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li > a[href="#associatedTask"],
+.nav-tabs > li > a[href="#tab_1_1"],
+.nav-tabs > li > a[href="#tab_1_6"],
+#dbFlowTitle {
+    font-size: 0;
+}
+
+a[href="#log"] i,
+a[href="#dbs"] i,
+a[href="#history"] i,
+a[href="#associatedTask"] i,
+a[href="#tab_1_1"] i,
+a[href="#tab_1_6"] i,
+#dbFlowTitle i {
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+a[href="#log"] span.text,
+a[href="#dbs"] span.text,
+a[href="#history"] span.text,
+a[href="#associatedTask"] span.text,
+a[href="#tab_1_1"] span.text,
+a[href="#tab_1_6"] span.text,
+#dbFlowTitle span.text {
+    font-size: 14px;
+}
+
+.bdt1e6 {
+    border-top: 1px solid #e6e6e6 !important;
+}
+
+.ndnone {
+    border: none !important;
+}
+
+#dbs {
+    /*overflow: hidden auto;*/
+}
+
+#detailSearchDiv {
+    display: inline-flex;
+    margin: 0 12px 0 0;
+    position: relative;
+    vertical-align: middle;
+}
+
+#detailSearch {
+    width: 240px;  /* 数据库详情的placeholder信息比较长，这里定义宽一些 */
+    height: 34px;
+    padding: 1px 30px 1px 34px;
+    border-radius: 2px !important;
+    border: 0;
+    background-color: #FAFAFA;
+}
+
+.dbStartDiv {
+    margin-right: 12px;
+}
+
+.dbStartDiv .btn-dropdown-operate,
+.oracleStartDiv .btn-dropdown-operate {
+    height: 34px;
+}
