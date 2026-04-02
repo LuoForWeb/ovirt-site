@@ -1,0 +1,5 @@
+{
+	"VMHYPERVISORDES": {
+		"25": "Special Hypervisor"
+	}
+}

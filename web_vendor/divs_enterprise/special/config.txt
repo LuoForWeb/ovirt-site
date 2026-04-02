@@ -1,0 +1,7 @@
+{
+	"SYSTEM_INFO":  {
+		"system_name":  "云祺GMP数据管理系统",
+		"recommend": "推荐使用Chrome 39+、Firefox 19+及其以上版本的浏览器。推荐分辨率为1440*900或者更高"
+	}
+
+}

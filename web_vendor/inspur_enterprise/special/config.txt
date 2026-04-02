@@ -1,0 +1,18 @@
+{
+	"SYSTEM_INFO": {
+		"system_name": "InCloud DP",
+		"company": "INSPUR Co., Ltd.",
+		"company_name": "济南浪潮数据技术有限公司",
+		"company_tel": "400-658-6000",
+		"company_email": "sv_str@inspur.com",
+		"copyright_name": "济南浪潮数据技术有限公司"
+	},
+	"REMOTE": {
+		"website": "http://www.inspur.com"
+	},
+	"SMS_CONFIG": {
+		"SIGNATURE": "浪潮"
+	},
+	"RELEASE_HYPERVISOR": [1, 8, 24]
+
+}

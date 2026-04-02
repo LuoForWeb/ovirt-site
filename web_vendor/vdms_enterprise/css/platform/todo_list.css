@@ -1,0 +1,144 @@
+
+/* BEGIN TODO LIST STYLE */
+
+.todo-list-wrapper {
+    height: 100%;
+    display: flex;
+    padding: 0 !important;
+}
+
+.todo-list-wrapper .nav-tab-radios .nav-tabs {
+    height: 100%;
+    padding: 10px;
+}
+
+.todo-list-wrapper .nav-tab-radios > ul > li {
+    height: 40px;
+    margin: 0;
+}
+
+.todo-list-wrapper .nav-tab-radios > ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.todo-list-wrapper .nav-tabs .tab-item {
+    height: 40px;
+    line-height: 40px;
+    justify-content: space-between;
+}
+
+.todo-list-wrapper .nav-tabs .tab-item {
+    color: #666666;
+    font-size: 14px;
+}
+
+.todo-list-wrapper .tab-content {
+    height: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.todo-list-wrapper .tab-content .tab-pane {
+    height: 100%;
+}
+
+.todo-list-cards {
+    height: 100%;
+}
+
+.todo-list-cards .todo-list-cards__item {
+    padding: 12px 20px;
+    background-color: #f8f9fb;
+}
+
+.todo-list-cards .todo-list-cards__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.card-wrapper .card-wrapper__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.card-wrapper .card-wrapper__header .time {
+    font-size: 12px;
+    color: #666666;
+}
+
+.card-wrapper .card-wrapper__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-wrapper .card-wrapper__content .card-wrapper__content__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-wrapper .card-wrapper__content .card-wrapper__content__info .title {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card-wrapper .card-wrapper__content .card-wrapper__content__info .description {
+    font-size: 13px;
+    color: #666666;
+}
+
+.badge {
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px !important;
+    border: 1px solid transparent;
+    font-size: 12px;
+    background-color: transparent;
+}
+
+.badge-primary {
+    border-color: #2a87c8;
+    color: #2a87c8;
+}
+
+.badge-warning {
+    border-color: #eaa40e;
+    color: #eaa40e;
+}
+
+.badge-secondary {
+    border-color: #7e8299;
+    color: #7e8299;
+}
+
+.btn.btn-outline-primary {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px !important;
+    border: 1px solid #2a87c8;
+    color: #2a87c8;
+    background-color: transparent;
+}
+
+.nodata-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nodata-wrap .nodata-wrap__text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #d7d9db;
+}
+
+/* END TODO LIST STYLE */

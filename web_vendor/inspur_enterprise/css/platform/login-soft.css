@@ -1,0 +1,289 @@
+/***
+Login page
+***/
+/* logo page */
+.login {
+  background-color: #121C2D !important;
+ 
+}
+
+.login .logo {
+  position: absolute;
+  top:17%;
+  right: 13%;
+}
+
+.login .content {
+  background: rgba(0,0,0,0.2);
+  width: 309px;
+  position: absolute;
+  right: 11%;
+  padding: 30px;
+  top:28%;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  color:#333333
+}
+
+.login .content h3 {
+  color: #eee;
+}
+
+.login .content h4 {
+  color: #eee;
+}
+
+.login .content p,
+.login .content label {
+  color: #fff;
+}
+
+.login .content .login-form,
+.login .content .forget-form {
+  padding: 0px;
+  margin: 0px;
+}
+
+.login .content .form-control {
+  margin-top: 38px;
+}
+
+.login .content .forget-form {
+  display: none;
+}
+
+.login .content .register-form {
+  display: none;
+}
+
+.login #loginCode #codeContent:focus{
+    outline: 0px !important;
+}
+
+.login .content  .form-title {
+  font-weight: 300;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.login .content .form-actions {
+  background-color: transparent;
+  clear: both;
+  border: 0px;
+  padding: 28px 119px 17px 34px;
+  margin-left: -30px;
+  margin-right: -119px;
+}
+
+.login .content .form-actions .checkbox {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.login .content .forget-form .form-actions {
+  border: 0;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+.login .content .register-form .form-actions {
+  border: 0;
+  margin-bottom: 0;
+  padding-bottom: 0px;
+}
+
+.login .content .form-actions .checkbox {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.login .content .form-actions .btn {
+  margin-top: 1px;
+}
+
+.login .content .forget-password {
+  margin: -23px 6px 9px 21px;
+}
+
+.login .content .create-account {
+  border-top: 1px dotted #eee;
+  padding-top: 10px;
+  margin-top: 15px;
+}
+
+.login .content .create-account a {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* select2 dropdowns */
+.login .content .select2-container i {
+  display: inline-block;
+  position: relative;
+  color: #ccc;
+  z-index: 1;
+  top: 1px;
+  margin: 4px 4px 0px -1px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login .content .has-error .select2-container i {
+  color: #b94a48;
+}
+
+.login .content .select2-container a span {
+  font-size: 13px;
+}
+
+.login .content .select2-container a span img {
+  margin-left: 4px;
+}
+
+.windows-ml {margin-left:35px !important;}
+.node-ml {margin-left:20px !important;}
+.xe-ml {margin-left:20px !important;}
+.xe-ml10 {width: 130px; margin-left:10px !important;}
+.downloadback{text-align: right;  padding: 20px 30px 0px 30px !important;}
+
+.pl10{padding-left:10px !important;}
+.pl15{padding-left:15px !important;}
+.pl20{padding-left:20px !important;}
+.pl25{padding-left:25px !important;}
+.pl30{padding-left:30px !important;}
+
+/* footer copyright */
+.login .copyright {
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    color: #eee;
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 0;
+}
+
+.alert {
+    padding:8px;
+}
+
+/* 登录弹窗样式start */
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:10;
+}
+
+#modal {
+  width: 440px;
+  height: 200px;
+  background-color: rgba(51, 75, 81, 0.5);
+  font-size: 16px;
+  color: #FFFFFF;
+  padding: 59px 15px 40px 34px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttonAction{
+  margin-top: 44px;
+}
+
+#editPwdButton,#loginSuccessButton{
+  width: 100px;
+  height: 36px;
+  opacity: 1;
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#editPwdButton{
+  background: #0062ac;
+}
+
+#loginSuccessButton{
+  opacity: 1;
+  border: 1px solid #0062ac;
+  background: none;
+}
+
+#editPwdButton:hover{
+  background:#0062ac;
+}
+
+#loginSuccessButton:hover{
+  background:#0062ac;
+}
+
+#editPwdButton{
+  margin-right: 17px;
+}
+
+#editPwdButton,#loginSuccessButton{
+  text-decoration: none;
+}
+
+#loginSuccessButton{
+  color: #FFFFFF;;
+}
+
+/* 登录弹窗样式end */
+
+@media (max-width:1279px){
+	.login .logo{
+		position: static;
+	    margin: 145px auto 11px 58px;
+	    text-align: center;
+	}
+	.content.contentlogin{
+		position: static;
+	    margin: 0 auto;
+	}
+	.login-backgroundGif{
+	display:none;
+	}
+	.content.contentpakage.display-hide{
+	height: 342px;
+    position: static;
+    top: 220px;
+    margin: 0 auto;
+    display: none;
+	}
+    .contentpassword{
+        position: static !important;
+        margin: 0 auto;
+    }
+}
+@media(max-width: 991px){
+	.contentpakage .col-md-3{
+	 	width: 25%;
+		float: left;
+		text-align: right;
+	}
+	.contentpakage .col-md-8{
+	 	width: 66.66666667%;
+		float: left;
+	}
+}
+
