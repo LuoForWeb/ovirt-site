@@ -1,0 +1,8 @@
+{
+	"SYSTEM_INFO": {
+		"system_name": "Sangfor Enterprise Data Backup & Recovery System",
+		"enterprise": "Sangfor"
+	},
+	"RELEASE_HYPERVISOR": [1, 2, 3, 19, 17, 12, 11, 26, 18, 21, 9, 10, 25, 23, 27, 20]
+
+}

@@ -1,0 +1,571 @@
+.padding0 {
+    padding: 0;
+}
+.pr0 {
+    padding-right: 0;
+}
+.fr {
+    float: right;
+}
+.p10 {
+    padding: 0 10px;
+}
+.more {
+    font-size: 14px;
+    color: rgba(0,255,255,0.48);
+    cursor: pointer;
+    line-height: 32px;
+}
+.more:hover {
+    color: rgba(0, 255, 255, 0.673);
+}
+.sangfor-label {
+    font-size: 16px;
+}
+.page-content.sangfor-bgc {
+    background-color: #292B2E;
+}
+.page-content-wrapper.sangfor-background {
+    height: 100%;
+    background-color: #292B2E;
+    color: white;
+    padding: 15px;
+}
+.page-content-wrapper .page-content.sangfor-bgc {
+    padding: 10px 5px;
+}
+.sangfor-content-top .parentdiv,
+.sangfor-content-top .parentdiv,
+.sangfor-content-top .parentdiv,
+.sangfor-content-bottom .parentdiv,
+.sangfor-content-bottom .parentdiv {
+    background:repeating-linear-gradient(to bottom,#1B7376,#292C2F);
+    border-radius: 8px !important;
+    padding: 1px 1px 0 1px;
+}
+.sangfor-content-top .storage-resource,
+.sangfor-content-top .data-protect,
+.sangfor-content-top .alarm-statistics,
+.sangfor-content-bottom .backup-plan,
+.sangfor-content-bottom .device-status {
+    border-radius: 8px !important;
+    background:repeating-linear-gradient(to bottom,#263840,#292D30);
+    
+}
+.sangfor-content-top .storage-resource,
+.sangfor-content-top .data-protect,
+.sangfor-content-top .alarm-statistics {
+    height: 195px;
+}
+.sangfor-content-bottom .backup-plan,
+.sangfor-content-bottom .device-status {
+    height: 660px;
+}
+.sangfor-content-top .storage-resource,
+.sangfor-content-top .data-protect,
+.sangfor-content-top .alarm-statistics,
+.sangfor-content-bottom .backup-plan,
+.sangfor-content-bottom .device-status{
+    padding: 12px 24px;
+}
+/* 存储资源池开始  */
+.sangfor-content-top #storageName,
+.sangfor-content-bottom #planTaskStatus,
+.sangfor-content-bottom #planTaskType,
+.sangfor-content-bottom #node_uuid  {
+    width: 105px;
+    height: 32px;
+    border-radius: 2px !important;
+    color: #A5A9AB;
+    border: 1px solid #00E0E0;
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 8px;
+    padding: 0 12px;
+    position: relative;
+    /* 下拉箭头图片 */
+    background: #1F282C url(/img/platform/sangfor/select-icon.png) no-repeat center;
+    /* 下拉箭头大小 */
+    /* 下拉箭头在select的位置 */
+    background-position-x: 90px;
+    /* 清除自带箭头 */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+.sangfor-content-top #storageName:focus,
+.sangfor-content-bottom #planTaskStatus:focus,
+.sangfor-content-bottom #planTaskType:focus,
+.sangfor-content-bottom #node_uuid:focus {
+    border: 1px solid #2dffff;
+}
+.sangfor-content-bottom #node_uuid {
+    width: 180px;
+    background-position-x: 165px;
+}
+.sangfor-content-top .storage-more,
+.sangfor-content-top .sangfor-label {
+    line-height: 32px;
+}
+.sangfor-content-top .topnum {
+    font-size: 24px;
+}
+.sangfor-content-top .storage-content {
+    margin-top: 25px;
+    position: relative;
+}
+.sangfor-content-top .storage-content .totalstor {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.totalstorlabel {
+    text-align: center;
+}
+.sangfor-content-top .storage-content .usedtor,
+.sangfor-content-top .storage-content .freestor {
+    font-size: 24px;
+}
+.sangfor-content-top .storage-content span {
+    display: inline-block;
+    margin: 0 0 9px;
+    font-size: 12px;
+    color: #D4D6D6;
+    white-space: nowrap;
+}
+.sangfor-content-top .storage-content p {
+    font-size: 14px;
+    color: #A9ABAD;
+}
+.sangfor-content-top .storage-content img {
+    width: 100%;
+    margin: 0 auto;
+}
+/* 存储资源池结束 */
+
+/* 数据保护开始 */
+.sangfor-content-top .data-protect {
+    margin-bottom: 8px;
+    position: relative;
+}
+.sangfor-content-top .data-protect .nav-tabs>li {
+    border: 1px solid #80848F;
+    margin-bottom: 0;
+    margin-right: -1px;
+}
+.sangfor-content-top .data-protect .nav-tabs>li.active {
+    border: none;
+}
+.sangfor-content-top .data-protect .nav-tabs>li>a {
+    color: white;
+    padding: 1px 16px;
+    margin: 0;
+    background-color: #3B4B51;
+    height: 24px;
+    line-height: 22px;
+}
+.sangfor-content-top .data-protect .nav-tabs {
+    border-bottom: none;
+}
+.sangfor-content-top .data-protect .nav-tabs>li.active>a, 
+.sangfor-content-top .data-protect .nav-tabs>li.active>a:hover,
+.sangfor-content-top .data-protect .nav-tabs>li.active>a:focus {
+    color: #00FFFF !important;
+    border: 1px solid rgba(0,252,252,0.5014);
+    background:repeating-linear-gradient(to bottom,#23484B,#1F5263);
+    height: 26px;
+}
+.sangfor-content-top .data-protect .tab-content {
+    clear: both;
+    padding: 0 22px;
+}
+.sangfor-content-top .data-protect .small-label {
+    font-size: 14px;
+    color: #4DCDCD;
+    margin-bottom: 27px;
+    line-height: 14px;
+}
+.sangfor-content-top .data-protect #backup_pane,
+.sangfor-content-top .data-protect #cdp_pane,
+.sangfor-content-top .data-protect #copy_pane{
+    overflow: hidden;
+    opacity: 1;
+}
+.sangfor-content-top .data-protect #backupSwiper,
+.sangfor-content-top .data-protect #cdpSwiper,
+.sangfor-content-top .data-protect #copySwiper
+ {
+    height: 110px;
+    width: 100%;
+}
+#backupSwiper .swiper-wrapper .swiper-slide.first-slide,
+#copySwiper .swiper-wrapper .swiper-slide.first-slide,
+#cdpSwiper .swiper-wrapper .swiper-slide.first-slide{
+    width: 189px;
+ }
+#backupSwiper .swiper-wrapper .swiper-slide:not(.first-slide),
+#copySwiper .swiper-wrapper .swiper-slide:not(.first-slide) {
+    width: calc((100% - 189px) / 3);
+    padding-left: 33px;
+}
+#cdpSwiper .swiper-wrapper .swiper-slide:not(.first-slide) {
+    width: calc((100% - 189px) / 1.5);
+    padding-left: 33px;
+}
+.sangfor-content-top .data-protect .tab-content  li {
+    list-style: none;
+    float: left;
+    width: 100%;
+    /* width: 170px; */
+}
+.swiper-button-next, 
+.swiper-button-prev {
+    top: 66%;
+}
+.swiper-button-prev {
+    left: 14px;
+}
+.swiper-button-next {
+    right: -8px;
+}
+.swiper{
+    --swiper-navigation-color: #00dddd00;/* 单独设置按钮颜色 */
+}
+/* 数据保护结束 */
+
+/* 告警统计开始 */
+.alarm-statistics .alarm-content #alarmPie {
+    width: 100%;
+    height: 130px;
+}
+/* 告警统计结束 */
+/* 备份计划开始 */
+.sangfor-content-bottom .backup-plan {
+    /* position: relative; */
+}
+.sangfor-content-bottom .backup-plan .plan-content {
+    margin-top: 15px;
+}
+.sangfor-content-bottom .table-bordered>tbody>tr>td,
+.sangfor-content-bottom .table-bordered>tbody>tr>th, 
+.sangfor-content-bottom .table-bordered>tfoot>tr>td, 
+.sangfor-content-bottom .table-bordered>tfoot>tr>th, 
+.sangfor-content-bottom .table-bordered>thead>tr>td, 
+.sangfor-content-bottom .table-bordered>thead>tr>th {
+    border: none !important;
+    color: #D7D9DA;
+}
+
+.sangfor-content-bottom .table-scrollable > .table-bordered > thead > tr > th {
+    height: 32px;
+    line-height: 32px;
+    font-weight: normal;
+    font-size: 13px;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr,
+.sangfor-content-bottom .table-scrollable > .table {
+    background-color: #ffffff00;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr > td {
+    background-color: #27343a00 !important;
+    border-top: 1px solid #303F41 !important;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr > td:first-child,
+.sangfor-content-bottom .table-scrollable > .table-bordered > thead > tr > th:first-child {
+    padding-left: 20px;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr > td img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr > td .bg-grey {
+    background-color: #858B8E !important;
+    height: 5px;
+    border-radius: 4px !important;
+    position: relative;
+    width: 70px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr > td .progess {
+    background-color: #00FFFF;
+    height: 5px;
+    border-right: 1px solid #273237;
+    border-radius: 4px 0 0 4px !important;
+    position: absolute;
+    display: inline-block;
+}
+.sangfor-content-bottom .table-scrollable > .table-bordered > tbody > tr:hover td {
+    background-color: #343E43 !important;
+}
+.sangfor-content-bottom .table-scrollable {
+    border: none;
+}
+.sangfor-content-bottom .table-page .page-right {
+    position: absolute;
+    height: 48px;
+    line-height: 48px;
+    right: 4%;
+    width: 92%;
+    background: #25282B;
+    font-size: 12px;
+    color: #A6A6A6;
+}
+.sangfor-content-bottom .table-page .btn.default.disabled,
+.sangfor-content-bottom .table-page .form-control {
+    background-color: #25282b;
+    border: 1px solid #434343;
+    color: #A6A6A6;
+}
+.sangfor-content-bottom .table-page input.pagination-panel-input {
+    background-color: #3EA4A4;
+    color: white;
+    margin: 0 !important;
+    width: 30px !important;
+    height: 32px;
+    border: none;
+    pointer-events: none;
+}
+.sangfor-content-bottom .pagination-panel-total,
+.sangfor-content-bottom .page-right div:nth-child(4) .pagination-panel a {
+    display: none;
+}
+.sangfor-content-bottom .page-right div:nth-child(4) .pagination-panel input {
+    width: 40px !important;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0 6px !important;
+    border: 1px solid #333333;
+    pointer-events: all;
+    border-radius: 2px !important;
+}
+.sangfor-content-bottom .btn.default,
+.sangfor-content-bottom .btn.default:hover {
+    color: #6a6b6c;
+    background-color: #e5e5e500;
+    border: 1px solid #333333;
+}
+.sangfor-content-bottom .page-right div:nth-child(2) {
+    margin: 0 8px !important;
+}
+.sangfor-content-bottom .table-page a {
+    width: 30px !important;
+    height: 32px;
+    line-height: 30px !important;
+    padding: 0;
+    font-size: 12px;
+}
+.sangfor-content-bottom  #planTable tr td > td {
+    padding: 0px;
+    border-bottom: none;
+}
+.sangfor-content-bottom div#planTable_length label,
+.sangfor-content-bottom .page-right .dataTables_info {
+    font-size: 12px !important;
+    color: #A6A6A6;
+}
+.sangfor-content-bottom div.dataTables_length select {
+    width: 60px;
+    height: 32px;
+    position: relative;
+    margin: 0 6px;
+    /* 下拉箭头图片 */
+    background: #1F282C url(/img/platform/sangfor/select-icon2.png) no-repeat center;
+    /* 下拉箭头大小 */
+    /* 下拉箭头在select的位置 */
+    background-position-x: 50px;
+    /* 清除自带箭头 */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/* 备份计划结束 */
+/* 硬件设备状态开始 */
+.lineChart {
+    width: 100%;
+    height: 275px;
+    /* background-color: #fff; */
+    margin-top: 20px;
+}
+/* 硬件设备状态结束 */
+
+/* 中间各模块新增样式 */
+.device-box{
+    width: 189px;
+}
+.device-box .pie-chart{
+    border-right: 1px solid #E9ECEF;
+    width: 189px;
+    height: 64px;
+}
+.box-img{
+    width: 64px;
+    height: 64px;
+}
+.box-info{
+    margin-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+    color: #A9ADAF;
+
+}
+.top-num{
+    margin-bottom: 12px;
+    font-family: PingFang SC, PingFang SC;
+    color: #E9ECEF;
+    font-weight: 500;
+
+}
+.item-text-num{
+    font-size: 20px;
+    line-height: 20px;
+}
+.item-text-unit{
+    font-size: 12px;
+    line-height: 12px;
+}
+.cdp-box{
+    display: flex;
+    width: 50%;
+}
+/* .cdp-box .item-text-num,
+.cdp-box .item-text-unit{
+    font-size: 24px;
+    line-height: 24px;
+} */
+
+/* 分辨率适配 */
+@media screen and (min-width: 1921px) and (max-width: 2600px) {
+    .sangfor-content-top .storage-content img {
+        width: 60%;
+        margin: 0 auto;
+    }
+    .sangfor-content-top .storage-content {
+        text-align: center;
+    }
+}
+@media (max-width: 1800px) {
+    .sangfor-content-top .storage-content .usedtor, .sangfor-content-top .storage-content .freestor,
+    .sangfor-content-top .data-protect p {
+        font-size: 20px;
+    }
+    .dataprotectdiv {
+        width: 55.33333333%;
+    }
+    /* .storageresourcediv {
+        width: 35%;
+    } */
+    .alarmstatisticsdiv {
+        width: 19.666667%;
+    }
+    .bakplandiv {
+        width: 48%;
+    }
+    .devicestatusdiv {
+        width: 52%;
+    }
+}
+@media (max-width: 1690px) {
+    #cdpSwiper .swiper-wrapper .swiper-slide:not(.first-slide){
+        padding-left: 20px;
+        width: calc((100% - 189px) / 1);
+    }
+}
+@media (max-width: 1670px) {
+    .sangfor-content-top #storageName, .sangfor-content-bottom #planTaskStatus, .sangfor-content-bottom #planTaskType, .sangfor-content-bottom #node_uuid {
+        height: 28px;
+    }
+    .sangfor-label {
+        font-size: 14px;
+    }
+    .sangfor-content-top .storage-more,
+    .more {
+        line-height: 28px;
+        font-size: 12px;
+    }
+    .sangfor-content-top .data-protect .nav-tabs {
+        height: 28px;
+    }
+    .sangfor-content-top .data-protect .nav-tabs>li.active>a, .sangfor-content-top .data-protect .nav-tabs>li.active>a:hover, .sangfor-content-top .data-protect .nav-tabs>li.active>a:focus {
+        height: 28px;
+        font-size: 12px;
+    }
+    .sangfor-content-top .data-protect .nav-tabs>li>a {
+        height: 26px;
+        font-size: 12px;
+        line-height: 24px;
+    }
+    .sangfor-content-top .data-protect .small-label,
+    .sangfor-content-top .storage-content p {
+        font-size: 12px;
+    }
+  
+    .sangfor-content-top .storage-resource, .sangfor-content-top .data-protect, .sangfor-content-top .alarm-statistics, .sangfor-content-bottom .backup-plan, .sangfor-content-bottom .device-status {
+        padding: 10px 15px;
+    }
+    .sangfor-content-top .storage-resource, .sangfor-content-top .data-protect, .sangfor-content-top .alarm-statistics {
+        height: 190px;
+    }
+    .sangfor-content-top .storage-content .usedtor, .sangfor-content-top .storage-content .freestor, .sangfor-content-top .data-protect p {
+        font-size: 18px;
+    }
+    .bakplandiv {
+        width: 45%;
+    }
+    .devicestatusdiv {
+        width: 55%;
+    }
+    #backupSwiper .swiper-wrapper .swiper-slide:not(.first-slide), #copySwiper .swiper-wrapper .swiper-slide:not(.first-slide){
+        padding-left: 20px;
+        width: calc((100% - 189px) / 2);
+    }
+    
+}
+@media screen and (min-width: 1367px) and (max-width: 1440px){
+    /* #cdpSwiper .swiper-wrapper .swiper-slide:not(.first-slide){
+        width: calc((100% - 189px) / 1.2);
+    } */
+}
+@media (max-width: 1366px) {
+    .sangfor-content-bottom .device-status {
+        height: 700px;
+    }
+    .sangfor-content-bottom .backup-plan {
+        height: 680px;
+    }
+    .dataprotectdiv {
+        width: 42.333333%;
+    }
+    .storageresourcediv {
+        width: 35%;
+    }
+    .alarmstatisticsdiv {
+        width: 22.6%;
+    }
+    .bakplandiv,
+    .devicestatusdiv {
+        width: 100%;
+    }
+    .sangfor-content-bottom .table-page .page-right {
+        right: 2%;
+        width: 96%;
+    }
+    .sangfor-content-top .data-protect .nav-tabs>li>a {
+        padding: 3px 16px;
+    }
+    #backupSwiper .swiper-wrapper .swiper-slide:not(.first-slide), #copySwiper .swiper-wrapper .swiper-slide:not(.first-slide){
+        width: calc((100% - 189px) / 1);
+    }
+    #cdpSwiper .swiper-wrapper .swiper-slide:not(.first-slide){
+        width: calc((100% - 189px) / 0.6);
+    }
+}
+

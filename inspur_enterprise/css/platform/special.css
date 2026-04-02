@@ -1,0 +1,1686 @@
+.dashboard-stat.bg-systemtime{
+	background-color: #A0CBEE;
+}
+
+.dashboard-stat.bg-runtime{
+	background-color: #708DD7;
+}
+
+.dashboard-stat.bc-auth{
+	background-color: #79CEED;
+}
+
+.form-wizard .steps > li.active > a.step .number {
+    background-color: #708DD7 !important;
+    color: #fff !important;
+}
+
+.module-title{
+	color: #708DD7;
+	font-size: 16px;
+	position: relative;
+}
+
+.module-title-tenant{
+	color: #708DD7;
+	font-size: 16px;
+	position: relative;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #708DD7;
+    border-color: #708DD7;
+}
+
+.btn-success:hover,
+.btn-success:focus, 
+.btn-success:active, 
+.btn-success.active {
+	color: #fff;
+	background-color: #79CEED;
+	border-color: #79CEED;
+}
+
+.green-haze.btn[disabled], 
+.green-haze.btn[disabled]:hover, 
+.green-haze.btn[disabled]:focus, 
+.green-haze.btn[disabled]:active, 
+.green-haze.btn[disabled].active, fieldset[disabled] 
+.green-haze.btn, fieldset[disabled] 
+.green-haze.btn:hover, fieldset[disabled] 
+.green-haze.btn:focus, fieldset[disabled] 
+.green-haze.btn:active, fieldset[disabled] 
+.green-haze.btn.active {
+    background-color: #708DD7;
+}
+
+.wrap-item-num {
+    font-size: 28px;
+    font-weight: 500;
+    color: #708DD7 !important;
+}
+
+.wrap-item-num-small{
+    font-size: 16px;
+    font-weight: 500;
+    color: #708DD7 !important;
+    margin-left: 10px;
+   
+}
+
+.icon-set, 
+.icon-envelope-open, 
+.icon-speech, 
+.glyphicon-phone, 
+.icon-yuanchengkongzhi, 
+.icon-globe, 
+.fa-suitcase, 
+.fa-history, 
+.icon-backupbyhand, 
+.icon-anquan {
+	color: #708DD7 !important;
+}
+
+.settings-title a{
+	color: #708DD7 !important;
+}
+
+.settings-title>a>i{
+	color: #708dd7;
+}
+
+.ssh_control .caption_title, .caption_title i {
+    font-size: 14px;
+    color: #708DD7 !important;
+}
+
+.webuploader-pick{
+	background-color: #708DD7 !important;
+}
+
+.searchContent span:hover{
+	border: 1px solid #708DD7;
+}
+
+.searchContent span:hover em{
+	background: #708DD7;
+}
+
+.clearSearch{
+    color: #708DD7;
+}
+
+#social li i:hover{
+	color: #708DD7;
+}
+
+.comment-link i:hover{
+	color: #708DD7;
+}
+
+.tag-title a:hover{
+	border-bottom: solid 1px #708DD7;
+}
+
+.tag-title a:hover i{
+	color: #708DD7;
+}
+
+.tag-title a:hover h3{
+	color: #708DD7;
+}
+
+.settings-title span{
+	font-size: 16px;
+	color: #708DD7;
+}
+.open .btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #708DD7;
+    border-color: #708DD7;
+}
+
+.ssh_control .caption_title, .caption_title i{
+	color: #708DD7;
+}
+
+.ssh_control .webuploader-pick{
+	background:#708DD7;
+}
+
+.page-sidebar .page-sidebar-menu > li.active > a:hover, 
+.page-sidebar .page-sidebar-menu > li.active.open > a:hover {
+    background: #4ABAE9;
+}
+
+.page-sidebar .page-sidebar-menu > li.active > a, 
+.page-sidebar .page-sidebar-menu > li.active.open > a {
+    background: #4ABAE9;
+    border-top-color: transparent;
+    color: #ffffff;
+}
+
+.tenant-resource i{
+	color:#708DD7;
+}
+
+.btn-success.active.focus, 
+.btn-success.active:focus, 
+.btn-success.active:hover, 
+.btn-success:active.focus, 
+.btn-success:active:focus, 
+.btn-success:active:hover,
+.open>.dropdown-toggle.btn-success.focus, 
+.open>.dropdown-toggle.btn-success:focus, 
+.open>.dropdown-toggle.btn-success:hover{
+	background-color: #708DD7;
+}
+
+a:hover{
+	color:#708DD7;
+}
+
+a{
+    color: #708DD7 ;
+}
+
+a:hover{
+    color: #708DD7;
+}
+
+.tabbable-custom>.nav-tabs>li.active {
+	border-top: 3px solid #708DD7;
+}
+
+.btn-success {
+    color: #fff;
+	background-color: #708DD7;
+    border-color: #708DD7;
+}
+
+.btn-success:hover,
+.btn-success:focus, 
+.btn-success:active, 
+.btn-success.active {
+	color: #fff;
+	background-color: #79CEED;
+	border-color: #79CEED;
+}
+.adv_btn{
+    background: #708DD7;
+}
+
+.bootstrap-switch-on{
+	background-color: #708DD7 !important;
+	border-color: #708DD7 !important;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary{
+	background:#708DD7 !important;
+}
+
+.bootstrap-switch .bootstrap-switch-on .bootstrap-switch-label{
+	border-color: #708DD7 !important;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color:#708DD7;
+    color: #fff;
+}
+
+.form-wizard .steps > li.done > a.step .desc{
+    color: #708DD7 !important;
+}
+
+.form-wizard .steps > li.done > a.step .desc > i{
+    color: #708DD7 !important;
+}
+
+.has-success .form-control{
+    border-color: #708DD7;
+}
+
+.alert-link{
+    color: #708DD7 !important;
+}
+
+.tag-title a:hover h3{
+    color: #708DD7;
+}
+
+.tag-title a:hover i{
+    color: #708DD7;
+}
+
+.tag-title a:hover{
+    border-bottom-color:#708DD7;
+}
+
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li.active > a{
+    color: #708DD7;
+    border-bottom-color: #708DD7;
+}
+
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li> a:hover{
+    border-bottom-color: #708DD7;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler, .page-sidebar .sidebar-toggler{
+    background: url(/img/themeSkin/sidebar_blue.jpg);
+}
+.nav-tabs>li.active>a{
+	color: #708DD7;
+}
+
+.nav-tabs>li:hover>a>i{
+	color: #708DD7;
+}
+
+.accordion .panel .panel-title 
+.accordion-toggle.accordion-toggle-styled 
+.font-green-seagreen:hover{
+    color: #708DD7 !important;
+}
+/*小分辨率*/
+.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover{
+	background: #708dd7  !important;
+	border: 1px solid #708dd7 !important;
+    color: #fff !important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover{
+	background-color: #708dd7 !important;
+    color: #fff !important;
+}
+
+e.daterangepickr td.active, .daterangepicker td.active:hover{
+	
+    background-color: #708dd7 !important;
+}
+
+.icheckbox_square-blue, .iradio_square-blue{
+    background-image: url("/img/platform/table-icon/vinblue_blue.svg") !important;
+}
+
+.c0FBF98 {
+	color: #708DD7 !important;
+}
+
+i.vicon-tishi {
+	color: #708DD7;
+}
+.drawer-footer button{
+    background-color: #79CEED;
+}
+
+.green-haze.btn.active, .green-haze.btn:active {
+	background-color: #708DD7 !important;
+}
+
+.m365-table .btn:hover {
+	background-color: #708dd7;
+}
+
+.m365-table .btn:active {
+	background-color: #6985cc;
+}
+
+#addVerify .copy {
+	background: #79CEED;
+}
+
+#addVerify .copy:hover {
+	background-color: #79CEED;
+}
+
+#addVerify .copy:focus,
+#addVerify .copy:visited,
+#addVerify .copy:active {
+	background-color: #79CEED;
+}
+
+#m365-content-organization #delete-organization,
+#exchange-recover-content #delete-shopping {
+	background-color: #708DD7 !important;
+}
+
+#m365-content-organization #delete-organization:hover,
+#exchange-recover-content #delete-shopping:hover {
+	background-color: #79CEED !important;
+}
+
+#m365-content-organization #delete-organization:active,
+#exchange-recover-content #delete-shopping:active {
+	background-color: #79CEED !important;
+}
+
+#exchangebackupcontent .viconfont-color {
+	color: #708DD7;
+}
+
+.exch-green {
+	color: #79CEED;
+}
+
+.exch-green:hover,
+.exch-green:focus,
+.exch-green:visited,
+.exch-green:active {
+	color: #79CEED;
+}
+
+#m365-content-organization .exch-forbid-event,
+#exchange-recover-content .exch-forbid-event {
+	background-color: #96DFD6 !important;
+}
+
+.btn_operation_vicon a>i {
+	color: #708DD7;
+}
+
+.btn-title i {
+	color: #708DD7;
+}
+
+.butUpFile {
+	background: #708DD7;
+}
+
+.help_header {
+	background: #708DD7;
+}
+
+.help_link {
+	color: #708DD7
+}
+
+.btn-box-full {
+	background: #708DD7;
+}
+
+.grey_box_btn.grey_box_btn_hover button {
+	color: #708DD7;
+}
+
+.grey_box_btn.grey_box_btn_hover i {
+	color: #708DD7;
+}
+
+.chooseUpFile{
+	color: #708DD7;
+}
+
+.add_hadoop_form .btn_operation_vicon a>i{
+	color: #708DD7;
+}
+
+#hadoopbackupcontent span.wildcardInput {
+	color: #708DD7;
+}
+#agentfilediv span.wildcardInput {
+	color: #708DD7;
+}
+
+/* #delete-strategy {
+	background-color: #708DD7;
+} */
+
+#licensediv #download{
+	background-color:#708DD7 !important;
+}
+
+/*模块图标*/
+#masterserverimg{
+    content: url(/img/themeSkin/masterserver-blue.png);
+}
+#databaseimg{
+    content: url(/img/themeSkin/database-blue.png);
+}
+#fpprotectimg{
+    content: url(/img/themeSkin/fpprotect-blue.png);
+}
+#v2vimg{
+    content: url(/img/themeSkin/v2v-blue.png);
+}
+#hostimg{
+    content: url(/img/themeSkin/host-blue.png);
+}
+#databasecdpimg{
+    content: url(/img/themeSkin/dbcdp-blue.png);
+}
+#fscdpimg{
+    content: url(/img/themeSkin/filecdp-blue.png);
+}
+#osprotectimg{
+    content: url(/img/themeSkin/os-blue.png);
+}
+#nasprotectimg{
+    content: url(/img/themeSkin/nas-blue.png);
+}
+#volcdpprotectimg{
+    content: url(/img/themeSkin/volcdp-blue.png);
+}
+#exchangeprotectimg{
+    content: url(/img/themeSkin/exchange-blue.png);
+}
+#vmprotectimg{
+    content: url(/img/themeSkin/vm-blue.png);
+}
+#hadoopprotectimg{
+    content: url(/img/themeSkin/hadoop-blue.png);
+}
+#obsprotectimg{
+    content: url(/img/themeSkin/obs-blue.png);
+}
+.modulefilecls {
+    content: url(/img/themeSkin/modulefile-blue.svg);
+}
+.moduledbcls {
+    content: url(/img/themeSkin/moduledb-blue.svg);
+}
+.moduleoscls{
+    content: url(/img/themeSkin/moduleos-blue.svg);
+}
+
+.addVMList .feeds > li:hover{
+    border-color: #708DD7;
+}
+/* 加载三个点颜色 */
+.page-spinner-bar > div, .block-spinner-bar > div{
+    background: #708DD7;
+}
+/* 滚动条 BEGIN */
+/* 滚动条宽度、显示 */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+/* 滚动条颜色、圆角 */
+::-webkit-scrollbar-thumb {
+    background-color: #D9DADB;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #C9CBCC;
+}
+
+::-webkit-scrollbar-thumb:focus {
+    background-color: #C9CBCC;
+}
+
+/* 轨道颜色、圆角 */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* 滚动条 END */
+.vmbackup .portlet > .portlet-title > .nav-tabs > li.active > a {
+	color: #79CEED;
+	border-bottom: 3px solid #79CEED !important;
+}
+
+
+.vmbackup .addTitle {
+	color: #708DD7;
+}
+
+.vmbackup .addTitle a, .addTitle a:hover {
+	color: #79CEED;
+}
+.vmbackup .addVMList .feeds > li:active{
+    border-color:  #708DD7;
+}
+
+/*-------------------------------------------浪潮首页css-----------------------------------*/
+.datacenter-spur .mb16 {
+    margin-bottom: 16px;
+}
+.datacenter-spur .pl0 {
+    padding-left: 0;
+}
+.page-content-wrapper{
+    background-color: #EEF3F8;
+}
+.datacenter-spur {
+    background-color: #EEF3F8;
+}
+.page-spur-bar .page-breadcrumb {
+    padding: 3px 0 8px;
+}
+
+.page-spur-bar .page-breadcrumb > li > span {
+    color: #000000;
+    font-size: 14px;
+    vertical-align: top;
+    line-height: 26px;
+}
+.page-spur-bar .page-breadcrumb > li .data-center-icon
+{
+    background: url("/img/platform/datacenter-spur/homepagelogo.png")  no-repeat; 
+}
+.page-content,.page-spur-bar{
+    background-color:  #EEF3F8;
+}
+.page-spur-bar .page-breadcrumb > li .data-center-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+}
+
+/* 系统信息 */
+.systemdiv{
+    background-color:#fff ;
+    height: 152px;
+    border-radius: 8px !important;
+    /* display: flex; */
+}
+.systemdiv .systembox{
+    margin: 46px 0px;
+    border-right: 1px solid #F2F3F5;
+    display: flex;
+    flex: 25%;
+    font-size: 12px;
+    position: relative;
+}
+
+.systemdiv  .systembox .img{
+    width: 60px;
+    height: 60px;
+}
+.systemdiv .systembox:first-child .img {
+    background: url("/img/platform/datacenter-spur/systime.png") no-repeat;
+}
+.systemdiv .systembox:nth-child(2) .img {
+    margin-left: 5%;
+    background: url("/img/platform/datacenter-spur/runtime.png") no-repeat;
+}
+.systemdiv .systembox:nth-child(3) .img {
+    margin-left: 5%;
+    background: url("/img/platform/datacenter-spur/currenttask.png") no-repeat;
+}
+.systemdiv .systembox:last-child .img {
+    margin-left: 5%;
+    background: url("/img/platform/datacenter-spur/historytask.png") no-repeat;
+}
+.systemdiv .systembox:last-child {
+    border-right: none;
+}
+.systemdiv .systembox .systemdetail{
+    /* margin-left: 14px; */
+    margin-left: 5%;
+}
+.systemdiv .systembox .sysdate{
+    color: #86909C;
+    font-size: 12px;
+}
+.systemdiv .systembox .systime{
+    font-size: 18px;
+    font-weight: bold;
+}
+.systemdiv .systembox .sysnum{
+    margin-top: 7px;
+    font-size: 26px;
+    font-weight: bold;
+}
+.systemdiv .systembox .systemdetail .unit{
+    color: #4E5969;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* 备份存储 */
+.databox{
+    padding: 10px 22px;
+}
+.datacenter-spur .storagediv{
+    background-color:#fff ;
+    height: 381px;
+    border-radius: 8px !important;
+}
+.datatop{
+    width: 100%;
+    height: 33px;
+    border-bottom: 1px solid #E9EAEC;
+}
+.datatop .title{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+.datacenter-spur .storagediv .box{
+    padding: 0px;
+    height: 230px;
+    /* background-color: pink; */
+    border-bottom: 1px dashed #4080FF;
+}
+.datacenter-spur .storagediv .bottom{
+    margin-top: 28px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.datacenter-spur .storagediv .bottom .circle{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #249EFF;
+    margin-right: 8px;
+}
+.datacenter-spur #capacityCircle{
+    width: 100%;
+    height: 230px;
+}
+.datacenter-spur .storagediv .bottom .usedbox,
+.datacenter-spur .storagediv .bottom .remianNum,
+.datacenter-spur .storagediv .bottom .remainPercent{
+    display: block;
+     margin-bottom: 13px;
+}
+.datacenter-spur .storagediv .bottom .purple{
+    background-color: #313CA9;
+}
+.consumpstatic{
+    width: 100%;
+    height:328px;
+}
+.datacenter-spur #consumpChart{
+    height: 100%;
+}
+.currentdiv{
+    background-color:#fff ;
+    height: 267px;
+    border-radius: 8px !important;
+}
+.currentdiv .currentdata,.historydata{
+    padding: 9px 8px;
+}
+.currentdiv {
+    padding-right: 5px;
+}
+
+.datacenter-spur .table-container .status{
+    float: right;
+    display: inline-block;
+    width: 56px;
+    height: 22px;
+    border-radius: 20px !important;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    font-weight: bold;
+	position: relative;
+	top: -50%;
+	transform: translateY(25%);
+}
+.historydiv{
+    background-color: #fff;
+    height: 267px;
+    border-radius: 8px !important;
+    padding-right: 5px;
+}
+.currentdiv .datatop,.historydiv .datatop {
+    margin-right: 17px;
+    width: auto;
+ }
+.datacenter-spur .taskinfo{
+    /* padding-left: 0px !important; */
+    padding-left: 0px;
+}
+.monitordiv{
+    background-color: #fff;
+    /* height: 264px; */
+    border-radius: 8px !important;
+}
+.monitordiv .datatop{
+    display: flex;
+    justify-content: space-between;
+}
+.monitordiv #node_uuid {
+    width: 199px;
+    height: 30px;
+    background:  #F5F8FA;
+    border: none;
+    border-radius: 20px !important;
+    color: #A1A5B7;
+    margin-top: -4px;
+    line-height: 30px;
+    padding-left: 14px;
+    padding-top: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.monitordiv .cpudiv, .monitordiv .cpu,
+.monitordiv .memerydiv,.monitordiv .memery,
+.monitordiv .networkTrafficdiv,.monitordiv .networkTraffic{
+    height: 220px;
+    padding-right: 0px;
+}
+.monitordiv #networkTrafficChart ,#cpuChart, #memeryChart{
+    width: 100%;
+    height: 220px;
+    padding-top: 13px;
+}
+.datacenter-spur .table-container .dataTables_scrollHead{
+    display: none;
+}
+.datacenter-spur .table-container .table-scrollable{
+    border: none;
+}
+.datacenter-spur .table-container thead{
+    display: none
+}
+.datacenter-spur .table-container tr{
+    height: 50px;
+    padding-top: 10px;
+    border-bottom:1px dashed #E4E6EF;
+}
+.datacenter-spur .table-bordered>tbody>tr>td{
+    border: none;
+}
+.datacenter-spur .table>tbody>tr>td{
+    border-top: none;
+    line-height: 38px;
+}
+.datacenter-spur .table-container .dataTables_scrollBody{
+    border-bottom: none !important;
+    padding-right: 7px;
+}
+.datacenter-spur .table-page{
+    display: none;
+}
+/* 设置滚动条样式 */
+.datacenter-spur .table-container .dataTables_scrollBody::-webkit-scrollbar{
+    width: 4px;
+    border-radius: 10px;
+}
+/* 设置链接颜色 */
+.page-title a{
+	color: #708dd7 !important;
+}
+.alert li a {
+	color:#708dd7 !important; ;
+}
+
+/* 新版表格影响的改动 */
+.btn-table{
+	background: rgba(15, 191, 152, 0.1);
+}
+.btn-table:hover{
+	background: rgba(15, 191, 152, 0.1);
+}
+.vin_toolbar .columns .keep-open>button{
+	background-color: #708dd7;
+}
+.vin_toolbar .columns .keep-open>button:hover, .vin_toolbar .columns .keep-open>button:active{
+	background-color: #708dd7 !important;
+}
+/*表格上方文字前图标颜色*/
+.btn.table-toolbar-btn i{
+	color: #708dd7;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search{
+    background-color: #708dd7;
+    color: #FFFFFF;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search:hover{
+	background-color: #708dd7 !important;;
+}
+.clearSearch{
+    color: #708dd7;
+}
+.searchContent span:hover em{
+    background: #708dd7;
+}
+.bs_btn_success:hover, #filterSubmit:hover{
+	background-color: #708dd7;
+}
+.daterangepicker .ranges li.active, .daterangepicker .ranges li:hover{
+	background:#708dd7 !important ;
+	border-color: #708dd7 !important;
+}
+.green-haze.btn.disabled, .green-haze.btn.disabled:hover, .green-haze.btn.disabled:focus, .green-haze.btn.disabled:active, .green-haze.btn.disabled.active, .green-haze.btn[disabled], .green-haze.btn[disabled]:hover, .green-haze.btn[disabled]:focus, .green-haze.btn[disabled]:active, .green-haze.btn[disabled].active, fieldset[disabled] .green-haze.btn, fieldset[disabled] .green-haze.btn:hover, fieldset[disabled] .green-haze.btn:focus, fieldset[disabled] .green-haze.btn:active, fieldset[disabled] .green-haze.btn.active{
+    background-color: #708dd7
+}
+#currentjobdiv .col-md-12, #historyjobdiv .col-md-12, #taskalarmdiv .col-md-12, #systemalarmdiv .col-md-12,
+#joblogdiv .col-md-12, systemlogdiv .col-md-12 {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+/* 表格上方图标 */
+.icon-auto-height1{
+	content: url("/img/platform/table-icon/Auto-height-one.svg");
+}
+ .icon-columns{
+	content: url("/img/platform/table-icon/List-checkbox.svg"); ;
+ }
+ .icon-export{
+	content: url("/img/platform/table-icon/Share-three.svg"); ;
+ }
+ .log_download{
+	content: url("/img/platform/table-icon/Download_log.svg"); ;
+ }
+.checkbox-area input[type=checkbox]:checked, #filterDiv input[type=checkbox]:checked, .vin_toolbar input[type=checkbox]:checked, .bootstrap-table .fixed-table-container .table .bs-checkbox label input[type="checkbox"]:checked{
+    content: url("/img/platform/table-icon/select-blue.svg");
+}
+.icon-start{
+    content: url("/img/platform/table-icon/Play-blue.svg");
+}
+.icon-delete{
+	content: url("/img/platform/table-icon/Delete-blue.svg");
+}
+.bootstrap-table-half-checked{
+	content: url("/img/platform/table-icon/selectAll-blue.svg");
+}
+.icon-time{
+    content: url("/img/platform/table-icon/Plan-blue.svg");
+}
+/*表格升序降序按钮颜色*/
+table.dataTable thead .sorting_desc {
+    background: url("/img/platform/table-icon/Sort-desc-blue.svg") no-repeat center right !important;
+}
+.bootstrap-table .fixed-table-container .table thead th .desc{
+    background-image: url("/img/platform/table-icon/Sort-desc-blue.svg");
+}
+table.dataTable thead .sorting_asc {
+    background: url("/img/platform/table-icon/Sort-asc-blue.svg") no-repeat center right !important;
+}
+.bootstrap-table .fixed-table-container .table thead th .asc{
+    background-image: url("/img/platform/table-icon/Sort-asc-blue.svg");
+
+}
+/*表格上方搜索图标*/
+.customSearch:focus~div .icon-search,
+.vin_toolbar .search div:hover .icon-search{
+    content: url(/img/themeSkin/Search-blue.svg);
+}
+/*表格勾选按钮图标*/
+.table .checker span.checked input{
+    background-image: url(/img/platform/table-icon/asset-checked.svg);
+}
+.vin_toolbar .search div:hover:active {
+    background: #D8E3FE;
+}
+.form-control-static{
+    color: #708dd7;
+}
+.bootstrap-table .table tbody tr td a{
+    color: #708dd7;
+}
+.bs_btn_success, #filterSubmit{
+	background: #708dd7;
+}
+.bs_btn_success:hover,
+#filterSubmit:hover {
+    background-color: #708dd7;
+}
+.font-green{
+    color: #708dd7;
+}
+/*exchange*/
+#exchangebackupcontent .viconfont-color {
+    color: #708dd7;
+}
+.searchable-select-item.selected{
+    background: #708dd7 !important;
+}
+.exch-green:hover, .exch-green:focus, .exch-green:visited, .exch-green:active{
+    background-color: #708dd7;
+    color: #FFFFFF;
+}
+.exch-green{
+    background-color: #708dd7;
+    color: #FFFFFF;
+}
+.m365-table .btn:hover{
+    background-color: #6c87ce;
+}
+/*设置标题颜色*/
+.settings-title>a>i{
+    color: #708dd7 !important;
+}
+.settings-title a {
+    color: #708dd7 !important;
+}
+/*label 及图标颜色*/
+.has-success .help-block, .has-success .help-inline, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline{
+    color: #708dd7;
+}
+.has-success .input-icon > i{
+    color: #708dd7;
+}
+.btn.table-toolbar-btn:hover{
+    background-color: #F6F8FF;
+}
+/* 高级搜索后条件显示的X */
+.searchContent em{
+    color: #708dd7;
+}
+.searchContent span:hover{
+    border: 1px solid #708dd7;
+}
+a:focus, a:hover{
+    color: #708dd7;
+}
+.colorgreen{
+    color: #708dd7;
+}
+.c0FBF98{
+    color: #708dd7 !important;
+}
+/*表格上方删除按钮颜色*/
+.icon-white-delete:hover{
+    background-color: #708dd7 !important;
+}
+.icon-white-delete:focus{
+    background-color: #708dd7 !important;
+}
+#userMangerDiv .dropdown-menu li a:hover{
+    color: #708dd7;
+    background-color: #F6F8FF;
+}
+.page-sidebar .page-sidebar-menu > li.open > a  > i,
+.page-sidebar .page-sidebar-menu > li:hover > a  > i{
+    color: #708dd7;
+}
+.page-sidebar .page-sidebar-menu > li.active > a:hover > i{
+    color: #FFFFFF;
+}
+#addVerify .copy:hover{
+    background-color: #708dd7;
+}
+#addVerify .copy{
+    background-color: #708dd7;
+}
+.ztree li span.button{
+    background-image: url(/img/themeSkin/metro-blue-pro.svg);
+}
+.ssh_control .caption_title, .caption_title i{
+    color: #708dd7;
+}
+.wrap-item-num, .wrap-item-num-small{
+    color: #708dd7;
+}
+.label-success{
+    color: #708dd7;
+    background: #ECF1FF;
+}
+.search:hover, .search-btn:hover{
+    background-color: #D8E3FE ;
+}
+.settings-title span{
+    color: #708dd7;
+}
+.addVMList .feeds > li:hover{
+    border-color: #708dd7;
+}
+.label-success a{
+    color: #708dd7;
+    background: #ECF1FF;
+}
+.addNewTask{
+    content: url(/img/platform/table-icon/Add-one.svg);
+}
+.active{
+    color: #708dd7 !important;
+}
+
+#emailStrategy .nav>li>a:focus, .nav>li>a:hover{
+    background-color:#E7F9F5;
+    color: #708DD7;
+}
+#emailStrategy .active{
+    color: #708DD7;
+}
+.vin_toolbar .columns .export button{
+    background-color: #708DD7;
+}
+.export .btn-title i{
+    color: #fff;
+}
+.vin_toolbar .columns .export button:hover, .vin_toolbar .columns .keep-open>button:active, .vin_toolbar .columns .keep-open>button:hover{
+    background-color: #A0CBEE  !important;
+}
+
+/* 任务编排 */
+#orchestrationContent .section-add-wrapper:hover{
+	border: 1px solid #708DD7;
+}
+#orchestrationContent .section-add-wrapper:hover .add_button-text{
+	color: #708DD7;
+}
+#orchestrationContent .section-add-wrapper:hover .add_button-icon{
+	color: #708DD7;
+}
+#orchestrationDetails .active .vicon-tishi{
+	color: #708DD7 !important;
+}
+.item-icon-div::before{
+    color: #708DD7;
+}
+#orchestrationContent .section-card{
+    background: linear-gradient(134deg, #D8E2F6 100%, #F8FBFF 100%);
+}
+#orchestrationContent .card-index{
+    background: linear-gradient(180deg,#708DD7 0%, rgba(112,139,215,0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.tag.tag-normal {
+    background: #ECF1FF;
+    color: #708dd7;
+}
+.tag.tag-success {
+    background: #ECF1FF;
+    color: #708dd7;
+}
+.btn.btn-toolbar-delete {
+    background-color: #708dd7;
+}
+#vm_node_list .topHead .topPoint, #vm_machine_list .topHead .topPoint, #vm_network_list .topHead .topPoint{
+    background: #708dd7 !important;
+}
+#add-vm_network:hover{
+    background: #ECF1FF !important;
+    color: #708dd7 !important;
+}
+.topPoint{
+    background: #708dd7 !important;
+    border-radius: 1px !important;
+}
+.systemMonitorPage .success_status {
+    background: #ECF1FF;
+    color: #708dd7;
+}
+.cancleColor{
+    background-color: #708dd7 !important;
+}
+.hadoopnode{
+	color: #708dd7;
+}
+/* 选中删除按钮样式 */
+.select-delete-btn{
+	background-color: #708dd7 !important;
+}
+#delete-vm_network{
+    background-color: #708dd7 !important;
+}
+/* 租户详情页面 */
+#tenantDetail .storage-display i{
+    color: #708dd7 !important;
+}
+#tenantDetail .green-line{
+    background-color: #708dd7 !important;
+}
+#tenantDetail .card-icon{
+    color: #708dd7 !important;
+}
+.k8s_refresh_div i{
+	color: #708dd7;
+}
+.progress > .progress-bar-table{
+	background-color: #708dd7 !important;
+}
+.backupdata-wrapper.file-copy .src-wrap__title {
+    color: #708dd7;
+}
+#fileCopyContent .tab-pane-step1 .file-copy-tree .dropdown-header,
+#fileCopyContent .tab-pane-step1 .file-copy-tree .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    color: #708dd7;
+}
+.module-storage-switch{
+    border: 1px solid rgba(112,141,215,0.3);
+    color: #708dd7;
+}
+.module-storage-switch:hover{
+    background-color: #708dd7;
+}
+.item_detail-column-green{
+    background-color: #708dd7;
+}
+.storage-tab-item.active,.storage-tab-item:hover{
+    background: rgba(112,141,215,0.1);
+}
+.storage-tab-item.active .item_detail-name,.storage-tab-item.active .storage-tab-item-icon .viconfont:before, 
+.storage-tab-item:hover .item_detail-name,.storage-tab-item:hover .storage-tab-item-icon .viconfont:before{
+    color: #708dd7;
+}
+.module-tab-item.active,.module-tab-item:hover{
+    background: rgba(112,141,215,0.1);
+	color: #708dd7;
+}
+.module-tab-item.active .item_detail-name, .module-tab-item.active .viconfont::before, 
+.module-tab-item:hover .item_detail-name, .module-tab-item:hover .viconfont::before{
+    color: #708dd7;
+}
+.task-item-switch .task-item-tab.active{
+    border-color: 2px solid #708dd7;
+	color: #708dd7;
+}
+.task-item-switch .task-item-tab:hover,.filter-menu-head a{
+    color: #708dd7;
+}
+.backupPointDrawer .task_card-div .task_card-icon i::before{
+    color: #708dd7;
+}
+#wormSettingModal #wormTimeBtn i::before{
+    color: #708dd7;
+}
+.dropdown-filter-wrapper .filterSubmit{
+    background-color: #708dd7;
+}
+.dropdown-filter-wrapper .filterSubmit:hover{
+    background-color: #A0CBEE;
+}
+.clipboard-popup{
+    box-shadow: 0px 10px 20px 0px rgba(112,141,215,0.22);
+}
+.clipboard-popup i::before{
+    color: #708dd7;
+}
+.mySelector-option_li:hover .option_li-icon i::before,.mySelector-option_li:hover .option_li-name{
+     color: #708dd7;
+}
+.advanced-conf-title-icon{
+    background-color: #708dd7;
+}
+.backupSource_tree_mount{
+    color: #708dd7;
+}
+#license .top-title-left{
+    background:#708dd7;
+}
+#license .top-title-right:hover,#license .basic-capacity-card .capacity-card-num, #license .progress-bar,#license #fs_capacity_auth .modellabel,#license #db_cdp .host,
+#license .function-detail .top-title .title-right span{
+    color: #708dd7;
+}
+#license .function-detail .top-title .title-right span:hover{
+    color: #A0CBEE;
+}
+#license #function_detail_drawer_body .item_checked{
+	color: #708dd7;
+}
+#license .linonepoint a:focus, 
+#license .linonepoint a:hover,
+#license #social li i:hover{
+	color: #708dd7;
+}
+#license .inner-card i,
+#license .inner-card .right-box #capacity_auth_valid_des, #license .inner-card .right-box #file_capacity_auth_valid_des{
+    color: #708dd7;
+}
+#license .module-icon i{
+    color: #708dd7;
+}
+#license .advanced-module .check-icon{
+    background: url("/img/auth/advanced-func-check.svg") no-repeat;
+}
+#license .backup-module .module-icon{
+	background: url("/img/auth/backup-mode.svg") no-repeat;
+}
+#license .advanced-module .module-icon{
+	background: url("/img/auth/advanced-mode.svg") no-repeat;
+}
+.btn-dropdown-filter i, .btn-dropdown-daterange i{
+    color:#708DD7 !important;
+}
+.icon-search.icon-search_ing,
+.job-detail__halfbottom__portlet .portlet-body .tab-content .tab-pane .table-toolbar .table-toolbar__item .search-btn:hover .icon-search {
+    content: url(/img/platform/table-icon/asset-Search-hover.svg);
+}
+/* advancedSearch.css */
+.advanced-search-dropdown-menu .menu-header .menu-header__btn:hover{
+    color: #708DD7 !important;
+}
+/* daterangepicker.css */
+.btn-dropdown-daterange i {
+    color: #708DD7 !important;
+}
+.btn-dropdown-daterange:not(.show):hover {
+    background-color: rgba(112,141,215,.05) !important;
+}
+
+.btn-dropdown-daterange.show {
+    background-color: rgba(112,141,215,.1) !important;
+}
+.daterangepicker .drp-buttons .btn.cancelBtn:hover,.daterangepicker .drp-buttons .btn.btn-secondary-primary:hover{
+     color: #708DD7 !important;
+}
+/* filter.css */
+.form-check-input:checked + .form-check-label::before {
+    border-color: #708DD7 !important;
+    background-color: #708DD7 !important;
+    background-image: url('/img/platform/table-icon/checked.svg') !important;
+}
+.form-check-label:hover::before,.checkbox-wrapper__content .checkbox-wrapper__content__item .form-check-input:hover {
+    border-color: #708DD7 !important;
+}
+.open .btn-dropdown-filter {
+	background-color: rgba(112,141,215, 0.1) !important;
+}
+.btn-dropdown-filter:hover {
+	background-color: rgba(112,141,215,.05) !important;
+}
+.open .btn-dropdown-filter:hover {
+	background-color: rgba(112,141,215, 0.1) !important;
+}
+.select-wrapper .select-wrapper__item, .select-wrapper .select-wrapper__item:hover, .btn-dropdown-filter i {
+    color: #708DD7 !important;
+}
+/* menu.css */
+.btn-dropdown-menu i,.menu-item.level1:hover .menu-item-text.level1,.menu-item.level1:hover i.level1,.menu-item.level2:hover i.level2 ,
+.menu-item.level2:hover .menu-item-text.level2, .menu-item.level3:hover .menu-item-text.level3 {
+    color:#708DD7 !important;
+}
+.btn-dropdown-menu:hover{
+    background-color: rgba(112,141,215,.05) !important;
+}
+.open .btn-dropdown-menu{
+    background-color: rgba(112,141,215,.1) !important;
+}
+/* timePointDetail.css */
+.vicon-Frame11{
+    color:#708DD7 !important;
+}
+.ui-cascader-menu-item.on{
+    color: #708DD7 !important;
+}
+/* about.css */
+.social-media-wrapper .social-media-wrapper__item a:hover i{
+    color: #708DD7 !important;
+}
+/* alarm.css */
+.main_top,.top_nav .nav_def .nav_bot{
+    background:#708DD7 !important;
+}
+.item_res{
+    color: #708DD7 !important;
+}
+/* report.css */
+.report-section .report-section__header .decoration,.dot.dot--success,.cloud-echarts .cloud-echarts__header .decoration{
+    background-color:#708DD7 !important;
+}
+.toolbar-timepicker:hover, .tendency-toolbar.open .toolbar-timepicker,.operate-btns .operate-btns__item , .operate-btns .operate-btns__item:hover{
+    color: #708DD7 !important;
+}
+.form-check-input:checked + .form-check-label::before {
+    border-color: #708DD7 !important;
+    background-color: #708DD7 !important;
+}
+.form-check-label:hover::before {
+    border-color: #708DD7 !important;
+}
+/* 顶部栏 */
+.page-header{
+    background-color: #0e1b39 !important; 
+}
+/* 侧边栏 */
+.page-sidebar{
+   background-color: #1a2a4e !important;  
+}
+.page-sidebar li.active .menu-level1{
+    background-color: #4abae9 !important;  
+}
+.charts-wrapper__toolbar .nav-pills .nav-item.active a{
+    color: #708DD7 !important;
+}
+.tabs-left.nav-tabs > li.active > a{
+    color: #708DD7 !important;
+    background-color: rgba(112,141,215,.1) !important;
+}
+/* setting.css */
+.wrap-item-num,.wrap-item-num-small{
+    color: #708DD7 !important;
+}
+/* vincomponent.css */
+.vicon-tishi{
+    color: #708DD7;
+}
+.portlet.box.blue-hoki > .portlet-title > .caption {
+    color: #708DD7;
+}
+
+.portlet.box.blue-hoki > .portlet-title > .caption > i {
+    color: #708DD7;
+}
+
+.portlet > .portlet-title > .nav-tabs > li.active > a,
+.portlet > .portlet-title > .nav-tabs > li.active:hover > a{
+    color: #708DD7;
+    border-bottom-color: #708DD7 !important;
+}
+
+.portlet > .portlet-title > .nav-tabs > li > a {
+    color: #708DD7;
+}
+.green-haze.btn, .green-turquoise.btn {
+    background-color: #708DD7;
+}
+.green-turquoise.btn:hover,
+.green-turquoise.btn:active,
+.green-turquoise.btn.active {
+    color: #FFFFFF;
+    background-color: #A0CBEE !important;
+}
+
+.green-turquoise.btn:active:hover {
+	color: #FFFFFF;
+    background-color: #A0CBEE;
+}
+
+.green-turquoise.btn, .green-turquoise.btn:focus {
+    color: #FFFFFF;
+    background-color: #708DD7;
+}
+.green-haze.btn:hover,
+.green-haze.btn:focus,
+.green-haze.btn:active, .green-haze.btn.active{
+	background-color: #708DD7;
+}
+/*按钮指上去颜色*/
+.btn-primary{
+	background-color: #708dd7 !important;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary.active{
+    background: #A0CBEE !important;
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+    background-color: #708dd7 !important;
+}
+.bootstrap-switch-on {
+    border-color: #708dd7 !important;
+    background-color: #708dd7 !important;
+}
+.bootstrap-switch.bootstrap-switch-on .bootstrap-switch-label{
+    border-color: #708dd7 !important;
+}
+.tabbable-custom > .nav-tabs > li.active > a{
+	color: #708DD7 !important;;
+}
+
+.tabbable-custom > .nav-tabs > li.active{
+	border-top-color:#708DD7 !important;
+}
+.tabbable-custom>.nav-tabs>li.active>a:hover {
+    color: #708DD7 !important;
+}
+.tabbable-custom>.nav-tabs>li.active>a>i {
+    color: #708DD7 !important;
+}
+.tabbable-custom > .nav-tabs > li:hover > a > i{
+	color: #708DD7;
+}
+
+.tabbable-line > .nav-tabs > li.active{
+	border-bottom: 4px solid #708DD7;
+}
+.form-wizard .steps li.done .step .number{
+     background-color: rgba(112,141,215,0.05);
+     border-color: #708dd7;
+     color: rgba(112,141,215,0.05);;
+}
+.form-wizard .steps li.active .step .number {
+    background-color: #708dd7;
+}
+.form-wizard .steps li.active .step .desc{
+    color: #708DD7;
+}
+.form-wizard .steps li .step .number::after{
+    background-image: url("/img/platform/table-icon/step-checked-blue.svg");
+
+.font-green-seagreen{
+    color: #708DD7 !important;
+}
+.accordion .panel .panel-title .accordion-toggle.accordion-toggle-styled .font-green-seagreen:hover {
+    color: #708DD7 !important;
+}
+a:hover .font-green-seagreen {
+    color: #708DD7 !important;
+}
+.i-info{
+    color: #708DD7
+}
+.src-wrap .src-wrap__title{
+    color: #708dd7;
+}
+.addTitle{
+    color: #708dd7;
+}
+.addTitle a, .addTitle a:hover{
+    color: #708DD7 !important;
+}
+.addIt-list .reco-search-group .input-group-addon{
+    background-color: #708dd7 !important;
+}
+.addVMList .feeds > li:active{
+    border-color:  #708DD7;
+}
+.portlet-body__form__item .portlet-body__form__item__left .btn-group .btn {
+    color: #708DD7;
+}
+.portlet-body__form__item .portlet-body__form__item__left .btn-group .btn:hover{
+    color: #79CEED;
+}
+.portlet-body__form__item .portlet-body__form__item__left .btn-group .btn.active {
+    color: #6985cc;
+}
+.job-detail__halfbottom__portlet .portlet-title .nav-tabs > li.active > a {
+     color: #708dd7;
+     border-bottom-color: #708dd7;
+}
+.vmbackup .src-wrap .src-wrap__title {
+	color: #79CEED;
+}
+.addIt-list .reco-search-group .input-group-addon {
+    background-color: #708dd7;
+}
+.progress > .progress-bar-success {
+    background-color: #708DD7;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search {
+    color: #708DD7;
+}
+.table-toolbar-wrapper .table-toolbar-wrapper__right .btn-search:hover {
+    background-color: #708dd7;
+}
+
+.bootstrap-table .table tbody tr td a {
+    color: #708DD7;
+}
+.pagination-panel > input:hover , .pagination-panel > input:focus {
+    color: #708DD7;
+    border-color: #708DD7;
+}
+.decoration{
+    background-color: #708DD7;
+}
+.lower-region .recover-dropdown-wrapper .btn:not(.btn[disabled]):hover,
+.lower-region .recover-dropdown-wrapper .btn[aria-expanded="true"]{
+    background-color: rgba(112,141,215,0.05);
+    border-color: #708DD7;
+    color: #708DD7;
+}
+.route-btn:not(.btn[disabled]):hover, 
+.route-btn:not(.btn[disabled]):hover a {
+    color: #708DD7;
+}
+.fileCachePathButton , .fileCachePathButton:hover{
+    color: #708DD7;
+}
+.retry-group-wrap .retry-group-wrap__header .decoration,
+.integrality-check-wrap .integrality-check-wrap__header .decoration  {
+    background-color: #708DD7;
+}
+.strategy-group .strategy-group__title .decoration {
+    background: #708DD7;
+}
+.vicon-remark-forever,.btn-light-primary, .btn-light-primary:hover, .btn-light-primary:focus,
+.btn-operate-primary,  .btn-operate-primary:hover, .btn-operate-primary:focus,
+.radio-group .radio-group__item:hover, .radio-group .radio-group__item.active {
+    color: #708DD7;
+}
+.radio-group .radio-group__item.active{
+    background-color: rgba(112,141,215,0.1);
+}
+.noUi-target .noUi-connect, .noUi-tooltip {
+    background: #708DD7;
+}
+.noUi-target .noUi-handle,.noUi-tooltip::before, .noUi-tooltip::after{
+    border-color: #708DD7;
+}
+/* 表格按钮样式 */
+.btn-dropdown-operate{
+    background-color: #708DD7;
+}
+.btn-dropdown-operate:hover{
+    background-color: #708dd7;
+}
+.btn-dropdown-operate[aria-expanded="true"] {
+    background-color: #708dd7;
+}
+.dropdown-wrapper .dropdown-menu li .dropdown-menu__item:not(:disabled):hover {
+    background-color: rgba(112,141,215,.0.1);
+    color: #708dd7;
+}
+
+.dropdown-wrapper .dropdown-menu li .dropdown-menu__item:not(:disabled):focus {
+    background-color: rgba(112,141,215,.0.1);
+    color: #708dd7;
+}
+.resource-manager-wrap .resource-manager-wrap__header .nav-tabs li.active a{
+    color: #708dd7;
+    border-color: #708DD7 !important;
+}
+.nav-line-tabs .nav-item.active .nav-link{
+    border-bottom-color: #708DD7;
+    color: #708DD7;
+}
+.vinchin-wrap .vinchin-wrap__group .vinchin-wrap__group__card:hover {
+    border-bottom-color: #708DD7;
+}
+.vinchin-wrap .vinchin-wrap__group .vinchin-wrap__group__card:hover i:not(.fa.fa-angle-down) {
+    color: #708DD7;
+}
+.lower-region .recover-dropdown-wrapper .dropdown-menu li .route-btn:hover,
+.lower-region .recover-dropdown-wrapper .dropdown-menu li .route-btn:focus{
+    background-color: rgba(112,141,215,0.1);
+    color: #708DD7;
+
+}
+.spinner-primary {
+    color: #708DD7;
+}
+.tabledata-wrapper .tabledata-wrapper__head .tabledata-wrapper__head__taskname {
+    color:#708DD7;
+}
+.input-valid_wrap .is-valid{
+    border-color: #708DD7;
+}
+/* bootstrap-table.css */
+.pagination .active>a{
+    background: #708dd7 !important;
+}
+.active>a:hover {
+    background-color: #708DD7;
+}
+.checkbox-area input[type=checkbox]:checked,
+#filterDiv input[type=checkbox]:checked,
+.vin_toolbar input[type=checkbox]:checked,
+.bootstrap-table .fixed-table-container .fixed-table-body input[type=checkbox]:checked {
+  background-image: url("/img/platform/table-icon/asset-checked.svg");
+}
+/* safe_virus.css */
+.strategyPoint, .completePoint{
+    background: #708dd7 !important;
+}
+
+.takeover-item input[type="radio"],
+div .virus-item input[type="radio"]:checked,
+div .virus-item input[type="radio"]:active,
+div .virus-item input[type="radio"]:active:checked,
+div .virus-item  input[type="radio"]:disabled,
+div .virus-item  input[type="radio"]:disabled:checked
+{
+    background-image: url("/img/platform/table-icon/vinblue_blue.svg") !important;
+}
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item.active,
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item:focus,
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item:hover,
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item.active a.nav-link,
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item:focus a.nav-link,
+.virusStrategy .virusIncludeExcludeCollapse ul.nav li.nav-item:hover a.nav-link,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item.active,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item:focus,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item:hover,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item.active a.nav-link,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item:focus a.nav-link,
+.timepointVirusScanStrategy .timepointVirusScanStrategy__left ul.nav li.nav-item:hover a.nav-link {
+    color: #708DD7 !important;
+}
+li.virus-include-exclude-result__item .text.path{
+    color: #708DD7 !important;
+}
+.breadcrumb{
+    background-color: #EEF3F8;
+}
+#details_more{
+    color: #708DD7 !important;
+}
+/* virus-page.css */
+.title-bottom {
+    background: #ECF1FF !important;
+    color: #708DD7 !important;
+}
+.green-border{
+    border-color: #708DD7 !important;
+}
+@media (max-width: 1365px) {
+    .systemboxdiv,.taskinfo {
+        width: 100%;
+    }
+    .datacenter-spur .taskinfo{
+        padding-left: 15px;
+    }
+    .datacenter-spur .storagediv {
+        margin-bottom: 16px;
+    }
+    .datacenter-spur .networkTrafficdiv, .memerydiv, .cpudiv {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 1600px){
+    .datacenter-spur {
+        padding-bottom: 30px;
+    }
+}
+@media (max-width: 1660px) and (min-width: 1366px) {
+    .systemdiv  .systembox .img{
+        width: 30%;
+        background-size: contain !important;
+        position: relative;
+    }
+    .systemdiv .systembox:nth-child(2) .img {
+        margin-left: 0px;
+        background: url("/img/platform/datacenter-spur/runtime.png") no-repeat;
+    }
+    .systemdiv .systembox:nth-child(3) .img {
+        margin-left: 0px;
+        background: url("/img/platform/datacenter-spur/currenttask.png") no-repeat;
+    }
+    .systemdiv .systembox:last-child .img {
+        margin-left: 0px;
+        background: url("/img/platform/datacenter-spur/historytask.png") no-repeat;
+    }
+    .systemdiv .systembox {
+        padding-left: 3px;
+        padding-right: 3px;
+        justify-content: space-around;
+    }
+   
+}

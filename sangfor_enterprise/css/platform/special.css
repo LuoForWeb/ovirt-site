@@ -1,0 +1,252 @@
+@CHARSET "UTF-8";
+
+.portlet.box > .portlet-title > .caption {
+    padding: 10px 0 5px 0;
+	font-size: 16px;
+}
+
+@media (min-width: 992px) {
+	.page-content-wrapper .page-content.ml0 {
+		margin-left: 0 !important;   
+	}
+}
+
+.update-info{
+	color:#0066FF;
+}
+.update-success{
+	color:#34D48D;
+}
+.update-error{
+	color:#FF0000;
+}
+
+.green-haze.btn{
+	background-color: #47b5a0;
+}
+
+
+#agentfilediv .applyToAllClient:hover,#agentfilediv .wildcardconf:hover {
+	background-color: #498993;
+}
+
+/* 导航开始 */
+.page-header.navbar {
+	height: 70px;
+	background-color: #2F3339;
+}
+.page-header.navbar .page-logo  {
+	background-color: #fff0;
+}
+.logo-box {
+	padding: 0 0 0 45px;
+	width: 83px;
+}
+.logosize,
+.page-header.navbar .page-logo {
+	max-width: 42px;
+	max-height: 42px;
+	padding: 0;
+	margin-top: 10px;
+}
+.sangfor-title {
+	color: white;
+	font-size: 18px;
+	font-weight: normal;
+	display: inline-block;
+	margin: 19px 0 0 0;
+	white-space: nowrap;
+	letter-spacing: 2px;
+}
+.sangfor-subtitle {
+	font-size: 10px;
+	color: #1ABFBF;
+	white-space: nowrap;
+	word-spacing: 0px;
+	transform: scale(.8,1);
+    margin-left: -33px;
+}
+.page-content-wrapper .page-content.sangfor-bgc {
+	padding: 20px;
+}
+.text-box {
+	float: left;
+	margin-right: 6%;
+}
+.page-header-fixed .page-container {
+    height: calc(100% - 70px);
+}
+.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav {
+	border: none;
+}
+.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.current > a,
+.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li > a {
+	height: 70px;
+	background-color: #fff0 !important;
+	color: white;
+	padding: 22px 58px 30px;
+	font-size: 16px;
+	border: none;
+}
+.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a,
+.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a:hover {
+	color: #00DDDD !important;
+}
+.page-header.navbar .hor-menu .sangfor-nav > li.current .selected, .page-header.navbar .hor-menu .sangfor-nav > li.active .selected {
+	display: none;
+}
+/* 中间向两边渐变 */
+.sides-to-center {
+	position: absolute;
+	width: 100%;
+	height: 4px;
+	top: 68px;
+	z-index: 9994;
+}
+
+.sides-to-center:before {
+	content: "";
+	position: absolute;
+	background-image: linear-gradient(to left, #02F9F9, transparent);
+	left: 0%;
+	right: 50%;
+	height: 4px;
+}
+.sides-to-center:after {
+	content: "";
+	position: absolute;
+	background-image: linear-gradient(to right, #02F9F9, transparent);
+	left: 50%;
+	right: 0%;
+	height: 4px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {
+	float: unset;
+}
+
+.sangfor-nav li img {
+	display: none;
+}
+.sangfor-nav li.active img {
+	position: absolute;
+    top: 13px;
+	left: 50%;
+    transform: translateX(-50%);
+	/* z-index: 99; */
+	display:block;
+}
+.page-sidebar.navbar-collapse {
+    z-index: 0;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {
+	right: -4px;
+    border: 1px solid #2F3339;
+    padding: 3px 8px;
+    top: 16px;
+}
+.page-header.navbar .top-menu .navbar-nav {	
+	margin-top: 0px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+	height: 70px;
+}
+  
+/* 导航结束 */
+
+@media (max-width: 1645px) {
+	.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li > a {
+        height: 55px;
+        padding: 10px 40px 15px;
+        font-size: 14px;
+    }
+    .page-header.navbar,
+	.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+        height: 55px;
+    }
+    .sangfor-nav li.active img {
+		top: 12px;
+		width: 198px;
+    }
+    .sangfor-title {
+        font-size: 16px;
+        margin: 14px 0 0 0;
+    }
+    .sides-to-center {
+        top: 53px;
+    }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+        padding: 15px 5px 5px 5px;
+    }
+}
+@media (max-width: 1440px) {
+	#agentfilediv .applyToAllClient {
+		left: 84%;
+    	top: 48px;
+	}
+	.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle > .badge {
+		right: -7px;
+		padding: 2px 7px;
+		top: 14px;
+	}
+	.page-header.navbar .page-logo .logo-default {
+		margin: 2px 0 0 0 !important;
+	}
+	.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li > a {
+		padding: 20px 40px 15px;
+	}
+	.sangfor-title {
+		margin: 10px 0 0 0;
+		letter-spacing: 0px;
+	}
+	.sangfor-subtitle {
+		word-spacing: -2px;
+		transform: scale(.7,1);
+		margin-left: -39px;
+	}
+	.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+		padding: 18px 5px 5px 5px;
+	}
+}
+@media (max-width: 1366px) {
+	.page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .sangfor-nav > li > a {
+		padding: 16px 28px 15px;
+	}
+	.sangfor-nav li.active img {
+		top: 16px;
+		width: 180px;
+	}
+}
+
+
+/* 旧表格底部栏问题 */
+.table-container .table-page{
+	height: 60px !important;
+}
+/* 首页图标样式偏高 */
+.table > tbody > tr > td.dataTables_empty{
+	height: 100% !important;
+}
+/* 顶部告警样式 */
+.badgemarktop{
+	position: absolute;
+	margin-left: 10px;
+	z-index: 2;
+	margin-top: 0px !important;
+} 
+
+.page-header-inner {
+	width: 100%;
+	height: 100%;
+}
+
+.page-header.navbar .top-menu {
+	height: 100%;
+    display: flex;
+	justify-content: end;
+    align-items: center;
+    padding: 13px 20px;
+}
+
+.page-content-wrapper {
+	height: 100%;
+}

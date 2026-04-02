@@ -1,0 +1,302 @@
+body{
+    background:linear-gradient(to top, rgba(219, 248, 255, 0.9) 0%, #FFFFFF 53%), url('/img/platform/bg-home-cics.png');
+}
+.custom-logo {
+    z-index: 1;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.input-icon>i {
+    margin: 16px 2px 4px 16px;
+}
+
+.form-control:focus {
+    border:1px solid #2A87C8 !important;
+    outline: 0;
+}
+
+.login-div {
+    margin-top: 10% !important;
+}
+
+input[type="password"]::-ms-reveal {
+    display: none !important;
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .login-div {
+        margin-top: 7% !important;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#modal {
+    width: 440px;
+    height: 200px;
+    background-color: rgba(51, 75, 81, 0.5);
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 59px 15px 40px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.buttonAction {
+    margin-top: 44px;
+}
+
+.edit_pwd_button {
+    background: #2A87C8;
+}
+
+.login_success_button {
+    color: #2A87C8;
+}
+.login_success_button {
+    opacity: 1;
+    border: 1px solid #2A87C8 !important;
+    background: none;
+}
+.login_success_button:hover {
+    background: #2A87C8;
+    color: #fff;
+}
+.edit_pwd_button, .login_success_button {
+    width: 100px;
+    height: 36px;
+    opacity: 1;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px !important;
+    text-align: center;
+}
+
+.edit_pwd_button {
+    margin-right: 17px;
+}
+
+.login-btn:hover {
+    background: #2B98E4 !important;
+}
+
+.remPwd:checked {
+    background-image: url('/img/platform/table-icon/checked-cics.png');
+}
+
+.remPwd:hover {
+    border-color: #2A87C8;
+}
+
+.forget:hover {
+    color: #2B98E4 !important;
+}
+
+.has-error .form-control {
+    border-color: #EC282C;
+}
+
+.has-error .form-control:focus {
+    border-color: #EC282C;
+}
+
+.eye:hover,
+.eye-close:hover {
+    color: #DDE1E6 !important;
+}
+
+.has-error .help-block {
+    color: #EC282C;
+}
+.form-control {
+    width: 400px;
+    height: 48px;
+    padding-left: 48px;
+}
+
+.forget-form .form-action .resetPwd,.resetPwdContent .form-content .form-action .btn,.resetPwdContent .form-content #returnLogin{
+    background: #2A87C8;
+    box-shadow: 0px 4px 9px 0px rgba(7, 61, 106, 0.24);
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    line-height: 23px;
+    margin: 12px 0 24px 0;
+}
+
+.forget-form .form-action .resetPwd:hover,.resetPwdContent .form-content .form-action .btn:hover, .resetPwdContent .form-content #returnLogin:hover{
+    background: #2B98E4;
+}
+
+
+.form-control::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(113, 128, 150, 0.4);
+}
+
+.forget-form .forgetPwdLine a {
+    color: #2A87C8;
+}
+
+
+.loginlogosize {
+    max-width: 700px;
+    max-height: 30px;
+}
+.form-control:focus {
+    border-color: #2A87C8 !important;
+    outline: 0;
+}
+
+.login-div {
+    margin-top: 10% !important;
+}
+
+.tip {
+    width: 400px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EAF3FA !important;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666 !important;
+    border-radius: 4px 4px 4px 4px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #2B98E4 !important;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none !important;
+}
+
+.copyright {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    bottom: 2% !important;
+    z-index: 2 !important;
+}
+
+/* 消息中心页面 */
+.go-email {
+    margin-top: 0px !important;
+    background: #fff !important;
+    color: #2A87C8 !important;
+    font-weight: 400 !important;
+    border: 1px solid #2A87C8 !important;
+    box-shadow: none !important;
+}
+
+/* 修改登录页、忘记密码、消息页面输入框边框颜色 */
+input {
+    border-color: #E1E1E1 !important;
+    
+}
+.login-form,.forget-form,.lock-form{
+    position:relative;
+    width: 500px;
+    background: #fff;
+    z-index:2;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 9px 0px rgba(7,61,106,0.24);
+}
+.login-form .logo ,.forget-form .logo, .lock-form .logo {
+    margin-bottom: 13px;
+}
+.login-form .form-title , .forget-form .form-title,.lock-form .form-title{
+    margin-bottom: 36px;
+    margin-top: 0px;
+    color: #283243;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+}
+.forget-form .form-title{
+    margin-bottom: 16px;
+}
+.forget-form .tip{
+    margin-bottom: 20px;
+}
+.btn{
+    width: 400px;
+    height: 56px;
+    background: #2A87C8; 
+    font-weight: bold;
+    padding: 15px 0;
+    font-size: 20px;
+    color:#fff !important;
+    border-radius: 4px !important;
+    box-shadow: 0px 4px 9px 0px rgba(7,61,106,0.24);
+}
+.lock-div .login-btn{
+    margin-bottom: 24px;
+}
+
+.forget-form .forgetpwdleft:has(a:hover) a {
+    color: #2B98E4 !important;
+}
+.help-block,#login_tip{
+    display: flex;
+}
+.help-block i,#login_tip i{
+    margin-right: 4px;
+}
+.resetPwdContent .form-content .form-input .form-control{
+    background: #ffffff !important;
+    color: #333;
+}
+.focusIcon {
+    color: #2A87C8 !important;
+}
+.form-password .eye svg .a,.form-repassword .eye-close svg .a{
+    fill: rgb(238, 239, 242);
+}
+.reset-content .form-content .tips{
+    background: #EAF3FA !important;
+    color: #333333;
+}
+.reset-content .form-content .form-action .btn{
+    background: #2A87C8 !important;
+    height: 56px !important;
+}
+.reset-content .form-content .form-action .btn:hover{
+    background: #2B98E4 !important;
+}
+.reset-content .form-content .form-action .returnBack a {
+    color: #5b9bd1;
+}
+.reset-content .form-content .tips .successTips{
+    color: #333333;
+}
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .login-div {
+        margin-top: 7% !important;
+        
+    }
+}

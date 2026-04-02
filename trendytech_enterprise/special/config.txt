@@ -1,0 +1,19 @@
+{
+
+	"SYSTEM_INFO": {
+		"system_name": "TDS-BACKUP",
+		"years": "2023",
+		"company": "南京群顶科技股份有限公司",
+		"company_name": "南京群顶科技股份有限公司",
+		"company_tel": "400-828-9508",
+		"company_email": "admin@trendytech.com.cn",
+		"copyright_name":"南京群顶科技股份有限公司"
+	},
+	"REMOTE": {
+		"website": "http://www.trendytech.com.cn"
+	},
+	"SMS_CONFIG": {
+		"SIGNATURE": "群顶科技"
+	}
+
+}

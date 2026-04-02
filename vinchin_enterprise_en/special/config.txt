@@ -1,0 +1,18 @@
+{
+	"SYSTEM_INFO": {
+		"system_name": "Vinchin Backup & Recovery",
+		"copyright": "Copyright © 2025 Vinchin Technology Co., Ltd. All Rights Reserved",
+		"years": "2025 Vinchin",
+		"recommend": "",
+		"company_name": "Vinchin Support",
+		"company_tel": "+86-199-3803-4070",
+		"company_email": "technical.support@vinchin.com",
+		"copyright_name" : "Vinchin Technology Co., Ltd."
+	},
+	"REMOTE": {
+		"website": "https://www.vinchin.com"
+	},
+	"RELEASE_HYPERVISOR": [1,2,3,11,12,15,16,19,28,29]
+
+}
+

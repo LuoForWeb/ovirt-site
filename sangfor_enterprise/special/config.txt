@@ -1,0 +1,17 @@
+{
+	"SYSTEM_INFO": {
+		"system_name": "Sangfor Enterprise Data Backup & Recovery System",
+		"company": "Sangfor",
+		"company_name": "深信服企业级数据备份与恢复系统",
+		"company_tel": "+86 400-630-6430",
+		"company_email": "market@sangfor.com.cn",
+		"copyright_name": "深信服科技股份有限公司"
+	},
+	"REMOTE": {
+		"website": "https://www.sangfor.com.cn/"
+	},
+	"SMS_CONFIG": {
+		"SIGNATURE": "深信服"
+	}
+
+}

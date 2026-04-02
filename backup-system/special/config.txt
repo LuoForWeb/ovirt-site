@@ -1,0 +1,21 @@
+{
+	"SYSTEM_INFO": {
+		"system_name": "Backup & Recovery System",
+		"company": "xxxx Co. Ltd.",
+		"company_name": "xxxx有限公司",
+		"company_tel": "xxxxx",
+		"company_email": "xxx@xxx.com",
+		"copyright_name": "xxxx有限公司"
+	},
+	"REMOTE": {
+		"website": "https://www.xxxx.com"
+	},
+	
+	"VMHYPERVISORDES": {
+		"25": "Special Hypervisor"
+	},
+	
+	"SMS_CONFIG": {
+		"SIGNATURE": "备份中心"
+	}
+}
