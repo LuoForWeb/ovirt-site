@@ -1029,3 +1029,61 @@ const recursiveCloneSignData = (target, isGet, hash = new WeakMap()) => {
 
     return newObj;
 };
+
+/**
+ * 初始化拖拽调整宽度功能
+ */
+const initResizable = (leftID,rightID,resizerID) => {
+	const resizer = document.getElementById(resizerID);
+	const leftSide = document.getElementById(leftID);
+	const rightSide = document.getElementById(rightID);
+
+	// 检查元素是否存在
+	if (!resizer || !leftSide || !rightSide) {
+
+		return;
+	}
+
+	let x = 0;
+	let leftWidth = 0;
+
+	// 鼠标按下事件
+	resizer.addEventListener('mousedown', (e) => {
+		x = e.clientX;
+		leftWidth = leftSide.getBoundingClientRect().width;
+
+		// 添加临时事件监听
+		document.addEventListener('mousemove', mouseMoveHandler);
+		document.addEventListener('mouseup', mouseUpHandler);
+
+		// 防止文本选择
+		document.body.style.cursor = 'col-resize';
+		document.body.style.userSelect = 'none';
+		leftSide.style.userSelect = 'none';
+		rightSide.style.userSelect = 'none';
+	});
+
+	// 鼠标移动事件
+	const mouseMoveHandler = (e) => {
+		const dx = e.clientX - x;
+		const newLeftWidth = ((leftWidth + dx) * 100) / resizer.parentNode.getBoundingClientRect().width;
+
+		// 设置最小和最大宽度限制 (10% - 60%)
+		if (newLeftWidth > 30 && newLeftWidth < 50) {
+			leftSide.style.width = `${newLeftWidth}%`;
+			rightSide.style.width = `calc(${100 - newLeftWidth}% - 5px)`; // 减去分隔条宽度
+		}
+	};
+
+	// 鼠标松开事件
+	const mouseUpHandler = () => {
+		document.removeEventListener('mousemove', mouseMoveHandler);
+		document.removeEventListener('mouseup', mouseUpHandler);
+
+		// 恢复默认样式
+		document.body.style.removeProperty('cursor');
+		document.body.style.removeProperty('user-select');
+		leftSide.style.removeProperty('user-select');
+		rightSide.style.removeProperty('user-select');
+	};
+};
