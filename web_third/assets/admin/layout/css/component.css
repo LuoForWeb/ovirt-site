@@ -5465,7 +5465,7 @@ textarea.form-control{
 	overflow: auto;
 	border-radius: 4px;
 	border: 1px solid #f0f2f4;
-	background: rgb(227 230 234 / 10%)
+	background: rgb(227 230 234 / 10%);
 }
 
 .nodata-wrapper .nodata-wrapper__info {
@@ -5475,6 +5475,7 @@ textarea.form-control{
 	margin: 28px 0;
 	font-size: 14px;
 	font-weight: 400;
-	color: #8692a0
+	color: #8692a0;
 }
+
 /* END EMPTY */
